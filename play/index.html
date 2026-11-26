@@ -1234,6 +1234,27 @@ body.mobile .tr-pr{flex-wrap:wrap}body.mobile .tr-pr .lb{width:auto}
 .rgbedge::after{content:'';position:absolute;inset:-4px;border-radius:inherit;background:inherit;filter:blur(7px);opacity:.85;
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);padding:8px}
 .rgbcard{overflow:visible!important}
+.ctime{margin:8px 0 2px;text-align:center}.ctime small{color:var(--muted)}
+.ctrow{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:6px}.ctrow .ct{padding:6px 12px;font-size:14px}.ctrow .ct.on{background:linear-gradient(#ffd23a,#c08a10);color:#1a1004;border-color:#ffe9a0;font-weight:bold}
+.rtsec{margin-left:8px;font-size:13px;padding:2px 10px;border-radius:10px;background:#3a2a08;border:1px solid #ffd23a;color:#ffe9a8;vertical-align:middle}
+/* 3D turn-timer dial */
+#tturn{position:fixed;z-index:41;width:76px;height:76px;display:none;pointer-events:none;perspective:300px}
+#tturn .ttin{position:absolute;inset:0;transform-style:preserve-3d;animation:ttSpin 4s ease-in-out infinite}
+@keyframes ttSpin{0%,100%{transform:rotateX(14deg) rotateY(-16deg)}50%{transform:rotateX(14deg) rotateY(16deg)}}
+#tturn .ttring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(#ffd23a var(--p,360deg),#ffffff18 0);
+  -webkit-mask:radial-gradient(circle,#0000 58%,#000 60%);mask:radial-gradient(circle,#0000 58%,#000 60%);box-shadow:0 0 18px #ffd23a88;transform:translateZ(6px);filter:drop-shadow(0 0 6px #ffd23a)}
+#tturn .ttface{position:absolute;inset:9px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 35% 30%,#4a3a1a,#140c06 75%);border:2px solid #ffd23a88;box-shadow:inset 0 -6px 12px #000c,inset 0 4px 8px #ffffff22,0 8px 16px #000c;transform:translateZ(14px)}
+#tturn b{font-size:24px;line-height:1;color:#ffe9a8;font-variant-numeric:tabular-nums;text-shadow:0 2px 0 #000,0 0 10px #ffd23a}
+#tturn small{font-size:9px;color:#d8c8a0;letter-spacing:1px}
+#tturn.tick b{animation:ttTick .45s cubic-bezier(.2,1.6,.4,1)}
+@keyframes ttTick{from{transform:rotateX(90deg) scale(1.4);opacity:.2}to{transform:none;opacity:1}}
+#tturn.opp .ttring{background:conic-gradient(#ff9a6a var(--p,360deg),#ffffff18 0);box-shadow:0 0 14px #ff6a4a66}
+#tturn.warn .ttring{background:conic-gradient(#ff2a3a var(--p,360deg),#ffffff18 0);filter:drop-shadow(0 0 10px #ff2a3a)}
+#tturn.warn .ttface{background:radial-gradient(circle at 35% 30%,#7a1018,#1a0406 75%);border-color:#ff4a5a}
+#tturn.warn b{color:#fff;text-shadow:0 2px 0 #000,0 0 14px #ff2a3a}
+#tturn.warn .ttin{animation:ttShake .5s ease-in-out infinite}
+@keyframes ttShake{0%,100%{transform:rotateX(14deg) rotateZ(-6deg) scale(1.05)}50%{transform:rotateX(14deg) rotateZ(6deg) scale(1.12)}}
 /* player plates beside the board */
 .pplate{position:fixed;z-index:40;display:none;flex-direction:column;gap:6px;padding:9px 12px;border-radius:14px;background:linear-gradient(160deg,#1e1018f0,#0c0709f0);border:2px solid #5a3a46;box-shadow:0 8px 24px #000a;color:#fff;pointer-events:none;animation:fadeIn .3s}
 .pplate.opp{border-color:#ff6a6a99;box-shadow:0 0 18px #ff3a4a44,0 8px 24px #000a}.pplate.me{border-color:#6aa8ff99;box-shadow:0 0 18px #3d8be044,0 8px 24px #000a}
@@ -1445,7 +1466,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
   <div class="gnote">ใช้เหรียญ (เหลียน) ที่ได้จากการเล่น · ชนะได้ <b>1250</b> · แพ้ได้ <b>500</b> · ได้การ์ดซ้ำ คืน <b>100</b> เหลียน</div>
 </div>
 
-<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=17;</script>
+<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=18;</script>
 <script>
 // ============ CARD DATA (transcribed from the card art) ============
 const SAN='สามพี่น้อง', SHIP='เรือหลวง', WCT='พี่น้องร่ำรา', MANA_MAX=10, HAND_MAX=8;
@@ -1513,7 +1534,7 @@ const CARDS={
  wc_queue:{type:'event',name:'ไปต่อท้ายแถว',img:'E_queue.png',cost:1,trigger:true,tags:[],gacha:'E',
   skill:['ค้นหาการ์ดชื่อ "เหวยเฉิน" จากกองลง<b>ช่องดรอป</b>ไม่เกิน 2 ใบ — ถ้าช่องดรอปมีเหวยเฉิน <b>5 ใบ</b>ขึ้นไป นำเหวยเฉิน 1 ใบกลับขึ้นมือได้','ใช้ได้ 1 ครั้งต่อเทิร์น','[TRIGGER] จั่ว 1 ใบ และนำการ์ดนี้ขึ้นมือ']},
  wc_pointless:{type:'event',name:'การต่อสู้ที่ไม่มีความหมาย',img:'E_pointless.png',cost:1,tags:[],gacha:'E',
-  skill:['เปิดการ์ด 5 ใบบนสุด หยิบพวกพ้องชื่อ "เหวยเฉิน" หรือ "จินเฟย" ไม่เกิน 2 ใบ และพาหนะไม่เกิน 1 ใบขึ้นมือ ที่เหลือกลับเข้ากองแล้ว<b>สับกอง</b>','ใช้ได้ 1 ครั้งต่อเทิร์น']},
+  skill:['เปิดการ์ด 5 ใบบนสุด หยิบพวกพ้องชื่อ "เหวยเฉิน" หรือ "ฉินเฟย" ไม่เกิน 2 ใบ และพาหนะไม่เกิน 1 ใบขึ้นมือ ที่เหลือกลับเข้ากองแล้ว<b>สับกอง</b>','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  wc_firstday:{type:'event',name:'วันแรก และ งานแรก',img:'E_firstday.png',cost:1,tags:[],gacha:'E',
   skill:['ทิ้ง "เหวยเฉิน" บนมือ 1 ใบ → <b>จั่ว 3 ใบ</b> — จนจบเทิร์นนี้ จั่วจากความสามารถของการ์ดชื่อ "เหวยเฉิน" ไม่ได้อีก','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  // ===== ตู้ "EBX-01 เรือหลวง" (ได้จากตู้สุ่มเท่านั้น) — mystic 0.1% · legend 2% · epic 20% · rare ที่เหลือ (77.9%) =====
@@ -1892,7 +1913,7 @@ function cleanPlayer(m){
   return {name:cleanName(m.name)||'ผู้เล่น',avatar:safeAvatar(m.avatar),did:String(m.did||'').replace(/\D/g,'').slice(0,20),duser:cleanName(m.duser),leader,deck:validDeck(m.deck,leader)?m.deck:{...DECKLIST},foils:cleanFoils(m.foils),arts:cleanArts(m.arts),tb:cleanBadge(m.tb)};
 }
 const roomInfo=()=>ROOM?{code:ROOM.qp?'':ROOM.code,mode:ROOM.mode,max:ROOM.max,count:ROOM.players.length,started:!!ROOM.started,name:(ROOM.players.find(p=>p.host)||{}).name||'',qp:!!ROOM.qp}:{};
-function roomState(){return {code:ROOM.qp?'':ROOM.code,mode:ROOM.mode,max:ROOM.max,qp:!!ROOM.qp,started:!!ROOM.started,players:ROOM.players.map(p=>({pid:p.pid,name:p.name,avatar:p.avatar,host:p.host,ready:p.ready,slot:p.slot,leader:p.leader,did:p.did,duser:p.duser}))}}
+function roomState(){return {code:ROOM.qp?'':ROOM.code,mode:ROOM.mode,max:ROOM.max,qp:!!ROOM.qp,started:!!ROOM.started,tsec:ROOM.tsec??TURN_SEC,players:ROOM.players.map(p=>({pid:p.pid,name:p.name,avatar:p.avatar,host:p.host,ready:p.ready,slot:p.slot,leader:p.leader,did:p.did,duser:p.duser}))}}
 function freeSlot(){const used=new Set(ROOM.players.map(p=>p.slot));return (ROOM.max===2?[1,0]:[2,3,1,0]).find(s=>!used.has(s))}
 function roomSync(){if(!ROOM||MYPID!=='h')return;for(const [pid] of NET.links)sendTo(pid,{t:'rstate',room:roomState(),you:pid});renderRoom();qpCheck()}
 function chatPush(m){CHAT.push(m);if(CHAT.length>80)CHAT.shift();renderChat(true)}
@@ -2111,7 +2132,7 @@ function renderRoom(){
   const isCur=s=>s.leader===curL&&JSON.stringify(Object.entries(s.deck).filter(x=>x[1]).sort())===curD;
   el.innerHTML=`<div class="rtop">
       <button id="rleave">← ออกจากห้อง</button>
-      <div class="rtitle">ห้อง ${R.mode.toUpperCase()}<span class="rmode m${R.max}">${R.mode}</span></div>
+      <div class="rtitle">ห้อง ${R.mode.toUpperCase()}<span class="rmode m${R.max}">${R.mode}</span><span class="rtsec" title="เวลาต่อเทิร์น — หมดเวลา = ยอมแพ้อัตโนมัติ">⏱ ${(R.tsec??TURN_SEC)?(R.tsec??TURN_SEC)+' วิ/เทิร์น':'ไม่จำกัดเวลา'}</span></div>
       <div class="rcode" id="rcode" title="กดเพื่อคัดลอกรหัสห้อง">รหัสห้อง <b>${R.code}</b> <small>📋 ชวนเพื่อน (คัดลอก)</small></div>
     </div>
     <div class="rbody">
@@ -2189,6 +2210,7 @@ function roomStart(){
   const players=order.map(rp=>Object.assign(newPlayer(false,rp.leader,rp.name,rp.deck,rp.foils,rp.arts),{pid:rp.pid,team:rp.slot<half?'A':'B',avatar:rp.avatar,did:rp.did,duser:rp.duser,tb:rp.tb||'',remote:rp.pid!=='h'}));
   startGame('host',players);
   if(ROOM.tour)G.tour=ROOM.tour;
+  G.tsec=ROOM.tsec??TURN_SEC; // seconds per turn chosen when the room was made (0 = no limit)
 }
 // host: "เล่นอีกรอบ" → everyone back in the same room
 function roomRematch(){
@@ -2260,15 +2282,17 @@ function openCreateRoom(){
   box.innerHTML=`<h2>🏠 สร้างห้อง</h2>
     <div class="cmode"><button class="cm1 on" data-m="1v1"><b>1 v 1</b><small>2 คน</small></button><button class="cm1" data-m="2v2"><b>2 v 2</b><small>4 คน · แยกสนามคนละชุด</small></button></div>
     <label class="cpub"><input type="checkbox" id="cpub" checked> แสดงห้องนี้ใน "รายการห้อง" (ไม่ติ๊ก = เข้าได้ด้วยรหัสเท่านั้น)</label>
+    <div class="ctime"><b>⏱ เวลาต่อเทิร์น</b> <small>(หมดเวลา = ยอมแพ้อัตโนมัติ)</small><div class="ctrow">${[[60,'60 วิ'],[90,'90 วิ'],[120,'120 วิ'],[180,'180 วิ'],[300,'5 นาที'],[0,'ไม่จำกัด']].map(([v,t])=>`<button class="ct${v===TURN_SEC?' on':''}" data-v="${v}">${t}</button>`).join('')}</div></div>
     <div id="cmsg" style="min-height:22px;text-align:center;color:#ffe2a8"></div>
     <div class="foot"><button id="cno">ยกเลิก</button><button class="primary" id="cok">สร้างห้อง</button></div>`;
   $('#modal').style.display='flex';
-  let mode='1v1';
+  let mode='1v1',tsec=TURN_SEC;
   box.querySelectorAll('.cm1').forEach(b=>b.onclick=()=>{mode=b.dataset.m;sfx('click');box.querySelectorAll('.cm1').forEach(x=>x.classList.toggle('on',x===b))});
+  box.querySelectorAll('.ct').forEach(b=>b.onclick=()=>{tsec=+b.dataset.v;sfx('click');box.querySelectorAll('.ct').forEach(x=>x.classList.toggle('on',x===b))});
   $('#cno').onclick=()=>{sfx('click');$('#modal').style.display='none'};
   $('#cok').onclick=async()=>{
     $('#cok').disabled=true;$('#cmsg').textContent='กำลังสร้างห้อง…';
-    try{await roomCreate(mode,{pub:$('#cpub').checked});$('#modal').style.display='none';sfx('win');roomSys(`สร้างห้อง ${mode} แล้ว — รหัส ${ROOM.code}`);renderRoom()}
+    try{await roomCreate(mode,{pub:$('#cpub').checked});ROOM.tsec=tsec;$('#modal').style.display='none';sfx('win');roomSys(`สร้างห้อง ${mode} แล้ว — รหัส ${ROOM.code}`);renderRoom()}
     catch(e){$('#cmsg').textContent='สร้างห้องไม่สำเร็จ: '+e;$('#cok').disabled=false}
   };
 }
@@ -2393,7 +2417,7 @@ let LASTMATCH=null; // who was in the last match (for reports)
 function resetMatch(){
   if(G)G.halt=true;
   G=null;UNDO=[];pinned=null;SR.req=null;surrClose();
-  for(const s of ['#plate-opp','#plate-me']){const e=$(s);if(e)e.style.display='none'}
+  for(const s of ['#plate-opp','#plate-me','#tturn']){const e=$(s);if(e)e.style.display='none'}TT.side=null;TT.last=-1;
   for(const s of ['#modal','#cdetail'])$(s).style.display='none';
   for(const s of ['#banner','#spot','#vs','#cutin','#eyes','#dice','#rps','#chainfx','#vsintro'])$(s).className='';
   $('#log').innerHTML='';$('#chatfloat').classList.remove('open');$('#chatbtn').style.display='none';
@@ -2483,6 +2507,7 @@ function playFx(m){
     case 'elim':{const x=playerOf(m.side);if(x)showBanner(x===G.me?'คุณออกจากเกม':`${x.name} ออกจากเกม`,String(m.why||''),x.team!==G.me.team,1500);break}
     case 'mystic':deathOverlay(String(m.title||'').slice(0,40));break;
     case 'lf':lastFightMusic();cutIn(playerOf(m.sp),playerOf(m.so));break;
+    case 'timer':timerShow(String(m.side),m.left==null?null:Math.max(0,m.left|0),Math.max(0,m.tot|0)||null);break;
   }
 }
 
@@ -4525,8 +4550,8 @@ async function castEvent(p,c){
       break;}
     case 'wc_pointless':{
       p.once.wc_pointless=1;const top=takeTop(p,5);
-      const al=top.filter(x=>D(x).type==='ally'&&(isWC(x)||D(x).name.includes('จินเฟย'))),vh=top.filter(x=>D(x).type==='vehicle');
-      const t=await choose(p,{title:'การต่อสู้ที่ไม่มีความหมาย: หยิบพวกพ้อง "เหวยเฉิน"/"จินเฟย" ไม่เกิน 2 ใบ',sub:`เปิด <b>5 ใบบนสุด</b> ของกอง — เจอที่เลือกได้ ${al.length} ใบ · ใบสีเทาเลือกไม่ได้`,items:revealItems(top,x=>al.includes(x),p),min:0,max:Math.min(2,al.length),ai:it=>it.slice(0,2).map(i=>i.value)});
+      const al=top.filter(x=>D(x).type==='ally'&&(isWC(x)||D(x).name.includes('ฉินเฟย'))),vh=top.filter(x=>D(x).type==='vehicle');
+      const t=await choose(p,{title:'การต่อสู้ที่ไม่มีความหมาย: หยิบพวกพ้อง "เหวยเฉิน"/"ฉินเฟย" ไม่เกิน 2 ใบ',sub:`เปิด <b>5 ใบบนสุด</b> ของกอง — เจอที่เลือกได้ ${al.length} ใบ · ใบสีเทาเลือกไม่ได้`,items:revealItems(top,x=>al.includes(x),p),min:0,max:Math.min(2,al.length),ai:it=>it.slice(0,2).map(i=>i.value)});
       const v=vh.length?await choose(p,{title:'และหยิบพาหนะไม่เกิน 1 ใบ',items:cardItems(vh,p),min:0,max:1,ai:it=>[it[0].value]}):[];
       for(const x of [...t,...v]){top.splice(top.indexOf(x),1);p.hand.push(x)}
       p.deck.push(...top);shuffle(p.deck);log(p,`หยิบขึ้นมือ ${t.length+v.length} ใบ ที่เหลือกลับกองแล้วสับกอง`);render();await sleep(500);
@@ -4916,6 +4941,7 @@ async function yaoxingRevenge(o,deadName){
 // ============ TURN FLOW ============
 async function startTurn(p){
   G.cur=p;G.foe=G.players.length===2?opp(p):nextEnemy(p);G.turn++;G.phase='start';UNDO=[];setView();
+  if(G.mode==='host'){const ts=G.tsec??TURN_SEC;G.tLeft=ts?ts*1000:null;if(!ts){TT.last=-1;emit({f:'timer',side:sideOf(p),left:null});timerShow(sideOf(p),null)}} // online: a fresh timer for this turn
   for(const u of units(p)){p.manaRested+=u.mana;u.mana=0;u.rested=false;u.sick=false;u.noAttack=false;u.attacked=false}
   p.manaActive+=p.manaRested;p.manaRested=0;p.once={};p.tianxingBlocked=false;p.overDone=false;
   log(null,`— เทิร์น ${G.turn}: ${p.name} —`);
@@ -5325,6 +5351,7 @@ function render(){
   <div>${avImg(ai)}${ai.name}${tbH(ai)}: ชีวิต <b style="color:#ff9a8a">${ai.life.length}</b> · มือ ${ai.hand.length} · เด็ค ${ai.deck.length} · มานา ${ai.manaActive}</div>
   <div>${avImg(me)}${sp?'':'คุณ ('}${me.name}${sp?'':')'}${tbH(me)}: ชีวิต <b style="color:#8fc8ff">${me.life.length}</b> · มือ ${me.hand.length} · เด็ค ${me.deck.length} · มานา ${me.manaActive}</div>`;
   renderPlates();
+  if(TT.side!=null)timerShow(TT.side,G.over?null:TT.s);
   $('#endbtn').disabled=!myMain();$('#mend').disabled=!myMain();$('#mbar').style.visibility=G.over?'hidden':'';
   const ub=$('#undobtn');ub.disabled=!canUndo();ub.style.display=G.mode==='ai'?'':'none';
   ub.innerHTML=`<span class="ico">↶</span> ย้อน${canUndo()?` (${UNDO.length})`:''}`;
@@ -5475,6 +5502,42 @@ function surrDeclined(){
   showBanner('ไม่ให้ยอมแพ้!','ฝ่ายตรงข้ามอยากเล่นต่อ — สู้ต่อเลย',true,1800);
 }
 function surrCancelled(){if(SR.theirs)surrClose()}
+// ============ TURN TIMER (online matches): 180 s per turn · ≤20 s warning beeps · 0 = gives up automatically ============
+const TURN_SEC=120,WARN_SEC=20;   // default 120 s; the room owner can pick another time or no limit
+const TT={side:null,s:null,last:-1,tot:TURN_SEC};
+// host: count down the current player's turn (paused while waiting for someone else's answer / a surrender question)
+setInterval(()=>{
+  if(!G||G.mode!=='host'||G.over||G.halt||!G.cur||G.tLeft==null)return;
+  if(!G.wait&&!SR.req)G.tLeft-=250;
+  const s=Math.max(0,Math.ceil(G.tLeft/1000)),side=sideOf(G.cur);
+  if(s!==TT.last||side!==TT.side){TT.last=s;const tot=G.tsec??TURN_SEC;emit({f:'timer',side,left:s,tot});timerShow(side,s,tot)}
+  if(G.tLeft<=0){
+    const p=G.cur;G.tLeft=null;
+    log(null,`⏰ ${p.name} หมดเวลา (${G.tsec??TURN_SEC} วินาที) — ยอมแพ้อัตโนมัติ`);
+    emit({f:'banner',side:sideOf(p),tMine:'⏰ หมดเวลา',tOpp:`⏰ ${p.name} หมดเวลา`,sub:'ยอมแพ้อัตโนมัติ',ms:1600});
+    showBanner(p===G.me?'⏰ หมดเวลา':`⏰ ${p.name} หมดเวลา`,'ยอมแพ้อัตโนมัติ',p!==G.me,1600);
+    try{surrEnd(p)}catch(e){if(e!==OVER)console.error(e)}
+  }
+},250);
+// everyone: the 3D countdown dial on the corner of the current player's mat
+function timerShow(side,s,tot){
+  TT.side=side;TT.s=s;if(tot)TT.tot=tot;
+  let el=$('#tturn');if(!el){el=document.createElement('div');el.id='tturn';el.innerHTML='<div class="ttin"><div class="ttring"></div><div class="ttface"><b></b><small>วินาที</small></div></div>';document.body.append(el)}
+  const p=G&&G.players?playerOf(side):null;
+  if(!G||G.over||s==null||!p){el.style.display='none';return}
+  const mine=p===(G.vb||G.me),mat=$(G.players.length>2?(mine?'#mymat':'#oppmat'):(mine?'#mymat':'#oppmat'));if(!mat){el.style.display='none';return}
+  const r=mat.getBoundingClientRect();el.style.display='block';el.style.left=(r.left+14)+'px';el.style.top=(r.top+14)+'px';
+  el.classList.toggle('warn',s<=WARN_SEC);el.classList.toggle('opp',!mine);
+  el.style.setProperty('--p',(Math.min(1,s/(TT.tot||TURN_SEC))*360).toFixed(1)+'deg');
+  const b=el.querySelector('b');if(b.textContent!==String(s)){b.textContent=s;el.classList.remove('tick');void el.offsetWidth;el.classList.add('tick')}
+  el.title=mine?'เวลาเทิร์นของคุณ — หมดเวลาจะยอมแพ้อัตโนมัติ':`เวลาเทิร์นของ ${p.name}`;
+  // warning sound from 20 s down (louder / higher for the last 5)
+  if(s<=WARN_SEC&&s>0&&AU.ctx&&AU.on&&AU.on.sfx&&(mine||G.spec)){
+    try{const t=now();tone({type:'square',f:s<=5?1560:1180,t,dur:.06,r:.08,g:mine?.07:.03,lp:5000});if(s<=5)tone({type:'square',f:1560,t:t+.13,dur:.05,r:.06,g:mine?.06:.025,lp:5000})}catch(e){}
+  }
+}
+addEventListener('resize',()=>{if(G&&TT.side!=null)timerShow(TT.side,TT.s)});
+
 function surrEnd(loser){
   if(!G||G.over||G.mode==='guest')return;
   if(G.players.length>2){
