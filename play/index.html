@@ -1237,6 +1237,34 @@ body.mobile .tr-pr{flex-wrap:wrap}body.mobile .tr-pr .lb{width:auto}
 .ctime{margin:8px 0 2px;text-align:center}.ctime small{color:var(--muted)}
 .ctrow{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:6px}.ctrow .ct{padding:6px 12px;font-size:14px}.ctrow .ct.on{background:linear-gradient(#ffd23a,#c08a10);color:#1a1004;border-color:#ffe9a0;font-weight:bold}
 .rtsec{margin-left:8px;font-size:13px;padding:2px 10px;border-radius:10px;background:#3a2a08;border:1px solid #ffd23a;color:#ffe9a8;vertical-align:middle}
+#updbar{position:fixed;left:50%;top:8px;transform:translateX(-50%);z-index:140;padding:8px 16px;border-radius:14px;background:#2a1a06f2;border:2px solid #ffd23a;color:#ffe9a8;font-size:15px;box-shadow:0 0 20px #ffd23a66;white-space:nowrap;max-width:calc(100vw - 20px);overflow:hidden;text-overflow:ellipsis}
+#updbar .ut{font-weight:900;font-variant-numeric:tabular-nums;color:#fff}#updbar button{padding:3px 10px;font-size:13px;margin-left:6px}
+#updbar.hot{background:#4a0810f2;border-color:#ff4a5a;animation:canpulse 1s infinite}
+/* เซวียนเหิง ร่าง 2 entrance */
+.x2fx{position:fixed;inset:0;z-index:130;pointer-events:none;overflow:hidden}
+.x2dark{position:absolute;inset:0;background:radial-gradient(ellipse at center,#30000aa0,#000000d8);opacity:0;animation:x2in .5s forwards}
+@keyframes x2in{to{opacity:1}}
+.x2card{position:absolute;border-radius:8px;background:center/cover;box-shadow:0 0 60px #ff2a2a,0 0 140px #ff0000aa;transform:translateY(-120vh) scale(2.6) rotate(-14deg);opacity:0;animation:x2fall .9s cubic-bezier(.55,0,.9,.4) forwards}
+@keyframes x2fall{0%{opacity:0;transform:translateY(-120vh) scale(2.6) rotate(-14deg)}15%{opacity:1}100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+.x2fx.hit .x2card{opacity:1;transform:none;animation:x2land .6s ease-out forwards}
+@keyframes x2land{0%{transform:scale(1.18,.86)}40%{transform:scale(.96,1.05)}100%{transform:scale(1)}}
+.x2crack{position:absolute;transform:translate(-50%,-50%) scale(.2);opacity:0;overflow:visible}
+.x2crack polyline{fill:none;stroke:#120004;stroke-width:6;stroke-linejoin:bevel;filter:drop-shadow(0 0 6px #ff2a2a) drop-shadow(0 0 2px #ffb0a0)}
+.x2crack polyline.c1{stroke-width:4}.x2crack polyline.c2{stroke-width:2.5}
+.x2fx.hit .x2crack{animation:x2crk .35s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes x2crk{to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.x2ring{position:absolute;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;border:6px solid #ffd0b0;box-shadow:0 0 30px #ff2a2a,inset 0 0 20px #ff6a4a;opacity:0;transform:scaleY(.45)}
+.x2fx.hit .x2ring{animation:x2ring .9s ease-out forwards}.x2fx.hit .x2ring.r2{animation-delay:.15s;border-color:#ff4a4a}
+@keyframes x2ring{0%{opacity:1;transform:scale(.3,.14)}100%{opacity:0;transform:scale(14,6)}}
+.x2dust{position:absolute;width:0;height:0}
+.x2dust i{position:absolute;width:var(--s);height:var(--s);border-radius:2px;background:linear-gradient(#ffb090,#5a1a10);opacity:0}
+.x2fx.hit .x2dust i{animation:x2dust 1.4s cubic-bezier(.2,.8,.4,1) var(--dl) forwards}
+@keyframes x2dust{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--dx),calc(var(--dy) + 80px)) rotate(400deg)}}
+.x2title{position:absolute;left:50%;top:22%;transform:translate(-50%,-50%) scale(.6);font-size:clamp(28px,5vw,64px);font-weight:900;letter-spacing:4px;color:#fff;text-shadow:0 0 18px #ff2a2a,0 0 40px #ff0000,0 4px 0 #400;opacity:0;white-space:nowrap}
+.x2fx.hit .x2title{animation:x2t 1.4s cubic-bezier(.2,1.5,.4,1) forwards}
+@keyframes x2t{to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.x2fx.out{animation:x2out 1.1s ease-in forwards}
+@keyframes x2out{to{opacity:0}}
 /* 3D turn-timer dial */
 #tturn{position:fixed;z-index:41;width:76px;height:76px;display:none;pointer-events:none;perspective:300px}
 #tturn .ttin{position:absolute;inset:0;transform-style:preserve-3d;animation:ttSpin 4s ease-in-out infinite}
@@ -1279,7 +1307,7 @@ body.mobile .tr-pr{flex-wrap:wrap}body.mobile .tr-pr .lb{width:auto}
 /* the glass shards come and go: a soft band that slides slowly from the top of the card to the bottom, then fades away */
 .foil::before{-webkit-mask-image:linear-gradient(180deg,#0000 0%,#0000 30%,#000 45%,#000 55%,#0000 70%,#0000 100%);mask-image:linear-gradient(180deg,#0000 0%,#0000 30%,#000 45%,#000 55%,#0000 70%,#0000 100%);
   -webkit-mask-size:100% 300%;mask-size:100% 300%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
-  animation:foilHue 7s linear infinite,shardFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
+  animation:shardFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
 /* glitter / mosaic / honeycomb foils move like the glass one: their pattern drifts, and only shows inside a soft band
    that slides from the top of the card to the bottom (kept faint over the middle so the art stays clear) */
 .foil.f-glitter,.foil.f-pixel,.foil.f-hex{opacity:1;
@@ -1288,9 +1316,14 @@ body.mobile .tr-pr{flex-wrap:wrap}body.mobile .tr-pr .lb{width:auto}
   -webkit-mask-size:100% 100%,100% 300%;mask-size:100% 100%,100% 300%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
   -webkit-mask-composite:source-in;mask-composite:intersect}
 .foil.f-glitter{animation:glitDrift 6s linear infinite,bandFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
-.foil.f-pixel{animation:foilPx 5s linear infinite,pxBlink 1.6s steps(3) infinite,bandFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
-.foil.f-hex{animation:foilH 5s linear infinite,hexDrift 8s linear infinite,bandFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
-.foil.f-glitter::before,.foil.f-pixel::before,.foil.f-hex::before{animation:foilHue 7s linear infinite,shardFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
+.foil.f-pixel{animation:foilPx 5s linear infinite,bandFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
+.foil.f-hex{animation:foilH 5s linear infinite,bandFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
+.foil.f-glitter::before,.foil.f-pixel::before,.foil.f-hex::before{animation:shardFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
+/* performance: the deck builder shows dozens of foils — keep them still there */
+#deckb .foil,#deckb .foil::before,#deckb .foil::after,#deckb .rgbedge{animation:none!important}
+#deckb .foil::before{-webkit-mask-image:none!important;mask-image:none!important;opacity:.55}
+#deckb .foil.f-glitter,#deckb .foil.f-pixel,#deckb .foil.f-hex{-webkit-mask-image:radial-gradient(ellipse 72% 62% at 50% 50%,rgba(0,0,0,.35) 0%,rgba(0,0,0,.45) 70%,#000 100%)!important;mask-image:radial-gradient(ellipse 72% 62% at 50% 50%,rgba(0,0,0,.35) 0%,rgba(0,0,0,.45) 70%,#000 100%)!important;-webkit-mask-size:100% 100%!important;mask-size:100% 100%!important}
+.foil{contain:paint}
 @keyframes glitDrift{to{background-position:0 44px,3px 72px,6px 78px}}
 @keyframes pxBlink{0%,100%{filter:brightness(1)}50%{filter:brightness(1.5) saturate(1.3)}}
 @keyframes hexDrift{to{filter:hue-rotate(360deg)}}
@@ -1323,7 +1356,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
   </div>
   <div id="side">
     <div id="info"></div>
-    <div id="status"></div><div id="teams" style="display:none"></div>    <div id="btns"><button id="endbtn" class="primary">จบเทิร์น ▶</button><button id="undobtn" title="ย้อนการกระทำล่าสุด 1 ครั้ง"><span class="ico">↶</span> ย้อน</button><button id="rulebtn">กติกา</button><button id="surrbtn" title="ยอมแพ้">🏳 ยอมแพ้</button></div>
+    <div id="status"></div><div id="teams" style="display:none"></div>    <div id="btns"><button id="endbtn" class="primary">จบเทิร์น ▶</button><button id="undobtn" title="ย้อนการกระทำล่าสุด 1 ครั้ง"><span class="ico">↶</span> ย้อน</button><button id="rulebtn">กติกา</button><button id="shufbtn" title="สลับลำดับการ์ดบนมือ (แค่สลับที่ ไม่จั่ว ไม่ทิ้ง)">🔀 สับมือ</button><button id="surrbtn" title="ยอมแพ้">🏳 ยอมแพ้</button></div>
     <div class="ctl" id="speed">ความเร็ว: <button data-s="2.2">ช้ามาก</button><button data-s="1.5" class="on">ช้า</button><button data-s="1">ปกติ</button><button data-s="0.6">เร็ว</button></div>
     <div class="ctl"><button id="setbtn">⚙ ตั้งค่าเสียง</button><button id="nextbtn" title="เพลงถัดไป">⏭</button><span id="nowplay" class="nowplay"></span></div>
     <div id="log"></div>
@@ -1466,7 +1499,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
   <div class="gnote">ใช้เหรียญ (เหลียน) ที่ได้จากการเล่น · ชนะได้ <b>1250</b> · แพ้ได้ <b>500</b> · ได้การ์ดซ้ำ คืน <b>100</b> เหลียน</div>
 </div>
 
-<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=19;</script>
+<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=20;</script>
 <script>
 // ============ CARD DATA (transcribed from the card art) ============
 const SAN='สามพี่น้อง', SHIP='เรือหลวง', WCT='พี่น้องร่ำรา', MANA_MAX=10, HAND_MAX=8;
@@ -1539,7 +1572,7 @@ const CARDS={
   skill:['ทิ้ง "เหวยเฉิน" บนมือ 1 ใบ → <b>จั่ว 3 ใบ</b> — จนจบเทิร์นนี้ จั่วจากความสามารถของการ์ดชื่อ "เหวยเฉิน" ไม่ได้อีก','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  // ===== ตู้ "EBX-01 เรือหลวง" (ได้จากตู้สุ่มเท่านั้น) — mystic 0.1% · legend 2% · epic 20% · rare ที่เหลือ (77.9%) =====
  x_xuan2:{type:'leader',inDeck:true,deckMax:2,name:'เซวียนเหิง',img:'X_xuan2.png',power:8000,tags:['มนุษย์','ดาบ',SHIP,'บาป'],gacha:'M',box:'ebx',
-  skill:['การ์ดใบนี้ใส่ใน<b>ช่องคาแรคเตอร์ไม่ได้</b> แต่ใส่ใน<b>กองการ์ดได้ 2 ใบ</b>เท่านั้น','เมื่อพลังชีวิตของเรากลายเป็น <b>0</b> และคาแรคเตอร์เราชื่อ "เซวียนเหิง" → วางการ์ดนี้<b>ทับคาแรคเตอร์</b> และนำการ์ดบนสุดของกอง 1 ใบเข้า<b>พลังชีวิต</b> (คว่ำหน้า)','การ์ดนี้ได้รับ<b>ความสามารถของการ์ดที่ถูกทับ</b>','เมื่อการ์ดนี้โจมตีคาแรคเตอร์ฝ่ายตรงข้าม → เลือกพวกพ้องฝ่ายตรงข้ามที่<b>ตั้งพร้อม</b>อยู่ 1 ใบ การ์ดนี้<b>โจมตีใบนั้นด้วย</b>','เมื่อพลังชีวิตของเราได้รับความเสียหาย → นำการ์ดนี้ลงช่องครอบ (การ์ดที่ถูกทับกลับมาเป็นคาแรคเตอร์) · 1 ครั้งต่อเกม']},
+  skill:['การ์ดใบนี้ใส่ใน<b>ช่องคาแรคเตอร์ไม่ได้</b> แต่ใส่ใน<b>กองการ์ดได้ 2 ใบ</b>เท่านั้น','เมื่อพลังชีวิตของเรากลายเป็น <b>0</b> และคาแรคเตอร์เราชื่อ "เซวียนเหิง" → วางการ์ดนี้<b>ทับคาแรคเตอร์</b> และนำการ์ดบนสุดของกอง 1 ใบเข้า<b>พลังชีวิต</b> (คว่ำหน้า)','การ์ดนี้ได้รับ<b>ความสามารถของการ์ดที่ถูกทับ</b>','เมื่อการ์ดนี้โจมตีคาแรคเตอร์ฝ่ายตรงข้าม → เลือกพวกพ้องฝ่ายตรงข้ามที่<b>ตั้งหรือนอน</b>อยู่ได้ 1 ใบ การ์ดนี้<b>โจมตีใบนั้นด้วย</b>','เมื่อพลังชีวิตของเราได้รับความเสียหาย → นำการ์ดนี้ลงช่องครอบ (การ์ดที่ถูกทับกลับมาเป็นคาแรคเตอร์) · 1 ครั้งต่อเกม']},
  x_origin:{type:'event',name:'ก่อกำเนิดเรือหลวงสุริยคราส',img:'E_x_origin.png',cost:2,tags:[SHIP],gacha:'G',box:'ebx',
   skill:['ค้นหาพวกพ้องเผ่า "เรือหลวง" จากกองการ์ด<b>ไม่เกิน 2 ใบ</b>ขึ้นมือ','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  x_shield:{type:'event',name:'โล่แห่งเวทย์ที่ไม่มีวันแตกสลาย',img:'E_x_shield.png',cost:0,counterEv:true,trigger:true,tags:[SHIP],gacha:'G',box:'ebx',
@@ -1917,7 +1950,7 @@ function roomState(){return {code:ROOM.qp?'':ROOM.code,mode:ROOM.mode,max:ROOM.m
 function freeSlot(){const used=new Set(ROOM.players.map(p=>p.slot));return (ROOM.max===2?[1,0]:[2,3,1,0]).find(s=>!used.has(s))}
 function roomSync(){if(!ROOM||MYPID!=='h')return;for(const [pid] of NET.links)sendTo(pid,{t:'rstate',room:roomState(),you:pid});renderRoom();qpCheck()}
 function chatPush(m){CHAT.push(m);if(CHAT.length>80)CHAT.shift();renderChat(true)}
-function roomSys(text){const m={sys:1,text};chatPush(m);if(MYPID==='h')bcast({t:'rchat',...m})}
+function roomSys(text){const m={sys:1,text};chatPush(m);if(MYPID==='h'){bcast({t:'rchat',...m});specSend({t:'rchat',...m})}}
 
 // ---------- host: create a room (normal: eclipsa-CODE, quick play: a fixed slot id) ----------
 function roomCreate(mode,{pub=true,qp=false,peerId=null}={}){
@@ -1944,7 +1977,7 @@ function roomAccept(conn){
         if(NET.specs.size>=40){try{conn.send({t:'rfull'})}catch(e){}setTimeout(()=>conn.close(),400);return}
         const sid='s'+(++NET.req)+randCode().slice(0,3);NET.specs.set(sid,conn);
         conn.on('close',()=>NET.specs.delete(sid));
-        try{conn.send({t:'specok',room:ROOM?roomInfo():{}});if(G&&G.players)conn.send(snapFor(null))}catch(e){}
+        try{conn.send({t:'specok',room:ROOM?roomInfo():{}});if(G&&G.players)conn.send(snapFor(null));for(const c of CHAT.slice(-40))conn.send({t:'rchat',...c})}catch(e){}
         if(ROOM)roomSys(`👁 ${cleanName(m.name)||'ผู้ชม'} เข้ามาดู`);
         pid='spec';return;
       }
@@ -2046,7 +2079,7 @@ function onNet(m,pid){
     const rp=ROOM&&ROOM.players.find(p=>p.pid===pid);
     if(m.t==='rready'&&rp&&!ROOM.started){rp.ready=!!m.ready;roomSync();return}
     if(m.t==='rdeck'&&rp&&!ROOM.started){const c=cleanPlayer({...rp,leader:m.leader,deck:m.deck,foils:m.foils,arts:m.arts});rp.leader=c.leader;rp.deck=c.deck;rp.foils=c.foils;rp.arts=c.arts;rp.ready=!!ROOM.qp;roomSync();return}
-    if(m.t==='rchat'&&rp){const text=cleanChat(m.text);if(!text)return;const msg={pid,name:rp.name,text};chatPush(msg);bcast({t:'rchat',...msg});return}
+    if(m.t==='rchat'&&rp){const text=cleanChat(m.text);if(!text)return;const msg={pid,name:rp.name,text};chatPush(msg);bcast({t:'rchat',...msg});specSend({t:'rchat',...msg});return}
     if(m.t==='chosen'){const f=NET.pending[m.id];if(f&&f.pid===pid){delete NET.pending[m.id];f(m.idx||[])}return}
     const p=playerByPid(pid);
     if(m.t==='act'&&p&&G.mode==='host'){
@@ -2057,6 +2090,7 @@ function onNet(m,pid){
       return;
     }
     if(m.t==='end'&&p){if(canAct(p))run(endTurn);return}
+    if(m.t==='hshuf'&&p){if(!G.over){shuffle(p.hand);render()}return}
     if(m.t==='foe'&&p){setFoe(p,G.players[m.idx]);return}
     if(m.t==='srq'&&p){surrRequest(p);return}
     if(m.t==='sans'&&p){if(SR.req&&p.team!==SR.req.r.team)surrResolve(!!m.ok);return}
@@ -2171,7 +2205,7 @@ function renderRoom(){
   $('#rchatsend').onclick=go;inp.onkeydown=e=>{if(e.key==='Enter')go()};
 }
 function chatSend(text){
-  if(MYPID==='h'){const hp=ROOM&&ROOM.players.find(p=>p.host);const msg={pid:'h',name:hp?hp.name:myName(),text};chatPush(msg);bcast({t:'rchat',...msg})}
+  if(MYPID==='h'){const hp=ROOM&&ROOM.players.find(p=>p.host);const msg={pid:'h',name:hp?hp.name:myName(),text};chatPush(msg);bcast({t:'rchat',...msg});specSend({t:'rchat',...msg})}
   else send({t:'rchat',text});
   sfx('click');
 }
@@ -2323,7 +2357,8 @@ function specJoin(peerId,label){
       if(m.t==='rfull')return fail('ผู้ชมเต็มแล้ว');
       if(m.t==='specok'){ok=true;NET.peer=peer;NET.conn=conn;netMsg('');closeTour&&closeTour(true);specBar(true,label);
         conn.on('close',()=>{if(G&&G.over)return;const box=$('#modal .box');box.innerHTML=`<h2>👁 ห้องถูกปิด</h2><p style="font-size:16px">การแข่งขันนี้จบหรือห้องถูกปิดแล้ว</p><div class="foot"><button class="primary" onclick="location.reload()">กลับหน้าแรก</button></div>`;$('#modal').style.display='flex'});return}
-      if(m.t==='snap'){applySnap(m);return}
+      if(m.t==='snap'){applySnap(m);$('#chatbtn').style.display='';const ci=$('#cfin');if(ci){ci.disabled=true;ci.placeholder='👁 ผู้ชมอ่านแชทได้อย่างเดียว'}const cs=$('#cfsend');if(cs)cs.disabled=true;return}
+      if(m.t==='rchat'){chatPush({pid:m.pid,name:cleanName(m.name),text:cleanChat(m.text),sys:m.sys?1:0});return}
       if(m.t==='fx'&&G)playFx(m);
     });
   });
@@ -2346,9 +2381,10 @@ async function openRoomList(){
   const found=await probePeers([...Array(PUB_SLOTS)].map((_,i)=>'eclipsa-pub-'+i),3500);
   if($('#modal').style.display==='none')return;
   const rooms=[...found.values()].filter(r=>r.code);
-  draw(rooms.length?rooms.map(r=>`<div class="rrow"><span class="rmode m${r.max}">${cleanName(r.mode)}</span><b>${cleanName(r.name)}</b><span class="rcnt">${r.count}/${r.max}</span><span class="rc">${cleanName(r.code)}</span><button class="primary" data-c="${cleanName(r.code)}"${r.started||r.count>=r.max?' disabled':''}>${r.started?'กำลังเล่น':r.count>=r.max?'เต็ม':'เข้าห้อง'}</button></div>`).join('')
+  draw(rooms.length?rooms.map(r=>`<div class="rrow"><span class="rmode m${r.max}">${cleanName(r.mode)}</span><b>${cleanName(r.name)}</b><span class="rcnt">${r.count}/${r.max}</span><span class="rc">${cleanName(r.code)}</span>${r.started||r.count>=r.max?`<button class="primary" data-spec="${cleanName(r.code)}" title="เข้าไปดูการแข่ง — ไม่เห็นการ์ดบนมือ แต่เห็นแชท">👁 ดู${r.started?' (กำลังเล่น)':' (เต็ม)'}</button>`:`<button class="primary" data-c="${cleanName(r.code)}">เข้าห้อง</button>`}</div>`).join('')
     :'<div class="rnone">ยังไม่มีห้องที่เปิดอยู่ — ลองสร้างห้องเองดูสิ!</div>');
-  box.querySelectorAll('.rrow button').forEach(b=>b.onclick=()=>joinByCode(b.dataset.c));
+  box.querySelectorAll('.rrow button[data-c]').forEach(b=>b.onclick=()=>joinByCode(b.dataset.c));
+  box.querySelectorAll('.rrow button[data-spec]').forEach(b=>b.onclick=()=>{$('#modal').style.display='none';specJoin('eclipsa-'+b.dataset.spec,'ห้อง '+b.dataset.spec)});
 }
 
 // ---------- VS intro before every match ----------
@@ -2507,6 +2543,7 @@ function playFx(m){
     case 'elim':{const x=playerOf(m.side);if(x)showBanner(x===G.me?'คุณออกจากเกม':`${x.name} ออกจากเกม`,String(m.why||''),x.team!==G.me.team,1500);break}
     case 'mystic':deathOverlay(String(m.title||'').slice(0,40));break;
     case 'lf':lastFightMusic();cutIn(playerOf(m.sp),playerOf(m.so));break;
+    case 'x2fx':xuan2Fx(String(m.side));break;
     case 'timer':timerShow(String(m.side),m.left==null?null:Math.max(0,m.left|0),Math.max(0,m.tot|0)||null);break;
   }
 }
@@ -3433,10 +3470,11 @@ function shardSVG(seed,pal,cols,rows,edge,op){
   document.head.append(st)})();
 const FOIL_CHANCE=0.13; // 13% of pulls ≈ 6–7 foils per 50 pulls (not the SECRET card — it always has its own diamond foil)
 function foilData(){try{const o=JSON.parse(store.get('eclipsa-foils')||'{}');return o&&typeof o==='object'&&!Array.isArray(o)?o:{}}catch(e){return {}}}
-const foilsOf=id=>{const o=foilData()[id];return o&&Array.isArray(o.own)?o.own.filter(f=>FOILS[f]):[]};
+// every character card has all foil patterns (pick one in the card detail); other cards: the foils you pulled
+const foilsOf=id=>{const d=CARDS[id];if(d&&d.type==='leader'&&!d.inDeck&&id!=='longyexin')return Object.keys(FOILS);const o=foilData()[id];return o&&Array.isArray(o.own)?o.own.filter(f=>FOILS[f]):[]};
 const foilSel=id=>{const o=foilData()[id];return o&&FOILS[o.use]&&foilsOf(id).includes(o.use)?o.use:''};
 function addFoilOwn(id,f){const d=foilData(),o=d[id]&&Array.isArray(d[id].own)?d[id]:{own:[],use:''};if(!o.own.includes(f))o.own.push(f);o.use=f;d[id]=o;store.set('eclipsa-foils',JSON.stringify(d))}
-function setFoilUse(id,f){const d=foilData();if(!d[id])return;d[id].use=f;store.set('eclipsa-foils',JSON.stringify(d))}
+function setFoilUse(id,f){const d=foilData();if(!d[id])d[id]={own:[],use:''};d[id].use=f;store.set('eclipsa-foils',JSON.stringify(d))}
 function myFoilMap(){const m={};for(const id in foilData()){const f=foilSel(id);if(f&&CARDS[id]&&isOwned(id))m[id]=f}return m}
 const cleanFoils=m=>{const o={};if(m&&typeof m==='object')for(const k of Object.keys(m).slice(0,100))if(CARDS[k]&&FOILS[m[k]])o[k]=m[k];return o};
 function addFoilType(el,f){if(!el||!FOILS[f]||el.querySelector(':scope>.foil'))return el;const d=document.createElement('div');d.className='foil f-'+f;el.append(d);return el}
@@ -4660,11 +4698,11 @@ async function attack(p,u,target){
     if(cands.length){const t=await choose(p,{title:'ปิงเย่ว: ทิ้งการ์ดเผ่า "สามพี่น้อง" จากมือ 1 ใบ → พลังโจมตี +2000?',items:cardItems(cands,p),min:0,max:1,okText:'ทิ้ง',ai:it=>p.hand.length>4?[it.slice().sort((a,b)=>aiValue(p,a.value)-aiValue(p,b.value))[0].value]:[]});
       if(t.length){await discard(p,t[0],u);u.tmp.atk+=2000;popAt(u,'+2000','#ff8a6a');render();await sleep(400)}}
   }
-  // เซวียนเหิง (deck card on the character zone): attacking the character → also attacks one standing ally
+  // เซวียนเหิง (deck card on the character zone): attacking the character → also attacks one opposing ally, standing OR rested
   let xTarget=null;
   if(u.id==='x_xuan2'&&u===p.leader&&target===o.leader){
-    const st=o.allies.filter(a=>!a.rested);
-    if(st.length){const t=await choose(p,{title:'เซวียนเหิง: เลือกพวกพ้องฝ่ายตรงข้ามที่ตั้งพร้อมอยู่ 1 ใบ — การ์ดนี้จะโจมตีใบนั้นด้วย',items:cardItems(st,o,a=>'ป้องกัน '+defPow(o,a)),min:0,max:1,okText:'โจมตีด้วย',ai:aiBestKill(o)});xTarget=t[0]||null;
+    const st=o.allies.slice();
+    if(st.length){const t=await choose(p,{title:'เซวียนเหิง: เลือกพวกพ้องฝ่ายตรงข้าม 1 ใบ (ตั้งหรือนอนก็ได้) — การ์ดนี้จะโจมตีใบนั้นด้วย',items:cardItems(st,o,a=>'ป้องกัน '+defPow(o,a)),min:0,max:1,okText:'โจมตีด้วย',ai:aiBestKill(o)});xTarget=t[0]||null;
       if(xTarget){log(p,`เซวียนเหิง: โจมตี ${nm(xTarget)} ด้วย`);popAt(xTarget,'เป้าหมายที่ 2!','#ff9a6a');await sleep(400)}}
   }
   u.attacked=true;
@@ -4918,11 +4956,38 @@ async function damage(o){
   }
 }
 
+// ---------- เซวียนเหิง ร่าง 2 crashes down onto the character: falling card, impact, cracked ground, dust, then it all fades ----------
+function xuan2Fx(side){
+  return new Promise(done=>{
+    const p=playerOf(side),mine=p&&p===(G.vb||G.me);
+    const z=document.querySelector((mine?'#mymat':'#oppmat')+' .z-leader');
+    const r=z?z.getBoundingClientRect():{left:innerWidth/2-60,top:innerHeight/2-80,width:120,height:168};
+    const cx=r.left+r.width/2,cy=r.top+r.height/2,w=r.width,h=r.height;
+    const fx=document.createElement('div');fx.className='x2fx';
+    // cracks: jagged lines out of the impact point
+    let cr='';for(let i=0;i<14;i++){let a=i/14*Math.PI*2+Math.random()*.3,x=0,y=0,pts='0,0';const L=160+Math.random()*260;
+      for(let s=0;s<6;s++){const d=L/6;a+=(Math.random()-.5)*.7;x+=Math.cos(a)*d;y+=Math.sin(a)*d*.55;pts+=` ${x.toFixed(0)},${y.toFixed(0)}`}
+      cr+=`<polyline points="${pts}" class="c${i%3}"/>`}
+    const dust=[...Array(26)].map(()=>{const a=Math.random()*Math.PI*2,d=60+Math.random()*220;return `<i style="--dx:${(Math.cos(a)*d).toFixed(0)}px;--dy:${(Math.sin(a)*d*.6-40).toFixed(0)}px;--s:${(4+Math.random()*10).toFixed(0)}px;--dl:${(Math.random()*.15).toFixed(2)}s"></i>`}).join('');
+    fx.innerHTML=`<div class="x2dark"></div>
+      <svg class="x2crack" style="left:${cx}px;top:${cy+h*.42}px" viewBox="-450 -260 900 520" width="900" height="520">${cr}</svg>
+      <div class="x2ring" style="left:${cx}px;top:${cy+h*.42}px"></div><div class="x2ring r2" style="left:${cx}px;top:${cy+h*.42}px"></div>
+      <div class="x2dust" style="left:${cx}px;top:${cy+h*.42}px">${dust}</div>
+      <div class="x2card" style="left:${cx-w/2}px;top:${cy-h/2}px;width:${w}px;height:${h}px;background-image:url(${A('X_xuan2.png')})"></div>
+      <div class="x2title">เซวียนเหิง — ร่างที่ 2</div>`;
+    document.body.append(fx);
+    if(AU.ctx&&AU.on&&AU.on.sfx){try{const t=now();noise({t,dur:.9,r:.3,g:.25,filt:'lowpass',f:500,f2:4000});setTimeout(()=>{const t2=now();tone({type:'sine',f:70,f2:28,t:t2,dur:.5,r:.8,g:.9});noise({t:t2,dur:.35,r:.9,g:.6,filt:'lowpass',f:1200});noise({t:t2+.05,dur:.2,r:.4,g:.3,filt:'highpass',f:2500})},900)}catch(e){}}
+    setTimeout(()=>{fx.classList.add('hit');shakeScreen();flash('#ff2a2a')},900);
+    setTimeout(()=>fx.classList.add('out'),2500);
+    setTimeout(()=>{fx.remove();done()},3600);
+  });
+}
 // ---------- EBX-01 helpers ----------
 const xuan2Ready=p=>!p.life.length&&!p.xuan2Used&&p.leader.id!=='x_xuan2'&&leaderNamed(p,'xuan')&&p.hand.some(x=>x.id==='x_xuan2');
 async function xuan2Transform(p,c){
   if(!xuan2Ready(p)||!p.hand.includes(c))return;
   p.xuan2Used=true;p.hand.splice(p.hand.indexOf(c),1);
+  render();emit({f:'x2fx',side:sideOf(p)});await xuan2Fx(sideOf(p)); // the grand entrance, everyone sees it
   const old=p.leader;
   unitize(c);c.sick=false;c.rested=old.rested;c.mana=old.mana;c.tmp=old.tmp;c.under=strip(old);
   p.leader=c;log(p,'เซวียนเหิง วางทับคาแรคเตอร์!');render();
@@ -5355,7 +5420,7 @@ function render(){
   $('#endbtn').disabled=!myMain();$('#mend').disabled=!myMain();$('#mbar').style.visibility=G.over?'hidden':'';
   const ub=$('#undobtn');ub.disabled=!canUndo();ub.style.display=G.mode==='ai'?'':'none';
   ub.innerHTML=`<span class="ico">↶</span> ย้อน${canUndo()?` (${UNDO.length})`:''}`;
-  $('#surrbtn').disabled=!!(G.over||SR.mine||SR.theirs);$('#surrbtn').style.display=G.spec?'none':'';
+  $('#surrbtn').disabled=!!(G.over||SR.mine||SR.theirs);$('#surrbtn').style.display=G.spec?'none':'';$('#shufbtn').style.display=G.spec?'none':'';$('#shufbtn').disabled=!!G.over||G.me.hand.length<2;
   const [ht,waiting]=hintText();$('#hinttx').textContent=ht;$('#hint').classList.toggle('wait',waiting);
   if(pinned)showInfo(pinned);
 
@@ -5671,6 +5736,57 @@ $('#startbtn').onclick=async()=>{
 $('#hostbtn').onclick=openCreateRoom;$('#listbtn').onclick=openRoomList;
 $('#joinbtn').onclick=()=>joinByCode();
 $('#roomcode').addEventListener('keydown',e=>{if(e.key==='Enter')joinByCode()});
+// ============ NEW VERSION WATCH: warn everyone, 5 minutes to finish, then everyone moves to the new version ============
+// (the deck being edited is saved first, so nobody loses their work)
+const UPD={next:0,at:0,tick:0,repo:'aarrkk1122334455-commits/eclipsacardgame',url:''};
+async function updCheck(){
+  if(!window.GAME_VERSION||UPD.at)return;
+  try{
+    const r=await fetch(`https://api.github.com/repos/${UPD.repo}/releases/latest`,{cache:'no-store'});if(!r.ok)return;
+    const j=await r.json(),v=parseInt(String(j.tag_name||'').replace(/\D/g,''),10);
+    if(v>Number(window.GAME_VERSION)){
+      UPD.next=v;UPD.at=Date.now()+5*60*1000;
+      const a=(j.assets||[]).find(x=>x.name==='game.html');UPD.url=a?a.browser_download_url:'';
+      sfx('debuff');updBar();UPD.tick=setInterval(updBar,1000);
+    }
+  }catch(e){}
+}
+function updBar(){
+  let b=$('#updbar');if(!b){b=document.createElement('div');b.id='updbar';document.body.append(b)}
+  const left=Math.max(0,UPD.at-Date.now()),s=Math.ceil(left/1000);
+  b.innerHTML=`🔔 <b>เกมจะอัปเดตเป็นเวอร์ชัน ${UPD.next}</b> ใน <span class="ut">${String(s/60|0)}:${String(s%60).padStart(2,'0')}</span> — ${G&&!G.over?'รีบจบเกมนี้นะ!':'บันทึกเด็คให้เรียบร้อย'}${G?'':' <button id="updnow">อัปเดตเลย</button>'}`;
+  b.classList.toggle('hot',s<=60);
+  const n=$('#updnow');if(n)n.onclick=()=>updApply();
+  if(left<=0){clearInterval(UPD.tick);updApply()}
+}
+function updSaveDeck(){
+  try{
+    if(!$('#deckb').classList.contains('show')||!DB.edit)return;
+    if(DB.leader&&validDeck(DB.edit,DB.leader)){store.set('eclipsa-deck',JSON.stringify(DB.edit));store.set('eclipsa-leader',DB.leader)}
+    else store.set('eclipsa-deck-draft',JSON.stringify({deck:DB.edit,leader:DB.leader||''}));
+  }catch(e){}
+}
+async function updApply(){
+  updSaveDeck();
+  const b=$('#updbar');if(b)b.innerHTML='🔄 กำลังอัปเดตเกม…';
+  // web / phone: the new version is on the site already
+  if(!window.pywebview&&location.protocol.startsWith('http')){location.reload();return}
+  // desktop app: load the new game into this window (same storage, nothing is lost); the app also saves it on the next launch
+  try{
+    if(!UPD.url)throw 0;
+    const r=await fetch(UPD.url,{cache:'no-store'});if(!r.ok)throw 0;
+    const html=await r.text();if(html.length<100000)throw 0;
+    document.open();document.write(html);document.close();return;
+  }catch(e){}
+  const box=$('#modal .box');box.innerHTML=`<h2 style="text-align:center">🔔 มีเวอร์ชันใหม่ (${UPD.next})</h2><p style="text-align:center;font-size:17px">ปิดเกมแล้วเปิดใหม่ เพื่ออัปเดตเป็นเวอร์ชันล่าสุด<br><small style="color:var(--muted)">เด็คที่กำลังจัดถูกบันทึกไว้แล้ว</small></p>`;
+  $('#modal').style.display='flex';
+}
+setTimeout(updCheck,15000);setInterval(updCheck,3*60*1000);
+// a deck that was being edited when the game updated comes back the next time the deck builder opens
+{const _od=openDeck;openDeck=function(){_od();try{const d=JSON.parse(store.get('eclipsa-deck-draft')||'null');if(d&&d.deck){DB.edit=d.deck;DB.leader=validLeader(d.leader)?d.leader:DB.leader;store.set('eclipsa-deck-draft','');renderDeck();$('#dmsg').innerHTML='<span style="color:#ffe2a8">♻ กู้เด็คที่จัดค้างไว้ก่อนเกมอัปเดตแล้ว — กด "บันทึก" เมื่อเสร็จ</span>'}}catch(e){}};$('#deckbtn').onclick=openDeck}
+// 🔀 shuffle the order of the cards in my hand (just moves them around — nothing is drawn or lost)
+$('#shufbtn').onclick=e=>{e.stopPropagation();if(!G||G.spec||G.over||!G.me||G.me.hand.length<2)return;sfx('draw');
+  if(G.mode==='guest'){send({t:'hshuf'});return}shuffle(G.me.hand);render()};
 $('#qp1').onclick=()=>qpStart('1v1');$('#qp2').onclick=()=>qpStart('2v2');
 $('#reportsbtn').onclick=openReports;
 $('#chatbtn').onclick=e=>{e.stopPropagation();sfx('click');openChatFloat()};$('#cfclose').onclick=()=>{sfx('click');$('#chatfloat').classList.remove('open')};
