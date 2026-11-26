@@ -840,6 +840,13 @@ button.ghost{background:#2a1a1e;border-color:#7a3a42;color:#ffb0b0}
   animation:foilTwinkle 1.3s steps(2) infinite}
 .lyxfoil::after{content:'';position:absolute;inset:-50%;background:linear-gradient(115deg,#fff0 40%,#ffffffb0 49%,#fff0 58%);animation:foilSweep 3.2s ease-in-out infinite}
 @keyframes foilMove{to{background-position:0 0,0 0,300% 300%}}
+.lyxglass{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;overflow:hidden;mix-blend-mode:screen;opacity:1;background-size:100% 100%;
+  -webkit-mask-image:radial-gradient(ellipse 72% 62% at 50% 50%,rgba(0,0,0,.62) 0%,rgba(0,0,0,.72) 70%,rgba(0,0,0,.95) 90%,#000 100%),linear-gradient(180deg,#0000 0%,#0000 30%,#000 45%,#000 55%,#0000 70%,#0000 100%);
+  mask-image:radial-gradient(ellipse 72% 62% at 50% 50%,rgba(0,0,0,.62) 0%,rgba(0,0,0,.72) 70%,rgba(0,0,0,.95) 90%,#000 100%),linear-gradient(180deg,#0000 0%,#0000 30%,#000 45%,#000 55%,#0000 70%,#0000 100%);
+  -webkit-mask-size:100% 100%,100% 300%;mask-size:100% 100%,100% 300%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-composite:source-in;mask-composite:intersect;
+  animation:bandFall 4.8s cubic-bezier(.45,0,.55,1) infinite,lyxPulse 1.6s ease-in-out infinite alternate;filter:saturate(1.4)}
+.lyxglass::after{content:'';position:absolute;inset:-50%;background:linear-gradient(115deg,#fff0 38%,#ffe9a0c0 47%,#ff4a6a90 50%,#fff0 60%);animation:foilSweep 3.2s ease-in-out infinite}
+@keyframes lyxPulse{from{filter:saturate(1.3) brightness(1)}to{filter:saturate(1.6) brightness(1.3)}}
 @keyframes foilTwinkle{0%{opacity:.35;transform:translate(0,0)}50%{opacity:1;transform:translate(3px,2px)}100%{opacity:.35}}
 @keyframes foilSweep{0%{transform:translateX(-60%)}60%,100%{transform:translateX(60%)}}
 #cdetail .cdimg{position:relative}
@@ -1227,15 +1234,46 @@ body.mobile .tr-pr{flex-wrap:wrap}body.mobile .tr-pr .lb{width:auto}
 .rgbedge::after{content:'';position:absolute;inset:-4px;border-radius:inherit;background:inherit;filter:blur(7px);opacity:.85;
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);padding:8px}
 .rgbcard{overflow:visible!important}
+/* player plates beside the board */
+.pplate{position:fixed;z-index:40;display:none;flex-direction:column;gap:6px;padding:9px 12px;border-radius:14px;background:linear-gradient(160deg,#1e1018f0,#0c0709f0);border:2px solid #5a3a46;box-shadow:0 8px 24px #000a;color:#fff;pointer-events:none;animation:fadeIn .3s}
+.pplate.opp{border-color:#ff6a6a99;box-shadow:0 0 18px #ff3a4a44,0 8px 24px #000a}.pplate.me{border-color:#6aa8ff99;box-shadow:0 0 18px #3d8be044,0 8px 24px #000a}
+.pplate .plh{font-size:11px;font-weight:900;letter-spacing:2px;color:#ffb0b0}.pplate.me .plh{color:#a8ccff}
+.pplate .plm{display:flex;align-items:center;gap:9px;min-width:0}
+.pplate img,.pplate .q{width:42px;height:42px;border-radius:50%;flex:none;border:2px solid #ffffff44;background:#3a2a36;display:flex;align-items:center;justify-content:center;font-weight:bold}
+.pplate .pln{display:flex;flex-direction:column;min-width:0}.pplate .pln b{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pplate .pln small{font-size:12px;color:#d8c8d0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pplate .pid{color:#a8959f!important;font-size:11px!important}
+.pplate .plt{display:flex;gap:5px;flex-wrap:wrap}
+.ptag{font-size:12px;font-weight:900;padding:1px 8px;border-radius:9px;letter-spacing:.5px}
+.ptag.dev{color:#fff;background:linear-gradient(90deg,#ff3a6a,#a83aff,#3a8aff);box-shadow:0 0 10px #a83aff88}
+.ptag.rk{color:#ffe9a8;background:#3a2a08;border:1px solid #ffd23a}.ptag.bot{color:#cfe6ff;background:#1a2a3a;border:1px solid #6aa8ff}
+.pplate.inmat{opacity:.92;transform:scale(.9);transform-origin:top right}
+.dlead{position:relative}.dlead .dlout{position:absolute;top:-6px;right:-6px;z-index:5;width:24px;height:24px;padding:0;border-radius:50%;font-size:13px;line-height:1;background:#c0101a;border:2px solid #fff;color:#fff}
+.dlempty{padding:10px 14px;color:#ffd76a;font-size:14px;line-height:1.5}.dlempty small{color:var(--muted)}
 /* foils (Master-Duel-like shattered prism glass): full strength on the frame, light over the middle so the art stays clear */
 /* the art and the text must never be covered: the shards live on a band around the card edge, the inside only gets a faint shimmer */
-.foil{-webkit-mask-image:radial-gradient(ellipse 72% 62% at 50% 50%,rgba(0,0,0,.38) 0%,rgba(0,0,0,.48) 70%,rgba(0,0,0,.8) 90%,#000 100%);mask-image:radial-gradient(ellipse 72% 62% at 50% 50%,rgba(0,0,0,.38) 0%,rgba(0,0,0,.48) 70%,rgba(0,0,0,.8) 90%,#000 100%)}
-.foil.f-prism{opacity:.9}
-.foil.f-prism::before{opacity:.75;filter:saturate(1.25) brightness(1.05)}
+/* stronger while the band passes (it comes and goes, so the art is clear most of the time) */
+.foil{-webkit-mask-image:radial-gradient(ellipse 72% 62% at 50% 50%,rgba(0,0,0,.62) 0%,rgba(0,0,0,.72) 70%,rgba(0,0,0,.92) 90%,#000 100%);mask-image:radial-gradient(ellipse 72% 62% at 50% 50%,rgba(0,0,0,.62) 0%,rgba(0,0,0,.72) 70%,rgba(0,0,0,.92) 90%,#000 100%)}
+.foil.f-prism{opacity:1}
+.foil.f-prism::before{opacity:.95;filter:saturate(1.35) brightness(1.1)}
 /* the glass shards come and go: a soft band that slides slowly from the top of the card to the bottom, then fades away */
 .foil::before{-webkit-mask-image:linear-gradient(180deg,#0000 0%,#0000 30%,#000 45%,#000 55%,#0000 70%,#0000 100%);mask-image:linear-gradient(180deg,#0000 0%,#0000 30%,#000 45%,#000 55%,#0000 70%,#0000 100%);
   -webkit-mask-size:100% 300%;mask-size:100% 300%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
   animation:foilHue 7s linear infinite,shardFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
+/* glitter / mosaic / honeycomb foils move like the glass one: their pattern drifts, and only shows inside a soft band
+   that slides from the top of the card to the bottom (kept faint over the middle so the art stays clear) */
+.foil.f-glitter,.foil.f-pixel,.foil.f-hex{opacity:1;
+  -webkit-mask-image:radial-gradient(ellipse 72% 62% at 50% 50%,rgba(0,0,0,.62) 0%,rgba(0,0,0,.72) 70%,rgba(0,0,0,.92) 90%,#000 100%),linear-gradient(180deg,#0000 0%,#0000 30%,#000 45%,#000 55%,#0000 70%,#0000 100%);
+  mask-image:radial-gradient(ellipse 72% 62% at 50% 50%,rgba(0,0,0,.62) 0%,rgba(0,0,0,.72) 70%,rgba(0,0,0,.92) 90%,#000 100%),linear-gradient(180deg,#0000 0%,#0000 30%,#000 45%,#000 55%,#0000 70%,#0000 100%);
+  -webkit-mask-size:100% 100%,100% 300%;mask-size:100% 100%,100% 300%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  -webkit-mask-composite:source-in;mask-composite:intersect}
+.foil.f-glitter{animation:glitDrift 6s linear infinite,bandFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
+.foil.f-pixel{animation:foilPx 5s linear infinite,pxBlink 1.6s steps(3) infinite,bandFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
+.foil.f-hex{animation:foilH 5s linear infinite,hexDrift 8s linear infinite,bandFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
+.foil.f-glitter::before,.foil.f-pixel::before,.foil.f-hex::before{animation:foilHue 7s linear infinite,shardFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
+@keyframes glitDrift{to{background-position:0 44px,3px 72px,6px 78px}}
+@keyframes pxBlink{0%,100%{filter:brightness(1)}50%{filter:brightness(1.5) saturate(1.3)}}
+@keyframes hexDrift{to{filter:hue-rotate(360deg)}}
+@keyframes bandFall{0%{-webkit-mask-position:0 0,0 100%;mask-position:0 0,0 100%}75%,100%{-webkit-mask-position:0 0,0 0%;mask-position:0 0,0 0%}}
 @keyframes shardFall{0%{-webkit-mask-position:0 100%;mask-position:0 100%}75%,100%{-webkit-mask-position:0 0%;mask-position:0 0%}}
 .foil.f-prism::after{background:linear-gradient(115deg,#fff0 38%,#ffffffb0 47%,#bff6ff80 50%,#ffb0f080 53%,#fff0 62%)}
 /* phone deck builder: the deck list and the card pool each scroll on their own (the old layout made one 2000px page
@@ -1407,7 +1445,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
   <div class="gnote">ใช้เหรียญ (เหลียน) ที่ได้จากการเล่น · ชนะได้ <b>1250</b> · แพ้ได้ <b>500</b> · ได้การ์ดซ้ำ คืน <b>100</b> เหลียน</div>
 </div>
 
-<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=16;</script>
+<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=17;</script>
 <script>
 // ============ CARD DATA (transcribed from the card art) ============
 const SAN='สามพี่น้อง', SHIP='เรือหลวง', WCT='พี่น้องร่ำรา', MANA_MAX=10, HAND_MAX=8;
@@ -1479,8 +1517,8 @@ const CARDS={
  wc_firstday:{type:'event',name:'วันแรก และ งานแรก',img:'E_firstday.png',cost:1,tags:[],gacha:'E',
   skill:['ทิ้ง "เหวยเฉิน" บนมือ 1 ใบ → <b>จั่ว 3 ใบ</b> — จนจบเทิร์นนี้ จั่วจากความสามารถของการ์ดชื่อ "เหวยเฉิน" ไม่ได้อีก','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  // ===== ตู้ "EBX-01 เรือหลวง" (ได้จากตู้สุ่มเท่านั้น) — mystic 0.1% · legend 2% · epic 20% · rare ที่เหลือ (77.9%) =====
- x_xuan2:{type:'leader',inDeck:true,deckMax:1,name:'เซวียนเหิง',img:'X_xuan2.png',power:8000,tags:['มนุษย์','ดาบ',SHIP,'บาป'],gacha:'M',box:'ebx',
-  skill:['การ์ดใบนี้ใส่ใน<b>ช่องคาแรคเตอร์ไม่ได้</b> แต่ใส่ใน<b>กองการ์ดได้ 1 ใบ</b>เท่านั้น','เมื่อพลังชีวิตของเรากลายเป็น <b>0</b> และคาแรคเตอร์เราชื่อ "เซวียนเหิง" → วางการ์ดนี้<b>ทับคาแรคเตอร์</b> และนำการ์ดบนสุดของกอง 1 ใบเข้า<b>พลังชีวิต</b> (คว่ำหน้า)','การ์ดนี้ได้รับ<b>ความสามารถของการ์ดที่ถูกทับ</b>','เมื่อการ์ดนี้โจมตีคาแรคเตอร์ฝ่ายตรงข้าม → เลือกพวกพ้องฝ่ายตรงข้ามที่<b>ตั้งพร้อม</b>อยู่ 1 ใบ การ์ดนี้<b>โจมตีใบนั้นด้วย</b>','เมื่อพลังชีวิตของเราได้รับความเสียหาย → นำการ์ดนี้ลงช่องครอบ (การ์ดที่ถูกทับกลับมาเป็นคาแรคเตอร์) · 1 ครั้งต่อเกม']},
+ x_xuan2:{type:'leader',inDeck:true,deckMax:2,name:'เซวียนเหิง',img:'X_xuan2.png',power:8000,tags:['มนุษย์','ดาบ',SHIP,'บาป'],gacha:'M',box:'ebx',
+  skill:['การ์ดใบนี้ใส่ใน<b>ช่องคาแรคเตอร์ไม่ได้</b> แต่ใส่ใน<b>กองการ์ดได้ 2 ใบ</b>เท่านั้น','เมื่อพลังชีวิตของเรากลายเป็น <b>0</b> และคาแรคเตอร์เราชื่อ "เซวียนเหิง" → วางการ์ดนี้<b>ทับคาแรคเตอร์</b> และนำการ์ดบนสุดของกอง 1 ใบเข้า<b>พลังชีวิต</b> (คว่ำหน้า)','การ์ดนี้ได้รับ<b>ความสามารถของการ์ดที่ถูกทับ</b>','เมื่อการ์ดนี้โจมตีคาแรคเตอร์ฝ่ายตรงข้าม → เลือกพวกพ้องฝ่ายตรงข้ามที่<b>ตั้งพร้อม</b>อยู่ 1 ใบ การ์ดนี้<b>โจมตีใบนั้นด้วย</b>','เมื่อพลังชีวิตของเราได้รับความเสียหาย → นำการ์ดนี้ลงช่องครอบ (การ์ดที่ถูกทับกลับมาเป็นคาแรคเตอร์) · 1 ครั้งต่อเกม']},
  x_origin:{type:'event',name:'ก่อกำเนิดเรือหลวงสุริยคราส',img:'E_x_origin.png',cost:2,tags:[SHIP],gacha:'G',box:'ebx',
   skill:['ค้นหาพวกพ้องเผ่า "เรือหลวง" จากกองการ์ด<b>ไม่เกิน 2 ใบ</b>ขึ้นมือ','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  x_shield:{type:'event',name:'โล่แห่งเวทย์ที่ไม่มีวันแตกสลาย',img:'E_x_shield.png',cost:0,counterEv:true,trigger:true,tags:[SHIP],gacha:'G',box:'ebx',
@@ -1793,13 +1831,14 @@ const DISCORD_SVG='<svg viewBox="0 0 24 24" fill="#fff"><path d="M20.3 4.4A19.8 
 function applyProfile(){
   const p=dProfile(),box=$('#dprof'),inp=$('#pname');
   if(p){
-    box.innerHTML=`<div class="dcard"><img src="${safeAvatar(p.avatar)}" alt=""><div class="dn"><b>${cleanName(p.name)}</b><span>เชื่อมต่อ Discord แล้ว</span></div><button id="dcout">ออกจากระบบ</button></div>`;
+    box.innerHTML=`<div class="dcard"><img src="${safeAvatar(p.avatar)}" alt=""><div class="dn"><b id="dcname">${myName()}</b><span>Discord: ${cleanName(p.name)} · เชื่อมต่อแล้ว</span></div><button id="dcout">ออกจากระบบ</button></div>`;
     if(typeof updAdmin==='function')setTimeout(updAdmin);
-    inp.value=cleanName(p.name);inp.disabled=true;inp.style.display='none';
+    // in-game name: anything you like (other players may use the same name); empty = your Discord name
+    inp.disabled=false;inp.style.display='';inp.value=store.get('eclipsa-name')||'';inp.placeholder=`✏ ชื่อในเกม (ว่าง = ${cleanName(p.name)})`;
     $('#dcout').onclick=()=>{store.set('eclipsa-discord','null');sfx('click');applyProfile()};
   }else{
     box.innerHTML=`<button class="dcbtn" id="dcbtn">${DISCORD_SVG} เข้าสู่ระบบด้วย Discord</button>`;
-    inp.disabled=false;inp.style.display='';inp.value=store.get('eclipsa-name')||'';
+    inp.disabled=false;inp.style.display='';inp.value=store.get('eclipsa-name')||'';inp.placeholder='✏ ชื่อในเกม';
     $('#dcbtn').onclick=discordLogin;
   }
   updWallets();
@@ -1840,7 +1879,8 @@ const DISCORD_CLIENT_ID='1574396192992010301';
     netMsg(`ยินดีต้อนรับ ${cleanName(me.global_name||me.username)}!`);applyProfile();if(typeof updHero==='function'){updHero();updAdmin()}
   }catch(e){netMsg('ดึงข้อมูลโปรไฟล์ Discord ไม่สำเร็จ')}
 })();
-function myName(){const dp=dProfile();if(dp)return cleanName(dp.name);const v=cleanName($('#pname').value);if(v)store.set('eclipsa-name',v);return v||'ผู้เล่น'}
+// the in-game name you typed wins (duplicates are fine — the Discord @name / ID tell players apart); else your Discord name
+function myName(){const v=cleanName(store.get('eclipsa-name')||($('#pname')&&$('#pname').value)||'');if(v)return v;const dp=dProfile();return dp?cleanName(dp.name)||'ผู้เล่น':'ผู้เล่น'}
 // ============ ROOMS · QUICK PLAY · CHAT (PeerJS / WebRTC) ============
 // The room owner's computer hosts the room AND the match (host-authoritative, like before).
 // guest: NET.conn = link to the host · host: NET.links = Map(pid → link) of every guest.
@@ -1891,7 +1931,6 @@ function roomAccept(conn){
       if(!ROOM||ROOM.started||ROOM.players.length>=ROOM.max){try{conn.send({t:'rfull',started:!!(ROOM&&ROOM.started)})}catch(e){}setTimeout(()=>conn.close(),400);return}
       pid='p'+(++NET.req)+randCode().slice(0,3);NET.links.set(pid,conn);
       const pl={pid,host:false,ready:!!ROOM.qp,slot:freeSlot(),...cleanPlayer(m)};
-      if(ROOM.players.some(p=>p.name===pl.name))pl.name=(pl.name+' ('+(ROOM.players.length+1)+')').slice(0,20);
       ROOM.players.push(pl);sfx('buff');roomSys(`${pl.name} เข้าห้อง`);roomSync();
       return;
     }
@@ -2354,6 +2393,7 @@ let LASTMATCH=null; // who was in the last match (for reports)
 function resetMatch(){
   if(G)G.halt=true;
   G=null;UNDO=[];pinned=null;SR.req=null;surrClose();
+  for(const s of ['#plate-opp','#plate-me']){const e=$(s);if(e)e.style.display='none'}
   for(const s of ['#modal','#cdetail'])$(s).style.display='none';
   for(const s of ['#banner','#spot','#vs','#cutin','#eyes','#dice','#rps','#chainfx','#vsintro'])$(s).className='';
   $('#log').innerHTML='';$('#chatfloat').classList.remove('open');$('#chatbtn').style.display='none';
@@ -2493,7 +2533,9 @@ function addAura(el,size=16){
 function addFoil(el){
   if(!el||el.querySelector(':scope>.lyxfoil'))return el;
   if(getComputedStyle(el).position==='static')el.style.position='relative';
-  const f=document.createElement('div');f.className='lyxfoil';el.append(f);return el;
+  const f=document.createElement('div');f.className='lyxfoil';el.append(f);
+  // หลงเยี่ยซิน: blood-red / gold / black glass shards that sweep down the card and fade (like the other foils)
+  const g=document.createElement('div');g.className='lyxglass';el.append(g);return el;
 }
 // ---------- card detail panel: tap any card to read it in large text (like Master Duel's card info) ----------
 const CD={c:null,opts:{},fresh:false};
@@ -3117,7 +3159,7 @@ const deckCount=d=>Object.values(d).reduce((s,n)=>s+n,0);
 // when: only applies with that character (null = always)
 const LIMITS={
   // แบนลิสถูกปลดทั้งหมดแล้ว — เหลือแค่การ์ดที่ตัวการ์ดเขียนเองว่าใส่ได้ 1 ใบ
-  x_xuan2:{max:1,when:null,why:'ตัวการ์ดระบุว่าใส่ได้ 1 ใบ'},
+  x_xuan2:{max:2,when:null,why:'ตัวการ์ดระบุว่าใส่ได้ 2 ใบ'},
 };
 const limitOf=(id,leader)=>{const l=LIMITS[id];return l&&(!l.when||l.when===leader)?l.max:OWN_EACH};
 const LIMIT_SVG=n=>`<svg class="limico" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#c0101a" stroke="#fff" stroke-width="3"/><circle cx="20" cy="20" r="12" fill="none" stroke="#ffd23a" stroke-width="2"/><text x="20" y="27" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff" font-family="Arial">${n}</text></svg>`;
@@ -3130,17 +3172,23 @@ const LEADERS=Object.keys(CARDS).filter(id=>CARDS[id].type==='leader'&&!CARDS[id
 const validLeader=id=>LEADERS.includes(id);
 function loadLeader(){const l=store.get('eclipsa-leader');return validLeader(l)&&isOwned(l)?l:LEADERS[0]}
 const DB={edit:null,saved:null,filter:'all',leader:null,savedLeader:null};
+// the character row shows only the chosen character (the others are in the card list below);
+// it can be taken out — then the deck can't be saved until a character is picked again
 function renderLeaders(){
   const box=$('#dleaders');box.innerHTML='';
-  for(const id of LEADERS){
-    if(isHidden(id))continue; // secret: not shown at all until owned
-    const d=CARDS[id],el=document.createElement('div'),own=isOwned(id);el.className='dlead'+(DB.leader===id?' on':'')+(own?'':' locked');
-    el.innerHTML=`<div class="card" style="background-image:url(${A(d.img)})"></div><span>${DB.leader===id?'✓ ':''}${own?'':'🔒 '}${d.name}</span>`;
-    el.onclick=()=>{dSelect(id);if(!own){sfx('debuff');$('#dmsg').innerHTML=`<span style="color:#ffb0b0">ยังไม่มี ${d.name} — สุ่มได้จากตู้ "${boxOf(id).name}"</span>`;return}if(DB.leader!==id){DB.leader=id;sfx('click');renderDeck()}};
-    if(own&&foilSel(id)&&id!=='longyexin')addFoilType(el.querySelector('.card'),foilSel(id));
-    if(id==='longyexin'){const cd=el.querySelector('.card');addAura(cd,10);cd.style.setProperty('--t0',`-${(performance.now()/1000%40).toFixed(2)}s`)}
-    box.append(el);
-  }
+  const id=DB.leader;
+  if(!id||!CARDS[id]){box.innerHTML='<div class="dlempty">👑 ยังไม่ได้เลือกคาแรคเตอร์<br><small>แตะคาแรคเตอร์ในรายการการ์ด (แท็บ "คาแรคเตอร์") เพื่อใส่ — ต้องมีคาแรคเตอร์ก่อนถึงจะบันทึกเด็คได้</small></div>';return}
+  const d=CARDS[id],el=document.createElement('div');el.className='dlead on';
+  el.innerHTML=`<div class="card" style="background-image:url(${A(d.img)})"></div><span>✓ ${d.name}</span><button class="dlout" title="ถอดคาแรคเตอร์ออก">✕</button>`;
+  el.onclick=()=>dSelect(id);
+  el.querySelector('.dlout').onclick=e=>{e.stopPropagation();sfx('click');DB.leader=null;renderDeck()};
+  if(foilSel(id)&&id!=='longyexin')addFoilType(el.querySelector('.card'),foilSel(id));
+  if(id==='longyexin'){const cd=el.querySelector('.card');addAura(cd,10);cd.style.setProperty('--t0',`-${(performance.now()/1000%40).toFixed(2)}s`)}
+  box.append(el);
+}
+function pickLeader(id){
+  if(!isOwned(id)){sfx('debuff');$('#dmsg').innerHTML=`<span style="color:#ffb0b0">ยังไม่มี ${CARDS[id].name} — สุ่มได้จากตู้ "${boxOf(id).name}"</span>`;return}
+  if(DB.leader!==id){DB.leader=id;sfx('click');$('#dmsg').innerHTML=`<span style="color:#8ff0a8">👑 ใช้ ${CARDS[id].name} เป็นคาแรคเตอร์</span>`;renderDeck()}
 }
 // left panel: the picked card, big, with +1 / −1 (like Master Duel)
 function dSelect(id){
@@ -3167,7 +3215,7 @@ function renderInfo(){
   box.querySelector('.dimg').onclick=()=>zoomCard(id);
   const add=$('#diadd'),rm=$('#dirm'),use=$('#diuse'),fo=$('#difoil');
   if(add)add.onclick=()=>deckAdd(id,1);if(rm)rm.onclick=()=>deckAdd(id,-1);
-  if(use)use.onclick=()=>{DB.leader=id;sfx('click');renderDeck()};
+  if(use)use.onclick=()=>pickLeader(id);
   if(fo)fo.onclick=()=>{sfx('click');openDetail({id},{deck:true})};
 }
 const RARE_ORDER=k=>'CRHNPEVGLMS'.indexOf(k||'N');
@@ -3192,8 +3240,8 @@ function renderDeck(){
   const dc=$('#dcount');dc.textContent=`${tot} / ${DECK_SIZE}`;dc.className='dcount '+(tot===DECK_SIZE?'ok':'bad');
   $('#dlistcount').textContent=tot;
   const overs=Object.entries(DB.edit).filter(([id,n])=>n>limitOf(id,DB.leader)||groupLeft(DB.edit,id,DB.leader)<0).map(([id])=>id);
-  const sv=$('#dsave');sv.disabled=tot!==DECK_SIZE||overs.length>0;
-  sv.textContent=overs.length?'💾 เกินลิมิต':tot===DECK_SIZE?'💾 บันทึก':`💾 ${tot<DECK_SIZE?'ขาด '+(DECK_SIZE-tot):'เกิน '+(tot-DECK_SIZE)} ใบ`;
+  const sv=$('#dsave');sv.disabled=!DB.leader||tot!==DECK_SIZE||overs.length>0;
+  sv.textContent=!DB.leader?'💾 เลือกคาแรคเตอร์ก่อน':overs.length?'💾 เกินลิมิต':tot===DECK_SIZE?'💾 บันทึก':`💾 ${tot<DECK_SIZE?'ขาด '+(DECK_SIZE-tot):'เกิน '+(tot-DECK_SIZE)} ใบ`;
   sv.title=overs.length?'เกินลิมิต: '+overs.map(id=>CARDS[id].name+' (ได้ '+limitOf(id,DB.leader)+')').join(', '):'';
   // middle: one small card per copy, in a fixed order
   const list=$('#dlist');list.innerHTML='';
@@ -3206,7 +3254,7 @@ function renderDeck(){
   if(!ids.length)list.innerHTML='<div class="dempty">ยังไม่มีการ์ดในเด็ค<br>แตะการ์ดทางขวาแล้วกด +1 · หรือกด "✨ จัดเด็คที่ดีที่สุด"</div>';
   // right: the card list (search · filter · sort)
   const q=String($('#dq').value||'').trim().toLowerCase(),sort=$('#dsort').value;
-  let pool=[...ALL_IDS,...LEADERS].filter(id=>!isHidden(id));
+  let pool=[...ALL_IDS,...LEADERS].filter(id=>!isHidden(id)&&id!==DB.leader); // the chosen character sits in the top row
   pool=pool.filter(id=>{const d=CARDS[id];
     if(DB.filter==='own'?!isOwned(id):DB.filter==='leader'?d.type!=='leader'||d.inDeck:DB.filter!=='all'&&(d.type!==DB.filter||d.inDeck))return false;
     return !q||d.name.toLowerCase().includes(q)||d.tags.some(t=>t.toLowerCase().includes(q))});
@@ -3226,8 +3274,8 @@ function renderDeck(){
     t.append(c);
     const gk=d.gacha==='F'?d.baseGacha:d.gacha;
     t.insertAdjacentHTML('beforeend',`${gk&&gk!=='T'?`<span class="rk ${gk}">${TIER(gk).glow.slice(0,2)}</span>`:''}${d.type!=='leader'&&d.cost?`<span class="mc">${d.cost}</span>`:''}${isL?(DB.leader===id?'<span class="nb full">✓</span>':''):own?`<span class="nb${n?' full':''}">${n}/${lim}</span>`:''}${lim<OWN_EACH&&LIMITS[id]?`<span class="limtag">${LIMIT_SVG(lim)}</span>`:''}`);
-    t.onclick=e=>{e.stopPropagation();sfx('click');dSelect(id)};
-    t.ondblclick=e=>{e.preventDefault();if(isL){if(own){DB.leader=id;renderDeck()}}else deckAdd(id,1)};
+    t.onclick=e=>{e.stopPropagation();sfx('click');if(isL){pickLeader(id);if(DB.leader===id)return}dSelect(id)}; // tap a character = use it
+    t.ondblclick=e=>{e.preventDefault();if(isL)pickLeader(id);else deckAdd(id,1)};
     t.oncontextmenu=e=>{e.preventDefault();if(!isL)deckAdd(id,-1)};
     grid.append(t);
   }
@@ -3322,11 +3370,12 @@ function bestDeck(leader){
   return deck;
 }
 $('#ddefault').onclick=()=>{
+  if(!DB.leader){$('#dmsg').innerHTML='<span style="color:#ffb0b0">👑 เลือกคาแรคเตอร์ก่อน แล้วค่อยกด "จัดเด็คที่ดีที่สุด"</span>';sfx('debuff');return}
   DB.edit=bestDeck(DB.leader);sfx('buff');renderDeck();
   const n=deckCount(DB.edit),t=k=>Object.entries(DB.edit).filter(([id])=>CARDS[id].type===k).reduce((s,[,v])=>s+v,0);
   $('#dmsg').innerHTML=`<span style="color:#ffe2a8">✨ จัดเด็คที่ดีที่สุดสำหรับ ${CARDS[DB.leader].name} จากการ์ดที่มี — พวกพ้อง ${t('ally')} · เหตุการณ์ ${t('event')} · พาหนะ ${t('vehicle')}${t('leader')?' · คาแรคเตอร์ '+t('leader'):''} (${n} ใบ) · กด "บันทึกเด็ค" เพื่อใช้เล่น</span>`;
 };
-$('#dsave').onclick=()=>{if(!validDeck(DB.edit,DB.leader))return;store.set('eclipsa-deck',JSON.stringify(DB.edit));DB.saved={...DB.edit};store.set('eclipsa-leader',DB.leader);DB.savedLeader=DB.leader;sfx('win');$('#dmsg').innerHTML='<span style="color:#8ff0a8">✓ บันทึกเด็คแล้ว — จะใช้เด็คนี้ตอนเล่น</span>'};
+$('#dsave').onclick=()=>{if(!DB.leader){$('#dmsg').innerHTML='<span style="color:#ffb0b0">👑 ต้องเลือกคาแรคเตอร์ก่อน ถึงจะบันทึกเด็คได้</span>';sfx('debuff');return}if(!validDeck(DB.edit,DB.leader))return;store.set('eclipsa-deck',JSON.stringify(DB.edit));DB.saved={...DB.edit};store.set('eclipsa-leader',DB.leader);DB.savedLeader=DB.leader;sfx('win');$('#dmsg').innerHTML='<span style="color:#8ff0a8">✓ บันทึกเด็คแล้ว — จะใช้เด็คนี้ตอนเล่น</span>'};
 document.querySelectorAll('#dtabs button').forEach(b=>b.onclick=()=>{DB.filter=b.dataset.f;document.querySelectorAll('#dtabs button').forEach(x=>x.classList.toggle('on',x===b));renderDeck()});
 // ============ GACHA ============
 // owned gacha cards (one copy unlocks it — the deck builder then allows up to 4 like every other card)
@@ -3354,7 +3403,8 @@ function shardSVG(seed,pal,cols,rows,edge,op){
   st.textContent=`.foil.f-prism::before{background-image:${shardSVG(11,['#5af0ff','#ff5ad0','#fff05a','#6aff9a','#a86bff','#ffffff','#ff9a5a','#7ab8ff'],5,7,.95,[.45,1])}}
 .foil.f-glitter::before{background-image:${shardSVG(29,['#ffffff','#d6ecff','#a8d4ff','#f0f0ff'],9,12,.45,[.08,.45])}}
 .foil.f-pixel::before{background-image:${shardSVG(5,['#b07aff','#7aa8ff','#ff8ae0'],4,6,.35,[.05,.3])}}
-.foil.f-hex::before{background-image:${shardSVG(17,['#ff8a8a','#ffe08a','#8affb0','#8ab8ff','#d08aff'],5,7,.3,[.05,.3])}}`;
+.foil.f-hex::before{background-image:${shardSVG(17,['#ff8a8a','#ffe08a','#8affb0','#8ab8ff','#d08aff'],5,7,.3,[.05,.3])}}
+.lyxglass{background-image:${shardSVG(43,['#ff1a3a','#ffd23a','#b0001a','#ffffff','#ff7a2a','#ff4a6a','#ffe9a0'],5,7,.95,[.4,1])}}`;
   document.head.append(st)})();
 const FOIL_CHANCE=0.13; // 13% of pulls ≈ 6–7 foils per 50 pulls (not the SECRET card — it always has its own diamond foil)
 function foilData(){try{const o=JSON.parse(store.get('eclipsa-foils')||'{}');return o&&typeof o==='object'&&!Array.isArray(o)?o:{}}catch(e){return {}}}
@@ -5186,6 +5236,34 @@ function unitEl(p,u){
     if(p===G.me)openMenu(ev,u,unitActions(u,G.me),'unit');else{ev.stopPropagation();pinned=u;showInfo(u);openDetail(u);render()}};
   return e;
 }
+// who am I playing? name · @discord · ID · tournament rank (DEV for the game's developer) — beside the board:
+// the opponent at the top right of their mat, me at the bottom right of mine
+const DEV_IDS=['389718804244201472'];
+function plateHTML(p,mine){
+  const did=String(p.did||'').replace(/\D/g,''),dev=DEV_IDS.includes(did),tb=cleanBadge(p.tb);
+  const tags=(dev?'<span class="ptag dev">⚙ DEV</span>':'')+(tb?`<span class="ptag rk">🏆 ${tb}</span>`:'')+(p.ai?'<span class="ptag bot">🤖 บอท</span>':'');
+  return `<div class="plh">${mine?'คุณ':G.spec?'ผู้เล่น':'คู่แข่ง'}</div>
+    <div class="plm">${safeAvatar(p.avatar)?`<img src="${safeAvatar(p.avatar)}" alt="">`:`<span class="q">${cleanName(p.name).slice(0,1)||'?'}</span>`}
+      <div class="pln"><b>${cleanName(p.name)}</b>${p.duser?`<small>@${cleanName(p.duser)}</small>`:''}${did?`<small class="pid">ID ${did}</small>`:p.ai?'':'<small class="pid">ไม่ได้เชื่อม Discord</small>'}</div></div>
+    ${tags?`<div class="plt">${tags}</div>`:''}`;
+}
+function renderPlates(){
+  for(const [key,mine] of [['opp',false],['me',true]]){
+    let el=$('#plate-'+key);
+    if(!el){el=document.createElement('div');el.id='plate-'+key;el.className='pplate '+key;document.body.append(el)}
+    const p=G&&G.players&&G.players.length===2?(mine?(G.vb||G.me):G.ai):null;
+    const mat=$(mine?'#mymat':'#oppmat');
+    if(!p||!mat||document.body.classList.contains('mobile')){el.style.display='none';continue}
+    el.innerHTML=plateHTML(p,mine);el.style.display='flex';
+    const r=mat.getBoundingClientRect(),side=$('#side').getBoundingClientRect(),room=(side.left||innerWidth)-r.right-24;
+    el.style.maxWidth=Math.max(150,Math.min(260,room))+'px';
+    if(room>=150){el.style.left=(r.right+14)+'px';el.classList.remove('inmat')}
+    else{el.style.left=(r.right-Math.min(260,Math.max(150,room))-8)+'px';el.classList.add('inmat')} // not enough room: sit over the mat's corner
+    if(mine){el.style.top='';el.style.bottom=Math.max(8,innerHeight-r.bottom)+'px'}else{el.style.bottom='';el.style.top=Math.max(8,r.top)+'px'}
+  }
+}
+addEventListener('resize',()=>{if(G&&G.me)renderPlates()});
+
 function renderMat(mat,p,oppSide){
   mat.innerHTML='';mat.classList.toggle('turn',G.cur===p);
   const side=p===(G.vb||G.me)?'me':'ai';
@@ -5246,7 +5324,7 @@ function render(){
   $('#status').innerHTML=`<div class="who">${sp?'👁 ผู้ชม · ':''}${G.over?'จบเกม':!G.cur?'เตรียมเกม':G.cur===me&&!sp?'ตาของคุณ':'ตาของ '+G.cur.name} · เทิร์น ${G.turn}</div>
   <div>${avImg(ai)}${ai.name}${tbH(ai)}: ชีวิต <b style="color:#ff9a8a">${ai.life.length}</b> · มือ ${ai.hand.length} · เด็ค ${ai.deck.length} · มานา ${ai.manaActive}</div>
   <div>${avImg(me)}${sp?'':'คุณ ('}${me.name}${sp?'':')'}${tbH(me)}: ชีวิต <b style="color:#8fc8ff">${me.life.length}</b> · มือ ${me.hand.length} · เด็ค ${me.deck.length} · มานา ${me.manaActive}</div>`;
-  for(const [sel,pl] of [['#oppmat',ai],['#mymat',G.vb||me]]){const m=$(sel);if(m&&pl&&pl.tb&&G.players.length===2){const b=document.createElement('div');b.className='tbmat';b.innerHTML=`🏆 ${cleanBadge(pl.tb)}`;b.title=`${pl.name} · อันดับทัวร์นาเมนต์`;m.append(b)}}
+  renderPlates();
   $('#endbtn').disabled=!myMain();$('#mend').disabled=!myMain();$('#mbar').style.visibility=G.over?'hidden':'';
   const ub=$('#undobtn');ub.disabled=!canUndo();ub.style.display=G.mode==='ai'?'':'none';
   ub.innerHTML=`<span class="ico">↶</span> ย้อน${canUndo()?` (${UNDO.length})`:''}`;
@@ -5462,7 +5540,7 @@ async function startGame(mode,players){
   QP.on=false;clearInterval(QP.tick);clearInterval(QP.probe);
   G={mode,turn:0,cur:null,foe:null,busy:true,over:false,phase:'setup',wait:false};
   if(mode==='ai'){
-    const me=newPlayer(false,loadLeader(),(dProfile()||$('#pname').value.trim())?myName():'คุณ',loadDeck(),myFoilMap(),myArtMap());me.avatar=myAvatar();me.tb=myBadge();me.team='A';
+    const me=newPlayer(false,loadLeader(),myName(),loadDeck(),myFoilMap(),myArtMap());me.avatar=myAvatar();me.tb=myBadge();{const pm=myProfileMsg();me.did=pm.did;me.duser=pm.duser}me.team='A';
     const bot=newPlayer(true,LEADERS[0],'บอท ('+BOT_LEVELS[DIFF].name+')',DECKLIST);bot.team='B';
     players=[me,bot];
   }
@@ -5518,7 +5596,7 @@ $('#pname').value=store.get('eclipsa-name')||'';
 if(window.GAME_VERSION)$('#verlabel').textContent='Eclipsa เวอร์ชัน '+window.GAME_VERSION;
 applyProfile();
 // remember the name as soon as it is typed (it survives "เล่นใหม่" and restarting the game)
-$('#pname').addEventListener('input',()=>store.set('eclipsa-name',$('#pname').value.trim().slice(0,16)));
+$('#pname').addEventListener('input',()=>{store.set('eclipsa-name',cleanName($('#pname').value));const n=$('#dcname');if(n)n.textContent=myName()});
 updWallets();
 $('#startbtn').onclick=async()=>{
   audioInit();sfx('click');
