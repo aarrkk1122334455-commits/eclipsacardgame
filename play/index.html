@@ -153,7 +153,67 @@ h1,h2,h3,.title{font-family:Torsilp,"Leelawadee UI",sans-serif;font-weight:norma
 .deckbtn{background:linear-gradient(#1f3a5a,#0e1c2e);border-color:#5d8fe0!important;color:#bfe0ff;font-weight:bold}
 #deckb{position:fixed;inset:0;z-index:85;display:none;flex-direction:column;align-items:center;background:#07040a radial-gradient(ellipse at 40% 20%,#1a1e34,#07040a 75%);padding:12px 16px;gap:8px}
 #deckb.show{display:flex;animation:fadeIn .3s}
-.dcount{font-size:20px;font-weight:bold;border-radius:20px;padding:4px 16px;border:2px solid}
+.dcount{font-size:18px;font-weight:bold;border-radius:20px;padding:3px 14px;border:2px solid;white-space:nowrap}
+#deckb{padding:10px 12px;gap:8px;background:#07040a radial-gradient(ellipse at 50% 0%,#1c2040,#07040a 70%)}
+.dbar{width:100%;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-right:150px}
+.dbar .dbk{width:46px;height:46px;border-radius:50%;font-size:22px;padding:0;background:#0b0f1e;border:2px solid #f2b54b;color:#f2b54b}
+.dbtitle{font-family:Torsilp,sans-serif;font-size:26px;color:#fff}.dbsp{flex:1}
+.dbar button{padding:8px 12px}
+#deckb .dmain{flex:1;min-height:0;width:100%;max-width:none;display:grid;grid-template-columns:minmax(250px,300px) minmax(0,1fr) minmax(300px,430px);gap:10px}
+.dinfo,.ddeck,.dpool{min-height:0;display:flex;flex-direction:column;border-radius:10px;overflow:hidden;background:#0d1224e6;border:2px solid #2c3a66;box-shadow:0 6px 24px #000a}
+/* left: the card you picked */
+.dinfo .dih{display:flex;align-items:center;gap:8px;padding:8px 10px;background:linear-gradient(90deg,#5a4a10,#2a2208);border-bottom:2px solid #b8962a}
+.dinfo .dih b{flex:1;font-family:Torsilp,sans-serif;font-size:21px;line-height:1.1;color:#fff;text-shadow:0 1px 3px #000;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dinfo .dih.t-ally{background:linear-gradient(90deg,#6a3a10,#2a1606)}.dinfo .dih.t-event{background:linear-gradient(90deg,#105a4a,#06241c);border-color:#2ab88a}.dinfo .dih.t-vehicle{background:linear-gradient(90deg,#4a1a6a,#1c0a2a);border-color:#a45aff}.dinfo .dih.t-leader{background:linear-gradient(90deg,#6a1018,#2a0608);border-color:#ff5a5a}
+.dinfo .dit{display:flex;gap:10px;padding:10px}
+.dinfo .dimg{width:118px;flex:none;aspect-ratio:480/671;background:center/100% 100%;border-radius:6px;box-shadow:0 4px 14px #000;cursor:zoom-in;position:relative}
+.dinfo .dist{flex:1;display:flex;flex-direction:column;gap:6px;justify-content:center}
+.dinfo .dist div{display:flex;align-items:center;gap:6px;font-size:15px}.dinfo .dist b{font-size:24px;font-family:Torsilp,sans-serif;color:#ffd76a;margin-left:auto}
+.dinfo .dirow{display:flex;justify-content:space-between;align-items:center;padding:0 10px 6px;font-size:14px;color:#cfd8f0}
+.dinfo .ditag{margin:0 10px;padding:4px 10px;background:linear-gradient(90deg,#4a3a08,#2a2006);border:1px solid #8a6a1a;border-radius:4px;font-weight:bold;color:#ffe9a8;font-size:14px}
+.dinfo .disk{flex:1;overflow:auto;padding:8px 12px;font-size:15px;line-height:1.65}
+.dinfo .disk>div{margin-bottom:8px}
+.dinfo .dib{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px;border-top:1px solid #2c3a66;background:#080b18}
+.dinfo .dib button{font-size:20px;font-weight:bold;padding:9px;border-radius:10px;border:2px solid #fff3;background:#121a30}
+.dinfo .dib button.full{grid-column:1/-1;font-size:15px}
+.dinfo .dib button:disabled{opacity:.35}
+.dinfo .diempty{padding:30px 16px;color:#8a96b8;text-align:center;line-height:1.7}
+/* middle: the deck */
+.ddeck .dsec{display:flex;align-items:center;gap:8px;padding:7px 12px;background:#0a0e1c;border-bottom:1px solid #2c3a66;font-weight:bold;font-size:16px;color:#e6ecff}
+.ddeck .dsec b{color:#ffd76a;font-size:18px}.ddeck .dsech{margin-left:auto;font-weight:normal;font-size:12px;color:#7a86a8}
+.dsic{display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#2c3a66;border-radius:4px;font-size:14px}
+#deckb .dleaders{display:flex;gap:8px;padding:8px 12px;overflow-x:auto;flex:none}
+#deckb .dlead{width:64px;font-size:11px}#deckb .dlead .card{height:88px}
+.ddgrid{flex:1;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:6px;padding:10px 12px;align-content:start}
+.ddgrid .card{width:100%;height:auto;aspect-ratio:480/671;cursor:pointer;transition:transform .1s;box-shadow:0 2px 6px #000}
+.ddgrid .card:hover{transform:translateY(-3px)}
+.ddgrid .card.sel,.dgrid .dpc.sel .card{box-shadow:0 0 0 3px #ffd76a,0 0 14px #ffd76a}
+.ddgrid .card.new{animation:pop .25s}
+.ddgrid .dempty{grid-column:1/-1;color:#7a86a8;text-align:center;padding:30px}
+#deckb #dmsg{padding:4px 12px 8px;min-height:22px;font-size:14px}
+/* right: every card */
+.dptab{padding:8px 12px;font-weight:bold;font-size:17px;color:#14200a;background:linear-gradient(#c8f04a,#8ac81a)}
+.dsearch{display:flex;gap:6px;padding:8px}.dsearch input{flex:1;min-width:0;font-size:15px}.dsearch select{background:#120c11;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:0 6px;font-family:inherit}
+.dpool .dtabs{padding:0 8px 6px;flex-wrap:wrap}.dpool .dtabs button{padding:4px 9px;font-size:13px}
+.dpool .dgrid{flex:1;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px;padding:6px 8px 10px;align-content:start}
+.dpc{position:relative;cursor:pointer}
+.dpc .card{width:100%;height:auto;aspect-ratio:480/671;transition:transform .1s;box-shadow:0 2px 6px #000}
+.dpc:hover .card{transform:translateY(-3px)}
+.dpc .rk{position:absolute;right:-3px;top:-4px;z-index:3;font-size:10px;font-weight:bold;border-radius:4px;padding:0 4px;color:#fff;background:#2a8cff;box-shadow:0 1px 3px #000}
+.dpc .rk.R,.dpc .rk.C,.dpc .rk.H,.dpc .rk.N{background:#4a5a7a}.dpc .rk.P,.dpc .rk.E{background:#8a2cff}.dpc .rk.G,.dpc .rk.L,.dpc .rk.V{background:linear-gradient(90deg,#ffb000,#ffe08a);color:#3a2000}.dpc .rk.M,.dpc .rk.S{background:linear-gradient(90deg,#000,#ff1a2a)}
+.dpc .nb{position:absolute;right:2px;bottom:2px;z-index:3;min-width:22px;height:20px;border-radius:5px;background:#000c;border:1px solid #fff5;color:#fff;font-size:12px;font-weight:bold;display:flex;align-items:center;justify-content:center;padding:0 3px}
+.dpc .nb.full{background:#2f9e57;border-color:#8ff0a8}
+.dpc .mc{position:absolute;left:3px;top:3px;z-index:3;width:18px;height:18px;border-radius:50%;background:#1e7bff;border:1px solid #fff;color:#fff;font-size:11px;font-weight:bold;display:flex;align-items:center;justify-content:center}
+.dpc.locked .card{filter:grayscale(1) brightness(.35)}
+.dpc.locked::after{content:'🔒';position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);font-size:22px;z-index:3}
+.dpc.full .card{filter:brightness(.55)}
+.dpc .limtag{width:24px;height:24px;left:-5px;top:-5px}
+.dphelp{padding:6px 10px;font-size:12px;color:#7a86a8;border-top:1px solid #2c3a66}
+body.tablet #deckb .dmain{grid-template-columns:250px minmax(0,1fr) 320px}
+body.mobile #deckb .dmain{display:flex;flex-direction:column;overflow:auto}
+body.mobile #deckb .dinfo{display:none}
+body.mobile #deckb .ddeck{flex:none;min-height:240px}body.mobile #deckb .dpool{flex:none;height:70dvh}
+body.mobile .dbar{padding-right:110px}body.mobile .dbar button{padding:6px 8px;font-size:12.5px}body.mobile .dbtitle{font-size:20px}
 .dcount.ok{color:#8ff0a8;border-color:#3fcf7a;background:#0f2a1a}.dcount.bad{color:#ffb0b0;border-color:#e0444c;background:#2e1012}
 .dmain{flex:1;min-height:0;width:100%;max-width:1500px;display:flex;gap:14px}
 .dcol{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
@@ -919,6 +979,14 @@ canvas.hitfx{position:fixed;inset:0;width:100vw;height:100vh;z-index:58;pointer-
 @media (max-width:700px){#trade .tcols{flex-direction:column}}
 /* ===================== PHONE / TABLET (body.mobile) — landscape play ===================== */
 #mbar,#rotate,#sideback{display:none}
+/* tablet held sideways: desktop layout, sized for fingers */
+body.tablet{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body.tablet #side{width:330px}
+body.tablet #handrow .card:hover{translate:none;scale:1}
+body.tablet #handrow .card:active{translate:0 -14px;scale:1.08}
+body.tablet button{min-height:40px}
+body.tablet #menu button{min-height:44px;font-size:15px}
+body.tablet .ctl button{min-height:34px}
 body.mobile{font-size:13px;-webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none}
 body.mobile input,body.mobile textarea{-webkit-user-select:text;user-select:text}
 body.mobile #app{height:100dvh}
@@ -1052,6 +1120,132 @@ body.mobile .rcard{width:70px}
 #info .limchip{display:inline-flex;align-items:center;gap:4px;color:#ff9a9a;border-color:#8a2a30}
 #info .limchip svg{width:18px;height:18px}
 .dlead.locked{cursor:default}.dlead.locked .card{filter:grayscale(1) brightness(.35)}
+/* ===== TOURNAMENT ===== */
+#tourbtn{position:fixed;left:14px;top:14px;z-index:83;display:flex;align-items:center;gap:12px;padding:8px 16px 8px 8px;border-radius:16px;max-width:min(420px,calc(100vw - 200px));text-align:left;color:#fff;cursor:pointer;
+  background:linear-gradient(120deg,#3a0610f0,#140409f0 60%,#2a0a14f0);border:2px solid #ff4a5a;box-shadow:0 0 22px #ff2a4a66,inset 0 0 18px #ff4a5a22;animation:tourGlow 2.4s ease-in-out infinite alternate;transition:transform .15s}
+#tourbtn:hover{transform:translateY(-2px) scale(1.02)}
+@keyframes tourGlow{to{box-shadow:0 0 34px #ff2a4aaa,inset 0 0 24px #ff4a5a44;border-color:#ffb36a}}
+#tourbtn .tth{width:54px;height:75px;flex:none;border-radius:6px;background:center/cover;box-shadow:0 0 12px #ff4a5a99;border:1px solid #ffffff55}
+#tourbtn .ttx{display:flex;flex-direction:column;gap:2px;min-width:0}
+#tourbtn .tev{font-size:11px;font-weight:bold;letter-spacing:3px;color:#ffb36a}
+#tourbtn .tti{font-size:15px;font-weight:900;letter-spacing:.5px;line-height:1.15;background:linear-gradient(#fff,#ffd0a0);-webkit-background-clip:text;background-clip:text;color:transparent}
+#tourbtn .twh{font-size:12.5px;color:#ffe2c8}
+#tourbtn .tst{font-size:12px;font-weight:bold;padding:1px 8px;border-radius:10px;align-self:flex-start;background:#00000066;border:1px solid #ffffff33}
+.tst.open{color:#8ff0a8;border-color:#3fcf7a88!important}.tst.wait{color:#ffd76a}.tst.live{color:#ff9a8a;border-color:#ff4a5a88!important}.tst.done{color:#c8b8ff}
+#tbadge{position:fixed;top:64px;right:18px;z-index:88;display:none;align-items:center;gap:6px;padding:4px 12px;border-radius:14px;font-weight:900;font-size:15px;color:#ffe9a8;
+  background:linear-gradient(#3a2a08,#1a1204);border:2px solid #ffd23a;box-shadow:0 0 14px #ffd23a66;letter-spacing:.5px}
+#tbadge small{font-size:10px;font-weight:bold;color:#e8cfa0;letter-spacing:1px}
+.tbmini{display:inline-block;font-size:11px;font-weight:900;padding:0 6px;border-radius:8px;background:#3a2a08;border:1px solid #ffd23a;color:#ffe9a8;vertical-align:middle}
+.tbmat{position:absolute;top:4px;right:6px;z-index:6;font-size:13px;font-weight:900;padding:2px 9px;border-radius:10px;color:#ffe9a8;background:linear-gradient(#3a2a08ee,#1a1204ee);border:2px solid #ffd23a;box-shadow:0 0 12px #ffd23a55;pointer-events:none}
+#tour{position:fixed;inset:0;z-index:89;display:none;flex-direction:column;overflow:auto;background:#060405 radial-gradient(ellipse at 20% 30%,#3a0a14,#060405 70%);color:var(--text)}
+#tour.show{display:flex;animation:fadeIn .25s}
+#tour::before{content:'';position:fixed;inset:0;background:var(--tbg) center/cover;opacity:.13;filter:blur(3px) saturate(1.3);pointer-events:none}
+.tr-top{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:12px;padding:10px 16px;background:linear-gradient(#0a0406f4,#0a040600)}
+.tr-top h1{margin:0;font-size:clamp(18px,2.6vw,30px);font-weight:900;letter-spacing:1px;background:linear-gradient(90deg,#fff,#ffb36a,#ff5a6a);-webkit-background-clip:text;background-clip:text;color:transparent;flex:1;min-width:0}
+.tr-when{font-size:14px;color:#ffe2c8;text-align:right}.tr-when b{display:block;font-size:20px;color:#ffd76a;font-variant-numeric:tabular-nums}
+.tr-body{position:relative;z-index:1;display:grid;grid-template-columns:minmax(240px,320px) minmax(0,1fr);gap:16px;padding:6px 16px 24px}
+.tr-hero{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.tr-card{aspect-ratio:480/671;border-radius:14px;background:center/cover;box-shadow:0 0 40px #ff2a4a77,0 18px 40px #000;border:2px solid #ff6a7a88;animation:trFloat 3.6s ease-in-out infinite alternate;position:relative;overflow:hidden}
+.tr-card::after{content:'';position:absolute;inset:-50%;background:linear-gradient(115deg,#fff0 42%,#ffffff55 50%,#fff0 58%);animation:foilSweep 4s ease-in-out infinite}
+@keyframes trFloat{to{transform:translateY(-8px)}}
+.tr-box{background:#140a10e8;border:1px solid #4a2a36;border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.tr-stat{font-size:15px;line-height:1.55}.tr-stat b{color:#ffd76a}
+.tr-big{font-size:18px!important;padding:12px!important;font-weight:900}
+.tr-msg{font-size:13.5px;color:#ffcfa8;min-height:18px}
+.tr-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.tr-tabs button{padding:7px 14px;font-size:14px}.tr-tabs button.on{background:linear-gradient(#ff5a6a,#a8202e);border-color:#ffb0b8;color:#fff}
+.tr-adm{border-color:#ffd23a77;background:#1e1608e8}.tr-adm h3{margin:0;font-size:15px;color:#ffd23a}
+.tr-adm .row2{display:flex;gap:6px;flex-wrap:wrap}.tr-adm button{flex:1 1 auto;padding:8px 10px;font-size:13.5px}
+/* rewards */
+.tr-rw{display:flex;flex-direction:column;gap:10px}
+.tr-pr{display:flex;align-items:center;gap:14px;padding:10px 14px;border-radius:14px;background:linear-gradient(90deg,#2a1a0ae0,#140a10e0);border:1px solid #5a3a1a}
+.tr-pr.p1{border-color:#ffd23a;box-shadow:0 0 22px #ffd23a44;background:linear-gradient(90deg,#4a3208e8,#160c06e8)}
+.tr-pr.p2{border-color:#d8e0f0;box-shadow:0 0 16px #d8e0f033}.tr-pr.p3{border-color:#e09a5a}
+.tr-pr .md{font-size:40px;flex:none;width:52px;text-align:center}
+.tr-pr .lb{flex:none;width:118px;font-weight:900;font-size:17px;color:#fff}
+.tr-pr .its{display:flex;gap:10px;flex-wrap:wrap;align-items:center;flex:1}
+.tr-it{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;text-align:center;max-width:110px;color:#ffe9d0}
+.tr-it .cd{width:84px;aspect-ratio:480/671;border-radius:7px;background:center/cover;box-shadow:0 4px 14px #000a;position:relative;overflow:hidden}
+.tr-it .cd.lyx{box-shadow:0 0 16px #ff2a2a,0 4px 14px #000}
+.tr-it .coin{width:44px;height:44px}
+.tr-it b{font-size:15px;color:#ffd76a}
+/* bracket */
+.tr-br{position:relative;border-radius:16px;padding:18px 12px 24px;overflow-x:auto;background:radial-gradient(ellipse at 50% 30%,#2d4a1e,#0c1a0a 70%),repeating-linear-gradient(100deg,#ffffff06 0 60px,#0000 60px 120px);border:1px solid #3a5a2a}
+.tr-bw{display:flex;align-items:stretch;justify-content:center;gap:10px;min-width:max-content;margin:0 auto}
+.tr-col{display:flex;flex-direction:column;justify-content:space-around;gap:6px;min-width:112px}
+.tr-col h4{margin:0 0 4px;text-align:center;font-size:11px;color:#c8e8b0;letter-spacing:1px}
+.tr-m{display:flex;flex-direction:column;gap:2px;position:relative;padding:3px;border-radius:6px}
+.tr-m.live{box-shadow:0 0 0 2px #ff5a6a,0 0 14px #ff5a6a88;animation:canpulse 1.4s infinite}
+.tr-s{display:flex;align-items:center;gap:4px;height:22px;padding:0 6px;border-radius:3px;background:#f4f4f0;color:#1a1a1a;font-size:12px;font-weight:bold;white-space:nowrap;overflow:hidden;max-width:150px}
+.tr-s img{width:16px;height:16px;border-radius:50%;flex:none}
+.tr-s.w{background:linear-gradient(90deg,#ffe9a0,#fff6d8);box-shadow:0 0 8px #ffd23a}.tr-s.l{opacity:.45;text-decoration:line-through}.tr-s.e{background:#f4f4f022;color:#ffffff55}.tr-s.me{outline:2px solid #3d8be0}
+.tr-cen{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-width:150px}
+.tr-cen .cup{font-size:64px;filter:drop-shadow(0 0 16px #ffd23a)}
+.tr-cen h4{margin:0;color:#fff;letter-spacing:2px;font-size:14px}
+.tr-ov{display:flex;gap:3px;justify-content:center}.tr-ov button{padding:1px 6px;font-size:10.5px}
+/* players / live */
+.tr-pl{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.tr-p{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:10px;background:#140a10e0;border:1px solid #4a2a36;font-size:14px}
+.tr-p img,.tr-p .q{width:30px;height:30px;border-radius:50%;flex:none;background:#3a2a36;display:flex;align-items:center;justify-content:center}
+.tr-p.me{border-color:#3d8be0}.tr-p small{color:var(--muted);display:block;font-size:11px}
+.tr-live{display:flex;flex-direction:column;gap:8px}
+.tr-lv{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;background:#1a0a10e8;border:1px solid #ff5a6a66;font-size:15px}
+.tr-lv .dot{width:10px;height:10px;border-radius:50%;background:#ff3a4a;box-shadow:0 0 8px #ff3a4a;animation:canpulse 1s infinite}
+.tr-rks{display:flex;flex-direction:column;gap:6px}
+.tr-rkh{font-weight:900;letter-spacing:1px;color:#ffd76a;font-size:16px;padding:4px 2px}
+.tr-rk{display:flex;align-items:center;gap:10px;padding:7px 12px;border-radius:10px;background:#140a10e0;border:1px solid #4a2a36;font-size:15px}
+.tr-rk .no{width:30px;text-align:center;font-size:22px}.tr-rk img,.tr-rk .q{width:32px;height:32px;border-radius:50%;flex:none;background:#3a2a36;display:flex;align-items:center;justify-content:center}
+.tr-rk b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tr-rk .pl{font-size:13px;color:#ffe2c8}.tr-rk .tb{font-size:12px;font-weight:900;color:#ffe9a8;min-width:70px;text-align:right}
+.tr-rk.g{border-color:#ffd23a;background:linear-gradient(90deg,#4a3208e8,#160c06e8);box-shadow:0 0 16px #ffd23a44}.tr-rk.s{border-color:#d8e0f0}.tr-rk.b{border-color:#e09a5a}.tr-rk.me{outline:2px solid #3d8be0}
+.tr-lv b{flex:1}.tr-none{padding:20px;text-align:center;color:var(--muted)}
+/* card reveal + spectator bar */
+#tourfx{position:fixed;inset:0;z-index:120;display:none;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:#000000d8;color:#fff;text-align:center}
+#tourfx.show{display:flex;animation:fadeIn .3s}
+#tourfx h2{margin:0;font-size:28px;color:#ffd76a;text-shadow:0 0 14px #ff8a2a}
+.tfx-row{display:flex;gap:22px;perspective:1000px}
+.tfx-c{width:min(26vw,190px);aspect-ratio:480/671;position:relative;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.3,1.4,.5,1),opacity .5s,filter .5s}
+.tfx-c i{position:absolute;inset:0;border-radius:10px;background:center/cover;backface-visibility:hidden;box-shadow:0 8px 30px #000}
+.tfx-c i.f{transform:rotateY(180deg)}
+.tfx-c.shuf{animation:tfxShuf .5s ease-in-out infinite alternate}
+@keyframes tfxShuf{to{transform:translateY(-16px) rotate(4deg)}}
+.tfx-c.pick{transform:rotateY(180deg) scale(1.18)}.tfx-c.pick i.f{box-shadow:0 0 40px #ffd23a,0 0 90px #ff8a2a}
+.tfx-c.off{opacity:.15;filter:grayscale(1)}
+#tourfx p{font-size:18px;margin:0;min-height:26px}
+#specbar{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:95;display:none;align-items:center;gap:10px;padding:6px 8px 6px 14px;border-radius:20px;background:#140a10f0;border:2px solid #7ab8ff;box-shadow:0 0 16px #3d8be066;font-size:14px;font-weight:bold}
+#specbar .eye{font-size:20px}#specbar small{display:block;font-size:11px;color:var(--muted);font-weight:normal}#specbar button{padding:4px 12px;font-size:13px}
+#specbar .specwait{font-size:12px;color:#ffd76a;display:flex;align-items:center;gap:6px}
+.arttag{position:absolute;left:3px;bottom:3px;z-index:3;font-size:10px;font-weight:900;padding:0 4px;border-radius:6px;background:#3a2a08e8;border:1px solid #ffd23a;color:#ffe9a8}
+body.mobile #tourbtn{left:8px;top:8px;max-width:calc(100vw - 150px);padding:5px 10px 5px 5px;gap:8px}body.mobile #tourbtn .tth{width:36px;height:50px}body.mobile #tourbtn .tti{font-size:12px}body.mobile #tourbtn .tev,body.mobile #tourbtn .twh{font-size:10px}
+body.mobile .tr-body{grid-template-columns:1fr}body.mobile .tr-hero{flex-direction:row;flex-wrap:wrap}body.mobile .tr-card{width:120px;flex:none}body.mobile .tr-hero .tr-box{flex:1 1 200px}
+body.mobile .tr-pr{flex-wrap:wrap}body.mobile .tr-pr .lb{width:auto}
+/* special-art cards: moving RGB rainbow edge that glows */
+@property --rgba{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes rgbSpin{to{--rgba:360deg}}
+.rgbedge{position:absolute;inset:-2px;border-radius:inherit;pointer-events:none;z-index:4;padding:3px;
+  background:conic-gradient(from var(--rgba),#ff0040,#ff8a00,#ffee00,#3dff6a,#00e5ff,#2a6bff,#c040ff,#ff0040);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  animation:rgbSpin 2.6s linear infinite}
+.rgbedge::after{content:'';position:absolute;inset:-4px;border-radius:inherit;background:inherit;filter:blur(7px);opacity:.85;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);padding:8px}
+.rgbcard{overflow:visible!important}
+/* foils (Master-Duel-like shattered prism glass): full strength on the frame, light over the middle so the art stays clear */
+/* the art and the text must never be covered: the shards live on a band around the card edge, the inside only gets a faint shimmer */
+.foil{-webkit-mask-image:radial-gradient(ellipse 72% 62% at 50% 50%,rgba(0,0,0,.38) 0%,rgba(0,0,0,.48) 70%,rgba(0,0,0,.8) 90%,#000 100%);mask-image:radial-gradient(ellipse 72% 62% at 50% 50%,rgba(0,0,0,.38) 0%,rgba(0,0,0,.48) 70%,rgba(0,0,0,.8) 90%,#000 100%)}
+.foil.f-prism{opacity:.9}
+.foil.f-prism::before{opacity:.75;filter:saturate(1.25) brightness(1.05)}
+/* the glass shards come and go: a soft band that slides slowly from the top of the card to the bottom, then fades away */
+.foil::before{-webkit-mask-image:linear-gradient(180deg,#0000 0%,#0000 30%,#000 45%,#000 55%,#0000 70%,#0000 100%);mask-image:linear-gradient(180deg,#0000 0%,#0000 30%,#000 45%,#000 55%,#0000 70%,#0000 100%);
+  -webkit-mask-size:100% 300%;mask-size:100% 300%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  animation:foilHue 7s linear infinite,shardFall 5.5s cubic-bezier(.45,0,.55,1) infinite}
+@keyframes shardFall{0%{-webkit-mask-position:0 100%;mask-position:0 100%}75%,100%{-webkit-mask-position:0 0%;mask-position:0 0%}}
+.foil.f-prism::after{background:linear-gradient(115deg,#fff0 38%,#ffffffb0 47%,#bff6ff80 50%,#ffb0f080 53%,#fff0 62%)}
+/* phone deck builder: the deck list and the card pool each scroll on their own (the old layout made one 2000px page
+   where the 50-card list pushed the pool off-screen, so it felt like it couldn't scroll) */
+body.mobile #deckb .dmain{overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y}
+body.mobile #deckb .ddeck{flex:none;min-height:0}
+body.mobile #deckb #dlist{flex:none;max-height:38dvh}
+body.mobile #deckb .dpool{flex:none;height:82dvh;min-height:0}
+body.mobile #deckb #dlist,body.mobile #deckb #dgrid,body.mobile #deckb .dleaders{-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-x pan-y}
+body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0}
 </style>
 </head>
 <body>
@@ -1116,6 +1310,11 @@ body.mobile .rcard{width:70px}
 </div>
 <a id="ytbadge" href="https://www.youtube.com/@brownsugarpow" target="_blank" rel="noopener" title="YouTube: @BrownSugar"><svg viewBox="0 0 28 20"><rect width="28" height="20" rx="5" fill="#ff0033"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg><span>@BrownSugar</span></a>
 <div id="qpbar"></div>
+<button id="tourbtn" title="ECLIPSA CARD GAME — TOURNAMENT"></button>
+<div id="tbadge"></div>
+<div id="tour"></div>
+<div id="tourfx"></div>
+<div id="specbar"></div>
 <div id="room"></div>
 <div id="vsintro"></div>
 <button id="chatbtn" title="แชท" style="display:none">💬<i></i></button>
@@ -1129,23 +1328,31 @@ body.mobile .rcard{width:70px}
 <div class="wallet" id="wallet" title="เหรียญ: ชนะ +1250 · แพ้ +500"></div>
 <div id="verlabel" style="position:fixed;left:12px;bottom:8px;z-index:81;color:#ffffff55;font-size:12px;pointer-events:none"></div>
 <div id="deckb">
-  <div class="gtop"><button id="dback">← กลับ</button><div class="gtitle">จัดเด็ค</div><div class="dcount" id="dcount"></div></div>
+  <div class="dbar">
+    <button id="dback" class="dbk" title="กลับ">←</button>
+    <div class="dbtitle">จัดเด็ค</div><div class="dcount" id="dcount"></div>
+    <div class="dbsp"></div>
+    <button id="ddefault" title="จัดเด็คที่ดีที่สุดจากการ์ดที่มี ตามคาแรคเตอร์ที่เลือก">✨ จัดเด็คที่ดีที่สุด</button>
+    <button id="dslots">📁 เด็คที่เก็บไว้ <span id="dslotn"></span></button>
+    <button id="dclear">🗑 ล้างเด็ค</button>
+    <button id="dsave" class="primary">💾 บันทึก</button>
+  </div>
   <div class="dmain">
-    <div class="dcol">
-      <div class="dtabs" id="dtabs"><button data-f="all" class="on">ทั้งหมด</button><button data-f="ally">พวกพ้อง</button><button data-f="event">เหตุการณ์</button><button data-f="vehicle">พาหนะ</button></div>
-      <div class="dhelp">คลิกการ์ด = อ่านการ์ด / เลือกลายฟอย · ปุ่ม + = ใส่เด็ค · คลิกขวา หรือปุ่ม − = เอาออก · ใส่ได้ใบละ 4 · เด็คต้องมี 50 ใบพอดี</div>
-      <div class="dgrid" id="dgrid"></div>
-    </div>
-    <div class="dside">
-      <div class="dlisttitle">เลือกคาแรคเตอร์</div>
+    <div class="dinfo" id="dinfo"></div>
+    <div class="ddeck">
+      <div class="dsec"><span class="dsic">👑</span>คาแรคเตอร์</div>
       <div class="dleaders" id="dleaders"></div>
-      <div class="dprev" id="dprev"><div style="color:var(--muted);font-size:13px">ชี้เมาส์ที่การ์ดเพื่อดูสกิล</div></div>
-      <div class="dlisttitle">การ์ดในเด็ค <span id="dlistcount"></span></div>
-      <div class="dlist" id="dlist"></div>
-      <div class="dbtns"><button id="dclear">ล้างเด็ค</button><button id="ddefault" title="จัดเด็คที่ดีที่สุดจากการ์ดที่มี ตามคาแรคเตอร์ที่เลือก">✨ จัดเด็คที่ดีที่สุด</button></div>
-      <button id="dslots" class="deckbtn" style="width:100%">📁 เด็คที่เก็บไว้ <span id="dslotn"></span></button>
-      <button id="dsave" class="primary" style="width:100%;font-size:16px">💾 บันทึกเด็ค</button>
+      <div class="dsec"><span class="dsic">🂠</span>เด็คหลัก <b id="dlistcount"></b><span class="dsech">แตะการ์ด = ดูรายละเอียด · ดับเบิลคลิก / คลิกขวา = เอาออก</span></div>
+      <div class="ddgrid" id="dlist"></div>
       <div id="dmsg"></div>
+    </div>
+    <div class="dpool">
+      <div class="dptab">📋 รายการการ์ด</div>
+      <div class="dsearch"><input id="dq" placeholder="🔍 ค้นหาชื่อการ์ด / เผ่า" autocomplete="off"><select id="dsort" title="เรียงการ์ด">
+        <option value="type">เรียง: ประเภท</option><option value="cost">เรียง: มานา</option><option value="power">เรียง: พลัง</option><option value="name">เรียง: ชื่อ</option><option value="own">เรียง: มีแล้วก่อน</option><option value="rare">เรียง: ความหายาก</option></select></div>
+      <div class="dtabs" id="dtabs"><button data-f="all" class="on">ทั้งหมด</button><button data-f="ally">พวกพ้อง</button><button data-f="event">เหตุการณ์</button><button data-f="vehicle">พาหนะ</button><button data-f="leader">คาแรคเตอร์</button><button data-f="own">มีแล้ว</button></div>
+      <div class="dgrid" id="dgrid"></div>
+      <div class="dphelp">แตะ = ดูรายละเอียด · ดับเบิลคลิก = ใส่เด็ค · ใส่ได้ใบละ 4 · เด็คต้องมี 50 ใบพอดี</div>
     </div>
   </div>
 </div>
@@ -1200,13 +1407,13 @@ body.mobile .rcard{width:70px}
   <div class="gnote">ใช้เหรียญ (เหลียน) ที่ได้จากการเล่น · ชนะได้ <b>1250</b> · แพ้ได้ <b>500</b> · ได้การ์ดซ้ำ คืน <b>100</b> เหลียน</div>
 </div>
 
-<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=14;</script>
+<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=15;</script>
 <script>
 // ============ CARD DATA (transcribed from the card art) ============
 const SAN='สามพี่น้อง', SHIP='เรือหลวง', WCT='พี่น้องร่ำรา', MANA_MAX=10, HAND_MAX=8;
 const CARDS={
  xuan:{type:'leader',name:'เซวียนเหิง',img:'L_xuan.png',power:6000,life:5,tags:['มนุษย์','ดาบ',SHIP],
-  skill:['ถ้ามีพาหนะ <b>เรือหลวงสุริยคราส</b> อยู่ในช่องพาหนะ → พลัง <b>+1000</b>','[AUTO] เมื่อโดนโจมตีเข้า แล้วพลังชีวิตเหลือ <b>3 หรือน้อยกว่า</b> → เรียกพวกพ้องเผ่าเรือหลวง 1 ใบจากกองการ์ดหรือช่องครอบลงสนามได้ทันที']},
+  skill:['ถ้ามีพาหนะ <b>เรือหลวงสุริยคราส</b> อยู่ในช่องพาหนะ → พลัง <b>+1000</b>','[AUTO] เมื่อพลังชีวิตได้รับความเสียหาย ถ้าพลังชีวิตเหลือ <b>3 หรือน้อยกว่า</b> → เรียกพวกพ้องเผ่าเรือหลวง 1 ใบจากกองการ์ดหรือช่องครอบลงสนามได้ <b>โดยไม่ต้องใช้มานา</b> (1 ครั้งต่อเทิร์น)']},
  grandpa:{type:'ally',name:'คุณปู่สามพี่น้อง',img:'A_grandpa.png',power:0,counter:1000,tags:['มังกร'],
   skill:['[GUARD] เมื่อการ์ดใบนี้อยู่ที่<b>ช่องป้องกัน</b> → ได้พลังป้องกัน <b>+1000</b> เพิ่มตามจำนวนพวกพ้องเผ่า "สามพี่น้อง" ในสนามเรา','<i>วางจากมือลงช่องป้องกัน = +1000 (เทา) + โบนัสสามพี่น้อง</i>']},
  bingyue:{type:'ally',cost:2,name:'ปิงเย่ว',img:'A_bingyue.png',power:6000,counter:0,tags:['มังกร',SAN,SHIP],
@@ -1316,19 +1523,37 @@ const KW={'[GUARD]':['k5','ช่องป้องกัน'],'[ON PLAY]':['k3'
 // ============ HELPERS ============
 const A=n=>(window.ASSET&&ASSET[n])||('img/'+n);
 const $=s=>document.querySelector(s);
-const D=c=>CARDS[c.id];
+// ---------- special art variants (same card, different picture) — tournament only, never sold anywhere ----------
+const ARTS={
+  sera:{base:'inn',img:'E_inn_sera.png',name:'เซร่า',how:'รางวัลอันดับ 1 ทัวร์นาเมนต์'},
+  jin:{base:'inn',img:'E_inn_jin.png',name:'จิน',how:'สุ่มรับเมื่อร่วมทัวร์นาเมนต์'},
+  fire:{base:'inn',img:'E_inn_fire.png',name:'ราตรีพลุ',how:'สุ่มรับเมื่อร่วมทัวร์นาเมนต์'},
+  cat:{base:'inn',img:'E_inn_cat.png',name:'แมวดำ',how:'สุ่มรับเมื่อร่วมทัวร์นาเมนต์'},
+};
+const ARTD={};
+// every art is also its own card in the deck builder (inn_sera …): same card in play, and it shares the copy limit
+// with the normal card — e.g. 2 normal + 2 other pictures = 4 (the limit for "โรงเตี๊ยมของพีช")
+// tournament prize cards are always the shattered-prism foil (plus the RGB edge)
+for(const k of Object.keys(ARTS)){const a=ARTS[k];CARDS[a.base+'_'+k]={...CARDS[a.base],img:a.img,base:a.base,art:k,foil:'prism',gacha:'T',artName:a.name}}
+// foil cards are their own deck entries too (id~prism …) so different foils + normal copies can sit in one deck,
+// all sharing the copy limit of the normal card (before, one chosen foil covered every copy)
+const FOIL_KEYS=['prism','glitter','pixel','hex'];
+for(const id of Object.keys(CARDS)){const d=CARDS[id];if(d.base||id==='longyexin'||(d.type==='leader'&&!d.inDeck))continue;
+  for(const f of FOIL_KEYS)CARDS[id+'~'+f]={...d,base:id,foil:f,gacha:'F',baseGacha:d.gacha||''}}
+const baseOf=id=>(CARDS[id]&&CARDS[id].base)||id;
+const D=c=>{const a=c.art&&ARTS[c.art];if(a&&a.base===c.id)return ARTD[c.art]||(ARTD[c.art]={...CARDS[c.id],img:a.img});return CARDS[c.id]};
 let SPEED=1.5;
 // after a surrender (G.halt) every waiting game step just stops here, so the bot / host stops playing
 const sleep=ms=>{const g=G;return new Promise(r=>setTimeout(()=>{if(!(g&&g.halt)&&G===g)r()},ms*SPEED))};
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
 const hasTag=(c,t)=>!!D(c).allNames||D(c).tags.includes(t);
-let UID=0; const mkCard=id=>({uid:++UID,id});
+let UID=0; const mkCard=id=>{const d=CARDS[id];if(!d||!d.base)return {uid:++UID,id};const c={uid:++UID,id:d.base};if(d.art)c.art=d.art;if(d.foil)c.foil=d.foil;return c}; // special-art / foil cards play as their base card
 const OVER={over:true};
 let G=null;
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 
 function unitize(c){Object.assign(c,{rested:false,mana:0,sick:true,tmp:{atk:0,def:0,pow:0},noAttack:false});return c}
-const strip=c=>c.foil?{uid:c.uid,id:c.id,foil:c.foil}:{uid:c.uid,id:c.id}; // keep the foil when a card changes zone
+const strip=c=>{const o={uid:c.uid,id:c.id};if(c.foil)o.foil=c.foil;if(c.art)o.art=c.art;return o}; // keep the foil / art when a card changes zone
 // the opponent of p: 1v1 = the other player · 2v2 = the other side of this turn's duel (G.cur vs G.foe)
 const opp=p=>{const P=G.players||[G.me,G.ai];if(P.length===2)return P[0]===p?P[1]:P[0];
   if(G.cur&&G.foe){if(p===G.cur)return G.foe;if(p===G.foe)return G.cur;return p.team===G.cur.team?G.foe:G.cur}
@@ -1345,11 +1570,11 @@ const ownerOf=c=>G&&(G.players||[G.me,G.ai]).find(p=>fieldCards(p).includes(c));
 const sideOf=p=>String(G.players.indexOf(p));
 const playerOf=s=>G.players[+s];
 
-function newPlayer(ai,leaderId,name,list,foils){
-  const fo=id=>{const c=mkCard(id);if(foils&&FOILS[foils[id]])c.foil=foils[id];return c};
-  const deck=[];for(const [id,n] of Object.entries(list||DECKLIST))for(let i=0;i<n;i++)deck.push(fo(id));
+function newPlayer(ai,leaderId,name,list,foils,arts){
+  // deck cards carry their own foil (id~foil entries); the chosen foil map only dresses the character card now
+  const deck=[];for(const [id,n] of Object.entries(list||DECKLIST))for(let i=0;i<n;i++)deck.push(mkCard(id));
   shuffle(deck);
-  const leader=unitize(fo(leaderId));leader.sick=false;
+  const leader=unitize(mkCard(leaderId));if(foils&&FOILS[foils[leaderId]])leader.foil=foils[leaderId];leader.sick=false;
   return {ai,remote:false,name,leader,deck,hand:[],life:[],trash:[],allies:[],guard:[],vehicle:null,manaDeck:10,manaActive:0,manaRested:0,once:{},tianxingBlocked:false};
 }
 
@@ -1548,11 +1773,13 @@ $('#gachabtn').onclick=openGacha;$('#gback').onclick=closeGacha;$('#gbox9').oncl
 $('#nextbtn').onclick=e=>{e.stopPropagation();audioInit();nextTrack()};
 
 // ============ NETWORK (PeerJS / WebRTC) ============
-const NET={peer:null,conn:null,links:new Map(),pending:{},req:0,snapQ:false,pub:null};
+const NET={peer:null,conn:null,links:new Map(),specs:new Map(),pending:{},req:0,snapQ:false,pub:null};
+// spectators (ผู้ชม): get the match with BOTH hands hidden, can't act
+function specSend(m){for(const [,c] of NET.specs)try{if(c.open)c.send(m)}catch(e){}}
 function sendTo(pid,m){const c=NET.links.get(pid);try{if(c&&c.open)c.send(m)}catch(e){console.warn(e)}}
 function bcast(m,except){for(const [pid,c] of NET.links)if(pid!==except)try{if(c.open)c.send(m)}catch(e){console.warn(e)}}
 function send(m){if(NET.links.size){bcast(m);return}try{if(NET.conn&&NET.conn.open)NET.conn.send(m)}catch(e){console.warn(e)}}
-function emit(m){if(G&&G.mode==='host')bcast({t:'fx',...m})}
+function emit(m){if(G&&G.mode==='host'){bcast({t:'fx',...m});specSend({t:'fx',...m})}}
 function netMsg(h){$('#netmsg').innerHTML=h}
 const CODECH='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 const randCode=()=>Array.from({length:6},()=>CODECH[Math.random()*CODECH.length|0]).join('');
@@ -1618,10 +1845,10 @@ function myName(){const dp=dProfile();if(dp)return cleanName(dp.name);const v=cl
 // guest: NET.conn = link to the host · host: NET.links = Map(pid → link) of every guest.
 const ROOM_MAX={'1v1':2,'2v2':4},PUB_SLOTS=12,QP_SLOTS=4;
 let ROOM=null,MYPID='',CHAT=[];
-function myProfileMsg(){const dp=dProfile();return {name:myName(),avatar:myAvatar(),did:dp?String(dp.id||'').replace(/\D/g,''):'',duser:dp?cleanName(dp.username||''):'',leader:loadLeader(),deck:loadDeck(),foils:myFoilMap()}}
+function myProfileMsg(){const dp=dProfile();return {name:myName(),avatar:myAvatar(),did:dp?String(dp.id||'').replace(/\D/g,''):'',duser:dp?cleanName(dp.username||''):'',leader:loadLeader(),deck:loadDeck(),foils:myFoilMap(),arts:myArtMap(),tb:myBadge()}}
 function cleanPlayer(m){
   m=m||{};const leader=validLeader(m.leader)?m.leader:LEADERS[0];
-  return {name:cleanName(m.name)||'ผู้เล่น',avatar:safeAvatar(m.avatar),did:String(m.did||'').replace(/\D/g,'').slice(0,20),duser:cleanName(m.duser),leader,deck:validDeck(m.deck,leader)?m.deck:{...DECKLIST},foils:cleanFoils(m.foils)};
+  return {name:cleanName(m.name)||'ผู้เล่น',avatar:safeAvatar(m.avatar),did:String(m.did||'').replace(/\D/g,'').slice(0,20),duser:cleanName(m.duser),leader,deck:validDeck(m.deck,leader)?m.deck:{...DECKLIST},foils:cleanFoils(m.foils),arts:cleanArts(m.arts),tb:cleanBadge(m.tb)};
 }
 const roomInfo=()=>ROOM?{code:ROOM.qp?'':ROOM.code,mode:ROOM.mode,max:ROOM.max,count:ROOM.players.length,started:!!ROOM.started,name:(ROOM.players.find(p=>p.host)||{}).name||'',qp:!!ROOM.qp}:{};
 function roomState(){return {code:ROOM.qp?'':ROOM.code,mode:ROOM.mode,max:ROOM.max,qp:!!ROOM.qp,started:!!ROOM.started,players:ROOM.players.map(p=>({pid:p.pid,name:p.name,avatar:p.avatar,host:p.host,ready:p.ready,slot:p.slot,leader:p.leader,did:p.did,duser:p.duser}))}}
@@ -1651,6 +1878,14 @@ function roomAccept(conn){
     if(!m||!m.t)return;
     if(!pid){
       if(m.t==='pinfo?'){try{conn.send({t:'pinfo',...roomInfo()})}catch(e){}setTimeout(()=>conn.close(),400);return}
+      if(m.t==='rspec'){
+        if(NET.specs.size>=40){try{conn.send({t:'rfull'})}catch(e){}setTimeout(()=>conn.close(),400);return}
+        const sid='s'+(++NET.req)+randCode().slice(0,3);NET.specs.set(sid,conn);
+        conn.on('close',()=>NET.specs.delete(sid));
+        try{conn.send({t:'specok',room:ROOM?roomInfo():{}});if(G&&G.players)conn.send(snapFor(null))}catch(e){}
+        if(ROOM)roomSys(`👁 ${cleanName(m.name)||'ผู้ชม'} เข้ามาดู`);
+        pid='spec';return;
+      }
       if(m.t!=='rjoin')return;
       if(!ROOM||ROOM.started||ROOM.players.length>=ROOM.max){try{conn.send({t:'rfull',started:!!(ROOM&&ROOM.started)})}catch(e){}setTimeout(()=>conn.close(),400);return}
       pid='p'+(++NET.req)+randCode().slice(0,3);NET.links.set(pid,conn);
@@ -1659,9 +1894,10 @@ function roomAccept(conn){
       ROOM.players.push(pl);sfx('buff');roomSys(`${pl.name} เข้าห้อง`);roomSync();
       return;
     }
+    if(pid==='spec')return; // spectators only watch
     onNet(m,pid);
   });
-  conn.on('close',()=>{if(pid)roomLeft(pid)});
+  conn.on('close',()=>{if(pid&&pid!=='spec')roomLeft(pid)});
 }
 function roomLeft(pid){
   NET.links.delete(pid);
@@ -1734,6 +1970,7 @@ function guestClosed(){
 }
 function lost(){
   if(G&&G.over)return;
+  if(G&&G.tour&&!G.spec){tourOppLeft();return}
   surrClose();
   const box=$('#modal .box');box.innerHTML=`<h2>การเชื่อมต่อหลุด</h2><p style="font-size:16px">อีกฝ่ายออกจากเกม หรืออินเทอร์เน็ตมีปัญหา</p><div class="foot"><button class="primary" onclick="location.reload()">กลับหน้าแรก</button></div>`;
   $('#modal').style.display='flex';
@@ -1747,7 +1984,7 @@ function onNet(m,pid){
   if(pid){
     const rp=ROOM&&ROOM.players.find(p=>p.pid===pid);
     if(m.t==='rready'&&rp&&!ROOM.started){rp.ready=!!m.ready;roomSync();return}
-    if(m.t==='rdeck'&&rp&&!ROOM.started){const c=cleanPlayer({...rp,leader:m.leader,deck:m.deck,foils:m.foils});rp.leader=c.leader;rp.deck=c.deck;rp.foils=c.foils;rp.ready=!!ROOM.qp;roomSync();return}
+    if(m.t==='rdeck'&&rp&&!ROOM.started){const c=cleanPlayer({...rp,leader:m.leader,deck:m.deck,foils:m.foils,arts:m.arts});rp.leader=c.leader;rp.deck=c.deck;rp.foils=c.foils;rp.arts=c.arts;rp.ready=!!ROOM.qp;roomSync();return}
     if(m.t==='rchat'&&rp){const text=cleanChat(m.text);if(!text)return;const msg={pid,name:rp.name,text};chatPush(msg);bcast({t:'rchat',...msg});return}
     if(m.t==='chosen'){const f=NET.pending[m.id];if(f&&f.pid===pid){delete NET.pending[m.id];f(m.idx||[])}return}
     const p=playerByPid(pid);
@@ -1784,20 +2021,22 @@ function onNet(m,pid){
 }
 function ser(p,hide){
   return {name:p.name,avatar:p.avatar||'',ai:false,remote:false,team:p.team,out:!!p.out,pid:p.pid||'',did:p.did||'',duser:p.duser||'',leader:p.leader,allies:p.allies,guard:p.guard,guardSum:p.guardSum||0,vehicle:p.vehicle,trash:p.trash,manaDeck:p.manaDeck,manaActive:p.manaActive,manaRested:p.manaRested,once:p.once,tianxingBlocked:p.tianxingBlocked,
-    quit:!!p.quit,hand:hide?p.hand.map(c=>({uid:c.uid})):p.hand,deck:p.deck.map(c=>({uid:c.uid})),life:p.life.map(c=>({uid:c.uid}))};
+    tb:p.tb||'',quit:!!p.quit,hand:hide?p.hand.map(c=>({uid:c.uid})):p.hand,deck:p.deck.map(c=>({uid:c.uid})),life:p.life.map(c=>({uid:c.uid}))};
 }
-const snapFor=p=>({t:'snap',players:G.players.map(x=>ser(x,x!==p)),you:G.players.indexOf(p),cur:G.players.indexOf(G.cur),foe:G.players.indexOf(G.foe),turn:G.turn,phase:G.phase,over:G.over,busy:G.busy,wait:G.wait,speed:SPEED});
+// p = null → a spectator's view: every hand hidden
+const snapFor=p=>({t:'snap',players:G.players.map(x=>ser(x,x!==p)),you:p?G.players.indexOf(p):0,spec:!p,cur:G.players.indexOf(G.cur),foe:G.players.indexOf(G.foe),turn:G.turn,phase:G.phase,over:G.over,busy:G.busy,wait:G.wait,speed:SPEED,tour:G.tour||''});
 function sendSnap(){
   if(NET.snapQ)return;NET.snapQ=true;
-  queueMicrotask(()=>{NET.snapQ=false;if(!G||!G.players)return;for(const p of G.players)if(p.remote&&p.pid)sendTo(p.pid,snapFor(p))});
+  queueMicrotask(()=>{NET.snapQ=false;if(!G||!G.players)return;for(const p of G.players)if(p.remote&&p.pid)sendTo(p.pid,snapFor(p));if(NET.specs.size)specSend(snapFor(null))});
 }
 function findUid(uid){if(!G||!G.players)return null;for(const p of G.players)for(const c of [...fieldCards(p),...p.hand,...p.trash])if(c.uid===uid&&c.id)return c;return null}
-function hideMenuChrome(){for(const s of ['#start','#wallet','#codebtn','#paybtn','#tradebtn','#verlabel','#ytbadge','#qpbar'])$(s).style.display='none';$('#room').classList.remove('show')}
+function hideMenuChrome(){for(const s of ['#start','#wallet','#codebtn','#paybtn','#tradebtn','#verlabel','#ytbadge','#qpbar','#tourbtn','#tbadge'])$(s).style.display='none';$('#room').classList.remove('show');$('#tour').classList.remove('show')}
 function applySnap(s){
   if(!Array.isArray(s.players)||!s.players[s.you])return;
   const first=!G;
-  if(first){G={mode:'guest'};hideMenuChrome();QP.on=false;clearInterval(QP.tick);$('#chatbtn').style.display=''}
+  if(first){G={mode:'guest',spec:!!s.spec};hideMenuChrome();QP.on=false;clearInterval(QP.tick);$('#chatbtn').style.display=s.spec?'none':'';if(s.spec)specBar(true)}
   Object.assign(G,{turn:s.turn,phase:s.phase,over:s.over,busy:s.busy,wait:s.wait});
+  if(s.tour&&!G.spec)G.tour=String(s.tour);
   G.players=s.players;G.me=G.players[s.you];G.cur=G.players[s.cur]||null;G.foe=G.players[s.foe]||null;SPEED=s.speed||1;
   setView();
   if(first)showInfo(G.me.leader);
@@ -1861,8 +2100,8 @@ function renderRoom(){
   el.querySelectorAll('.rdeck').forEach(b=>b.onclick=()=>{
     const s=getSlots()[+b.dataset.i];if(!s||slotProblem(s))return;
     store.set('eclipsa-deck',JSON.stringify(s.deck));store.set('eclipsa-leader',s.leader);sfx('draw');updHero();
-    const pm=myProfileMsg();roomSend({t:'rdeck',leader:pm.leader,deck:pm.deck,foils:pm.foils});
-    if(MYPID==='h'){const hp=ROOM.players.find(p=>p.host);Object.assign(hp,{leader:pm.leader,deck:pm.deck,foils:pm.foils});roomSync()}else renderRoom();
+    const pm=myProfileMsg();roomSend({t:'rdeck',leader:pm.leader,deck:pm.deck,foils:pm.foils,arts:pm.arts});
+    if(MYPID==='h'){const hp=ROOM.players.find(p=>p.host);Object.assign(hp,{leader:pm.leader,deck:pm.deck,foils:pm.foils,arts:pm.arts});roomSync()}else renderRoom();
   });
   const rs=$('#rshuffle');if(rs)rs.onclick=()=>{if(MYPID!=='h')return;sfx('buff');roomShuffle()};
   const st=$('#rstart');if(st)st.onclick=()=>{sfx('click');roomStart()};
@@ -1907,8 +2146,9 @@ function roomStart(){
   const ps=ROOM.players.slice().sort((a,b)=>a.slot-b.slot),half=ROOM.max/2;
   const A=ps.filter(p=>p.slot<half),B=ps.filter(p=>p.slot>=half),order=[];
   for(let i=0;i<half;i++){if(A[i])order.push(A[i]);if(B[i])order.push(B[i])}
-  const players=order.map(rp=>Object.assign(newPlayer(false,rp.leader,rp.name,rp.deck,rp.foils),{pid:rp.pid,team:rp.slot<half?'A':'B',avatar:rp.avatar,did:rp.did,duser:rp.duser,remote:rp.pid!=='h'}));
+  const players=order.map(rp=>Object.assign(newPlayer(false,rp.leader,rp.name,rp.deck,rp.foils,rp.arts),{pid:rp.pid,team:rp.slot<half?'A':'B',avatar:rp.avatar,did:rp.did,duser:rp.duser,tb:rp.tb||'',remote:rp.pid!=='h'}));
   startGame('host',players);
+  if(ROOM.tour)G.tour=ROOM.tour;
 }
 // host: "เล่นอีกรอบ" → everyone back in the same room
 function roomRematch(){
@@ -1999,7 +2239,38 @@ async function joinByCode(code){
   if(ROOM)return;
   netMsg('กำลังเชื่อมต่อ…');
   try{await roomJoin(code);netMsg('');$('#modal').style.display='none';sfx('win')}
-  catch(e){netMsg({full:'ห้องนี้เต็มแล้ว',started:'ห้องนี้กำลังเล่นอยู่','peer-unavailable':'ไม่พบห้องนี้ — เช็ครหัสอีกครั้ง',timeout:'เชื่อมต่อไม่สำเร็จ (หมดเวลา)'}[e]||'เชื่อมต่อไม่สำเร็จ: '+e)}
+  catch(e){
+    if(e==='full'||e==='started'){netMsg(`${e==='full'?'ห้องนี้เต็มแล้ว':'ห้องนี้กำลังเล่นอยู่'} — <button id="specgo" style="padding:4px 12px;font-size:14px">👁 เข้าไปดู (ผู้ชม)</button>`);$('#specgo').onclick=()=>specJoin('eclipsa-'+code);return}
+    netMsg({'peer-unavailable':'ไม่พบห้องนี้ — เช็ครหัสอีกครั้ง',timeout:'เชื่อมต่อไม่สำเร็จ (หมดเวลา)'}[e]||'เชื่อมต่อไม่สำเร็จ: '+e)}
+}
+// ---------- spectator: watch a full / running room (both hands hidden) ----------
+function specJoin(peerId,label){
+  audioInit();sfx('click');
+  if(!window.Peer)return netMsg('โหลดระบบออนไลน์ไม่ได้');
+  if(G||ROOM)return;
+  netMsg('👁 กำลังเข้าไปดู…');
+  const peer=new Peer();let ok=false;
+  const fail=t=>{if(ok)return;ok=true;try{peer.destroy()}catch(_){}netMsg(t);if(typeof tourMsg==='function')tourMsg(t)};
+  peer.on('open',()=>{
+    const conn=peer.connect(peerId,{reliable:true,serialization:'json'});
+    conn.on('open',()=>{try{conn.send({t:'rspec',name:myName()})}catch(e){}});
+    conn.on('data',m=>{
+      if(!m||!m.t)return;
+      if(m.t==='rfull')return fail('ผู้ชมเต็มแล้ว');
+      if(m.t==='specok'){ok=true;NET.peer=peer;NET.conn=conn;netMsg('');closeTour&&closeTour(true);specBar(true,label);
+        conn.on('close',()=>{if(G&&G.over)return;const box=$('#modal .box');box.innerHTML=`<h2>👁 ห้องถูกปิด</h2><p style="font-size:16px">การแข่งขันนี้จบหรือห้องถูกปิดแล้ว</p><div class="foot"><button class="primary" onclick="location.reload()">กลับหน้าแรก</button></div>`;$('#modal').style.display='flex'});return}
+      if(m.t==='snap'){applySnap(m);return}
+      if(m.t==='fx'&&G)playFx(m);
+    });
+  });
+  peer.on('error',e=>fail(e.type==='peer-unavailable'?'ไม่พบห้อง / แมตช์นี้ยังไม่เริ่ม':'เชื่อมต่อไม่สำเร็จ'));
+  setTimeout(()=>fail('เชื่อมต่อไม่สำเร็จ (หมดเวลา)'),10000);
+}
+function specBar(on,label){
+  const b=$('#specbar');if(!on){b.style.display='none';return}
+  b.style.display='flex';label=specBar.l=label||specBar.l||'';
+  b.innerHTML=`<span class="eye">👁</span><span>โหมดผู้ชม${label?' · '+label:''}<small>ไม่เห็นการ์ดบนมือของทั้ง 2 ฝ่าย</small></span><button onclick="location.hash='';location.reload()">ออก</button>`;
+  if(!G){b.innerHTML+=`<span class="specwait"><span class="qspin"></span> รอเกมเริ่ม…</span>`;hideMenuChrome();$('#start').style.display='none'}
 }
 async function openRoomList(){
   audioInit();sfx('click');
@@ -2100,7 +2371,7 @@ const REPORT_WEBHOOK='https://discord.com/api/webhooks/1575248492429844651/5o_OO
 const REPORT_CHANNEL='https://discord.gg/QTee4g6R2';   // link to that channel, opened by the admin's "ดูรายงาน" button
 const REPORT_ADMINS=['dzssluggerg_'];
 const isAdmin=()=>{const p=dProfile();return !!(p&&REPORT_ADMINS.includes(String(p.username||'').toLowerCase()))};
-function openReport(){
+function openReport(back){
   sfx('click');
   const box=$('#modal .box');box.classList.remove('prompt');
   const others=(LASTMATCH||[]).filter(p=>!p.me);
@@ -2115,14 +2386,15 @@ function openReport(){
   const drawWho=()=>{$('#rpwho').innerHTML=kind!=='player'?'':`<div class="rpwho">${others.map((p,i)=>`<button class="rpp${who===i?' on':''}" data-i="${i}">${p.avatar?`<img src="${p.avatar}" alt="">`:''}<span><b>${p.name}</b><small>${p.duser?'@'+p.duser:'ไม่ได้เชื่อม Discord'}${p.did?' · ID '+p.did:''}</small></span></button>`).join('')}</div>`;
     box.querySelectorAll('.rpp').forEach(b=>b.onclick=()=>{who=+b.dataset.i;sfx('click');drawWho()})};
   box.querySelectorAll('.cm1').forEach(b=>b.onclick=()=>{if(b.disabled)return;kind=b.dataset.k;who=null;sfx('click');box.querySelectorAll('.cm1').forEach(x=>x.classList.toggle('on',x===b));drawWho()});
-  $('#rpno').onclick=()=>{sfx('click');$('#modal').style.display='none'};
+  // closing goes back to where the report was opened from (the result screen)
+  $('#rpno').onclick=()=>{sfx('click');if(back)back();else $('#modal').style.display='none'};
   $('#rpok').onclick=async()=>{
     const text=String($('#rptext').value||'').trim().slice(0,600),msg=$('#rpmsg');
     if(kind==='player'&&who==null){msg.innerHTML='<span style="color:#ffb0b0">เลือกผู้เล่นที่จะรายงานก่อน</span>';return}
     if(!text){msg.innerHTML='<span style="color:#ffb0b0">พิมพ์รายละเอียดก่อน</span>';return}
     const last=+store.get('eclipsa-report-t')||0;if(Date.now()-last<60000){msg.innerHTML='<span style="color:#ffb0b0">ส่งรายงานได้นาทีละ 1 ครั้ง</span>';return}
     const ok=await sendReport(kind,kind==='player'?others[who]:null,text);
-    if(ok){store.set('eclipsa-report-t',String(Date.now()));sfx('win');msg.innerHTML='<span style="color:#8ff0a8">✔ ส่งรายงานแล้ว ขอบคุณครับ</span>';$('#rpok').disabled=true}
+    if(ok){store.set('eclipsa-report-t',String(Date.now()));sfx('win');msg.innerHTML='<span style="color:#8ff0a8">✔ ส่งรายงานแล้ว ขอบคุณครับ</span>';$('#rpok').disabled=true;$('#rpno').textContent=back?'← กลับ':'ปิด'}
     else msg.innerHTML='<span style="color:#ffb0b0">ส่งไม่สำเร็จ — ระบบรายงานยังไม่ได้ตั้งค่า หรือไม่มีอินเทอร์เน็ต</span>';
   };
 }
@@ -2244,25 +2516,33 @@ function renderDetail(){
   if(d.boost)r('🔥',`โจมตี <span class="vtab r">+${d.boost}</span>`);
   if(own&&c.mana)r('💧',`ติดมานา <b>+${c.mana}</b>`);
   if(d.trigger)r('⚡','มีทริกเกอร์');
-  if(d.gacha)r('🎰',`ตู้สุ่ม · <span class="rt ${d.gacha}" style="position:static;opacity:1;transform:none;display:inline-block;border-radius:8px;padding:0 6px;font-size:12px;color:#fff">${TIER(d.gacha).glow}</span> ${RARITY_TH[d.gacha]||TIER(d.gacha).name} · ${boxOf(c.id).name}`);
+  if(d.foil&&FOILS[d.foil])r('✦',`ฟอยล์ <b>${FOILS[d.foil].name}</b> · นับรวมกับ${d.name}ใบปกติ (ทุกแบบรวมกันสูงสุด ${OWN_EACH} ใบ)`);
+  if(d.gacha&&d.gacha!=='T'&&d.gacha!=='F')r('🎰',`ตู้สุ่ม · <span class="rt ${d.gacha}" style="position:static;opacity:1;transform:none;display:inline-block;border-radius:8px;padding:0 6px;font-size:12px;color:#fff">${TIER(d.gacha).glow}</span> ${RARITY_TH[d.gacha]||TIER(d.gacha).name} · ${boxOf(c.id).name}`);
   if(LIMITS[c.id])r(`<span style="width:20px;height:20px;display:inline-block">${LIMIT_SVG(LIMITS[c.id].max)}</span>`,`ลิมิต: ${LIMITS[c.id].why}`);
   let foot=`<button id="cd3d">🔍 ดูแบบ 3D</button>`;
   // foil picker (outside a match): which owned foil this card shows
-  const myFoils=!G&&c.id!=='longyexin'?foilsOf(c.id):[],shownFoil=c.foil||(G?'':foilSel(c.id));
+  // foil picker only for the character card; deck cards have one entry per foil
+  const myFoils=!G&&c.id!=='longyexin'&&d.type==='leader'&&!d.inDeck?foilsOf(c.id):[],shownFoil=c.foil||d.foil||(G||d.type!=='leader'||d.inDeck?'':foilSel(c.id));
   if(myFoils.length)foot+=`<div style="flex-basis:100%;display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:13px">✦ ฟอยที่มี:${['',...myFoils].map(f=>`<button class="cdfoil${f===shownFoil?' primary':''}" data-f="${f}" style="flex:none;padding:4px 9px;font-size:12.5px">${f?FOILS[f].name:'ปกติ'}</button>`).join('')}</div>`;
+  // special art (tournament): its own card in the deck, counted together with the normal one
+  const shownArt=c.art||CARDS[c.id].art||'';
+  if(shownArt&&ARTS[shownArt])r('🏆',`ลายพิเศษ <b>${ARTS[shownArt].name}</b> · ${ARTS[shownArt].how} — ไม่มีขาย · นับรวมกับ${CARDS[baseOf(c.id)].name}ใบปกติ (ทุกลายรวมกันสูงสุด ${OWN_EACH} ใบ)`);
+  const cdImg=d.img;
   if(CD.opts.deck&&d.type!=='leader'&&typeof DB!=='undefined'&&DB.edit){
-    if(isOwned(c.id)){const n=DB.edit[c.id]||0,lim=limitOf(c.id,DB.leader);
+    if(isOwned(c.id)){const n=DB.edit[c.id]||0,lim=Math.min(limitOf(c.id,DB.leader),n+Math.max(0,groupLeft(DB.edit,c.id,DB.leader)));
       foot+=`<button id="cdm" ${n?'':'disabled'}>− เอาออก</button><span class="cnt">ในเด็ค ${n}/${lim}</span><button id="cdp" class="primary" ${n>=lim?'disabled':''}>+ ใส่เด็ค</button>`}
     else foot+=`<span class="cnt">🔒 ยังไม่มี — สุ่มจากตู้</span>`;
   }
   const el=$('#cdetail');
   el.innerHTML=`<div class="cdh"><span class="nm">${d.name}</span><button class="x" id="cdx" title="ปิด">✕</button></div>
-    <div class="cdtop"><div class="cdimg" style="background-image:url(${A(d.img)})" title="คลิกเพื่อดูแบบ 3D"></div><div class="cdst">${rows.join('')}</div></div>
+    <div class="cdtop"><div class="cdimg" style="background-image:url(${A(cdImg)})" title="คลิกเพื่อดูแบบ 3D"></div><div class="cdst">${rows.join('')}</div></div>
     <div class="cdty">[ ${TYPE_TH[d.type]}${d.allNames?' / ทุกเผ่า':d.tags.length?' / '+d.tags.join(' / '):''} ]</div>
     <div class="cdsk">${skillHTML(c)}</div><div class="cdft">${foot}</div>`;
   el.onclick=e=>e.stopPropagation();
   if(c.id==='longyexin')addAura(el.querySelector('.cdimg'),9);else if(shownFoil)addFoilType(el.querySelector('.cdimg'),shownFoil);
+  if(shownArt)addRgb(el.querySelector('.cdimg'));
   el.querySelectorAll('.cdfoil').forEach(b=>b.onclick=()=>{sfx('click');setFoilUse(c.id,b.dataset.f);renderDetail();if($('#deckb').classList.contains('show'))renderDeck()});
+  el.querySelectorAll('.cdart').forEach(b=>b.onclick=()=>{sfx('click');setArtUse(c.id,b.dataset.k);renderDetail();if($('#deckb').classList.contains('show'))renderDeck()});
   $('#cdx').onclick=()=>{sfx('click');closeDetail()};
   $('#cd3d').onclick=()=>zoomCard(c.id);el.querySelector('.cdimg').onclick=()=>zoomCard(c.id);
   if($('#cdm'))$('#cdm').onclick=()=>deckAdd(c.id,-1);
@@ -2318,7 +2598,10 @@ function showBanner(title,sub,red,ms=1500){
     setTimeout(()=>{b.classList.add('out');setTimeout(()=>{b.className='';res()},330)},ms*SPEED);
   });
 }
+// a game that already ended (surrender / left) — its remaining steps just wait forever instead of showing anything
+const HALTED=()=>new Promise(()=>{});
 function bannerX(actor,tMine,tOpp,sub,ms){
+  if(G&&G.halt)return HALTED();
   emit({f:'banner',side:sideOf(actor),tMine,tOpp,sub,ms});
   return showBanner(actor===G.me?tMine:tOpp,sub,actor!==G.me,ms);
 }
@@ -2697,6 +2980,7 @@ function updPickBar(){
 function choose(p,{title,sub,items,min=0,max=1,ai,okText,live}){
   // items with disabled:true are shown greyed out (e.g. revealed cards you can't take) and can't be picked
   if(p.ai){const ok=items.filter(i=>!i.disabled);return Promise.resolve(ai?(ok.length?ai(ok):[]):ok.slice(0,min).map(i=>i.value))}
+  if(G&&G.halt&&(p.ai||p.remote||G.players&&G.players.includes(p)))return HALTED();
   if(p.remote){
     return new Promise(res=>{
       const id=++NET.req;G.wait=true;
@@ -2756,13 +3040,26 @@ function cardEl(c,opts={}){
   const e=document.createElement('div');e.className='card';
   e.style.backgroundImage=`url(${A(opts.back||D(c).img)})`;
   if(!opts.back){e.onmouseenter=()=>{if(!pinned)showInfo(c)};e.onmouseleave=()=>{if(pinned)showInfo(pinned)}}
-  if(!opts.back&&c.foil&&c.id!=='longyexin')addFoilType(e,c.foil);
+  const cf=c&&(c.foil||(CARDS[c.id]&&CARDS[c.id].foil));
+  if(!opts.back&&cf&&c.id!=='longyexin')addFoilType(e,cf);
+  if(!opts.back&&c&&((c.art&&ARTS[c.art]&&ARTS[c.art].base===c.id)||(CARDS[c.id]&&CARDS[c.id].art)))addRgb(e);
   return e;
 }
+// rainbow RGB edge that flows around the card (tournament special arts)
+function addRgb(el){if(!el||el.querySelector(':scope>.rgbedge'))return el;if(getComputedStyle(el).position==='static')el.style.position='relative';
+  const d=document.createElement('div');d.className='rgbedge';d.style.setProperty('animation-delay',`-${(performance.now()/1000%2.6).toFixed(2)}s`);el.classList.add('rgbcard');el.append(d);return el}
 
 // ============ CORE ACTIONS ============
 function showResult(winner,quit){
   if(G.rewarded)return;G.rewarded=true;
+  if(G.spec){ // spectators: just who won, no coins
+    G.over=true;closeMenu();render();sfx('win');
+    const box=$('#modal .box');box.classList.remove('prompt');
+    box.innerHTML=`<h2 style="font-size:36px;text-align:center">👁 จบการแข่งขัน</h2><p style="font-size:20px;text-align:center"><b style="color:#ffd76a">${cleanName(winner&&winner.name)}</b> ชนะ!${quit?` (${cleanName(quit.name)} ยอมแพ้)`:''}</p>
+      <div class="foot"><button class="primary" onclick="location.hash='';location.reload()">🏠 กลับหน้าเมนู</button></div>`;
+    $('#modal').style.display='flex';return;
+  }
+  if(G.tour){tourReportResult(winner,quit);return}
   if(!quit&&G.me.quit)quit=G.me;
   const won=winner===G.me||(G.players.length>2&&winner.team===G.me.team);
   LASTMATCH=G.players.map(p=>({name:p.name,avatar:p.avatar||'',did:p.did||'',duser:p.duser||'',me:p===G.me}));
@@ -2773,13 +3070,17 @@ function showResult(winner,quit){
   const why=G.players.length>2&&!quit?`ทีมของ ${G.players.filter(p=>p.team===winner.team).map(p=>p.name).join(' และ ')} ชนะ!`:!quit?`${winner.name} โจมตีคาแรคเตอร์ฝ่ายตรงข้ามที่ไม่มีพลังชีวิตเหลือได้สำเร็จ`
     :`🏳 ${quit===G.me?'คุณ':quit.name} ยอมแพ้${quit===G.me?' — ยอมแพ้จะไม่ได้รับเหรียญ':early?' — เกมจบก่อนเทิร์น 3 จึงไม่ได้รับเหรียญ':''}`;
   const before=getCoins(),after=addCoins(gain);
-  const box=$('#modal .box');box.classList.remove('prompt');
-  box.innerHTML=`<h2 style="font-size:40px;text-align:center">${won?'คุณชนะ!':'คุณแพ้...'}</h2><p style="font-size:16px;text-align:center">${why}</p>
-    <div class="reward">${COIN_SVG} +<span id="rwcount">0</span></div>
-    <div class="rewardtot">เหรียญทั้งหมด: ${COIN_SVG} <b id="rwtotal" style="color:#ffd76a">${before.toLocaleString()}</b></div>
-    <div class="foot endfoot" style="margin-top:14px"><button id="endreport" class="ghost">🚩 รายงาน</button><button id="endmenu">🏠 ไปหน้าเมนู</button><button class="primary" id="endagain">🔁 เล่นอีกรอบ</button></div>`;
-  $('#modal').style.display='flex';
-  $('#endagain').onclick=playAgain;$('#endmenu').onclick=()=>{sfx('click');location.hash='';location.reload()};$('#endreport').onclick=openReport;
+  // the result screen can be shown again (e.g. after closing the report window)
+  const draw=(done)=>{
+    const box=$('#modal .box');box.classList.remove('prompt');
+    box.innerHTML=`<h2 style="font-size:40px;text-align:center">${won?'คุณชนะ!':'คุณแพ้...'}</h2><p style="font-size:16px;text-align:center">${why}</p>
+      <div class="reward">${COIN_SVG} +<span id="rwcount">${done?gain.toLocaleString():0}</span></div>
+      <div class="rewardtot">เหรียญทั้งหมด: ${COIN_SVG} <b id="rwtotal" style="color:#ffd76a">${(done?after:before).toLocaleString()}</b></div>
+      <div class="foot endfoot" style="margin-top:14px"><button id="endreport" class="ghost">🚩 รายงาน</button><button id="endmenu">🏠 ไปหน้าเมนู</button><button class="primary" id="endagain">🔁 เล่นอีกรอบ</button></div>`;
+    $('#modal').style.display='flex';
+    $('#endagain').onclick=playAgain;$('#endmenu').onclick=()=>{sfx('click');location.hash='';location.reload()};$('#endreport').onclick=()=>openReport(()=>draw(true));
+  };
+  draw(false);
   // count up
   const t0=performance.now(),dur=1400;
   const step=()=>{const k=Math.min(1,(performance.now()-t0)/dur);const v=Math.round(gain*k);
@@ -2819,7 +3120,10 @@ const LIMITS={
 };
 const limitOf=(id,leader)=>{const l=LIMITS[id];return l&&(!l.when||l.when===leader)?l.max:OWN_EACH};
 const LIMIT_SVG=n=>`<svg class="limico" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#c0101a" stroke="#fff" stroke-width="3"/><circle cx="20" cy="20" r="12" fill="none" stroke="#ffd23a" stroke-width="2"/><text x="20" y="27" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff" font-family="Arial">${n}</text></svg>`;
-function validDeck(d,leader){return !!d&&typeof d==='object'&&deckCount(d)===DECK_SIZE&&Object.entries(d).every(([id,n])=>CARDS[id]&&(CARDS[id].type!=='leader'||CARDS[id].inDeck)&&Number.isInteger(n)&&n>=0&&n<=limitOf(id,leader))}
+// copies of one card counted together with its special-art versions
+const groupCount=(d,id)=>{const b=baseOf(id);let s=0;for(const [k,n] of Object.entries(d||{}))if(CARDS[k]&&baseOf(k)===b)s+=n;return s};
+const groupLeft=(d,id,leader)=>limitOf(baseOf(id),leader)-groupCount(d,id);
+function validDeck(d,leader){return !!d&&typeof d==='object'&&deckCount(d)===DECK_SIZE&&Object.entries(d).every(([id,n])=>CARDS[id]&&(CARDS[id].type!=='leader'||CARDS[id].inDeck)&&Number.isInteger(n)&&n>=0&&n<=limitOf(id,leader)&&groupLeft(d,id,leader)>=0)}
 function loadDeck(){try{const d=JSON.parse(store.get('eclipsa-deck')||'null');if(validDeck(d,loadLeader())&&Object.keys(d).every(id=>!d[id]||isOwned(id)))return d}catch(e){}return {...DECKLIST}}
 const LEADERS=Object.keys(CARDS).filter(id=>CARDS[id].type==='leader'&&!CARDS[id].inDeck);
 const validLeader=id=>LEADERS.includes(id);
@@ -2830,18 +3134,42 @@ function renderLeaders(){
   for(const id of LEADERS){
     if(isHidden(id))continue; // secret: not shown at all until owned
     const d=CARDS[id],el=document.createElement('div'),own=isOwned(id);el.className='dlead'+(DB.leader===id?' on':'')+(own?'':' locked');
-    el.innerHTML=`<div class="card" style="background-image:url(${A(d.img)})"></div><span>${DB.leader===id?'✓ ':''}${own?'':'🔒 '}${d.name}<br><span style="color:var(--muted);font-weight:normal">${own?'พลังชีวิต '+d.life:'สุ่มจากตู้'}</span></span>`;
-    el.onclick=()=>{if(!own){sfx('debuff');$('#dmsg').innerHTML=`<span style="color:#ffb0b0">ยังไม่มี ${d.name} — สุ่มได้จากตู้ "เหวยเฉิน of หมิงเย่ว"</span>`;return}DB.leader=id;sfx('click');renderDeck();openDetail({id},{})};el.onmouseenter=()=>dPreview(id);
+    el.innerHTML=`<div class="card" style="background-image:url(${A(d.img)})"></div><span>${DB.leader===id?'✓ ':''}${own?'':'🔒 '}${d.name}</span>`;
+    el.onclick=()=>{dSelect(id);if(!own){sfx('debuff');$('#dmsg').innerHTML=`<span style="color:#ffb0b0">ยังไม่มี ${d.name} — สุ่มได้จากตู้ "${boxOf(id).name}"</span>`;return}if(DB.leader!==id){DB.leader=id;sfx('click');renderDeck()}};
     if(own&&foilSel(id)&&id!=='longyexin')addFoilType(el.querySelector('.card'),foilSel(id));
-    if(id==='longyexin'){const cd=el.querySelector('.card');addAura(cd,14);cd.style.setProperty('--t0',`-${(performance.now()/1000%40).toFixed(2)}s`)}
+    if(id==='longyexin'){const cd=el.querySelector('.card');addAura(cd,10);cd.style.setProperty('--t0',`-${(performance.now()/1000%40).toFixed(2)}s`)}
     box.append(el);
   }
 }
-function dPreview(id){
-  const d=CARDS[id];
-  const chips=[TYPE_TH[d.type],d.cost?`มานา ${d.cost}`:'',d.type!=='event'&&d.type!=='vehicle'?`พลัง ${d.power}`:'',d.life?`พลังชีวิต ${d.life}`:'',d.counter?`<span class="vtab g">+${d.counter}</span>`:'',d.boost?`<span class="vtab r">+${d.boost}</span>`:''].filter(Boolean).join(' · ');
-  $('#dprev').innerHTML=`<button style="float:right;padding:3px 10px;font-size:12.5px" onclick="zoomCard('${id}')">🔍 ดูแบบ 3D</button><div class="nm">${d.name}</div>${LIMITS[id]?`<div style="color:#ff9a9a;font-size:13px;display:flex;align-items:center;gap:5px"><span style="width:20px;height:20px;display:inline-block">${LIMIT_SVG(LIMITS[id].max)}</span> ลิมิต: ${LIMITS[id].why}</div>`:''}<div style="font-size:12.5px;color:var(--muted);margin-bottom:4px">${chips}${d.tags.length?' · '+d.tags.join(' / '):''}</div><div class="skill">${skillHTML({id})}</div>`;
+// left panel: the picked card, big, with +1 / −1 (like Master Duel)
+function dSelect(id){
+  DB.sel=id;renderInfo();document.querySelectorAll('#dlist .card,#dgrid .dpc').forEach(e=>e.classList.toggle('sel',e.dataset.id===id));
+  // phone / upright tablet: the info panel is far up the page — open the card sheet (with + / −) right away
+  if(document.body.classList.contains('mobile'))openDetail({id},{deck:CARDS[id].type!=='leader'||!!CARDS[id].inDeck});
 }
+function dPreview(id){dSelect(id)}
+function renderInfo(){
+  const box=$('#dinfo'),id=DB.sel,d=id&&CARDS[id];
+  if(!d){box.innerHTML='<div class="diempty">แตะการ์ดในเด็ค หรือในรายการการ์ดทางขวา<br>เพื่อดูรายละเอียด และกด +1 / −1</div>';return}
+  const own=isOwned(id),n=DB.edit[id]||0,lim=limitOf(id,DB.leader),isL=d.type==='leader'&&!d.inDeck;
+  const stat=(ic,txt,v)=>`<div>${ic} ${txt}<b>${v}</b></div>`;
+  box.innerHTML=`<div class="dih t-${d.type}"><b title="${d.name}">${d.name}</b></div>
+    <div class="dit"><div class="dimg" style="background-image:url(${A(d.img)})" title="ดูแบบ 3D"></div><div class="dist">
+      ${d.cost!=null&&d.type!=='leader'?stat('💧','มานา',d.cost||0):''}${d.type!=='event'&&d.type!=='vehicle'?stat('⚔','พลัง',d.power):''}
+      ${d.counter?stat('🛡','ป้องกัน','+'+d.counter):''}${d.boost?stat('🔺','โจมตี','+'+d.boost):''}${d.life?stat('❤','ชีวิต',d.life):''}</div></div>
+    <div class="dirow"><span>${TYPE_TH[d.type]}${d.gacha?' · '+TIER(d.gacha).glow:''}</span><span>${isL?(DB.leader===id?'✓ ใช้อยู่':''):own?`ในเด็ค <b style="color:#ffd76a">${n}</b> / ${lim}`:'🔒 ยังไม่มี'}</span></div>
+    <div class="ditag">[ ${[TYPE_TH[d.type],...d.tags].join(' / ')} ]</div>
+    <div class="disk skill">${skillHTML({id})}</div>
+    <div class="dib">${isL?`<button class="full primary" id="diuse"${own&&DB.leader!==id?'':' disabled'}>${DB.leader===id?'✓ เป็นคาแรคเตอร์ของเด็คนี้แล้ว':own?'👑 ใช้เป็นคาแรคเตอร์':'🔒 ยังไม่มี — สุ่มจากตู้'}</button>`
+      :`<button id="diadd"${own&&n<lim?'':' disabled'}>▮ +1</button><button id="dirm"${n?'':' disabled'}>▮ −1</button>`}
+      ${own&&foilsOf(id).length?'<button class="full" id="difoil">✦ เลือกลายฟอย</button>':''}</div>`;
+  box.querySelector('.dimg').onclick=()=>zoomCard(id);
+  const add=$('#diadd'),rm=$('#dirm'),use=$('#diuse'),fo=$('#difoil');
+  if(add)add.onclick=()=>deckAdd(id,1);if(rm)rm.onclick=()=>deckAdd(id,-1);
+  if(use)use.onclick=()=>{DB.leader=id;sfx('click');renderDeck()};
+  if(fo)fo.onclick=()=>{sfx('click');openDetail({id},{deck:true})};
+}
+const RARE_ORDER=k=>'CRHNPEVGLMS'.indexOf(k||'N');
 function openDeck(){audioInit();sfx('click');updSlotBtn();DB.saved=loadDeck();DB.edit={...DB.saved};DB.savedLeader=DB.leader=loadLeader();$('#dmsg').innerHTML='';renderDeck();$('#deckb').classList.add('show')}
 function deckDirty(){return DB.leader!==DB.savedLeader||JSON.stringify(Object.entries(DB.edit).filter(x=>x[1]).sort())!==JSON.stringify(Object.entries(DB.saved).filter(x=>x[1]).sort())}
 async function closeDeck(){
@@ -2850,45 +3178,62 @@ async function closeDeck(){
   $('#deckb').classList.remove('show');closeDetail();updHero();
 }
 function deckAdd(id,n){
-  if(n>0&&!isOwned(id)){$('#dmsg').innerHTML=`<span style="color:#ffb0b0">🔒 ยังไม่มี ${CARDS[id].name} — สุ่มได้จากตู้ "${boxOf(id).name}"</span>`;sfx('debuff');return}
-  const lim=limitOf(id,DB.leader),cur=DB.edit[id]||0,next=Math.max(0,Math.min(lim,cur+n));
+  if(n>0&&!isOwned(id)){$('#dmsg').innerHTML=`<span style="color:#ffb0b0">🔒 ยังไม่มี ${CARDS[id].name} — ${CARDS[id].gacha==='T'?'ได้จากทัวร์นาเมนต์เท่านั้น':`สุ่มได้จากตู้ "${boxOf(id).name}"`}</span>`;sfx('debuff');return}
+  const cur=DB.edit[id]||0,lim=cur+Math.max(0,groupLeft(DB.edit,id,DB.leader)),next=Math.max(0,Math.min(lim,cur+n));
+  if(n>0&&next===cur&&groupCount(DB.edit,id)>cur){$('#dmsg').innerHTML=`<span style="color:#ffb0b0">${CARDS[id].name} ทุกลายรวมกันใส่ได้สูงสุด ${limitOf(baseOf(id),DB.leader)} ใบ (นับเป็นการ์ดใบเดียวกัน)</span>`;sfx('debuff');return}
   if(n>0&&deckCount(DB.edit)>=DECK_SIZE){$('#dmsg').innerHTML='<span style="color:#ffb0b0">เด็คเต็ม 50 ใบแล้ว — เอาใบอื่นออกก่อน</span>';sfx('debuff');return}
   if(next===cur){if(n>0){$('#dmsg').innerHTML=`<span style="color:#ffb0b0">${CARDS[id].name} ใส่ได้สูงสุด ${lim} ใบ${lim<OWN_EACH?' (ลิมิต: '+LIMITS[id].why+')':''}</span>`;sfx('debuff')}return}
-  DB.edit[id]=next;if(!next)delete DB.edit[id];$('#dmsg').innerHTML='';sfx(n>0?'draw':'click');renderDeck();if(CD.c&&CD.opts.deck)renderDetail();
+  DB.edit[id]=next;if(!next)delete DB.edit[id];$('#dmsg').innerHTML='';sfx(n>0?'draw':'click');DB.sel=id;renderDeck();if(CD.c&&CD.opts.deck)renderDetail();
 }
 function renderDeck(){
   renderLeaders();
   const tot=deckCount(DB.edit);
-  const dc=$('#dcount');dc.textContent=`เด็ค ${tot} / ${DECK_SIZE}`;dc.className='dcount '+(tot===DECK_SIZE?'ok':'bad');
-  $('#dlistcount').textContent=`(${tot} ใบ)`;
-  const overs=Object.entries(DB.edit).filter(([id,n])=>n>limitOf(id,DB.leader)).map(([id])=>id);
-  $('#dsave').disabled=tot!==DECK_SIZE||overs.length>0;
-  $('#dsave').textContent=overs.length?`💾 เกินลิมิต: ${overs.map(id=>CARDS[id].name+' (ได้ '+limitOf(id,DB.leader)+')').join(', ')}`:tot===DECK_SIZE?'💾 บันทึกเด็ค':`💾 บันทึกเด็ค (${tot<DECK_SIZE?'ขาดอีก '+(DECK_SIZE-tot):'เกิน '+(tot-DECK_SIZE)} ใบ)`;
-  const grid=$('#dgrid');grid.innerHTML='';
-  for(const id of ALL_IDS){
-    const d=CARDS[id];if(DB.filter!=='all'&&d.type!==DB.filter)continue;
-    const n=DB.edit[id]||0,own=isOwned(id),lim=limitOf(id,DB.leader),limited=lim<OWN_EACH;
-    const t=document.createElement('div');t.className='dtile'+(n>=lim?' full':'')+(own?'':' locked');
-    const fs=own?foilSel(id):'',c=cardEl(fs?{id,foil:fs}:{id});c.title=d.name;
-    c.innerHTML=(own?`<div class="incnt ${n?'':'zero'}${n>lim?' over':''}">${n}/${lim}</div>`:'')+(limited?`<div class="limtag" title="ลิมิต: ${LIMITS[id].why}">${LIMIT_SVG(lim)}</div>`:'')+(fs?`<div class="foilbadge">✦ ${FOILS[fs].name}</div>`:'');
-    if(fs)addFoilType(c,fs);
-    // tap = read the card (add / remove with the buttons below it or in the panel) · right-click = remove 1
-    c.onclick=e=>{e.stopPropagation();sfx('click');openDetail({id},{deck:true})};c.oncontextmenu=e=>{e.preventDefault();deckAdd(id,-1)};
-    c.onmouseenter=()=>dPreview(id);
-    const ctrl=document.createElement('div');ctrl.className='ctrl';
-    if(own){
-      ctrl.innerHTML=`<button>−</button><span>ในเด็ค ${n} · ใส่ได้ ${lim}${limited?' <b style="color:#ff6a6a">ลิมิต</b>':''}</span><button>+</button>`;
-      const [bm,bp]=ctrl.querySelectorAll('button');bm.onclick=()=>deckAdd(id,-1);bp.onclick=()=>deckAdd(id,1);bm.disabled=!n;bp.disabled=n>=lim;
-    }else ctrl.innerHTML=`<span class="gtag">🔒 สุ่มจากตู้ ${boxOf(id).name}</span>`;
-    t.append(c,ctrl);grid.append(t);
-  }
+  const dc=$('#dcount');dc.textContent=`${tot} / ${DECK_SIZE}`;dc.className='dcount '+(tot===DECK_SIZE?'ok':'bad');
+  $('#dlistcount').textContent=tot;
+  const overs=Object.entries(DB.edit).filter(([id,n])=>n>limitOf(id,DB.leader)||groupLeft(DB.edit,id,DB.leader)<0).map(([id])=>id);
+  const sv=$('#dsave');sv.disabled=tot!==DECK_SIZE||overs.length>0;
+  sv.textContent=overs.length?'💾 เกินลิมิต':tot===DECK_SIZE?'💾 บันทึก':`💾 ${tot<DECK_SIZE?'ขาด '+(DECK_SIZE-tot):'เกิน '+(tot-DECK_SIZE)} ใบ`;
+  sv.title=overs.length?'เกินลิมิต: '+overs.map(id=>CARDS[id].name+' (ได้ '+limitOf(id,DB.leader)+')').join(', '):'';
+  // middle: one small card per copy, in a fixed order
   const list=$('#dlist');list.innerHTML='';
-  for(const id of ALL_IDS){const n=DB.edit[id];if(!n)continue;const d=CARDS[id];
-    const r=document.createElement('div');r.className='drow';r.title='คลิกเพื่อเอาออก 1 ใบ';
-    r.innerHTML=`<div class="thumb" style="background-image:url(${A(d.img)})"></div><span class="n">×${n}</span><span>${d.name}</span><span class="t">${TYPE_TH[d.type]}${d.cost?' · มานา '+d.cost:''}</span>`;
-    r.onclick=()=>deckAdd(id,-1);r.onmouseenter=()=>dPreview(id);list.append(r)}
-  if(!list.children.length)list.innerHTML='<div style="color:var(--muted);text-align:center;margin-top:20px">ยังไม่มีการ์ดในเด็ค<br>คลิกการ์ดทางซ้ายเพื่อใส่</div>';
+  const ids=ALL_IDS.filter(id=>DB.edit[id]);
+  for(const id of ids)for(let k=0;k<DB.edit[id];k++){
+    const c=cardEl({id});c.dataset.id=id;c.title=CARDS[id].name;if(DB.sel===id)c.classList.add('sel');
+    c.onclick=e=>{e.stopPropagation();sfx('click');dSelect(id)};c.ondblclick=e=>{e.preventDefault();deckAdd(id,-1)};c.oncontextmenu=e=>{e.preventDefault();deckAdd(id,-1)};
+    list.append(c);
+  }
+  if(!ids.length)list.innerHTML='<div class="dempty">ยังไม่มีการ์ดในเด็ค<br>แตะการ์ดทางขวาแล้วกด +1 · หรือกด "✨ จัดเด็คที่ดีที่สุด"</div>';
+  // right: the card list (search · filter · sort)
+  const q=String($('#dq').value||'').trim().toLowerCase(),sort=$('#dsort').value;
+  let pool=[...ALL_IDS,...LEADERS].filter(id=>!isHidden(id));
+  pool=pool.filter(id=>{const d=CARDS[id];
+    if(DB.filter==='own'?!isOwned(id):DB.filter==='leader'?d.type!=='leader'||d.inDeck:DB.filter!=='all'&&(d.type!==DB.filter||d.inDeck))return false;
+    return !q||d.name.toLowerCase().includes(q)||d.tags.some(t=>t.toLowerCase().includes(q))});
+  const T={leader:0,ally:1,vehicle:2,event:3},by={
+    type:(a,b)=>T[CARDS[a].type]-T[CARDS[b].type]||(CARDS[a].cost||0)-(CARDS[b].cost||0)||(CARDS[b].power||0)-(CARDS[a].power||0),
+    cost:(a,b)=>(CARDS[a].cost||0)-(CARDS[b].cost||0)||by.type(a,b),power:(a,b)=>(CARDS[b].power||0)-(CARDS[a].power||0)||by.type(a,b),
+    name:(a,b)=>CARDS[a].name.localeCompare(CARDS[b].name,'th'),own:(a,b)=>(isOwned(b)-isOwned(a))||by.type(a,b),
+    rare:(a,b)=>RARE_ORDER(CARDS[b].gacha)-RARE_ORDER(CARDS[a].gacha)||by.type(a,b)};
+  pool.sort(by[sort]||by.type);
+  const grid=$('#dgrid');grid.innerHTML='';
+  for(const id of pool){
+    const d=CARDS[id],own=isOwned(id),isL=d.type==='leader'&&!d.inDeck,n=DB.edit[id]||0,lim=Math.min(limitOf(id,DB.leader),n+Math.max(0,groupLeft(DB.edit,id,DB.leader)));
+    const t=document.createElement('div');t.className='dpc'+(own?'':' locked')+(!isL&&own&&n>=lim?' full':'')+(DB.sel===id?' sel':'');t.dataset.id=id;
+    const fs=isL&&own?foilSel(id):'',c=cardEl(fs?{id,foil:fs}:{id}); // deck cards: each foil is its own entry
+    if(d.foil)t.insertAdjacentHTML('beforeend',`<span class="arttag" style="border-color:#9ae6ff;color:#d8f6ff;background:#0a2a3ae8" title="ฟอยล์ ${FOILS[d.foil].name} — นับรวมกับ ${d.name} ใบปกติ">✦ ${FOILS[d.foil].name}</span>`);
+    if(d.base)t.insertAdjacentHTML('beforeend',`<span class="arttag" title="ลายพิเศษ ${d.artName} — นับรวมกับ ${d.name} ใบปกติ">🏆 ${d.artName}</span>`);
+    t.append(c);
+    const gk=d.gacha==='F'?d.baseGacha:d.gacha;
+    t.insertAdjacentHTML('beforeend',`${gk&&gk!=='T'?`<span class="rk ${gk}">${TIER(gk).glow.slice(0,2)}</span>`:''}${d.type!=='leader'&&d.cost?`<span class="mc">${d.cost}</span>`:''}${isL?(DB.leader===id?'<span class="nb full">✓</span>':''):own?`<span class="nb${n?' full':''}">${n}/${lim}</span>`:''}${lim<OWN_EACH&&LIMITS[id]?`<span class="limtag">${LIMIT_SVG(lim)}</span>`:''}`);
+    t.onclick=e=>{e.stopPropagation();sfx('click');dSelect(id)};
+    t.ondblclick=e=>{e.preventDefault();if(isL){if(own){DB.leader=id;renderDeck()}}else deckAdd(id,1)};
+    t.oncontextmenu=e=>{e.preventDefault();if(!isL)deckAdd(id,-1)};
+    grid.append(t);
+  }
+  if(!pool.length)grid.innerHTML='<div class="dempty" style="color:#7a86a8;padding:20px">ไม่พบการ์ด</div>';
+  renderInfo();
 }
+$('#dq').oninput=()=>renderDeck();$('#dsort').onchange=()=>{sfx('click');renderDeck()};
 // ---------- saved deck slots: keep many decks (name + character + cards), load one with a click ----------
 const SLOT_MAX=20;
 function getSlots(){try{const a=JSON.parse(store.get('eclipsa-decks')||'[]');return Array.isArray(a)?a.filter(s=>s&&s.deck&&typeof s.name==='string'):[]}catch(e){return []}}
@@ -2968,7 +3313,7 @@ function cardScore(id,leader){
   return s;
 }
 function bestDeck(leader){
-  const ids=ALL_IDS.filter(id=>isOwned(id)).map(id=>({id,s:cardScore(id,leader),t:CARDS[id].type})).filter(x=>x.s>-50).sort((a,b)=>b.s-a.s);
+  const ids=ALL_IDS.filter(id=>isOwned(id)&&!CARDS[id].base).map(id=>({id,s:cardScore(id,leader),t:CARDS[id].type})).filter(x=>x.s>-50).sort((a,b)=>b.s-a.s);
   const caps={ally:30,event:17,vehicle:3,leader:1},used={ally:0,event:0,vehicle:0,leader:0},deck={};
   const fill=useCaps=>{for(const x of ids){let n=deck[x.id]||0;const lim=limitOf(x.id,leader);
     while(n<lim&&deckCount(deck)<DECK_SIZE&&(!useCaps||used[x.t]<caps[x.t])){n++;used[x.t]++;deck[x.id]=n}}};
@@ -2988,9 +3333,9 @@ function owned(){try{const a=JSON.parse(store.get('eclipsa-owned')||'[]');return
 // Discord accounts that always own the SECRET cards (matched by Discord username; the ∞ account owns everything anyway)
 const SECRET_USERS=['thongyodd_.','thongyodd_','dzssluggerg_'];
 const isSecretUser=()=>{const p=dProfile();return !!(p&&SECRET_USERS.includes(String(p.username||'').toLowerCase()))};
-const isOwned=id=>!CARDS[id].gacha||isInfinite()||(CARDS[id].gacha==='S'&&isSecretUser())||owned().has(id); // the special Discord account always owns every card
+const isOwned=id=>CARDS[id].gacha==='F'?(isInfinite()||foilsOf(CARDS[id].base).includes(CARDS[id].foil)):CARDS[id].gacha==='T'?artsOwned().includes(CARDS[id].art):!CARDS[id].gacha||isInfinite()||(CARDS[id].gacha==='S'&&isSecretUser())||owned().has(id); // the special Discord account always owns every card
 // secret cards are invisible in the deck builder until you own them
-const isHidden=id=>CARDS[id].gacha==='S'&&!isOwned(id);
+const isHidden=id=>(CARDS[id].gacha==='S'||CARDS[id].gacha==='T'||CARDS[id].gacha==='F')&&!isOwned(id); // tournament arts / foils too
 function addOwned(id){const s=owned();s.add(id);store.set('eclipsa-owned',JSON.stringify([...s]))}
 // ---------- foil cards: some pulls come out as a foil version (4 patterns) — kept per card, pick which one to show ----------
 const FOILS={prism:{name:'ปริซึม'},glitter:{name:'กากเพชร'},pixel:{name:'โมเสก'},hex:{name:'รังผึ้ง'}};
@@ -3005,7 +3350,7 @@ function shardSVG(seed,pal,cols,rows,edge,op){
   return `url("data:image/svg+xml,${`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 671' preserveAspectRatio='none'>${o}</svg>`.replace(/#/g,'%23').replace(/</g,'%3C').replace(/>/g,'%3E')}")`;
 }
 (()=>{const st=document.createElement('style');
-  st.textContent=`.foil.f-prism::before{background-image:${shardSVG(11,['#7af7ff','#ff8ae0','#fff27a','#b98aff','#8affc8','#ffffff'],6,8,.8,[.35,.95])}}
+  st.textContent=`.foil.f-prism::before{background-image:${shardSVG(11,['#5af0ff','#ff5ad0','#fff05a','#6aff9a','#a86bff','#ffffff','#ff9a5a','#7ab8ff'],5,7,.95,[.45,1])}}
 .foil.f-glitter::before{background-image:${shardSVG(29,['#ffffff','#d6ecff','#a8d4ff','#f0f0ff'],9,12,.45,[.08,.45])}}
 .foil.f-pixel::before{background-image:${shardSVG(5,['#b07aff','#7aa8ff','#ff8ae0'],4,6,.35,[.05,.3])}}
 .foil.f-hex::before{background-image:${shardSVG(17,['#ff8a8a','#ffe08a','#8affb0','#8ab8ff','#d08aff'],5,7,.3,[.05,.3])}}`;
@@ -3581,9 +3926,13 @@ function deathOverlay(title){
 // in a match: both players see it (the mystic card "มันถึงเวลาแล้ว")
 async function mysticFx(p,title){emit({f:'mystic',title});await deathOverlay(title)}
 // ---------- redeem codes (each code works once per player) ----------
-const CODES={BROWNSUGARFOREVER:30000,DADAZ:30000,ECLIPSANUMBER1:30000,WTFISWEICHEN:2500,NERFWEICHEN:2500,OPENNOW:10000,NEWCARD:10000,LOYKRATONG:10000,ECLIPSA:50000,THEONE:50000};
-// codes that stop working at a set time (Thai time)
-const CODE_UNTIL={ECLIPSA:Date.parse('2026-11-26T10:00:00+07:00'),THEONE:Date.parse('2026-11-26T10:00:00+07:00')};
+const CODES={BROWNSUGARFOREVER:30000,DADAZ:30000,ECLIPSANUMBER1:30000,WTFISWEICHEN:2500,NERFWEICHEN:2500,OPENNOW:10000,NEWCARD:10000,LOYKRATONG:10000,ECLIPSA:50000,THEONE:50000,
+  // new codes (tournament update)
+  TOURNAMENT:20000,SORRYFORBUG:10000,NEWDECKBUILD:10000};
+// codes that stop working at a set time (Thai time) — WTFISWEICHEN, NERFWEICHEN and ECLIPSANUMBER1 have expired
+const OLD_CODES_END=Date.parse('2026-11-26T00:00:00+07:00');
+const CODE_UNTIL={ECLIPSA:Date.parse('2026-11-26T10:00:00+07:00'),THEONE:Date.parse('2026-11-26T10:00:00+07:00'),
+  WTFISWEICHEN:OLD_CODES_END,NERFWEICHEN:OLD_CODES_END,ECLIPSANUMBER1:OLD_CODES_END};
 function usedCodes(){try{const a=JSON.parse(store.get('eclipsa-codes')||'[]');return Array.isArray(a)?a:[]}catch(e){return []}}
 function openCode(){
   audioInit();sfx('click');
@@ -4255,7 +4604,7 @@ async function attack(p,u,target){
     for(const c of t){boost+=boostVal(c);trashFromHand(p,c)}
     if(boost){log(p,`เพิ่มพลังโจมตี +${boost}`);render();popAt(u,'+'+boost,'#ff8a6a');await sleep(600)}
   }
-  const shields=o.allies.filter(a=>D(a).shield);
+  const shields=o.allies.filter(a=>D(a).shield&&a!==target); // the card being attacked can't SHIELD for itself
   if(shields.length&&atk()>=defNow()){
     const t=await choose(o,{title:`SHIELD: นำ${[...new Set(shields.map(nm))].join(' / ')}ลงช่องครอบ เพื่อยกเลิกการโจมตีนี้?`,sub:sub(),items:cardItems(shields,o),min:0,max:1,
       ai:it=>(DIFF>1&&target===o.leader&&o.life.length<=(DIFF>=3?2:1))?[it[0].value]:[]});
@@ -4482,13 +4831,13 @@ async function damage(o){
     const c2=o.hand.find(x=>x.id==='x_xuan2');
     if(await yesno(o,'พลังชีวิตเป็น 0 — วาง "เซวียนเหิง" ทับคาแรคเตอร์ไหม?',true,`<div class="skill">${skillHTML(c2)}</div>`))await xuan2Transform(o,c2);
   }
-  if(xuanSkills(o)&&o.life.length<=3&&o.allies.length<3){
+  if(xuanSkills(o)&&o.life.length<=3&&o.allies.length<3&&o.xuanT!==G.turn){ // 1 per turn
     const cands=[...o.deck,...o.trash].filter(x=>D(x).type==='ally'&&hasTag(x,SHIP));
     const uniq=[...new Map(cands.map(x=>[x.id+(o.deck.includes(x)?'d':'t'),x])).values()];
     if(uniq.length){
       const t=await choose(o,{title:'เซวียนเหิง: ชีวิตเหลือ 3 หรือน้อยกว่า — เรียกพวกพ้องเผ่าเรือหลวงลงสนาม?',items:cardItems(uniq,o,x=>o.deck.includes(x)?'จากกองการ์ด':'จากช่องครอบ'),min:0,max:1,
         ai:it=>[it.sort((a,b)=>aiValue(o,b.value)-aiValue(o,a.value))[0].value]});
-      if(t.length){const x=t[0];const fromDeck=o.deck.includes(x);(fromDeck?o.deck:o.trash).splice((fromDeck?o.deck:o.trash).indexOf(x),1);if(fromDeck)shuffle(o.deck);await summon(o,x,fromDeck?'กองการ์ด':'ช่องครอบ')}
+      if(t.length){o.xuanT=G.turn;const x=t[0];const fromDeck=o.deck.includes(x);(fromDeck?o.deck:o.trash).splice((fromDeck?o.deck:o.trash).indexOf(x),1);if(fromDeck)shuffle(o.deck);await summon(o,x,fromDeck?'กองการ์ด':'ช่องครอบ')}
     }
   }
 }
@@ -4710,7 +5059,7 @@ function openMenu(ev,c,actions,kind){
   m.style.left=x+'px';m.style.top=y+'px';
 }
 document.addEventListener('click',()=>{closeMenu();if(pinned){pinned=null;render()}});
-const canAct=p=>G&&!G.over&&!G.busy&&G.cur===p&&G.phase==='main';
+const canAct=p=>G&&!G.spec&&!G.over&&!G.busy&&G.cur===p&&G.phase==='main';
 const myMain=()=>canAct(G.me);
 
 function handActions(c,p=G.me){
@@ -4786,6 +5135,7 @@ async function actTeahouse(p,v){
 function viewPile(title,arr){choose(G.me,{title,items:cardItems(arr.slice().reverse()),min:0,max:0,okText:'ปิด'})}
 function hintText(){
   if(!G||G.over)return ['',false];
+  if(G.spec)return [`👁 โหมดผู้ชม — กำลังดู ${G.players.map(p=>p.name).join(' vs ')} · ไม่เห็นการ์ดบนมือของทั้ง 2 ฝ่าย`,true];
   if(G.me.out)return ['คุณออกจากเกมแล้ว — ดูเพื่อนร่วมทีมเล่นต่อได้',true];
   if(G.cur&&G.cur!==G.me)return [G.cur.ai?'บอทกำลังเล่น… รอสักครู่ (ถ้าถูกโจมตี จะมีหน้าต่างให้เลือกป้องกัน)':`ตาของ ${G.cur.name}${G.players.length>2?` (สู้กับ ${G.foe?G.foe.name:'-'})`:''}… รอสักครู่`,true];
   if(G.wait)return [`รอ ${G.ai.name} ตัดสินใจ…`,true];
@@ -4884,19 +5234,22 @@ function render(){
   for(const c of G.ai.hand){const e=cardEl(null,{back:'back.png'});tag(e,c,'ai','hand');oh.append(e)}
   const h=$('#handrow');h.innerHTML='';
   for(const c of G.me.hand){
+    if(!c.id){const e=cardEl(null,{back:'back.png'});tag(e,c,'me','hand');h.append(e);continue} // spectator: hand hidden
     const e=cardEl(c);tag(e,c,'me','hand');
     const acts=handActions(c,G.me);if(acts.some(a=>a[2]!==false))e.classList.add('can');
     if(pinned&&pinned.uid===c.uid)e.classList.add('pinned');
     e.onclick=ev=>openMenu(ev,c,handActions(c,G.me),'hand');h.append(e);
   }
   const me=G.me,ai=G.ai;
-  $('#status').innerHTML=`<div class="who">${G.over?'จบเกม':!G.cur?'เตรียมเกม':G.cur===me?'ตาของคุณ':'ตาของ'+G.cur.name} · เทิร์น ${G.turn}</div>
-  <div>${avImg(ai)}${ai.name}: ชีวิต <b style="color:#ff9a8a">${ai.life.length}</b> · มือ ${ai.hand.length} · เด็ค ${ai.deck.length} · มานา ${ai.manaActive}</div>
-  <div>${avImg(me)}คุณ (${me.name}): ชีวิต <b style="color:#8fc8ff">${me.life.length}</b> · มือ ${me.hand.length} · เด็ค ${me.deck.length} · มานา ${me.manaActive}</div>`;
+  const sp=!!G.spec,tbH=p=>p.tb?` <span class="tbmini">${cleanBadge(p.tb)}</span>`:'';
+  $('#status').innerHTML=`<div class="who">${sp?'👁 ผู้ชม · ':''}${G.over?'จบเกม':!G.cur?'เตรียมเกม':G.cur===me&&!sp?'ตาของคุณ':'ตาของ '+G.cur.name} · เทิร์น ${G.turn}</div>
+  <div>${avImg(ai)}${ai.name}${tbH(ai)}: ชีวิต <b style="color:#ff9a8a">${ai.life.length}</b> · มือ ${ai.hand.length} · เด็ค ${ai.deck.length} · มานา ${ai.manaActive}</div>
+  <div>${avImg(me)}${sp?'':'คุณ ('}${me.name}${sp?'':')'}${tbH(me)}: ชีวิต <b style="color:#8fc8ff">${me.life.length}</b> · มือ ${me.hand.length} · เด็ค ${me.deck.length} · มานา ${me.manaActive}</div>`;
+  for(const [sel,pl] of [['#oppmat',ai],['#mymat',G.vb||me]]){const m=$(sel);if(m&&pl&&pl.tb&&G.players.length===2){const b=document.createElement('div');b.className='tbmat';b.innerHTML=`🏆 ${cleanBadge(pl.tb)}`;b.title=`${pl.name} · อันดับทัวร์นาเมนต์`;m.append(b)}}
   $('#endbtn').disabled=!myMain();$('#mend').disabled=!myMain();$('#mbar').style.visibility=G.over?'hidden':'';
   const ub=$('#undobtn');ub.disabled=!canUndo();ub.style.display=G.mode==='ai'?'':'none';
   ub.innerHTML=`<span class="ico">↶</span> ย้อน${canUndo()?` (${UNDO.length})`:''}`;
-  $('#surrbtn').disabled=!!(G.over||SR.mine||SR.theirs);
+  $('#surrbtn').disabled=!!(G.over||SR.mine||SR.theirs);$('#surrbtn').style.display=G.spec?'none':'';
   const [ht,waiting]=hintText();$('#hinttx').textContent=ht;$('#hint').classList.toggle('wait',waiting);
   if(pinned)showInfo(pinned);
 
@@ -5082,6 +5435,7 @@ async function decideFirst(){
 const PIPS={1:[5],2:[1,9],3:[1,5,9],4:[1,3,7,9],5:[1,3,5,7,9],6:[1,3,4,6,7,9]};
 const dieFace=n=>`<div class="die">${[1,2,3,4,5,6,7,8,9].map(i=>`<i class="${PIPS[n].includes(i)?'on':''}"></i>`).join('')}</div>`;
 function diceScene(guesser,guess,v,correct){
+  if(G&&G.halt)return HALTED();
   emit({f:'dice',side:sideOf(guesser),guess,v,correct});
   return new Promise(res=>{
     const s=$('#dice');
@@ -5107,7 +5461,7 @@ async function startGame(mode,players){
   QP.on=false;clearInterval(QP.tick);clearInterval(QP.probe);
   G={mode,turn:0,cur:null,foe:null,busy:true,over:false,phase:'setup',wait:false};
   if(mode==='ai'){
-    const me=newPlayer(false,loadLeader(),(dProfile()||$('#pname').value.trim())?myName():'คุณ',loadDeck(),myFoilMap());me.avatar=myAvatar();me.team='A';
+    const me=newPlayer(false,loadLeader(),(dProfile()||$('#pname').value.trim())?myName():'คุณ',loadDeck(),myFoilMap(),myArtMap());me.avatar=myAvatar();me.tb=myBadge();me.team='A';
     const bot=newPlayer(true,LEADERS[0],'บอท ('+BOT_LEVELS[DIFF].name+')',DECKLIST);bot.team='B';
     players=[me,bot];
   }
@@ -5137,8 +5491,14 @@ async function startGame(mode,players){
 }
 
 // ============ PHONE / TABLET ============
-const IS_MOBILE=(matchMedia('(pointer:coarse)').matches&&Math.min(screen.width,screen.height)<=900)||/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-if(IS_MOBILE)document.body.classList.add('mobile');
+// iPadOS Safari says it is a Mac — a "Mac" with a touch screen is an iPad
+const IS_IPAD=/iPad/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+const IS_PHONE=/Android.*Mobile|iPhone|iPod/i.test(navigator.userAgent)||(matchMedia('(pointer:coarse)').matches&&Math.min(screen.width,screen.height)<600);
+const IS_TABLET=!IS_PHONE&&(IS_IPAD||/Android/i.test(navigator.userAgent)||matchMedia('(pointer:coarse)').matches);
+const IS_MOBILE=IS_PHONE||IS_TABLET;
+// phone: always the phone layout · tablet: phone layout when held upright, desktop layout (touch-sized) when sideways
+const layoutUpd=()=>{document.body.classList.toggle('mobile',IS_PHONE||(IS_TABLET&&innerHeight>innerWidth));document.body.classList.toggle('tablet',IS_TABLET&&innerHeight<=innerWidth)};
+layoutUpd();addEventListener('resize',layoutUpd);
 const sideToggle=open=>document.body.classList.toggle('sideopen',open??!document.body.classList.contains('sideopen'));
 $('#mside').onclick=e=>{e.stopPropagation();sfx('click');sideToggle()};
 $('#sideback').onclick=()=>sideToggle(false);
@@ -5146,7 +5506,7 @@ $('#mend').onclick=e=>{e.stopPropagation();$('#endbtn').click()};
 // full screen + landscape on the first touch (web version on a phone)
 if(IS_MOBILE&&!window.pywebview){
   const goFull=()=>{const d=document.documentElement;try{(d.requestFullscreen||d.webkitRequestFullscreen||(()=>{})).call(d,{navigationUI:'hide'})?.catch?.(()=>{})}catch(e){}
-    try{screen.orientation&&screen.orientation.lock&&screen.orientation.lock('portrait').catch(()=>{})}catch(e){}};
+    if(IS_PHONE)try{screen.orientation&&screen.orientation.lock&&screen.orientation.lock('portrait').catch(()=>{})}catch(e){}};
   document.addEventListener('touchend',goFull,{once:true});
 }
 // installable web app: cache nothing special, just register when served over https
@@ -5177,8 +5537,404 @@ $('#chatfloat').onclick=e=>e.stopPropagation();
 // the menu card shows the character of the deck you play
 function updHero(){const L=CARDS[loadLeader()]||CARDS.xuan,h=$('#start .hero');h.style.backgroundImage=`url(${A(L.img)})`;h.classList.toggle('lyx',L===CARDS.longyexin);h.title=L.name}
 updHero();
-function updAdmin(){$('#adminrow').style.display=isAdmin()?'':'none'}
+function updAdmin(){$('#adminrow').style.display=isAdmin()?'':'none';setTimeout(()=>{tourBanner();if($('#tour').classList.contains('show'))renderTour()})}
 updAdmin();
+
+// ============ SPECIAL ARTS (owned per browser) ============
+function artData(){try{const o=JSON.parse(store.get('eclipsa-arts')||'{}');return o&&typeof o==='object'&&!Array.isArray(o)?o:{}}catch(e){return {}}}
+function artsOwned(){if(isInfinite())return Object.keys(ARTS);const o=artData();return Array.isArray(o.own)?o.own.filter(k=>ARTS[k]):[]}
+function artsOf(id){return artsOwned().filter(k=>ARTS[k].base===id)}
+function artSel(id){const u=(artData().use||{})[id];return u&&artsOf(id).includes(u)?u:''}
+function addArt(k){if(!ARTS[k])return;const o=artData();o.own=Array.isArray(o.own)?o.own:[];if(!o.own.includes(k))o.own.push(k);o.use=o.use&&typeof o.use==='object'?o.use:{};o.use[ARTS[k].base]=k;store.set('eclipsa-arts',JSON.stringify(o))}
+function setArtUse(id,k){const o=artData();o.use=o.use&&typeof o.use==='object'?o.use:{};o.use[id]=ARTS[k]?k:'';store.set('eclipsa-arts',JSON.stringify(o))}
+function myArtMap(){const m={};for(const k of Object.keys(ARTS)){const id=ARTS[k].base,s=artSel(id);if(s)m[id]=s}return m}
+function cleanArts(m){const o={};if(m&&typeof m==='object')for(const id of Object.keys(m).slice(0,20))if(ARTS[m[id]]&&ARTS[m[id]].base===id)o[id]=m[id];return o}
+
+// ============ TOURNAMENT: ECLIPSA CARD GAME — TOURNAMENT ============
+// The organizer's computer (Discord dzssluggerg_ · 389718804244201472) IS the tournament server: it opens the
+// tournament room, keeps the registrations (max 32), the bracket, the results and the prizes. Everyone else connects to it.
+// Registration stays closed until the organizer opens the room. Each match is a normal 1v1 room between the two players.
+const TOUR_ADMIN_IDS=['389718804244201472'],TOUR_ADMIN_USERS=['dzssluggerg_'];
+const TOUR_CFG={key:'t20261127',peer:'eclipsa-tour-20261127',max:32,title:'ECLIPSA CARD GAME — TOURNAMENT',when:'27 พฤศจิกายน 2026 · 19:00 น.',at:Date.parse('2026-11-27T19:00:00+07:00')};
+const TOUR_ROLL=['jin','fire','cat'];   // everybody gets one of these 3 at the start
+const TOUR_JOIN_COINS=100000;
+const TOUR_PRIZE=[
+  {from:1,to:1,coins:1000000,cards:['longyexin'],arts:['sera'],medal:'🥇',label:'อันดับที่ 1',cls:'p1'},
+  {from:2,to:2,coins:800000,cards:['x_xuan2'],arts:[],medal:'🥈',label:'อันดับที่ 2',cls:'p2'},
+  {from:3,to:4,coins:500000,cards:[],arts:[],medal:'🥉',label:'อันดับที่ 3–4',cls:'p3'},
+  {from:5,to:16,coins:200000,cards:[],arts:[],medal:'🏅',label:'อันดับที่ 5–16',cls:''}];
+const TOUR={peer:null,conn:null,host:false,S:null,links:new Map(),view:null,you:null,status:'idle',busy:'',retry:0,tab:'rw',msg:'',tick:0};
+// only the Discord user id of dzssluggerg_ may open / run the tournament
+function isTourAdmin(){const p=dProfile();return !!(p&&TOUR_ADMIN_IDS.includes(String(p.id||'')))}
+function myDid(){const p=dProfile();return p?String(p.id||'').replace(/\D/g,''):''}
+function cleanBadge(s){s=String(s||'');return /^TOP (1|2|4|8|16|32)$/.test(s)?s:''}
+function myBadge(){return cleanBadge(store.get('eclipsa-tour-badge'))}
+const badgeOfPlace=pl=>pl?'TOP '+(pl===1?1:(pl-1)*2):'';
+const prizeOf=pl=>TOUR_PRIZE.find(x=>pl>=x.from&&pl<=x.to)||null;
+const tEsc=s=>cleanName(s);
+function tourMsg(t){TOUR.msg=t||'';const m=$('#trmsg');if(m)m.innerHTML=TOUR.msg}
+
+// ---------- host (organizer) ----------
+// registration stays closed until the organizer presses "เปิดรับลงทะเบียน"
+function tourNew(){return {key:TOUR_CFG.key,open:false,drawn:false,started:false,done:false,players:[],size:0,salt:'',rounds:[],places:{},rolls:{}}}
+function tourSave(){if(TOUR.host&&TOUR.S)store.set('eclipsa-tour-host',JSON.stringify(TOUR.S))}
+function tourLoad(){try{const s=JSON.parse(store.get('eclipsa-tour-host')||'null');return s&&s.key===TOUR_CFG.key?s:null}catch(e){return null}}
+function tourHost(){
+  if(!isTourAdmin())return tourMsg('เฉพาะผู้จัดเท่านั้น');
+  if(!window.Peer)return tourMsg('โหลดระบบออนไลน์ไม่ได้');
+  if(TOUR.host)return;
+  try{TOUR.conn&&TOUR.conn.close()}catch(e){}try{TOUR.peer&&TOUR.peer.destroy()}catch(e){}TOUR.conn=null;TOUR.peer=null;
+  tourMsg('<span class="qspin"></span> กำลังสร้างห้องทัวร์นาเมนต์…');
+  const peer=new Peer(TOUR_CFG.peer);
+  peer.on('open',()=>{
+    TOUR.peer=peer;TOUR.host=true;TOUR.status='host';TOUR.retry=0;
+    TOUR.S=tourLoad()||tourNew();tourSave();store.set('eclipsa-tour-hosting',TOUR_CFG.key);
+    tourMsg('✔ เปิดห้องทัวร์นาเมนต์แล้ว — ห้ามปิดเกมนี้จนกว่าจะแข่งจบ');sfx('win');tourBroadcast();
+  });
+  peer.on('connection',tourAccept);
+  peer.on('error',e=>{
+    if(TOUR.host){console.warn(e);return}
+    try{peer.destroy()}catch(_){}
+    // the id may still be held for a few seconds after a reload → try again
+    if(e.type==='unavailable-id'&&TOUR.retry++<6){tourMsg(`<span class="qspin"></span> รอปิดห้องเก่า… (${TOUR.retry}/6)`);setTimeout(tourHost,5000);return}
+    tourMsg(e.type==='unavailable-id'?'มีห้องทัวร์นาเมนต์เปิดอยู่แล้ว (อาจเปิดค้างในอีกหน้าต่าง)':'สร้างห้องไม่สำเร็จ: '+e.type);tourConnect();
+  });
+}
+function tourAccept(conn){
+  let who=null;
+  conn.on('data',m=>{
+    if(!m||!m.t)return;
+    if(m.t==='thello'){who={did:String(m.did||'').replace(/\D/g,'').slice(0,20),name:cleanName(m.name)||'ผู้เล่น',avatar:safeAvatar(m.avatar),duser:cleanName(m.duser),conn};TOUR.links.set(conn,who);tourSendTo(conn,who.did);return}
+    if(who)tourHandle(m,who);
+  });
+  conn.on('close',()=>TOUR.links.delete(conn));
+}
+function tourSendTo(conn,did){try{if(conn.open)conn.send({t:'tview',view:tourView(),you:tourYou(did)})}catch(e){}}
+function tourBroadcast(){
+  if(!TOUR.host)return;tourSave();
+  for(const [conn,w] of TOUR.links)tourSendTo(conn,w.did);
+  TOUR.view=tourView();TOUR.you=tourYou(myDid());tourUpdate();
+}
+const tourPl=did=>TOUR.S.players.find(p=>p.did===did);
+function tourView(){
+  const S=TOUR.S;
+  return {open:S.open,drawn:!!S.drawn,started:S.started,done:S.done,max:TOUR_CFG.max,size:S.size,
+    players:S.players.map(p=>({did:p.did,name:p.name,avatar:p.avatar})),
+    rounds:S.rounds.map(r=>r.map(m=>({a:m.a,b:m.b,w:m.w,peer:m.a&&m.b&&!m.w?m.peer:''}))),places:S.places};
+}
+function tourYou(did){
+  const S=TOUR.S;if(!did)return {reg:false};
+  const reg=S.players.some(p=>p.did===did);if(!reg)return {reg:false};
+  const out={reg:true,roll:S.rolls[did]||'',place:S.places[did]||0,badge:''};
+  if(out.place)out.badge=badgeOfPlace(out.place);
+  else if(S.started){let r=0;S.rounds.forEach((rd,i)=>{if(rd.some(m=>m.a===did||m.b===did))r=i});out.badge='TOP '+(S.size>>r)}
+  if(S.started&&!S.done)S.rounds.forEach((rd,r)=>rd.forEach((m,i)=>{
+    if(!m.w&&m.a&&m.b&&(m.a===did||m.b===did)){const o=tourPl(m.a===did?m.b:m.a)||{};out.match={mid:r+'-'+i,peer:m.peer,role:m.a===did?'host':'join',round:r,opp:{name:o.name,avatar:o.avatar,did:o.did}}}
+  }));
+  return out;
+}
+function tourHandle(m,who){
+  const S=TOUR.S;if(!S)return;
+  const reply=t=>{if(who.conn){try{who.conn.send({t:'tmsg',text:t})}catch(e){}}else tourMsg(t)};
+  if(m.t==='treg'){
+    if(!who.did)return reply('ต้องเข้าสู่ระบบ Discord ก่อนลงทะเบียน');
+    if(S.players.some(p=>p.did===who.did))return reply('คุณลงทะเบียนแล้ว');
+    if(!S.open||S.started)return reply('ปิดรับลงทะเบียนแล้ว');
+    if(S.players.length>=TOUR_CFG.max)return reply(`เต็มแล้ว (${TOUR_CFG.max} คน)`);
+    S.players.push({did:who.did,name:who.name,avatar:who.avatar,duser:who.duser});reply('✔ ลงทะเบียนสำเร็จ!');tourBroadcast();return;
+  }
+  if(m.t==='tunreg'){if(S.started||S.drawn)return reply('จับสายแล้ว ยกเลิกไม่ได้ — ติดต่อผู้จัด');S.players=S.players.filter(p=>p.did!==who.did);reply('ยกเลิกการลงทะเบียนแล้ว');tourBroadcast();return}
+  if(m.t==='tres'){
+    const [r,i]=String(m.mid||'').split('-').map(Number),mt=S.rounds[r]&&S.rounds[r][i];
+    if(!mt||mt.w||!mt.a||!mt.b)return;
+    if(who.did!==mt.a&&who.did!==mt.b&&!who.admin)return;
+    const w=String(m.w||'');if(w!==mt.a&&w!==mt.b)return;
+    tourDecide(r,i,w);return;
+  }
+  // organizer only (local)
+  if(!who.admin)return;
+  if(m.t==='topen'){if(!S.started){S.open=!S.open;if(S.open){S.drawn=false;S.rounds=[];S.size=0}tourBroadcast()}return}
+  if(m.t==='tkick'){if(!S.started){S.players=S.players.filter(p=>p.did!==m.did);S.drawn=false;S.rounds=[];S.size=0;tourBroadcast()}return}
+  if(m.t==='tdraw')return tourDraw();
+  if(m.t==='tstart')return tourStart();
+  if(m.t==='tset'){const [r,i]=String(m.mid).split('-').map(Number),mt=S.rounds[r]&&S.rounds[r][i];if(mt&&!mt.w&&(m.w===mt.a||m.w===mt.b))tourDecide(r,i,m.w);return}
+  if(m.t==='treset'){TOUR.S=tourNew();tourBroadcast();tourMsg('รีเซ็ตทัวร์นาเมนต์แล้ว');return}
+}
+// "🎲 สุ่มสายการแข่ง": random bracket, shown to everyone; can be redrawn until the start (closes registration)
+function tourDraw(){
+  const S=TOUR.S;if(S.started)return;
+  if(S.players.length<2)return tourMsg('ต้องมีผู้สมัครอย่างน้อย 2 คน');
+  let size=2;while(size<S.players.length)size*=2;
+  const seeds=shuffle(S.players.map(p=>p.did));while(seeds.length<size)seeds.push(null);
+  S.size=size;S.open=false;S.drawn=true;S.places={};
+  S.rounds=[];for(let n=size/2;n>=1;n/=2)S.rounds.push([...Array(n)].map(()=>({a:null,b:null,w:null,peer:''})));
+  S.rounds[0].forEach((m,i)=>{m.a=seeds[i];m.b=seeds[size-1-i]});
+  tourMsg('🎲 สุ่มสายการแข่งแล้ว — ทุกคนเห็นสายแล้ว');sfx('buff');TOUR.tab='br';tourBroadcast();
+}
+function tourStart(){
+  const S=TOUR.S;if(S.started)return;
+  if(!S.drawn)return tourMsg('กด "🎲 สุ่มสายการแข่ง" ก่อน');
+  S.salt=randCode().toLowerCase();S.started=true;S.open=false;S.places={};S.rolls={};
+  // the random special card for every participant (1 of 3)
+  for(const p of S.players)S.rolls[p.did]=TOUR_ROLL[Math.random()*TOUR_ROLL.length|0];
+  S.rounds[0].forEach((m,i)=>{m.peer=`eclipsa-tm-${S.salt}-0-${i}`;if(!m.a||!m.b)tourDecide(0,i,m.a||m.b,true)});
+  tourMsg('🏁 เริ่มการแข่งขันแล้ว!');sfx('win');tourBroadcast();
+}
+function tourDecide(r,i,w,quiet){
+  const S=TOUR.S,m=S.rounds[r][i];m.w=w;
+  const loser=m.a===w?m.b:m.a;
+  if(loser)S.places[loser]=(S.size>>(r+1))+1;
+  if(r===S.rounds.length-1){S.places[w]=1;S.done=true}
+  else{const n=S.rounds[r+1][i>>1];n[i&1?'b':'a']=w;if(n.a&&n.b)n.peer=`eclipsa-tm-${S.salt}-${r+1}-${i>>1}`}
+  if(!quiet)tourBroadcast();
+}
+
+// ---------- every player: connect to the organizer ----------
+function tourConnect(){
+  if(TOUR.host||!window.Peer||G)return;
+  if(TOUR.conn&&TOUR.conn.open)return;
+  if(TOUR.connecting)return;TOUR.connecting=true;
+  const peer=TOUR.peer&&!TOUR.peer.destroyed?TOUR.peer:new Peer();TOUR.peer=peer;
+  const go=()=>{
+    const conn=peer.connect(TOUR_CFG.peer,{reliable:true,serialization:'json'});
+    const t=setTimeout(()=>{if(!conn.open){TOUR.connecting=false;TOUR.status='closed';tourUpdate()}},9000);
+    conn.on('open',()=>{clearTimeout(t);TOUR.connecting=false;TOUR.conn=conn;TOUR.status='on';const p=myProfileMsg();try{conn.send({t:'thello',did:p.did,name:p.name,avatar:p.avatar,duser:p.duser})}catch(e){}});
+    conn.on('data',m=>{
+      if(!m||!m.t)return;
+      if(m.t==='tview'){TOUR.view=m.view;TOUR.you=m.you||{reg:false};tourUpdate();return}
+      if(m.t==='tmsg'){tourMsg(cleanChat(m.text));sfx('click')}
+    });
+    conn.on('close',()=>{TOUR.conn=null;TOUR.status='closed';tourUpdate()});
+  };
+  if(peer.open)go();else{peer.once('open',go);peer.on('error',e=>{if(e.type==='peer-unavailable'){TOUR.connecting=false;TOUR.status='closed';tourUpdate()}})}
+}
+function tourAct(m){
+  if(TOUR.host){tourHandle(m,{did:myDid(),name:myName(),avatar:myAvatar(),duser:(dProfile()||{}).username||'',conn:null,admin:isTourAdmin()});return}
+  if(!TOUR.conn||!TOUR.conn.open){tourMsg('ยังเชื่อมต่อห้องทัวร์นาเมนต์ไม่ได้ — ผู้จัดยังไม่เปิดห้อง');return}
+  try{TOUR.conn.send(m)}catch(e){}
+}
+
+// ---------- what changed for me: card roll · prize · badge · my next match ----------
+function tourUpdate(){
+  const y=TOUR.you||{},K=TOUR_CFG.key,v=TOUR.view;
+  if(y.reg)store.set('eclipsa-tour-reg',K);
+  // the bracket was just drawn → show it to everyone
+  if(v&&v.drawn&&!TOUR.sawDraw){TOUR.sawDraw=true;if(TOUR.tab==='rw'||TOUR.tab==='pl')TOUR.tab='br'}
+  if(v&&!v.drawn)TOUR.sawDraw=false;
+  if(y.badge&&!G){store.set('eclipsa-tour-badge',y.badge)}
+  // random special card (once)
+  if(y.roll&&ARTS[y.roll]&&store.get('eclipsa-tour-roll')!==K&&!G){store.set('eclipsa-tour-roll',K);addArt(y.roll);tourRollFx(y.roll)}
+  // prize after being knocked out / winning (once)
+  else if(y.place&&store.get('eclipsa-tour-prize')!==K&&!G&&!$('#tourfx').classList.contains('show')){store.set('eclipsa-tour-prize',K);tourGivePrize(y.place)}
+  // my next match
+  if(y.match&&!G&&!ROOM&&TOUR.busy!==y.match.mid&&!$('#tourfx').classList.contains('show'))tourMatchPrompt(y.match);
+  tourBanner();updBadge();
+  if($('#tour').classList.contains('show'))renderTour();
+}
+function updBadge(){const b=$('#tbadge'),t=myBadge();if(!t||G){b.style.display='none';return}b.style.display='flex';b.innerHTML=`🏆 ${t}<small>TOURNAMENT</small>`;b.title='อันดับของคุณในทัวร์นาเมนต์ ECLIPSA'}
+function tourStatus(){
+  const v=TOUR.view;
+  if(!v)return {cls:'wait',t:'⏳ รอผู้จัดเปิดห้อง — ยังไม่เปิดลงทะเบียน'};
+  if(v.done)return {cls:'done',t:'🏁 จบการแข่งขันแล้ว'};
+  if(v.started)return {cls:'live',t:'⚔ กำลังแข่งขัน · ดูสดได้'};
+  if(v.drawn)return {cls:'wait',t:`🎲 จับสายแล้ว (${v.players.length} คน) — รอผู้จัดเริ่มแข่ง`};
+  if(!v.open)return {cls:'wait',t:`⏳ รอผู้จัดเปิดรับลงทะเบียน · ${v.players.length}/${v.max}`};
+  return {cls:'open',t:`🟢 เปิดลงทะเบียน · ${v.players.length}/${v.max}`};
+}
+function tourBanner(){
+  const b=$('#tourbtn');if(!b)return;
+  if(G||$('#start').style.display==='none'){b.style.display='none';return}
+  b.style.display='flex';const st=tourStatus();
+  b.innerHTML=`<span class="tth" style="background-image:url(${A('E_inn_sera.png')})"></span><span class="ttx"><span class="tev">★ EVENT</span><span class="tti">${TOUR_CFG.title}</span><span class="twh">📅 ${TOUR_CFG.when}</span><span class="tst ${st.cls}">${st.t}</span></span>`;
+}
+function countdown(){const d=TOUR_CFG.at-Date.now();if(d<=0)return 'ถึงเวลาแข่งแล้ว!';const s=d/1000|0;return `${s/86400|0} วัน ${String((s%86400)/3600|0).padStart(2,'0')}:${String((s%3600)/60|0).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`}
+
+// ---------- the tournament screen ----------
+function openTour(){audioInit();sfx('click');$('#tour').classList.add('show');tourConnect();renderTour();clearInterval(TOUR.tick);TOUR.tick=setInterval(()=>{const c=$('#trcd');if(c)c.textContent=countdown();if(!TOUR.host&&!(TOUR.conn&&TOUR.conn.open))tourConnect()},1000)}
+function closeTour(silent){if(!silent)sfx('click');$('#tour').classList.remove('show');clearInterval(TOUR.tick)}
+function renderTour(){
+  const el=$('#tour'),v=TOUR.view,y=TOUR.you||{},st=tourStatus(),me=myDid(),adm=isTourAdmin();
+  el.style.setProperty('--tbg',`url(${A('E_inn_sera.png')})`);
+  let act='';
+  if(!dProfile())act=`<button class="primary tr-big" id="trlogin">${DISCORD_SVG} เข้าสู่ระบบ Discord เพื่อลงทะเบียน</button>`;
+  else if(!v)act=`<button class="tr-big" disabled>🔒 ลงทะเบียน (รอผู้จัดเปิดห้อง)</button>`;
+  else if(y.reg&&!v.started)act=`<button class="tr-big" disabled style="opacity:1;border-color:#3fcf7a;color:#8ff0a8">✔ ลงทะเบียนแล้ว${v.drawn?' · จับสายแล้ว':''}</button>${v.drawn?'':'<button id="trunreg" style="font-size:13px">ยกเลิกการลงทะเบียน</button>'}`;
+  else if(y.reg&&y.match)act=`<button class="primary tr-big" id="trgo">⚔ ไปแข่งแมตช์ของคุณ vs ${tEsc(y.match.opp.name)}</button>`;
+  else if(y.reg&&v.started&&!y.place)act=`<button class="tr-big" disabled>⏳ รอคู่แข่งรอบถัดไป…</button>`;
+  else if(y.reg&&y.place)act=`<button class="tr-big" disabled style="opacity:1">🏆 จบที่ ${y.place===1?'อันดับ 1':badgeOfPlace(y.place)}</button>`;
+  else if(v.started)act=`<button class="tr-big" disabled>เริ่มแข่งแล้ว — ดูสดได้ในแท็บ "ดูการแข่งสด"</button>`;
+  else if(!v.open||v.players.length>=v.max)act=`<button class="tr-big" disabled>${v.players.length>=v.max?'เต็มแล้ว (32 คน)':'ปิดรับลงทะเบียน'}</button>`;
+  else act=`<button class="primary tr-big" id="trreg">📝 ลงทะเบียนแข่ง (${v.players.length}/${v.max})</button>`;
+  let admin='';
+  if(adm){
+    if(!TOUR.host)admin=`<div class="tr-box tr-adm"><h3>🛠 ผู้จัด (dzssluggerg_)</h3><button class="primary" id="trhost">🏠 สร้างห้องทัวร์นาเมนต์ (เปิดลงทะเบียน)</button><small style="color:var(--muted)">เครื่องนี้จะเป็นเซิร์ฟเวอร์ของทัวร์นาเมนต์ — ห้ามปิดเกมระหว่างแข่ง</small></div>`;
+    else{const S=TOUR.S;admin=`<div class="tr-box tr-adm"><h3>🛠 ผู้จัด · เครื่องนี้คือห้องทัวร์นาเมนต์</h3>
+      <div class="row2">${S.started?'':`<button id="tropen"${S.open?'':' class="primary"'}>${S.open?'⏸ ปิดรับลงทะเบียน':S.drawn?'↩ เปิดรับลงทะเบียนต่อ':'▶ เปิดรับลงทะเบียน'}</button>
+        <button id="trdraw"${S.players.length<2?' disabled':''}>🎲 ${S.drawn?'สุ่มสายใหม่':'สุ่มสายการแข่ง'} (${S.players.length} คน)</button>
+        <button class="primary" id="trstart"${S.drawn?'':' disabled'}>🏁 เริ่มแข่ง</button>`}<button id="trreset">♻ รีเซ็ต</button></div>
+      <small style="color:var(--muted)">1) เปิดรับลงทะเบียน → 2) สุ่มสาย (ทุกคนเห็นทันที สุ่มใหม่ได้) → 3) เริ่มแข่ง: ทุกคนสุ่มการ์ดพิเศษ 1 ใบ แล้วแข่งรอบแรก · ถ้าคู่ไหนมีปัญหา กด "ชนะ" ใต้ชื่อในแท็บสายการแข่ง</small></div>`}
+  }
+  const tabs=[['rw','🏆 รางวัล'],['br','🗂 สายการแข่ง'],['rk','🏅 Rankings'],['pl',`👥 ผู้สมัคร ${v?v.players.length:0}/${TOUR_CFG.max}`],['lv','👁 ดูการแข่งสด']];
+  el.innerHTML=`<div class="tr-top"><button id="trback">← กลับ</button><h1>${TOUR_CFG.title}</h1><div class="tr-when">📅 ${TOUR_CFG.when}<b id="trcd">${countdown()}</b></div></div>
+    <div class="tr-body"><div class="tr-hero"><div class="tr-card" style="background-image:url(${A('E_inn_sera.png')})"></div>
+      <div class="tr-box"><div class="tr-stat"><span class="tst ${st.cls}" style="font-size:14px">${st.t}</span><br>รับสูงสุด <b>32 คน</b> · แพ้คัดออก (Single Elimination)<br>${y.badge?`อันดับของคุณ: <b>🏆 ${y.badge}</b>`:''}</div>${act}<div class="tr-msg" id="trmsg">${TOUR.msg}</div></div>${admin}</div>
+      <div><div class="tr-tabs">${tabs.map(([k,t])=>`<button data-k="${k}" class="${TOUR.tab===k?'on':''}">${t}</button>`).join('')}</div><div id="trpane">${tourPane(TOUR.tab)}</div></div></div>`;
+  $('#trback').onclick=()=>closeTour();
+  el.querySelectorAll('.tr-tabs button').forEach(b=>b.onclick=()=>{sfx('click');TOUR.tab=b.dataset.k;renderTour()});
+  const on=(id,f)=>{const b=$('#'+id);if(b)b.onclick=()=>{sfx('click');f()}};
+  on('trlogin',discordLogin);on('trreg',()=>tourAct({t:'treg'}));on('trunreg',()=>tourAct({t:'tunreg'}));on('trgo',()=>tourGoMatch(y.match));
+  on('trhost',tourHost);on('tropen',()=>tourAct({t:'topen'}));on('trdraw',()=>tourAct({t:'tdraw'}));on('trstart',()=>{if(confirm(`เริ่มแข่งด้วยผู้เล่น ${TOUR.S.players.length} คน? (เริ่มแล้วรับสมัครเพิ่มไม่ได้)`))tourAct({t:'tstart'})});
+  on('trreset',()=>{if(confirm('รีเซ็ตทัวร์นาเมนต์ทั้งหมด? รายชื่อและผลการแข่งจะหายทั้งหมด'))tourAct({t:'treset'})});
+  el.querySelectorAll('[data-spec]').forEach(b=>b.onclick=()=>specJoin(b.dataset.spec,b.dataset.lbl));
+  el.querySelectorAll('[data-set]').forEach(b=>b.onclick=()=>{const [mid,w]=b.dataset.set.split('|');const p=TOUR.S&&tourPl(w);if(confirm(`ตัดสินให้ ${p?p.name:w} ชนะคู่นี้?`))tourAct({t:'tset',mid,w})});
+  el.querySelectorAll('[data-kick]').forEach(b=>b.onclick=()=>{if(confirm('นำผู้เล่นนี้ออกจากรายชื่อ?'))tourAct({t:'tkick',did:b.dataset.kick})});
+}
+function tourPane(k){
+  const v=TOUR.view,me=myDid(),pn=did=>v&&v.players.find(p=>p.did===did);
+  if(k==='rw'){
+    const card=(id,txt,art)=>`<div class="tr-it"><div class="cd${id==='longyexin'?' lyx':''}" data-rgb="${id==='longyexin'?'':1}" style="background-image:url(${A(art?ARTS[art].img:CARDS[id].img)})"></div>${txt}</div>`;
+    const coin=n=>`<div class="tr-it">${COIN_SVG}<b>${n.toLocaleString()}</b>เงินในเกม</div>`;
+    return `<div class="tr-rw">${TOUR_PRIZE.map(p=>`<div class="tr-pr ${p.cls}"><span class="md">${p.medal}</span><span class="lb">${p.label}</span><span class="its">
+      ${p.cards.includes('longyexin')?card('longyexin','การ์ด <b style="font-size:12px;color:#ff6a6a">SECRET</b><br>เยี่ยซิน'):''}
+      ${p.arts.includes('sera')?card('inn','การ์ดโรงเตี๊ยมของพีช<br>(รูปเซร่า)','sera'):''}
+      ${p.cards.includes('x_xuan2')?card('x_xuan2','การันตี<br>เซวียนเหิง 2 (EBX-01)'):''}
+      ${coin(p.coins)}</span></div>`).join('')}
+      <div class="tr-pr"><span class="md">🎁</span><span class="lb">ผู้เข้าร่วมทุกคน</span><span class="its">${coin(TOUR_JOIN_COINS)}
+        <div class="tr-it" style="max-width:none;flex-direction:row;gap:8px">${TOUR_ROLL.map(a=>`<div class="tr-it"><div class="cd" data-rgb="1" style="background-image:url(${A(ARTS[a].img)})"></div>${ARTS[a].name}</div>`).join('')}</div>
+        <div style="font-size:13px;color:#ffe2c8;flex-basis:100%">สุ่มรับการ์ดพิเศษ <b>1 ใบ</b> จาก 3 รูปแบบ ตอนผู้จัดกดเริ่มแข่ง · เงินรางวัลจะได้รับหลังจากตกรอบ (หรือได้แชมป์) · การ์ดพิเศษทุกใบ<b>ไม่มีขายที่ไหน</b></div></span></div></div>`;
+  }
+  if(k==='pl'){
+    if(!v)return '<div class="tr-none">ผู้จัดยังไม่เปิดห้อง — ยังไม่มีผู้สมัคร</div>';
+    if(!v.players.length)return '<div class="tr-none">ยังไม่มีผู้สมัคร — เป็นคนแรกเลย!</div>';
+    return `<div class="tr-pl">${v.players.map((p,i)=>`<div class="tr-p${p.did===me?' me':''}">${p.avatar?`<img src="${safeAvatar(p.avatar)}" alt="">`:`<span class="q">${tEsc(p.name).slice(0,1)}</span>`}<span style="flex:1;min-width:0"><b>${i+1}. ${tEsc(p.name)}</b><small>${v.places[p.did]?'🏆 '+badgeOfPlace(v.places[p.did]):v.started?'ยังอยู่ในการแข่ง':'ลงทะเบียนแล้ว'}</small></span>${TOUR.host&&!v.started?`<button data-kick="${p.did}" style="padding:2px 8px;font-size:12px">✕</button>`:''}</div>`).join('')}</div>`;
+  }
+  if(k==='rk'){ // TOURNAMENT RANKINGS — everyone sees it
+    if(!v||!v.drawn&&!v.started)return '<div class="tr-none">อันดับจะแสดงหลังผู้จัดสุ่มสายการแข่ง</div>';
+    const alive=v.players.filter(p=>!v.places[p.did]),done=v.players.filter(p=>v.places[p.did]).sort((a,b)=>v.places[a.did]-v.places[b.did]);
+    const rOf=did=>{let r=0;v.rounds.forEach((rd,i)=>{if(rd.some(m=>m.a===did||m.b===did))r=i});return r};
+    const row=(p,pl)=>{const pr=pl?prizeOf(pl):null,txt=pl?(pl===1?'อันดับ 1':pl===2?'อันดับ 2':`อันดับ ${pl}–${(pl-1)*2}`):(v.started?`ยังอยู่ในการแข่ง · TOP ${v.size>>rOf(p.did)}`:'รอเริ่มแข่ง');
+      return `<div class="tr-rk${pl===1?' g':pl===2?' s':pl&&pl<=4?' b':''}${p.did===me?' me':''}"><span class="no">${pl?(pr?pr.medal:'🎖'):'⚔'}</span>${p.avatar?`<img src="${safeAvatar(p.avatar)}" alt="">`:`<span class="q">${tEsc(p.name).slice(0,1)}</span>`}<b>${tEsc(p.name)}</b><span class="pl">${txt}</span><span class="tb">${pl?'🏆 '+badgeOfPlace(pl):''}</span></div>`};
+    return `<div class="tr-rks"><div class="tr-rkh">🏅 TOURNAMENT RANKINGS · ${v.done?'ผลสุดท้าย':v.started?'อัปเดตสด':'ยังไม่เริ่มแข่ง'}</div>${done.filter(p=>v.places[p.did]<=2).map(p=>row(p,v.places[p.did])).join('')}${alive.map(p=>row(p,0)).join('')}${done.filter(p=>v.places[p.did]>2).map(p=>row(p,v.places[p.did])).join('')}</div>`;
+  }
+  if(k==='lv'){
+    if(!v||!v.started)return '<div class="tr-none">ยังไม่เริ่มแข่ง — เมื่อเริ่มแล้วจะดูทุกคู่ที่กำลังแข่งได้ที่นี่<br><small>ผู้ชมจะไม่เห็นการ์ดบนมือของทั้ง 2 ฝ่าย</small></div>';
+    const live=[];v.rounds.forEach((rd,r)=>rd.forEach((m,i)=>{if(m.peer)live.push({m,r})}));
+    if(!live.length)return `<div class="tr-none">${v.done?'การแข่งขันจบแล้ว 🏁':'ตอนนี้ไม่มีคู่ที่กำลังแข่ง'}</div>`;
+    return `<div class="tr-live">${live.map(({m,r})=>{const a=pn(m.a)||{},b=pn(m.b)||{},lbl=`${tEsc(a.name)} vs ${tEsc(b.name)}`;return `<div class="tr-lv"><span class="dot"></span><b>${lbl}</b><small>${tourRoundName(r)}</small><button class="primary" data-spec="${m.peer}" data-lbl="${lbl}">👁 ดู</button></div>`}).join('')}</div>`;
+  }
+  // bracket: left half · final + trophy · right half (like a cup draw)
+  if(!v||!v.started&&!v.drawn){
+    const n=v?v.players.length:0;
+    return `<div class="tr-br"><div class="tr-none" style="color:#c8e8b0">สายการแข่งจะสุ่มจับคู่ตอนผู้จัดกด "เริ่มแข่ง"<br>ผู้สมัครตอนนี้ ${n}/${TOUR_CFG.max} คน</div>${tourBracketHTML(null)}</div>`;
+  }
+  return `<div class="tr-br">${tourBracketHTML(v)}</div>`;
+}
+function tourRoundName(r){const v=TOUR.view,n=v&&v.size?v.size>>r:32;return n===2?'รอบชิงชนะเลิศ':n===4?'รอบรองชนะเลิศ':n===8?'รอบ 8 คน':'รอบ '+n+' คน'}
+function tourBracketHTML(v){
+  const me=myDid(),pn=did=>v&&v.players.find(p=>p.did===did);
+  const rounds=v?v.rounds:[16,8,4,2,1].map(n=>[...Array(n)].map(()=>({})));
+  const slot=(did,m)=>{if(!v||!did)return `<div class="tr-s e">${v&&m&&m.w&&!did?'BYE':'—'}</div>`;const p=pn(did)||{};
+    return `<div class="tr-s${m.w===did?' w':m.w?' l':''}${did===me?' me':''}" title="${tEsc(p.name)}">${p.avatar?`<img src="${safeAvatar(p.avatar)}" alt="">`:''}${tEsc(p.name)}</div>`};
+  const mm=(m,r,i)=>`<div class="tr-m${v&&m.peer?' live':''}">${slot(m.a,m)}${slot(m.b,m)}${TOUR.host&&v&&m.a&&m.b&&!m.w?`<div class="tr-ov"><button data-set="${r}-${i}|${m.a}">◀ ชนะ</button><button data-set="${r}-${i}|${m.b}">ชนะ ▶</button></div>`:''}${v&&m.peer?`<div class="tr-ov"><button data-spec="${m.peer}" data-lbl="${tEsc((pn(m.a)||{}).name)} vs ${tEsc((pn(m.b)||{}).name)}">👁 ดู</button></div>`:''}</div>`;
+  const last=rounds.length-1,left=[],right=[];
+  for(let r=0;r<last;r++){const rd=rounds[r],h=rd.length/2,nm=v?tourRoundName(r):'TOP '+(32>>r);
+    left.push(`<div class="tr-col"><h4>${nm}</h4>${rd.slice(0,h).map((m,i)=>mm(m,r,i)).join('')}</div>`);
+    right.unshift(`<div class="tr-col"><h4>${nm}</h4>${rd.slice(h).map((m,i)=>mm(m,r,h+i)).join('')}</div>`)}
+  const fin=rounds[last][0],champ=v&&fin.w?pn(fin.w):null;
+  // 3rd place (shared 3–4): the two semi-final losers
+  const sf=last>0?rounds[last-1]:[],third=sf.map(m=>v&&m.w?(m.a===m.w?m.b:m.a):null);
+  const thirdH=last>0?`<h4 style="margin-top:6px">3rd Place · อันดับ 3–4</h4><div class="tr-m">${third.map(d=>d?`<div class="tr-s" style="background:linear-gradient(90deg,#f0c8a0,#fff2e4)">🥉 ${tEsc((pn(d)||{}).name)}</div>`:'<div class="tr-s e">—</div>').join('')}</div>`:'';
+  return `<div class="tr-bw">${left.join('')}<div class="tr-cen"><h4>WINNER</h4><span class="cup">🏆</span>${champ?`<div class="tr-s w" style="font-size:14px">${tEsc(champ.name)}</div>`:'<div class="tr-s e">—</div>'}<h4>FINAL</h4>${mm(fin,last,0)}${thirdH}</div>${right.join('')}</div>`;
+}
+
+// ---------- start: everyone reveals 1 of the 3 special cards ----------
+function tourRollFx(art){
+  const fx=$('#tourfx'),order=shuffle([...TOUR_ROLL]),pick=order.indexOf(art);
+  fx.innerHTML=`<h2>🎁 ${TOUR_CFG.title}</h2><p>สุ่มการ์ดพิเศษ 1 ใบจาก 3 รูปแบบ…</p><div class="tfx-row">${order.map(a=>`<div class="tfx-c shuf"><i style="background-image:url(${A('back.png')})"></i><i class="f" style="background-image:url(${A(ARTS[a].img)})"></i></div>`).join('')}</div><p id="tfxres"></p><button class="primary" id="tfxok" style="visibility:hidden;font-size:18px;padding:10px 30px">เยี่ยม!</button>`;
+  fx.classList.add('show');sfx('draw');
+  const cs=[...fx.querySelectorAll('.tfx-c')];
+  setTimeout(()=>{cs.forEach((c,i)=>{c.classList.remove('shuf');if(i!==pick)c.classList.add('off')});cs[pick].classList.add('pick');const fc=cs[pick].querySelector('i.f');addFoilType(fc,'prism');addRgb(fc);sfx('win')},2200);
+  setTimeout(()=>{$('#tfxres').innerHTML=`ได้รับ <b style="color:#ffd76a">โรงเตี๊ยมของพีช · ลาย ${ARTS[art].name}</b>!<br><small style="color:var(--muted)">ใส่เด็คได้ที่หน้า "จัดเด็ค" — นับรวมกับโรงเตี๊ยมของพีชใบปกติ (รวมกันสูงสุด 4 ใบ)</small>`;$('#tfxok').style.visibility='visible'},2900);
+  $('#tfxok').onclick=()=>{sfx('click');fx.classList.remove('show');tourUpdate()};
+}
+// ---------- prize (after being knocked out, or the champion) ----------
+function tourGivePrize(place){
+  const p=prizeOf(place),coins=TOUR_JOIN_COINS+(p?p.coins:0);
+  addCoins(coins);
+  // prize cards come as the prism foil (เซวียนเหิง 2 → its foil entry "x_xuan2~prism"; เยี่ยซิน keeps its own diamond foil)
+  if(p){for(const id of p.cards)if(CARDS[id]){addOwned(id);if(id!=='longyexin')addFoilOwn(id,'prism')}for(const a of p.arts)addArt(a)}
+  const items=[`${COIN_SVG} <b>${coins.toLocaleString()}</b> เงินในเกม${p?` <small>(รางวัล ${p.coins.toLocaleString()} + ผู้เข้าร่วม ${TOUR_JOIN_COINS.toLocaleString()})</small>`:' <small>(รางวัลผู้เข้าร่วม)</small>'}`];
+  if(p&&p.cards.includes('longyexin'))items.push('🃏 การ์ด <b style="color:#ff6a6a">SECRET เยี่ยซิน</b>');
+  if(p&&p.arts.includes('sera'))items.push('🃏 การ์ดโรงเตี๊ยมของพีช <b>(รูปเซร่า)</b>');
+  if(p&&p.cards.includes('x_xuan2'))items.push('🃏 การ์ด <b>เซวียนเหิง 2</b> (EBX-01) · <b style="color:#9ae6ff">ฟอยล์ปริซึม</b>');
+  const box=$('#modal .box');box.classList.remove('prompt');
+  box.innerHTML=`<h2 style="text-align:center;font-size:34px">${p?p.medal:'🎖'} ${place===1?'แชมป์ทัวร์นาเมนต์!':badgeOfPlace(place)}</h2><p style="text-align:center;font-size:16px">${TOUR_CFG.title}<br>ได้รับรางวัล:</p>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:17px;padding:4px 18px">${items.map(t=>`<div>${t}</div>`).join('')}</div>
+    <p style="text-align:center;color:#ffd76a">ป้าย 🏆 ${badgeOfPlace(place)} จะติดมุมขวาบน และโชว์ให้คู่แข่งเห็นทุกครั้งที่เจอกัน</p><div class="foot"><button class="primary" id="tpok">รับรางวัล</button></div>`;
+  $('#modal').style.display='flex';sfx('win');
+  $('#tpok').onclick=()=>{sfx('click');$('#modal').style.display='none'};
+}
+// ---------- my match ----------
+function tourMatchPrompt(m){
+  if($('#modal').style.display==='flex'&&$('#tmgo'))return;
+  const box=$('#modal .box');box.classList.remove('prompt');
+  box.innerHTML=`<h2 style="text-align:center">⚔ แมตช์ทัวร์นาเมนต์ของคุณพร้อมแล้ว!</h2><p style="text-align:center;font-size:18px">${tourRoundName(m.round)}<br>คุณ vs <b style="color:#ffd76a">${tEsc(m.opp.name)}</b></p>
+    <p style="text-align:center;color:var(--muted);font-size:14px">ใช้เด็คที่บันทึกไว้ตอนนี้ · ผู้ชมดูได้แต่ไม่เห็นการ์ดบนมือ</p><div class="foot"><button id="tmlater">ภายหลัง</button><button class="primary" id="tmgo">⚔ เข้าแข่งเลย</button></div>`;
+  $('#modal').style.display='flex';sfx('buff');
+  $('#tmgo').onclick=()=>{$('#modal').style.display='none';tourGoMatch(m)};
+  $('#tmlater').onclick=()=>{sfx('click');TOUR.busy=m.mid;$('#modal').style.display='none'};
+}
+async function tourGoMatch(m){
+  if(!m||G||ROOM)return;
+  audioInit();sfx('click');TOUR.busy=m.mid;closeTour(true);
+  const bar=t=>{const b=$('#qpbar');b.style.display='flex';b.innerHTML=`<span class="qspin"></span><span class="qtx">🏆 ${t}</span><button id="qpcancel">ยกเลิก</button>`;$('#qpcancel').onclick=()=>{sfx('click');location.reload()}};
+  if(m.role==='host'){
+    for(let k=0;k<8&&!ROOM;k++){
+      bar(`สร้างห้องแข่ง vs ${tEsc(m.opp.name)}…`);
+      try{await roomCreate('1v1',{pub:false,qp:true,peerId:m.peer});ROOM.tour=m.mid;bar(`รอ ${tEsc(m.opp.name)} เข้าห้องแข่ง…`);return}catch(e){await new Promise(r=>setTimeout(r,4000))}
+    }
+    bar('สร้างห้องแข่งไม่สำเร็จ — ลองใหม่อีกครั้ง');
+  }else{
+    for(let k=0;k<100&&!ROOM;k++){
+      bar(`รอ ${tEsc(m.opp.name)} เปิดห้องแข่ง… (${k+1})`);
+      try{await roomJoin(null,m.peer);bar(`เข้าห้องแข่งแล้ว — กำลังเริ่ม…`);return}catch(e){if(e==='full'||e==='started'){bar('ห้องแข่งนี้เต็ม/เริ่มไปแล้ว');return}await new Promise(r=>setTimeout(r,3000))}
+    }
+  }
+}
+// match over → tell the organizer who won (the result screen of a tournament match)
+function tourReportResult(winner,quit){
+  G.over=true;surrClose();closeMenu();render();
+  const won=winner===G.me||(!!quit&&quit!==G.me);
+  const opp=G.players.find(p=>p!==G.me)||{};
+  tourAct({t:'tres',mid:G.tour,w:won?myDid():String(opp.did||'')});
+  sfx(won?'win':'lose');
+  const box=$('#modal .box');box.classList.remove('prompt');
+  box.innerHTML=`<h2 style="font-size:40px;text-align:center">${won?'🏆 คุณชนะ!':'คุณแพ้...'}</h2><p style="font-size:17px;text-align:center">${won?'ผ่านเข้ารอบต่อไป — รอคู่แข่งรอบถัดไป':'ตกรอบแล้ว — รางวัลจะถูกส่งให้อัตโนมัติ'}${quit?`<br><small>${quit===G.me?'คุณยอมแพ้':tEsc(quit.name)+' ยอมแพ้'}</small>`:''}</p>
+    <div class="foot"><button class="primary" id="tback">🏆 กลับไปหน้าทัวร์นาเมนต์</button></div>`;
+  $('#modal').style.display='flex';
+  $('#tback').onclick=()=>{sfx('click');setTimeout(()=>{location.hash='tour';location.reload()},300)};
+}
+function tourOppLeft(){
+  if(!G||G.over)return;
+  const opp=G.players.find(p=>p!==G.me);
+  G.halt=true;tourReportResult(G.me,opp);
+  const p=$('#modal .box p');if(p)p.innerHTML='คู่แข่งหลุดออกจากเกม — <b>คุณชนะ</b> และผ่านเข้ารอบต่อไป';
+}
+
+// ---------- start ----------
+$('#tourbtn').onclick=openTour;
+tourBanner();updBadge();
+// the organizer's computer re-opens the tournament room by itself after a reload
+if(isTourAdmin()&&store.get('eclipsa-tour-hosting')===TOUR_CFG.key&&tourLoad())setTimeout(tourHost,600);
+else setTimeout(tourConnect,1200);
+setInterval(()=>{if(!G&&!TOUR.host&&!(TOUR.conn&&TOUR.conn.open))tourConnect()},20000);
+if(location.hash==='#tour'){location.hash='';setTimeout(openTour,700)}
+// cards in the tournament screen that are special arts get the RGB edge
+// prize cards on the tournament screen: prism foil + RGB edge (เยี่ยซิน: its own diamond foil + aura)
+new MutationObserver(()=>{
+  document.querySelectorAll('#tour [data-rgb="1"]').forEach(e=>{e.removeAttribute('data-rgb');addFoilType(e,'prism');addRgb(e)});
+  document.querySelectorAll('#tour .cd.lyx:not(.lyxcard)').forEach(e=>addAura(e,8));
+}).observe($('#tour'),{childList:true,subtree:true});
 // "เล่นอีกรอบ" after a quick-play match comes back here and searches again
 if(/^#qp-(1v1|2v2)$/.test(location.hash)){const m=location.hash.slice(4);location.hash='';setTimeout(()=>qpStart(m),400)}
 </script>
