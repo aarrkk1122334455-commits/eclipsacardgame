@@ -1237,6 +1237,22 @@ body.mobile .tr-pr{flex-wrap:wrap}body.mobile .tr-pr .lb{width:auto}
 .ctime{margin:8px 0 2px;text-align:center}.ctime small{color:var(--muted)}
 .ctrow{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:6px}.ctrow .ct{padding:6px 12px;font-size:14px}.ctrow .ct.on{background:linear-gradient(#ffd23a,#c08a10);color:#1a1004;border-color:#ffe9a0;font-weight:bold}
 .rtsec{margin-left:8px;font-size:13px;padding:2px 10px;border-radius:10px;background:#3a2a08;border:1px solid #ffd23a;color:#ffe9a8;vertical-align:middle}
+.tutbtn{width:100%;background:linear-gradient(160deg,#1a4a2a,#0a2014)!important;border-color:#5aff9a!important;color:#d8ffe4!important;font-weight:bold;box-shadow:0 0 14px #3fcf7a55}.tutbtn small{color:#ffd76a;font-weight:normal}
+#tutcoach{position:fixed;z-index:125;display:none;transform:translate(-50%,0);pointer-events:none;max-width:min(340px,90vw);animation:fadeIn .25s}
+#tutcoach .tc{background:linear-gradient(160deg,#fff8e0,#ffe9a8);color:#2a1a04;font-size:17px;line-height:1.45;font-weight:bold;padding:10px 16px;border-radius:16px;border:3px solid #ff9a2a;box-shadow:0 8px 26px #000c,0 0 20px #ffb04a88;text-align:center}
+#tutcoach.click{pointer-events:auto}#tutcoach .tnext{display:block;margin:8px auto 0;padding:6px 18px;font-size:15px;background:linear-gradient(#ff9a2a,#d0600a);color:#fff;border:2px solid #fff;border-radius:12px;font-weight:bold;cursor:pointer}
+#tutcoach .ttypes{display:flex;gap:6px;justify-content:center;margin-top:6px}#tutcoach .ttypes span{display:flex;flex-direction:column;align-items:center;width:70px;font-size:11px;line-height:1.2}
+#tutcoach .ttypes i{width:52px;height:73px;border-radius:5px;background:center/cover;box-shadow:0 2px 6px #0008;margin-bottom:3px}#tutcoach .ttypes b{font-size:11.5px}
+#tutcoach .tsym{display:flex;flex-direction:column;gap:5px;margin-top:6px;text-align:left;font-size:14.5px}
+#tutcoach .tm{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8fd8ff,#1a6ad0);border:2px solid #fff;color:#fff;font-weight:900;font-size:13px;box-shadow:0 0 6px #3a8aff;vertical-align:middle}
+#tutcoach .tp{display:inline-block;padding:0 6px;border-radius:8px;background:#3a0808;color:#fff;font-weight:900;font-size:13px;vertical-align:middle}
+#tutcoach .tc b{color:#c02a10}#tutcoach .tc small{color:#6a4a1a}
+#tutcoach .ta{text-align:center;font-size:34px;line-height:1;color:#ffb04a;text-shadow:0 0 10px #ff8a2a,0 2px 0 #000;animation:tutBob .7s ease-in-out infinite alternate}
+#tutcoach.below{display:flex!important;flex-direction:column-reverse}#tutcoach.below .ta{transform:rotate(180deg)}
+#tutcoach.free .ta{display:none}
+@keyframes tutBob{to{transform:translateY(8px)}}#tutcoach.below .ta{animation:tutBob2 .7s ease-in-out infinite alternate}@keyframes tutBob2{from{transform:rotate(180deg)}to{transform:rotate(180deg) translateY(8px)}}
+#tutring{position:fixed;z-index:124;display:none;pointer-events:none;border-radius:12px;border:4px solid #ffb04a;box-shadow:0 0 0 4px #ff8a2a55,0 0 24px #ffb04a;animation:tutRing 1s ease-in-out infinite}
+@keyframes tutRing{50%{transform:scale(1.06);box-shadow:0 0 0 8px #ff8a2a33,0 0 34px #ffb04a}}
 #updbar{position:fixed;left:50%;top:8px;transform:translateX(-50%);z-index:140;padding:8px 16px;border-radius:14px;background:#2a1a06f2;border:2px solid #ffd23a;color:#ffe9a8;font-size:15px;box-shadow:0 0 20px #ffd23a66;white-space:nowrap;max-width:calc(100vw - 20px);overflow:hidden;text-overflow:ellipsis}
 #updbar .ut{font-weight:900;font-variant-numeric:tabular-nums;color:#fff}#updbar button{padding:3px 10px;font-size:13px;margin-left:6px}
 #updbar.hot{background:#4a0810f2;border-color:#ff4a5a;animation:canpulse 1s infinite}
@@ -1396,6 +1412,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
     <div class="row"><input id="roomcode" placeholder="รหัสห้อง 6 ตัว" maxlength="6" style="text-transform:uppercase"><button id="joinbtn">เข้าห้อง</button></div>
     <div id="netmsg"></div>
     <div class="row"><button id="deckbtn" class="deckbtn">🃏 จัดเด็ค</button><button id="gachabtn" class="gachabtn">🎰 ตู้สุ่มการ์ด</button></div>
+    <div class="row"><button id="tutbtn" class="tutbtn">🎓 สอนเล่น <small>(ผ่านครั้งแรกรับ 50,000)</small></button></div>
     <div class="row"><button id="startrules">อ่านกติกาก่อน</button><button id="startset">⚙ ตั้งค่าเสียง</button></div>
     <div class="row" id="adminrow" style="display:none"><button id="reportsbtn">🛡 ดูรายงานจากผู้เล่น</button></div>
   </div>
@@ -1499,7 +1516,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
   <div class="gnote">ใช้เหรียญ (เหลียน) ที่ได้จากการเล่น · ชนะได้ <b>1250</b> · แพ้ได้ <b>500</b> · ได้การ์ดซ้ำ คืน <b>100</b> เหลียน</div>
 </div>
 
-<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=20;</script>
+<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=21;</script>
 <script>
 // ============ CARD DATA (transcribed from the card art) ============
 const SAN='สามพี่น้อง', SHIP='เรือหลวง', WCT='พี่น้องร่ำรา', MANA_MAX=10, HAND_MAX=8;
@@ -1887,6 +1904,7 @@ function applyProfile(){
   if(p){
     box.innerHTML=`<div class="dcard"><img src="${safeAvatar(p.avatar)}" alt=""><div class="dn"><b id="dcname">${myName()}</b><span>Discord: ${cleanName(p.name)} · เชื่อมต่อแล้ว</span></div><button id="dcout">ออกจากระบบ</button></div>`;
     if(typeof updAdmin==='function')setTimeout(updAdmin);
+    setTimeout(()=>{try{tutAsk()}catch(e){}},1500); // first time this Discord account logs in: offer the tutorial
     // in-game name: anything you like (other players may use the same name); empty = your Discord name
     inp.disabled=false;inp.style.display='';inp.value=store.get('eclipsa-name')||'';inp.placeholder=`✏ ชื่อในเกม (ว่าง = ${cleanName(p.name)})`;
     $('#dcout').onclick=()=>{store.set('eclipsa-discord','null');sfx('click');applyProfile()};
@@ -2109,6 +2127,7 @@ function onNet(m,pid){
       .then(idx=>send({t:'chosen',id:m.id,idx}));
     return;
   }
+  if(m.t==='chx'){$('#modal').style.display='none';closeMenu();sfx('debuff');showBanner('⏰ หมดเวลาเลือก','ใช้ตัวเลือกปกติให้แล้ว',false,1400);return}
   if(m.t==='srq'){surrIncoming(cleanName(m.name));return}
   if(m.t==='sans'){surrDeclined();return}
   if(m.t==='scx'){surrCancelled();return}
@@ -3091,6 +3110,8 @@ function choose(p,{title,sub,items,min=0,max=1,ai,okText,live}){
       const id=++NET.req;G.wait=true;
       const f=idx=>{G.wait=false;const out=idx.filter(i=>items[i]).slice(0,max).map(i=>items[i].value);res(out.length>=min?out:items.slice(0,min).map(i=>i.value))};
       f.pid=p.pid;NET.pending[id]=f;
+      // anti-stalling: the other player has PROMPT_SEC to answer (only in timed rooms), then the default answer is used
+      if((G.tsec??TURN_SEC)>0)setTimeout(()=>{if(NET.pending[id]===f){delete NET.pending[id];sendTo(p.pid,{t:'chx'});log(null,`⏰ ${p.name} ไม่ตอบภายใน ${PROMPT_SEC} วินาที — ใช้ตัวเลือกปกติ`);f([])}},PROMPT_SEC*1000);
       sendTo(p.pid,{t:'choose',id,title,sub,min,max,okText,live:live||null,items:items.map(it=>({card:it.card?strip(it.card):null,text:it.text??null,v:it.v||0,disabled:!!it.disabled}))});
       render();
     });
@@ -3165,6 +3186,7 @@ function showResult(winner,quit){
     $('#modal').style.display='flex';return;
   }
   if(G.tour){tourReportResult(winner,quit);return}
+  if(G.tut){tutResult(winner,quit);return}
   if(!quit&&G.me.quit)quit=G.me;
   const won=winner===G.me||(G.players.length>2&&winner.team===G.me.team);
   LASTMATCH=G.players.map(p=>({name:p.name,avatar:p.avatar||'',did:p.did||'',duser:p.duser||'',me:p===G.me}));
@@ -5153,6 +5175,12 @@ async function aiTurn(p){
       const lethal=o.life.length===0&&atkPow(p,u)>=defPow(o,o.leader);
       if(!lethal&&kill&&(o.life.length>(DIFF===4?1:2))&&(D(kill).power>=5000||atkPow(p,u)<defPow(o,o.leader)))target=kill;
     }
+    // tutorial bot: keeps attacking, but won't land the finishing blow — unless the student is really, really struggling
+    if(G.tut&&target===o.leader&&!o.life.length&&!tutMayKill()){
+      const alt=o.allies.filter(a=>a.rested&&atkPow(p,u)>=defPow(o,a))[0];
+      if(G.tut.sparedT!==G.turn){G.tut.spared++;G.tut.sparedT=G.turn}
+      if(!alt)continue;target=alt;
+    }
     if(atkPow(p,u)<defPow(o,target)){if(DIFF===1){await attack(p,u,target);render();await sleep(800);continue}if(!kill)continue;target=kill}
     await attack(p,u,target);render();await sleep(800);
   }
@@ -5568,7 +5596,7 @@ function surrDeclined(){
 }
 function surrCancelled(){if(SR.theirs)surrClose()}
 // ============ TURN TIMER (online matches): 180 s per turn · ≤20 s warning beeps · 0 = gives up automatically ============
-const TURN_SEC=120,WARN_SEC=20;   // default 120 s; the room owner can pick another time or no limit
+const TURN_SEC=120,WARN_SEC=20,PROMPT_SEC=45; // PROMPT_SEC: time to answer a question during the other player's turn (block, counter …)   // default 120 s; the room owner can pick another time or no limit
 const TT={side:null,s:null,last:-1,tot:TURN_SEC};
 // host: count down the current player's turn (paused while waiting for someone else's answer / a surrender question)
 setInterval(()=>{
@@ -5736,6 +5764,133 @@ $('#startbtn').onclick=async()=>{
 $('#hostbtn').onclick=openCreateRoom;$('#listbtn').onclick=openRoomList;
 $('#joinbtn').onclick=()=>joinByCode();
 $('#roomcode').addEventListener('keydown',e=>{if(e.key==='Enter')joinByCode()});
+// ============ TUTORIAL: a real match vs. a gentle teacher bot, with arrows for the first turns, then free play ============
+// lvl 1 = short · lvl 2 (after losing) = a few more tips. Winning the first time = 50,000.
+const TUT_REWARD=50000;
+const tutKey=k=>'eclipsa-tut-'+k+'-'+(myDid()||'guest');
+const tutMayKill=()=>!!G&&!!G.tut&&(G.tut.spared>=4||G.turn>=30); // spared the finishing blow 4 times = really struggling
+function tutAsk(){
+  if(G||!dProfile()||store.get(tutKey('ask')))return;
+  if($('#modal').style.display==='flex'||$('#tour').classList.contains('show'))return setTimeout(tutAsk,4000);
+  store.set(tutKey('ask'),'1');
+  const box=$('#modal .box');box.classList.remove('prompt');
+  box.innerHTML=`<h2 style="text-align:center">🎓 เล่นเป็นหรือยัง?</h2><p style="text-align:center;font-size:18px">ให้สอนเล่นไหม? ใช้เวลาแป๊บเดียว<br>เล่นกับ <b>ครูบอท</b> แล้วทำตามลูกศร<br><b style="color:#ffd76a">ชนะครูบอทรับ ${TUT_REWARD.toLocaleString()} เหลียน!</b></p>
+    <div class="foot"><button id="tutno">ไม่ เล่นเป็นแล้ว</button><button class="primary" id="tutyes">✔ สอนเลย!</button></div>`;
+  $('#modal').style.display='flex';sfx('buff');
+  $('#tutno').onclick=()=>{sfx('click');$('#modal').style.display='none'};
+  $('#tutyes').onclick=()=>{$('#modal').style.display='none';tutStart(1)};
+}
+function tutStart(lvl){
+  audioInit();sfx('click');if(G)resetMatch();
+  try{closeTour(true)}catch(e){}
+  DIFF=1;startGame('ai');
+  const bot=G.players.find(p=>p.ai);if(bot)bot.name='🎓 ครูบอท';
+  G.tut={lvl,spared:0,sparedT:-1,done:{},life0:null,step:'',said:{}};
+  clearInterval(TUT.tick);TUT.tick=setInterval(tutTick,350);
+}
+const TUT={tick:0};
+// what is what on the table (lv:2 = only on the second, more detailed run)
+const TUT_TOUR=[
+  {el:'#mymat .z-leader',t:'👑 <b>คาแรคเตอร์</b>ของเรา<br>ตัวหลัก ตีได้ทุกเทิร์น'},
+  {el:'#mymat .z-life',t:'❤ <b>พลังชีวิต</b><br>โดนตีเข้า 1 ครั้ง = เสีย 1 ใบ'},
+  {el:'#handrow',t:'✋ <b>การ์ดบนมือ</b><br>การ์ดที่<b>เรืองแสง</b> = ใช้ได้ตอนนี้'},
+  {el:'#handrow',t:'🃏 การ์ดมี <b>4 แบบ</b> (ดูมุมซ้ายบนของการ์ด)<div class="ttypes">'
+    +[['L_xuan.png','👑 คาแรคเตอร์','ตัวหลัก'],['A_luart.png','⚔ พวกพ้อง','ลงสนาม ช่วยตี'],['E_inn.png','📜 เหตุการณ์','ใช้แล้วทิ้ง'],['V_ship.png','⛵ พาหนะ','ช่วยทั้งทีม']]
+      .map(([i,n,d])=>`<span><i style="background-image:url(${A(i)})"></i><b>${n}</b><small>${d}</small></span>`).join('')+'</div>'},
+  {el:'#handrow .card',t:`🔎 <b>สัญลักษณ์บนการ์ด</b><div class="tsym">
+      <div><span class="tm">2</span> เลขในวงกลมฟ้า = <b>ราคามานา</b></div>
+      <div><span class="tp">5000</span> = <b>พลัง</b> (ยิ่งมากยิ่งตีแรง)</div>
+      <div><span class="vtab g">+1000</span> เทา = ใช้<b>กัน</b>ตอนโดนตี</div>
+      <div><span class="vtab r">+1000</span> แดง = ใช้<b>ช่วยตี</b></div></div>`},
+  {el:'#mymat .z-a1',t:'⚔ <b>ช่องพวกพ้อง</b> (3 ช่อง)<br>ลูกน้องที่ช่วยตี'},
+  {el:'#mymat .z-manaArea',t:'💧 <b>มานา</b> = <b>เงิน</b>ไว้จ่ายลงการ์ด<br>ได้เพิ่ม<b>เทิร์นละ 2</b> (มาจากกองมานาข้างๆ)<br>การ์ดเลข <span class="tm">2</span> = จ่าย 2 มานา<br>มานาเหลือ → <b>ติด</b>ให้การ์ดในสนาม = พลัง +1000'},
+  {el:'#mymat .z-vehicle',t:'⛵ <b>ช่องพาหนะ</b><br>การ์ดพาหนะช่วยทั้งทีม',lv:2},
+  {el:'#mymat .z-deck',t:'🃏 <b>กองการ์ด</b><br>จั่วเทิร์นละ 1 ใบ'},
+  {el:'#mymat .z-trash',t:'🗑 <b>ช่องครอบ</b><br>การ์ดที่ใช้แล้ว / ถูกทำลาย'},
+  {el:'#oppmat .z-leader',t:'🎯 <b>คาแรคเตอร์ครูบอท</b><br>ตีจน<b>พลังชีวิตหมด</b> แล้วตีอีกที = <b>ชนะ!</b>'},
+];
+// what to point at right now
+function tutTick(){
+  if(!G||!G.tut||G.over){tutCoach(null);if(!G||G.over)clearInterval(TUT.tick);return}
+  const T=G.tut,me=G.me,bot=G.ai,lv=T.lvl;
+  if(T.life0==null&&bot.life.length)T.life0=bot.life.length;
+  if(bot.life.length<(T.life0||99)||units(me).some(u=>u.attacked))T.done.attack=true;
+  if(me.allies.length)T.done.summon=true;
+  if(units(me).some(u=>u.mana))T.done.mana=true;
+  // the first time mana is spent on our turn → point at the mana and say "that's the cost you just paid"
+  if(T.lastMana!=null&&G.cur===me&&me.manaActive<T.lastMana&&!T.said.paid){T.said.paid=true;T.paidPending=true}
+  T.lastMana=me.manaActive;
+  const menuOpen=$('#menu').style.display&&$('#menu').style.display!=='none'&&$('#menu').children.length;
+  const modalOpen=$('#modal').style.display==='flex';
+  const endEl=document.body.classList.contains('mobile')?'#mend':'#endbtn';
+  let s=null;
+  if(T.done.free){tutCoach(null);return}
+  if(G.phase==='setup'||!G.cur){
+    if(modalOpen&&/mulligan/.test($('#modal').textContent))s={el:'#modal .box',t:'สับมือใหม่ได้ 1 ครั้ง<br>ไม่แน่ใจ กด <b>"ไม่"</b> ได้เลย',pos:'top'};
+    else s={t:'👋 สอนเล่นแบบเร็วๆ — <b>ทำตามลูกศร</b> ได้เลย!'};
+  }else if(G.cur===bot){
+    s={t:lv>1?'⏳ ตาครูบอท — ถ้าโดนตี จะให้เลือกการ์ดบนมือมาวาง<b>กัน</b><br>การ์ดที่มีเลข <span class="vtab g">+ สีเทา</span> = ช่วยกัน · ไม่อยากกันกดข้ามได้':'⏳ ตาครูบอท… ถ้าโดนตี จะมีให้เลือกกัน (กดข้ามก็ได้)'};
+  }else if(myMain()&&!T.tourDone){
+    // hand-holding: point at each part of the table and say what it is (short), tap "ถัดไป" to go on
+    const steps=TUT_TOUR.filter(x=>!x.lv||x.lv<=lv&&document.querySelector(x.el));
+    const st=steps[T.tour||0];
+    if(!st){T.tourDone=true}else{tutCoach({el:st.el,t:st.t,next:true});return}
+  }else if(myMain()&&T.paidPending){
+    tutCoach({el:'#mymat .z-manaArea',t:'💧 เห็นไหม? <b>มานาลดลง</b><br>= จ่ายค่าการ์ดไปแล้ว<br><small>เลขฟ้าบนการ์ด = มานาที่ต้องจ่าย</small>',next:'paid'});return;
+  }else if(myMain()){
+    if(menuOpen)s={el:'#menu',t:'👆 เลือกคำสั่งตรงนี้',pos:'top'};
+    else if(!T.done.summon&&document.querySelector('#handrow .card.can'))s={el:'#handrow .card.can',t:'1️⃣ กดการ์ด<b>เรืองแสง</b>บนมือ<br>→ <b>ลงสนาม</b>',pos:'top'};
+    else if(lv>1&&!T.done.mana&&G.turn>2&&me.manaActive>0&&!T.said.mana)s={el:'#mymat .z-leader .card',t:'💧 มีมานาเหลือ → กด<b>คาแรคเตอร์</b><br>→ <b>ติดมานา</b> = พลัง +1000',pos:'top',once:'mana'};
+    else if(!T.done.attack&&document.querySelector('#mymat .card.can'))s={el:'#mymat .card.can',t:'3️⃣ การ์ดในสนาม<b>เรืองแสง</b> = ตีได้!<br>กดแล้วเลือก <b>โจมตี</b> คาแรคเตอร์ครูบอท',pos:'top'};
+    else if(!T.done.attack)s={el:endEl,t:G.turn<=2?'2️⃣ เทิร์นแรก<b>ยังตีไม่ได้</b><br>→ กด <b>จบเทิร์น</b>':'ไม่มีอะไรทำแล้ว → กด <b>จบเทิร์น</b>',pos:'top'};
+    else{T.done.free=true;T.said.free=true;tutCoach({t:`🎉 <b>เก่งมาก!</b> ${lv>1?'ตีจนพลังชีวิตครูบอท (การ์ดคว่ำข้างคาแรคเตอร์) หมด<br>แล้วตีคาแรคเตอร์อีกครั้ง = <b>ชนะ</b>!<br>ถ้าเราโดนตี การ์ดพลังชีวิตจะขึ้นมือเรา (บางใบมีทริกเกอร์ใช้ฟรี)':'ตีจนพลังชีวิตครูบอทหมด<br>แล้วตีอีกครั้ง = <b>ชนะ</b>!'}<br><small>ต่อจากนี้เล่นเองเลย สู้ๆ!</small>`});setTimeout(()=>{if(G&&G.tut)tutCoach(null)},lv>1?9000:6000);return}
+  }
+  if(s&&s.once){if(!T.saidT)T.saidT={};T.saidT[s.once]=(T.saidT[s.once]||0)+1;if(T.saidT[s.once]>40)T.said[s.once]=true}
+  tutCoach(s);
+}
+// the coach bubble + arrow + glowing ring around the thing to press
+function tutCoach(s){
+  let b=$('#tutcoach'),ring=$('#tutring');
+  if(!b){b=document.createElement('div');b.id='tutcoach';document.body.append(b);ring=document.createElement('div');ring.id='tutring';document.body.append(ring)}
+  if(!s){b.style.display='none';ring.style.display='none';return}
+  if(b.dataset.t!==s.t){b.innerHTML=`<div class="tc">${s.t}${s.next?'<button class="tnext">ถัดไป ▶</button>':''}</div><div class="ta">⬇</div>`;b.dataset.t=s.t;
+    const nb=b.querySelector('.tnext');if(nb)nb.onclick=e=>{e.stopPropagation();sfx('click');if(G&&G.tut){if(s.next==='paid')G.tut.paidPending=false;else G.tut.tour=(G.tut.tour||0)+1;tutTick()}}}
+  b.classList.toggle('click',!!s.next);
+  b.style.display='block';
+  const el=s.el&&document.querySelector(s.el);
+  if(!el){b.classList.add('free');b.style.left='50%';b.style.top='12%';ring.style.display='none';return}
+  b.classList.remove('free');
+  const r=el.getBoundingClientRect();
+  ring.style.display='block';Object.assign(ring.style,{left:r.left-6+'px',top:r.top-6+'px',width:r.width+12+'px',height:r.height+12+'px'});
+  const bw=b.offsetWidth,bh=b.offsetHeight;
+  let x=Math.min(innerWidth-bw/2-8,Math.max(bw/2+8,r.left+r.width/2)),y=r.top-bh-18;
+  b.classList.toggle('below',y<8);if(y<8)y=r.bottom+18;
+  b.style.left=x+'px';b.style.top=y+'px';
+}
+function tutResult(winner,quit){
+  clearInterval(TUT.tick);tutCoach(null);
+  G.over=true;surrClose();closeMenu();render();
+  const won=winner===G.me&&!quit||(quit&&quit!==G.me),lvl=G.tut.lvl;
+  const box=$('#modal .box');box.classList.remove('prompt');
+  if(won){
+    const first=!store.get(tutKey('done'));
+    if(first){store.set(tutKey('done'),'1');addCoins(TUT_REWARD)}
+    sfx('win');
+    box.innerHTML=`<h2 style="text-align:center;font-size:36px">🎉 ผ่านบทสอนแล้ว!</h2><p style="text-align:center;font-size:18px">ชนะครูบอทได้ เก่งมาก!${first?`<br><span class="reward" style="display:inline-flex">${COIN_SVG} +${TUT_REWARD.toLocaleString()}</span>`:'<br><small style="color:var(--muted)">(รางวัลรับไปแล้วตอนผ่านครั้งแรก)</small>'}</p>
+      <p style="text-align:center;color:#ffe2a8">ต่อไปลอง <b>จัดเด็ค</b> · <b>ตู้สุ่มการ์ด</b> · หรือ <b>⚡ ควิกเพลย์</b> สู้กับคนจริงได้เลย!</p>
+      <div class="foot"><button class="primary" onclick="location.hash='';location.reload()">🏠 ไปหน้าเมนู</button></div>`;
+  }else{
+    sfx('lose');
+    box.innerHTML=`<h2 style="text-align:center">แพ้ไม่เป็นไร! 💪</h2><p style="text-align:center;font-size:18px">ให้สอนใหม่อีกรอบไหม?<br><small style="color:var(--muted)">รอบนี้จะบอกละเอียดขึ้นนิดนึง</small></p>
+      <div class="foot"><button id="tutmenu">ไม่ ไปหน้าเมนู</button><button class="primary" id="tutagain">✔ สอนใหม่</button></div>`;
+  }
+  $('#modal').style.display='flex';
+  const a=$('#tutagain');if(a)a.onclick=()=>{$('#modal').style.display='none';tutStart(Math.min(2,lvl+1))};
+  const m=$('#tutmenu');if(m)m.onclick=()=>{sfx('click');location.hash='';location.reload()};
+}
+$('#tutbtn').onclick=()=>tutStart(1);
+addEventListener('resize',()=>{if(G&&G.tut)tutTick()});
+setTimeout(tutAsk,2500);
 // ============ NEW VERSION WATCH: warn everyone, 5 minutes to finish, then everyone moves to the new version ============
 // (the deck being edited is saved first, so nobody loses their work)
 const UPD={next:0,at:0,tick:0,repo:'aarrkk1122334455-commits/eclipsacardgame',url:''};
