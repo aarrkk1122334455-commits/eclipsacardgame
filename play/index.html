@@ -30,8 +30,10 @@ h1,h2,h3,.title{font-family:Torsilp,"Leelawadee UI",sans-serif;font-weight:norma
 .zone{position:absolute;display:flex;align-items:center;justify-content:center}
 .card{position:relative;height:100%;aspect-ratio:480/671;background:center/100% 100% no-repeat;border-radius:7%/5%;flex:none;cursor:pointer}
 .card.rested{transform:rotate(90deg) scale(.8)}
-.card.can{box-shadow:0 0 0 2px var(--green),0 0 12px var(--green);animation:canpulse 1.6s ease-in-out infinite}
-@keyframes canpulse{50%{box-shadow:0 0 0 2px var(--green),0 0 22px var(--green)}}
+.card.can{box-shadow:0 0 0 2px var(--green),0 0 12px var(--green)}
+/* the pulse is a separate glow layer that only fades (GPU) — animating box-shadow repainted every hand card every frame */
+.card.can::before{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 22px 2px var(--green);pointer-events:none;opacity:0;will-change:opacity;animation:canpulse 1.6s ease-in-out infinite}
+@keyframes canpulse{50%{opacity:1}}
 .card.dim{filter:brightness(.45)}
 .card.pinned{outline:3px solid var(--gold);outline-offset:2px}
 .pow{position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);background:#000d;border:1px solid var(--gold);color:var(--gold);font-weight:bold;border-radius:10px;padding:0 6px;font-size:12px;white-space:nowrap;pointer-events:none}
@@ -1096,6 +1098,52 @@ body.mobile #rotate{position:fixed;inset:0;z-index:400;background:#08060a;color:
 .rt.C{background:#6b6f78}.rt.H{background:#1e7bff}.rt.E{background:#d79a00}.rt.V{background:#8a2cff}.rt.L{background:linear-gradient(90deg,#ff3b3b,#ffd23a,#3fcf7a,#3db0ff,#b05aff)}
 #pull .pfoot{display:flex;gap:10px;align-items:center;min-height:46px}
 #pull .psum{color:#ffd76a;font-size:18px}
+/* pack opening */
+#pull.pk{gap:12px}
+#pull .pack3{position:relative;width:min(250px,56vw,36vh);aspect-ratio:5/7.4;perspective:1100px;cursor:pointer;margin:6px 0 10px;animation:pkFloat 3.2s ease-in-out infinite}
+#pull .pkin{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .18s ease-out}
+#pull .pkface{position:absolute;inset:0;border-radius:7px;overflow:hidden;background:var(--pc2)}
+#pull .pkart{position:absolute;inset:4% 0 4%;background:center/cover no-repeat}
+#pull .pkdim{position:absolute;inset:0;background:linear-gradient(180deg,#0006 0,transparent 22%,transparent 50%,#000d 90%);box-shadow:inset 0 0 0 2px var(--pc),inset 0 0 30px #000b}
+#pull .pkname{position:absolute;left:4%;right:4%;bottom:13%;text-align:center;font-family:Torsilp,sans-serif;font-size:clamp(16px,2.6vh,24px);line-height:1.1;color:#fff;text-shadow:0 0 12px var(--pc),0 2px 0 #000}
+#pull .pkn{position:absolute;left:0;right:0;bottom:7.5%;text-align:center;font-size:10px;letter-spacing:3px;color:var(--pc);font-weight:bold;text-shadow:0 1px 0 #000}
+#pull .crimp{position:absolute;left:0;right:0;height:4.5%;background:repeating-linear-gradient(90deg,#ffffff40 0 3px,#00000055 3px 6px),linear-gradient(var(--pc),var(--pc2))}
+#pull .crimp.t{top:0}#pull .crimp.b{bottom:0}
+#pull .pkshine{position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 38%,#ffffff38 48%,#ffffff10 52%,transparent 62%);background-size:260% 100%;animation:pkShine 3.4s linear infinite;mix-blend-mode:screen}
+#pull .pkback{position:absolute;inset:0;border-radius:7px;background:linear-gradient(135deg,var(--pc2),#000);transform:translateZ(-9px);box-shadow:0 18px 40px #000c}
+#pull .pkglow{position:absolute;inset:-20%;border-radius:50%;background:radial-gradient(circle,var(--pc) 0,transparent 62%);opacity:.3;filter:blur(20px);animation:pkGlow 2.2s ease-in-out infinite alternate;pointer-events:none}
+#pull .pack3.hot .pkglow{background:radial-gradient(circle,var(--hc) 0,transparent 62%);opacity:.65}
+#pull .pklight{position:absolute;left:-40%;right:-40%;top:-30%;height:70%;background:radial-gradient(ellipse at 50% 45%,#fff 0,var(--hc) 18%,transparent 62%);opacity:0;pointer-events:none;mix-blend-mode:screen}
+#pull .phint{color:#bfe;font-size:15px;letter-spacing:1px;animation:pkHint 1.4s ease-in-out infinite;transition:opacity .2s}
+#pull .pack3.tear{animation:pkTearShake .3s linear}
+#pull .pack3.tear .pktop{animation:pkTop .75s cubic-bezier(.3,.6,.4,1) forwards}
+#pull .pack3.tear .pkbody{animation:pkBody .5s .5s ease-in forwards}
+#pull .pack3.tear .pkback{animation:pkFade .5s .5s ease-in forwards}
+#pull .pack3.tear .pkshine{opacity:0}
+#pull .pack3.tear .pklight{animation:pkLight 1s .18s ease-out forwards}
+@keyframes pkFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+@keyframes pkShine{from{background-position:130% 0}to{background-position:-130% 0}}
+@keyframes pkGlow{from{transform:scale(.92)}to{transform:scale(1.06)}}
+@keyframes pkHint{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes pkTearShake{0%,100%{transform:none}25%{transform:translateX(-4px) rotate(-1.5deg)}75%{transform:translateX(4px) rotate(1.5deg)}}
+@keyframes pkTop{0%{transform:none}22%{transform:translate(3%,-2%) rotate(4deg)}100%{transform:translate(85%,-170%) rotate(42deg);opacity:0}}
+@keyframes pkBody{to{transform:translateY(75%) scale(.92);opacity:0}}
+@keyframes pkFade{to{opacity:0}}
+@keyframes pkLight{0%{opacity:0;transform:scale(.4)}35%{opacity:1}100%{opacity:0;transform:scale(1.9)}}
+/* the 6 cards of a pack */
+#pull.six .pc{width:min(165px,14vw,30vh);animation:pcOut .55s calc(var(--d)*70ms) cubic-bezier(.2,.9,.3,1.15) both}
+@keyframes pcOut{from{transform:translateY(32vh) scale(.25) rotate(calc((var(--d) - 2.5)*8deg));opacity:0}to{transform:none;opacity:1}}
+@media (max-aspect-ratio:1/1){#pull.six .pc{width:min(28vw,21vh)}#pull.six .pgrid{gap:14px 10px}}
+/* the whole result of a 10-pack pull */
+#pull.sum{justify-content:flex-start;overflow:auto;padding:14px 8px 18px}
+#pull.sum .pgrid{gap:14px 8px;max-width:min(1000px,98vw)}
+#pull.sum .pc{width:min(86px,8.6vw,7.4vh)}
+#pull.sum.one6 .pc{width:min(150px,14vw,28vh)}
+#pull.sum .pc .tagx{font-size:9px;padding:0 5px;bottom:-9px;transition:none}
+#pull.sum .pc .rt{font-size:8px;padding:0 4px;top:-8px;transition:none}
+#pull.sum .pc .in{transition:none}
+#pull.sum .pc.open .beam{animation:none}
+@media (max-aspect-ratio:1/1){#pull.sum .pc{width:min(15vw,11vh)}#pull.sum.one6 .pc{width:min(28vw,21vh)}}
 .rtiers{display:flex;flex-direction:column;gap:10px;max-height:66vh;overflow:auto;min-width:min(820px,88vw);padding:2px}
 .rtier{background:#140c12;border:1px solid var(--line);border-radius:12px;padding:8px 10px}
 .rth{display:flex;align-items:center;gap:10px;margin-bottom:6px}.rth b{font-size:16px}.rth .rpct{margin-left:auto;font-weight:bold;color:var(--gold);font-size:16px}
@@ -1231,7 +1279,8 @@ body.mobile .tr-pr{flex-wrap:wrap}body.mobile .tr-pr .lb{width:auto}
   background:conic-gradient(from var(--rgba),#ff0040,#ff8a00,#ffee00,#3dff6a,#00e5ff,#2a6bff,#c040ff,#ff0040);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
   animation:rgbSpin 2.6s linear infinite}
-.rgbedge::after{content:'';position:absolute;inset:-4px;border-radius:inherit;background:inherit;filter:blur(7px);opacity:.85;
+/* the soft glow is static on its own layer (blurred once) — re-blurring the spinning ring every frame was very slow */
+.rgbedge::after{content:'';position:absolute;inset:-4px;border-radius:inherit;background:conic-gradient(#ff0040,#ff8a00,#ffee00,#3dff6a,#00e5ff,#2a6bff,#c040ff,#ff0040);filter:blur(7px);opacity:.7;will-change:transform;
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);padding:8px}
 .rgbcard{overflow:visible!important}
 .ctime{margin:8px 0 2px;text-align:center}.ctime small{color:var(--muted)}
@@ -1483,7 +1532,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
       <div class="gbox wc" id="gboxwc">
         <div class="gart" style="background-image:url(img/L_weichen.webp)"></div>
         <div class="gname">เหวยเฉิน of หมิงเย่ว</div>
-        <div class="gsub">1 ครั้ง = 1 ซอง (การ์ด 1 ใบ)</div>
+        <div class="gsub">1 ครั้ง = 1 ซอง (การ์ด 6 ใบ)</div>
       </div>
       <div class="gbtns"><button class="gachabtn" id="pull1">สุ่ม 1 ครั้ง · <span class="cp"></span> 1,000</button><button class="gachabtn" id="pull10">สุ่ม 10 ครั้ง · <span class="cp"></span> 10,000</button></div>
       <button class="glink" id="grates">ดูอัตราการออก / การ์ดในตู้</button>
@@ -1493,7 +1542,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
         <div class="gart" style="background-image:url(img/X_xuan2.webp)"></div>
         <div class="gtagnew">NEW</div>
         <div class="gname">EBX-01 เรือหลวง</div>
-        <div class="gsub">1 ครั้ง = 1 ซอง (การ์ด 1 ใบ)</div>
+        <div class="gsub">1 ครั้ง = 1 ซอง (การ์ด 6 ใบ)</div>
       </div>
       <div class="gbtns"><button class="gachabtn" id="pullE1">สุ่ม 1 ครั้ง · <span class="cp"></span> 3,000</button><button class="gachabtn" id="pullE10">สุ่ม 10 ครั้ง · <span class="cp"></span> 30,000</button></div>
       <button class="glink" id="gratesE">ดูอัตราการออก / การ์ดในตู้</button>
@@ -1527,7 +1576,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
   <div class="gnote">ใช้เหรียญ (เหรียญ) ที่ได้จากการเล่น · ชนะได้ <b>1250</b> · แพ้ได้ <b>500</b> · ได้การ์ดซ้ำ คืน <b>100</b> เหรียญ</div>
 </div>
 
-<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=22;</script>
+<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=23;</script>
 <script>
 // ============ CARD DATA (transcribed from the card art) ============
 const SAN='สามพี่น้อง', SHIP='เรือหลวง', WCT='พี่น้องร่ำรา', MANA_MAX=10, HAND_MAX=8;
@@ -1641,7 +1690,15 @@ const TYPE_TH={leader:'คาแรคเตอร์',ally:'พวกพ้อ�
 const KW={'[GUARD]':['k5','ช่องป้องกัน'],'[ON PLAY]':['k3','เมื่อลงสนาม'],'[ACT]':['k1','ACT'],'[SHIELD]':['k2','SHIELD'],'[GO ON]':['k3','GO ON'],'[COUNTER]':['k4','COUNTER'],'[TRIGGER]':['k2','ทริกเกอร์'],'[AUTO]':['k5','อัตโนมัติ']};
 
 // ============ HELPERS ============
-const A=n=>(window.ASSET&&ASSET[n])||('img/'+n);
+// exe build: images are inlined as huge data: strings — turn each into a short blob: URL once, so every render
+// doesn't copy ~300 KB of base64 per card into the DOM (the main cause of lag in the PC version)
+const BLOB_URL={};
+const A=n=>{
+  const d=window.ASSET&&ASSET[n];if(!d)return 'img/'+n;
+  if(BLOB_URL[n])return BLOB_URL[n];
+  try{const c=d.indexOf(','),bin=atob(d.slice(c+1)),u=new Uint8Array(bin.length);for(let k=0;k<bin.length;k++)u[k]=bin.charCodeAt(k);
+    return BLOB_URL[n]=URL.createObjectURL(new Blob([u],{type:d.slice(5,d.indexOf(';'))}))}catch(e){return BLOB_URL[n]=d}
+};
 const $=s=>document.querySelector(s);
 // ---------- special art variants (same card, different picture) — tournament only, never sold anywhere ----------
 const ARTS={
@@ -3527,7 +3584,7 @@ function myFoilMap(){const m={};for(const id in foilData()){const f=foilSel(id);
 const cleanFoils=m=>{const o={};if(m&&typeof m==='object')for(const k of Object.keys(m).slice(0,100))if(CARDS[k]&&FOILS[m[k]])o[k]=m[k];return o};
 function addFoilType(el,f){if(!el||!FOILS[f]||el.querySelector(':scope>.foil'))return el;const d=document.createElement('div');d.className='foil f-'+f;el.append(d);return el}
 function removeOwned(id){const s=owned();s.delete(id);store.set('eclipsa-owned',JSON.stringify([...s]))}
-const PULL_COST=1000,PULL10_COST=10000,DUP_REFUND=100;
+const PULL_COST=1000,PULL10_COST=10000,DUP_REFUND=100,PACK_SIZE=6; // 1 pull = 1 pack of 6 cards
 // rarity tiers of the "เหวยเฉิน of หมิงเย่ว" box (percent). C (common) takes whatever is left.
 const RARITY=[
   {k:'S',p:0.0001,name:'ซีเคร็ท',glow:'SECRET'},
@@ -3572,7 +3629,7 @@ function showRates(bx='wc'){
     <div class="rcards">${poolOf(t.k,bx).map(id=>{const hid=t.k==='S'&&!isOwned(id);return `<div class="rcard r-${t.k}${hid?' hid':''}${isOwned(id)?' own':''}" data-id="${hid?'':id}" style="background-image:url(${A(hid?'back_ch.png':CARDS[id].img)})">${hid?'<span>???</span>':''}${isOwned(id)&&!hid?'<i>มีแล้ว</i>':''}</div>`}).join('')}</div></div>`).join('');
   const box=$('#modal .box');box.classList.remove('prompt');
   box.innerHTML=`<h2>${B.name} — การ์ดในตู้และอัตราการออก</h2><div class="rtiers">${rows}</div>
-    <p style="color:var(--muted);font-size:14px;margin:10px 0 0">1 ครั้ง = 1 ซอง = การ์ด 1 ใบ · ราคา ${B.cost.toLocaleString()} (10 ครั้ง ${B.cost10.toLocaleString()}) · ได้การ์ดที่มีอยู่แล้ว → คืน ${DUP_REFUND} เหรียญ<br>✦ ทุกซองมีโอกาส ${FOIL_CHANCE*100}% ได้เป็น<b>การ์ดฟอย</b> (${Object.values(FOILS).map(f=>f.name).join(' / ')}) — ได้ฟอยใหม่ของการ์ดที่มีแล้วไม่นับว่าซ้ำ · เลือกลายฟอยที่จะใช้ได้โดยกดการ์ดในหน้าจัดเด็ค<br>การ์ดที่ได้จะปลดล็อกในหน้าจัดเด็ค (ใส่ได้ใบละ 4) · คาแรคเตอร์เหวยเฉินเลือกได้ในหน้าจัดเด็ค</p>
+    <p style="color:var(--muted);font-size:14px;margin:10px 0 0">1 ครั้ง = 1 ซอง = การ์ด ${PACK_SIZE} ใบ (แต่ละใบสุ่มตามอัตรานี้) · ราคา ${B.cost.toLocaleString()} (10 ครั้ง ${B.cost10.toLocaleString()}) · ได้การ์ดที่มีอยู่แล้ว → คืน ${DUP_REFUND} เหรียญ<br>✦ การ์ดทุกใบมีโอกาส ${FOIL_CHANCE*100}% ได้เป็น<b>การ์ดฟอย</b> (${Object.values(FOILS).map(f=>f.name).join(' / ')}) — ได้ฟอยใหม่ของการ์ดที่มีแล้วไม่นับว่าซ้ำ · เลือกลายฟอยที่จะใช้ได้โดยกดการ์ดในหน้าจัดเด็ค<br>การ์ดที่ได้จะปลดล็อกในหน้าจัดเด็ค (ใส่ได้ใบละ 4) · คาแรคเตอร์เหวยเฉินเลือกได้ในหน้าจัดเด็ค</p>
     <div class="foot"><button class="primary" onclick="document.getElementById('modal').style.display='none'">ปิด</button></div>`;
   box.querySelectorAll('.rcard[data-id]:not([data-id=""])').forEach(c=>c.onclick=e=>{e.stopPropagation();sfx('click');openDetail({id:c.dataset.id})});
   $('#modal').style.display='flex';
@@ -3585,17 +3642,20 @@ async function doPull(n,bx='wc'){
   const cost=n===1?BOXES[bx].cost:BOXES[bx].cost10;
   if(!spendCoins(cost)){sfx('debuff');gachaMsg(`เหรียญไม่พอ — ต้องใช้ ${COIN_SVG} <b style="color:#ffd76a">${cost.toLocaleString()}</b><br><span style="font-size:15px;color:var(--muted)">มีอยู่ ${fmtCoins(getCoins())} · ชนะได้ 1250 แพ้ได้ 500</span>`);return}
   PULLING=true;
-  // roll and save first, so nothing is lost if the game is closed during the animation
-  const res=[];let refund=0;
+  // roll and save first, so nothing is lost if the game is closed during the animation · 1 pull = 1 pack = PACK_SIZE cards
+  const packs=[];let refund=0;
   const FK=Object.keys(FOILS);
-  for(let i=0;i<n;i++){
-    const {id,k}=rollCard(bx),foil=CARDS[id].gacha!=='S'&&Math.random()<FOIL_CHANCE?FK[Math.random()*FK.length|0]:null;
-    const have=owned().has(id),dup=have&&(!foil||foilsOf(id).includes(foil)); // a new foil of a card you own is not a duplicate
-    if(dup)refund+=DUP_REFUND;else{if(!have)addOwned(id);if(foil)addFoilOwn(id,foil)}
-    res.push({id,dup,k,foil});
+  for(let p=0;p<n;p++){const pk=[];
+    for(let i=0;i<PACK_SIZE;i++){
+      const {id,k}=rollCard(bx),foil=CARDS[id].gacha!=='S'&&Math.random()<FOIL_CHANCE?FK[Math.random()*FK.length|0]:null;
+      const have=owned().has(id),dup=have&&(!foil||foilsOf(id).includes(foil)); // a new foil of a card you own is not a duplicate
+      if(dup)refund+=DUP_REFUND;else{if(!have)addOwned(id);if(foil)addFoilOwn(id,foil)}
+      pk.push({id,dup,k,foil});
+    }
+    packs.push(pk);
   }
   if(refund)addCoins(refund);
-  await pullScene(res,refund);
+  await pullScene(packs,refund,bx);
   PULLING=false;updWallets();
 }
 // big cutscene for purple (พาหนะ) and rainbow (คาแรคเตอร์) pulls
@@ -3880,43 +3940,117 @@ function rareCine(r){
     s.onclick=end;setTimeout(()=>{ok=true;end()},S?(T0+6)*1000:6500);
   });
 }
-function pullScene(res,refund){
-  return new Promise(done=>{
-    const s=$('#pull'),one=res.length===1;
-    s.className='show'+(one?' one':'');
-    const best=res.reduce((b,r)=>RARITY_ORDER.indexOf(r.k)>RARITY_ORDER.indexOf(b)?r.k:b,'C');
-    const lbl={C:'',R:'แรร์!',H:'หายาก!',P:'เอพิค!!',E:'หายากมาก!!',V:'สุดยอด!!!',G:'เลเจนด์!!!!',L:'ในตำนาน!!!!',M:'MYSTIC!!!!!',S:'SECRET!!!!!'};
-    s.innerHTML=`<div class="ptitle">${one?'เปิดซอง…':'เปิด 10 ซอง…'}</div>
-      <div class="pgrid">${res.map(r=>`<div class="pc r-${r.k}"><div class="beam"></div><div class="in"><div class="b"></div><div class="f" style="background-image:url(${A(CARDS[r.id].img)})"></div></div>
-        <div class="rt ${r.k}">${TIER(r.k).glow}</div><div class="tagx ${r.foil&&!r.dup?'foilt':r.dup?'dup':'new'}">${r.dup?`ซ้ำ +${DUP_REFUND} เหรียญ`:r.foil?`✦ FOIL ${FOILS[r.foil].name}!`:'NEW!'}</div></div>`).join('')}</div>
-      <div class="pfoot"><button id="pskip">⏭ ข้าม</button></div>`;
-    const cards=[...s.querySelectorAll('.pc')];
-    res.forEach((r,j)=>{if(r.k==='S')addFoil(cards[j].querySelector('.f'));else if(r.foil)addFoilType(cards[j].querySelector('.f'),r.foil)});
-    cards.forEach((c,j)=>{c.style.cursor='zoom-in';c.onclick=e=>{if(c.classList.contains('open')){e.stopPropagation();openDetail({id:res[j].id})}}});
-    let i=0,timer=null,finished=false;
-    const reveal=c=>{if(c.classList.contains('open'))return;c.classList.add('open');const k=[...c.classList].find(x=>x.startsWith('r-')).slice(2);
-      if(k==='C'||k==='R')sfx('draw');else{sfx('buff');if(RARITY_ORDER.indexOf(k)>=2){sample('impact',{g:.6,rate:1.3});flash({S:'#ff1a2a',M:'#ff1a2a',L:'#ffffff',G:'#ffe08a',V:'#b05aff',P:'#c05aff'}[k]||'#ffd23a',500)}}};
-    const cined=new Set(); // purple / rainbow cards that already had their cutscene
-    const finish=async()=>{
-      if(finished)return;finished=true;clearTimeout(timer);
-      // skipping still shows the cutscene for any purple / rainbow card not opened yet
-      for(let j=0;j<res.length;j++)if('VLSGM'.includes(res[j].k)&&!cined.has(j)){cined.add(j);if(res[j].k==='M')await deathOverlay('');await rareCine(res[j])}
-      cards.forEach(reveal);
-      const news=res.filter(r=>!r.dup).length;
-      s.querySelector('.ptitle').innerHTML=best!=='C'?`<span style="color:${{R:'#4ab3ff',H:'#4ab3ff',P:'#d27aff',E:'#ffd23a',V:'#c07aff',G:'#ffe08a',L:'#fff',M:'#ff2a3a',S:'#ff2a3a'}[best]}">${lbl[best]}</span>`:'ผลการสุ่ม';
-      s.querySelector('.pfoot').innerHTML=`<span class="psum">การ์ดใหม่ ${news} ใบ${refund?` · ซ้ำ คืน ${COIN_SVG} ${refund} เหรียญ`:''}</span><button class="primary" id="pok">ตกลง</button>`;
-      $('#pok').onclick=()=>{sfx('click');s.className='';s.innerHTML='';done()};
-    };
-    $('#pskip').onclick=()=>{sfx('click');finish()};
-    // build-up: shake the whole pack area, tinted by the best rarity inside
-    const grid=s.querySelector('.pgrid');
-    grid.animate([{transform:'scale(.9)',filter:'brightness(.6)'},{transform:'scale(1)',filter:`brightness(1) drop-shadow(0 0 30px ${{C:'#fff0',R:'#4ab3ff',H:'#4ab3ff',P:'#c05aff',E:'#ffd23a',V:'#b05aff',G:'#ffe08a',L:'#ffffff',M:'#ff1a2a',S:'#ff1a2a'}[best]})`}],{duration:900,easing:'ease-out',fill:'forwards'});
+// ---------- pack opening: 1 pull = 1 pack (front = the box's character card) → tear it open → its 6 cards flip one by one ----------
+const PACK_ART={wc:{img:'L_weichen.png',col:'#3fcf9a',col2:'#06261b'},ebx:{img:'X_xuan2.png',col:'#ff3a4a',col2:'#2a0408'}};
+const P_LBL={C:'',R:'แรร์!',H:'หายาก!',P:'เอพิค!!',E:'หายากมาก!!',V:'สุดยอด!!!',G:'เลเจนด์!!!!',L:'ในตำนาน!!!!',M:'MYSTIC!!!!!',S:'SECRET!!!!!'};
+const P_COL={C:'#ffffff',R:'#4ab3ff',H:'#4ab3ff',P:'#c05aff',E:'#ffd23a',V:'#b05aff',G:'#ffe08a',L:'#ffffff',M:'#ff1a2a',S:'#ff1a2a'};
+const P_TXT={R:'#4ab3ff',H:'#4ab3ff',P:'#d27aff',E:'#ffd23a',V:'#c07aff',G:'#ffe08a',L:'#fff',M:'#ff2a3a',S:'#ff2a3a'};
+const rIdx=k=>RARITY_ORDER.indexOf(k);
+const bestK=rs=>rs.reduce((b,r)=>rIdx(r.k)>rIdx(b)?r.k:b,'C');
+const pcHTML=(r,j)=>`<div class="pc r-${r.k}" style="--d:${j}"><div class="beam"></div><div class="in"><div class="b" style="background-image:url(${A(CARDS[r.id].type==='leader'?'back_ch.png':'back.png')})"></div><div class="f" style="background-image:url(${A(CARDS[r.id].img)})"></div></div>
+  <div class="rt ${r.k}">${TIER(r.k).glow}</div><div class="tagx ${r.foil&&!r.dup?'foilt':r.dup?'dup':'new'}">${r.dup?`ซ้ำ +${DUP_REFUND}`:r.foil?`✦ FOIL ${FOILS[r.foil].name}!`:'NEW!'}</div></div>`;
+function pcWire(s,rs){
+  const cards=[...s.querySelectorAll('.pc')];
+  rs.forEach((r,j)=>{const f=cards[j].querySelector('.f');if(r.k==='S')addFoil(f);else if(r.foil)addFoilType(f,r.foil)});
+  cards.forEach((c,j)=>{c.style.cursor='zoom-in';c.onclick=e=>{if(c.classList.contains('open')){e.stopPropagation();openDetail({id:rs[j].id})}}});
+  return cards;
+}
+function pcReveal(c,k){
+  if(c.classList.contains('open'))return;c.classList.add('open');
+  if(k==='C'||k==='R')sfx('draw');else{sfx('buff');if(rIdx(k)>=2){sample('impact',{g:.6,rate:1.3});flash(P_COL[k]==='#ffffff'?'#ffd23a':P_COL[k],500)}}
+}
+// the pack itself: a 3D foil pack you can tilt; tap → the top strip tears off, light pours out
+function packStage(s,bx,pi,N,best){
+  return new Promise(res=>{
+    const P=PACK_ART[bx]||PACK_ART.wc,hot=rIdx(best)>=rIdx('P');
+    // one jagged tear line shared by the strip and the body
+    const Y=15,zz=[];for(let i=0;i<=20;i++)zz.push([i*5,Y+(i%2?1.6:-1.6)]);
+    const topClip=`polygon(0 0,100% 0,${zz.slice().reverse().map(([x,y])=>`${x}% ${y}%`).join(',')})`;
+    const bodyClip=`polygon(${zz.map(([x,y])=>`${x}% ${y}%`).join(',')},100% 100%,0 100%)`;
+    const face=(cls,clip,inner)=>`<div class="pkface ${cls}" style="clip-path:${clip};-webkit-clip-path:${clip}"><div class="pkart" style="background-image:url(${A(P.img)})"></div><div class="pkdim"></div>${inner}<div class="pkshine"></div></div>`;
+    s.className='show pk';
+    s.innerHTML=`<div class="ptitle">${N>1?`ซองที่ ${pi+1} / ${N}`:'เปิดซอง…'}</div>
+      <div class="pack3${hot?' hot':''}" style="--pc:${P.col};--pc2:${P.col2};--hc:${P_COL[best]}">
+        <div class="pkglow"></div>
+        <div class="pkin"><div class="pkback"></div>
+          ${face('pkbody',bodyClip,`<div class="pkname">${BOXES[bx].name}</div><div class="pkn">ECLIPSA · ${PACK_SIZE} CARDS</div><i class="crimp b"></i>`)}
+          ${face('pktop',topClip,'<i class="crimp t"></i>')}
+        </div>
+        <div class="pklight"></div>
+      </div>
+      <div class="phint">แตะซองเพื่อฉีก</div>
+      <div class="pfoot"><button id="pskip">⏭ ${N>1?'ข้ามทั้งหมด':'ข้าม'}</button></div>`;
+    const pk=s.querySelector('.pack3'),inn=pk.querySelector('.pkin');
+    let gone=false;
+    s.onpointermove=e=>{if(gone)return;const r=pk.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      inn.style.setProperty('--rx',(Math.max(-.7,Math.min(.7,y))*-26).toFixed(1)+'deg');inn.style.setProperty('--ry',(Math.max(-.7,Math.min(.7,x))*32).toFixed(1)+'deg')};
     sfx('banner');
-    const next=async()=>{if(finished)return;if(i>=cards.length){finish();return}
-      const k=res[i].k;
-      if('VLGM'.includes(k)&&!cined.has(i)){cined.add(i);if(k==='M')await deathOverlay('');await rareCine(res[i]);if(finished)return}
-      reveal(cards[i]);i++;timer=setTimeout(next,(RARITY_ORDER.indexOf(k)>=2?1100:one?700:380))};
-    timer=setTimeout(next,one?1100:800);
+    pk.onclick=()=>{if(gone)return;gone=true;s.onpointermove=null;inn.style.setProperty('--rx','0deg');inn.style.setProperty('--ry','0deg');
+      if(AU.ctx&&AU.on.sfx){noise({dur:.32,a:.01,r:.12,g:.3,filt:'bandpass',f:1800,f2:7000,q:.9});sample('whoosh',{g:.5,rate:1.4})}
+      pk.classList.add('tear');s.querySelector('.phint').style.opacity=0;
+      if(hot)setTimeout(()=>{sfx('buff');flash(P_COL[best],350)},300);
+      setTimeout(()=>res('open'),hot?1150:900)};
+    $('#pskip').onclick=()=>{if(gone)return;gone=true;sfx('click');res('skip')};
+  });
+}
+// the 6 cards of one pack fly out face down and flip one by one
+function cardStage(s,rs,pi,N,cine,refund){
+  return new Promise(res=>{
+    const final=N===1;
+    s.className='show six';
+    s.innerHTML=`<div class="ptitle">${N>1?`ซองที่ ${pi+1} / ${N}`:'เปิดซอง…'}</div><div class="pgrid">${rs.map(pcHTML).join('')}</div><div class="pfoot"><button id="pskip">⏭ ${N>1?'ข้ามทั้งหมด':'ข้าม'}</button></div>`;
+    const cards=pcWire(s,rs);
+    let i=0,timer=null,fin=false;
+    const end=()=>{
+      const best=bestK(rs);
+      s.querySelector('.ptitle').innerHTML=best!=='C'?`<span style="color:${P_TXT[best]}">${P_LBL[best]}</span>${N>1?` <small style="font-size:.55em;color:#9fd">ซองที่ ${pi+1} / ${N}</small>`:''}`:N>1?`ซองที่ ${pi+1} / ${N}`:'ผลการสุ่ม';
+      const f=s.querySelector('.pfoot');
+      if(final){const news=rs.filter(r=>!r.dup).length;
+        f.innerHTML=`<span class="psum">การ์ดใหม่ ${news} ใบ${refund?` · ซ้ำ คืน ${COIN_SVG} ${refund} เหรียญ`:''}</span><button class="primary" id="pok">ตกลง</button>`;
+        $('#pok').onclick=()=>{sfx('click');res('ok')};
+      }else{
+        f.innerHTML=`${pi+1<N?'<button id="pskip">⏭ ข้ามทั้งหมด</button>':''}<button class="primary" id="pnext">${pi+1<N?`ซองถัดไป ▶ (${pi+2}/${N})`:'ดูผลรวม ▶'}</button>`;
+        if($('#pskip'))$('#pskip').onclick=()=>{sfx('click');res('skip')};
+        $('#pnext').onclick=()=>{sfx('click');res('next')};
+      }
+    };
+    const finish=async()=>{if(fin)return;fin=true;clearTimeout(timer);for(const r of rs)await cine(r);cards.forEach((c,j)=>pcReveal(c,rs[j].k));end()};
+    $('#pskip').onclick=()=>{sfx('click');if(final)finish();else{fin=true;clearTimeout(timer);res('skip')}};
+    const next=async()=>{if(fin)return;if(i>=cards.length){fin=true;end();return}
+      const r=rs[i];
+      if('VLSGM'.includes(r.k)){await cine(r);if(fin)return}
+      pcReveal(cards[i],r.k);i++;timer=setTimeout(next,rIdx(r.k)>=2?1000:420)};
+    timer=setTimeout(next,700+PACK_SIZE*70);
+  });
+}
+// every card of a 10-pack pull at once, best first
+function summaryStage(s,all,refund,done){
+  const order=all.map((r,j)=>[r,j]).sort((a,b)=>rIdx(b[0].k)-rIdx(a[0].k)||a[1]-b[1]).map(x=>x[0]);
+  const best=bestK(all),news=all.filter(r=>!r.dup).length;
+  s.className='show sum';
+  s.innerHTML=`<div class="ptitle">${best!=='C'?`<span style="color:${P_TXT[best]}">${P_LBL[best]}</span> `:''}ผลรวม ${all.length} ใบ</div><div class="pgrid">${order.map(pcHTML).join('')}</div>
+    <div class="pfoot"><span class="psum">การ์ดใหม่ ${news} ใบ${refund?` · ซ้ำ คืน ${COIN_SVG} ${refund} เหรียญ`:''}</span><button class="primary" id="pok">ตกลง</button></div>`;
+  const cards=pcWire(s,order);cards.forEach(c=>c.classList.add('open'));sfx('buff');
+  $('#pok').onclick=()=>{sfx('click');s.className='';s.innerHTML='';done()};
+}
+function pullScene(packs,refund,bx='wc'){
+  return new Promise(async done=>{
+    const s=$('#pull'),N=packs.length,all=packs.flat(),cined=new Set();
+    const cine=async r=>{if(cined.has(r)||!'VLSGM'.includes(r.k))return;cined.add(r);if(r.k==='M')await deathOverlay('');await rareCine(r)};
+    let skip=false;
+    try{
+      for(let pi=0;pi<N;pi++){
+        if(await packStage(s,bx,pi,N,bestK(packs[pi]))==='skip'){skip=true;break}
+        const a=await cardStage(s,packs[pi],pi,N,cine,refund);
+        if(a==='ok'){s.onpointermove=null;s.className='';s.innerHTML='';done();return}
+        if(a==='skip'){skip=true;break}
+      }
+    }catch(e){console.warn(e)}
+    s.onpointermove=null;
+    // cutscenes for the big cards not seen yet (skipping never hides them), then the whole result
+    for(const r of all)await cine(r);
+    if(N===1&&skip){summaryStage(s,all,refund,done);s.classList.add('one6');return}
+    summaryStage(s,all,refund,done);
   });
 }
 // ============ MYSTIC overlay — port of the EclipsaDragon mod's "/eclipsadragon overlay @s center 1 <text>" ============
@@ -4090,11 +4224,12 @@ async function mysticFx(p,title){emit({f:'mystic',title});await deathOverlay(tit
 // ---------- redeem codes (each code works once per player) ----------
 const CODES={BROWNSUGARFOREVER:30000,DADAZ:30000,ECLIPSANUMBER1:30000,WTFISWEICHEN:2500,NERFWEICHEN:2500,OPENNOW:10000,NEWCARD:10000,LOYKRATONG:10000,ECLIPSA:50000,THEONE:50000,
   // new codes (tournament update)
-  TOURNAMENT:20000,SORRYFORBUG:10000,NEWDECKBUILD:10000};
-// codes that stop working at a set time (Thai time) — WTFISWEICHEN, NERFWEICHEN and ECLIPSANUMBER1 have expired
-const OLD_CODES_END=Date.parse('2026-11-26T00:00:00+07:00');
-const CODE_UNTIL={ECLIPSA:Date.parse('2026-11-26T10:00:00+07:00'),THEONE:Date.parse('2026-11-26T10:00:00+07:00'),
-  WTFISWEICHEN:OLD_CODES_END,NERFWEICHEN:OLD_CODES_END,ECLIPSANUMBER1:OLD_CODES_END};
+  TOURNAMENT:20000,SORRYFORBUG:10000,NEWDECKBUILD:10000,
+  // pack update (6 cards per pack) — the only code that still works
+  NEWROLLINGCARD:100000};
+// codes that stop working at a set time (Thai time) — every code before NEWROLLINGCARD has expired
+const OLD_CODES_END=Date.parse('2026-11-27T00:00:00+07:00');
+const CODE_UNTIL=Object.fromEntries(Object.keys(CODES).filter(k=>k!=='NEWROLLINGCARD').map(k=>[k,OLD_CODES_END]));
 function usedCodes(){try{const a=JSON.parse(store.get('eclipsa-codes')||'[]');return Array.isArray(a)?a:[]}catch(e){return []}}
 function openCode(){
   audioInit();sfx('click');
