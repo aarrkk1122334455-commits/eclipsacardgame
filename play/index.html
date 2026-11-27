@@ -152,6 +152,22 @@ h1,h2,h3,.title{font-family:Torsilp,"Leelawadee UI",sans-serif;font-weight:norma
 .rewardtot{text-align:center;color:var(--muted);font-size:16px}
 .gachabtn{background:linear-gradient(#5a3a10,#2e1c06);border-color:#e0a52a!important;color:#ffd76a;font-weight:bold}
 /* deck builder */
+.questbtn{background:linear-gradient(#2e4a1a,#14220a);border-color:#7fd04a!important;color:#d8ffb8;font-weight:bold;position:relative}
+#qdot{display:none;position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;border-radius:11px;background:#ff3a4a;color:#fff;font-size:13px;line-height:22px;padding:0 6px;box-shadow:0 0 10px #ff3a4a;animation:qpulse 1s ease-in-out infinite alternate}
+@keyframes qpulse{to{transform:scale(1.15)}}
+.qbox{min-width:min(640px,92vw)}
+.qtabs{display:flex;gap:6px;margin:6px 0}.qtabs button{flex:1;position:relative}.qtabs button.on{background:linear-gradient(#4a7a2a,#22400e);border-color:#9ff07a;color:#fff}
+.qtabs button i{font-style:normal;margin-left:4px;background:#ff3a4a;color:#fff;border-radius:9px;padding:0 6px;font-size:12px}
+.qreset{text-align:center;color:#ffe9a8;font-size:14px;margin:4px 0 8px}
+.qlist{display:flex;flex-direction:column;gap:8px;max-height:58vh;overflow:auto;padding:2px}
+.qit{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;background:#ffffff0d;border:1px solid #ffffff22}
+.qit.done{border-color:#7fd04a;background:#7fd04a1a}.qit.got{opacity:.5}
+.qit .qt{flex:1;min-width:0}.qit .qt b{display:block;font-size:15px}.qit .qt small{color:var(--muted)}
+.qbar{height:10px;border-radius:5px;background:#0008;margin-top:6px;overflow:hidden}.qbar i{display:block;height:100%;background:linear-gradient(90deg,#5ac83a,#c8ff6a);border-radius:5px}
+.qrw{display:flex;align-items:center;gap:4px;font-weight:900;color:#ffd76a;white-space:nowrap}.qrw svg{width:18px;height:18px}
+.qit button{min-width:86px}
+#qtoast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);z-index:95;padding:10px 18px;border-radius:14px;background:#14220af2;border:2px solid #7fd04a;color:#e8ffd8;font-size:15px;box-shadow:0 0 20px #7fd04a66;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
+#qtoast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .deckbtn{background:linear-gradient(#1f3a5a,#0e1c2e);border-color:#5d8fe0!important;color:#bfe0ff;font-weight:bold}
 #deckb{position:fixed;inset:0;z-index:85;display:none;flex-direction:column;align-items:center;background:#07040a radial-gradient(ellipse at 40% 20%,#1a1e34,#07040a 75%);padding:12px 16px;gap:8px}
 #deckb.show{display:flex;animation:fadeIn .3s}
@@ -326,6 +342,8 @@ body.mobile .dbar{padding-right:110px}body.mobile .dbar button{padding:6px 8px;f
 #start .hero{height:380px;aspect-ratio:480/671;background:center/100% 100% no-repeat;border-radius:14px;box-shadow:0 0 40px #f2b54b55;animation:float 3s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-8px)}}
 #lobby{display:flex;flex-direction:column;gap:12px;width:min(380px,90vw)}
+#lobby .namerow{display:flex;gap:8px}#lobby .namerow #pname{flex:1;min-width:0}
+#ptitle{flex:none;max-width:48%;font:inherit;font-size:14px;font-weight:bold;color:#ffe9a8;background:#2a1e08;border:1px solid #ffd23a;border-radius:10px;padding:0 8px;cursor:pointer}
 #lobby .row{display:flex;gap:8px}#lobby .row>*{flex:1}
 #lobby .sep{color:var(--muted);text-align:center;font-size:13px;margin-top:4px}
 #lobby button{padding:11px 14px;font-size:16px}
@@ -1232,7 +1250,19 @@ body.mobile .rcard{width:70px}
 .tr-m.live{box-shadow:0 0 0 2px #ff5a6a,0 0 14px #ff5a6a88;animation:canpulse 1.4s infinite}
 .tr-s{display:flex;align-items:center;gap:4px;height:22px;padding:0 6px;border-radius:3px;background:#f4f4f0;color:#1a1a1a;font-size:12px;font-weight:bold;white-space:nowrap;overflow:hidden;max-width:150px}
 .tr-s img{width:16px;height:16px;border-radius:50%;flex:none}
-.tr-s.w{background:linear-gradient(90deg,#ffe9a0,#fff6d8);box-shadow:0 0 8px #ffd23a}.tr-s.l{opacity:.45;text-decoration:line-through}.tr-s.e{background:#f4f4f022;color:#ffffff55}.tr-s.me{outline:2px solid #3d8be0}
+.tr-s.w{background:linear-gradient(90deg,#7fe0a0,#d8ffe4);box-shadow:0 0 8px #3fcf7a}.tr-s.l{background:linear-gradient(90deg,#f08a8a,#ffd8d8);opacity:.75;text-decoration:line-through}
+/* reported (not confirmed by the organizer yet): green / red outline + blink */
+.tr-s.rw{background:linear-gradient(90deg,#bff0cc,#ecfff1);outline:2px solid #2fbf6a;animation:repb 1.2s ease-in-out infinite alternate}.tr-s.rl{background:linear-gradient(90deg,#ffc8c8,#fff0f0);outline:2px solid #e04a4a}
+@keyframes repb{to{box-shadow:0 0 10px #3fcf7a}}
+.tr-rep{font-size:10px;color:#ffe9a8;text-align:center}
+.tr-dk{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:6px;max-height:60vh;overflow:auto;padding:4px}
+.tr-dk div{position:relative;aspect-ratio:480/671;background:center/cover;border-radius:5px}.tr-dk b{position:absolute;right:2px;bottom:2px;background:#000c;color:#fff;border-radius:6px;padding:0 5px;font-size:13px}
+.tr-dpick{display:flex;flex-direction:column;gap:8px;max-height:55vh;overflow:auto;margin:8px 0}
+.tr-dpick button{display:flex;align-items:center;gap:10px;text-align:left;padding:6px 10px}.tr-dpick button .th{width:40px;height:56px;flex:none;border-radius:4px;background:center/cover}
+.tr-dpick button small{display:block;color:var(--muted)}
+#tourbtn.closed{cursor:not-allowed;filter:grayscale(.55) brightness(.75);overflow:hidden}
+#tourbtn .tchain{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;filter:drop-shadow(0 2px 2px #000)}
+#tourbtn .tlock{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#000d;border:2px solid #e0a52a;color:#ffd76a;border-radius:12px;padding:3px 14px;font-weight:900;font-size:15px;white-space:nowrap;box-shadow:0 0 14px #e0a52a88}.tr-s.e{background:#f4f4f022;color:#ffffff55}.tr-s.me{outline:2px solid #3d8be0}
 .tr-cen{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-width:150px}
 .tr-cen .cup{font-size:64px;filter:drop-shadow(0 0 16px #ffd23a)}
 .tr-cen h4{margin:0;color:#fff;letter-spacing:2px;font-size:14px}
@@ -1469,7 +1499,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
   <div id="lobby">
     <img class="logoimg" src="img/logo.webp" alt="ECLIPSA">
     <div id="dprof" class="dprof"></div>
-    <input id="pname" placeholder="ชื่อของคุณ" maxlength="16">
+    <div class="namerow"><input id="pname" placeholder="ชื่อของคุณ" maxlength="16"><select id="ptitle" title="เลือกฉายาที่จะโชว์ (ได้จากทัวร์นาเมนต์)" style="display:none"></select></div>
     <button id="startbtn" class="primary">เล่นกับบอท</button>
     <div class="sep">— เล่นออนไลน์ (ต้องต่ออินเทอร์เน็ต) —</div>
     <div class="row"><button id="qp1" class="qpbtn"><b>⚡ ควิกเพลย์</b><small>1 v 1</small></button><button id="qp2" class="qpbtn q2"><b>⚡ ควิกเพลย์</b><small>2 v 2</small></button></div>
@@ -1477,6 +1507,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
     <div class="row"><input id="roomcode" placeholder="รหัสห้อง 6 ตัว" maxlength="6" style="text-transform:uppercase"><button id="joinbtn">เข้าห้อง</button></div>
     <div id="netmsg"></div>
     <div class="row"><button id="deckbtn" class="deckbtn">🃏 จัดเด็ค</button><button id="gachabtn" class="gachabtn">🎰 ตู้สุ่มการ์ด</button></div>
+    <div class="row"><button id="questbtn" class="questbtn">📜 เควส <span id="qdot"></span></button></div>
     <div class="row"><button id="tutbtn" class="tutbtn">🎓 สอนเล่น <small>(ผ่านครั้งแรกรับ 50,000)</small></button></div>
     <div class="row"><button id="startrules">อ่านกติกาก่อน</button><button id="startset">⚙ ตั้งค่าเสียง</button></div>
     <div class="row" id="adminrow" style="display:none"><button id="reportsbtn">🛡 ดูรายงานจากผู้เล่น</button></div>
@@ -1581,10 +1612,10 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
   <div class="gnote">ใช้เหรียญ (เหรียญ) ที่ได้จากการเล่น · ชนะได้ <b>1250</b> · แพ้ได้ <b>500</b> · ได้การ์ดซ้ำ คืน <b>100</b> เหรียญ</div>
 </div>
 
-<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=31;</script>
+<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=32;</script>
 <script>
 // ============ CARD DATA (transcribed from the card art) ============
-const SAN='สามพี่น้อง', SHIP='เรือหลวง', WCT='พี่น้องร่ำรา', MANA_MAX=10, HAND_MAX=8;
+const SAN='สามพี่น้อง', SHIP='เรือหลวง', WCT='พี่น้องร่ำรา', MANA_MAX=10, HAND_MAX=5;
 const CARDS={
  xuan:{type:'leader',name:'เซวียนเหิง',img:'L_xuan.png',power:6000,life:5,tags:['มนุษย์','ดาบ',SHIP],
   skill:['ถ้ามีพาหนะ <b>เรือหลวงสุริยคราส</b> อยู่ในช่องพาหนะ → พลัง <b>+1000</b>','[AUTO] เมื่อพลังชีวิตได้รับความเสียหาย ถ้าพลังชีวิตเหลือ <b>3 หรือน้อยกว่า</b> → เรียกพวกพ้องเผ่าเรือหลวง 1 ใบจากกองการ์ดหรือช่องดรอปลงสนามได้ <b>โดยไม่ต้องใช้มานา</b> (1 ครั้งต่อเทิร์น)']},
@@ -1610,7 +1641,7 @@ const CARDS={
   skill:['จนจบเทิร์น พวกพ้องเผ่าเรือหลวงทั้งหมดของเรา พลังโจมตี <b>+2000</b>','[TRIGGER] จั่ว 1 ใบ และเก็บการ์ดนี้ขึ้นมือ']},
  love:{type:'event',name:'ความรักที่มีวันรอคอย',img:'E_love.png',cost:1,tags:[SHIP],
   skill:['ถ้าในสนามเรามีการ์ดเผ่าเรือหลวง → นำการ์ดเผ่า<b>เรือหลวง</b> 1 ใบจาก<b>ช่องดรอป</b> กลับขึ้นมือ','ถ้าคาแรคเตอร์เราคือ <b>เซวียนเหิง</b> หรือ <b>จิน</b> → นำการ์ด<b>อะไรก็ได้</b>จากช่องดรอปขึ้นมือแทน','ใช้ได้ 1 ครั้งต่อเทิร์น']},
- bind:{type:'event',name:'จงตรึง',img:'E_bind.png',cost:2,counterEv:true,tags:[SHIP],
+ bind:{type:'event',name:'จงตรึง',img:'E_bind.png',cost:3,counterEv:true,tags:[SHIP],
   skill:['[COUNTER] ใช้ได้<b>ตอนเรากำลังถูกโจมตี</b>เท่านั้น','เลือกพวกพ้องฝ่ายตรงข้าม <b>2 ใบ</b> จนจบเทิร์นนี้ การ์ดที่ถูกเลือก<b>โจมตีไม่ได้</b> (ถ้าเลือกตัวที่กำลังโจมตี การโจมตีนั้นถูกยกเลิก)']},
  goaway:{type:'event',name:'ทำใจฆ่าได้ละ ไปไหนก็ไป ไป',img:'E_goaway.png',cost:2,tags:[SHIP],
   skill:['นำพวกพ้องเผ่าสามพี่น้องของเรา 1 ใบลงช่องดรอป → คู่แข่ง<b>ทิ้งการ์ดบนมือ 1 ใบ</b>','ถ้าใบที่เราทิ้งคือ <b>เหยาซิง</b> → จั่ว 1 ใบ']},
@@ -1626,7 +1657,7 @@ const CARDS={
   skill:['<b>จั่ว 2 ใบ</b> (ไม่ต้องใช้มานา)','ใช้ได้ 1 ครั้งต่อเทิร์น','[TRIGGER] จั่วการ์ด 2 ใบ']},
  // ===== ตู้ "เหวยเฉิน of หมิงเย่ว" (ได้จากตู้สุ่มเท่านั้น) — rare: L 1% · V 3% · E 10% · H 25% · C ที่เหลือ (61%) =====
  weichenL:{type:'leader',name:'เหวยเฉิน',img:'L_weichen.png',power:6000,life:5,tags:['มนุษย์',WCT],gacha:'L',
-  skill:['[COUNTER] เมื่อเราถูกโจมตี <b>เป่ายิ้งฉุบ</b>กับคู่แข่งได้ — ชนะ = <b>ยกเลิกการต่อสู้นั้น</b> · แพ้ = <b>โดนโจมตีทันที</b> (ใช้ COUNTER / ช่องป้องกันสวนไม่ได้) · เสมอ = เป่าใหม่ (1 ครั้งต่อเทิร์น)','เมื่อจบการต่อสู้ของการ์ดชื่อ "เหวยเฉิน" → นำการ์ดนั้น<b>กลับใต้กอง</b> และ<b>ทิ้งมือ 1 ใบ</b>ได้ หากทำ ค้นหา "เหวยเฉิน" จาก<b>กอง / ดรอป / มือ</b> เรียกลงสนามใน<b>สภาพตีได้</b> (<b>1 ครั้งต่อเทิร์น</b>)']},
+  skill:['[COUNTER] เมื่อเราถูกโจมตี <b>เป่ายิ้งฉุบ</b>กับคู่แข่งได้ — ชนะ = <b>ยกเลิกการต่อสู้นั้น</b> · แพ้ = <b>โดนโจมตีทันที</b> (ใช้ COUNTER / ช่องป้องกันสวนไม่ได้) · เสมอ = เป่าใหม่ (1 ครั้งต่อเทิร์น)','เมื่อการ์ดใบนี้ทำการโจมตี เราสามารถ<b>ทิ้งการ์ดบนมือ 2 ใบ</b> หากทำ เลือกพวกพ้องไม่เกิน 1 ใบในสนาม นำการ์ดนั้น<b>กลับใต้กองการ์ด</b> และนำพวกพ้องที่มีชื่อ "เหวยเฉิน" ไม่เกิน 1 ใบ จาก<b>กอง / ดรอป / มือ</b> เข้าสู่สนาม<b>โดยไม่ต้องจ่ายค่ามานา</b> และการ์ดใบนั้น<b>โจมตีได้ทันที</b> (<b>1 ครั้งต่อเทิร์น</b>)']},
  // ===== SECRET — โอกาส 0.0001% ในทุกซองสุ่ม · ถ้ายังไม่มีจะไม่แสดงในหน้าจัดเด็คเลย =====
  longyexin:{type:'leader',name:'หลงเยี่ยซิน',img:'L_longyexin.png',power:6000,life:4,tags:['มังกรอนันต์'],gacha:'S',allNames:true,
   skill:['การ์ดนี้ถือว่าเป็น<b>ทุกชื่อ</b>และ<b>ทุกเผ่า</b>ทั้งหมด','เมื่อการโจมตีของการ์ดนี้จะถูก <b>SHIELD</b> → ทำลายพวกพ้องในสนามเรา 1 ใบ เพื่อ<b>ยกเลิกการใช้ SHIELD</b> นั้น (1 ครั้งต่อเทิร์น)','หากนี่ไม่ใช่เทิร์นแรก พวกพ้อง<b>ทุกตน</b>ของเรา<b>โจมตีได้ทันที</b>เมื่อลงสนาม','เมื่อการ์ดในสนามเราถูก<b>ทำลายด้วยความสามารถของคู่แข่ง</b> → จั่ว 1 ใบ','[ACT] ทำลายพวกพ้องของเรา 1 ตน → <b>จั่ว 1 ใบ</b> (1 ครั้งต่อเทิร์น)']},
@@ -1689,7 +1720,7 @@ const isWC=c=>!!(c&&c.id&&CARDS[c.id]&&(CARDS[c.id].allNames||CARDS[c.id].name.i
 const leaderNamed=(p,id)=>p.leader.id===id||!!CARDS[p.leader.id].allNames||CARDS[p.leader.id].name===CARDS[id].name;
 // the leader has เซวียนเหิง's own skills (เซวียนเหิง itself, or the deck card laid over it)
 const xuanSkills=p=>p.leader.id==='xuan'||(p.leader.id==='x_xuan2'&&!!p.leader.under&&p.leader.under.id==='xuan');
-const DECKLIST={grandpa:3,bingyue:3,luart:3,tianxing:3,yaoxing:3,yaoxingmini:3,yaoming:3,weichen:3,ship:3,
+const DECKLIST={grandpa:4,bingyue:3,luart:2,tianxing:3,yaoxing:3,yaoxingmini:3,yaoming:3,weichen:3,ship:3,
  meeting:2,love:2,bind:3,goaway:2,death:3,spare:2,signal:3,prepare:3,inn:3}; // 50 cards
 const TYPE_TH={leader:'คาแรคเตอร์',ally:'พวกพ้อง',event:'เหตุการณ์',vehicle:'พาหนะ'};
 const KW={'[GUARD]':['k5','ช่องป้องกัน'],'[ON PLAY]':['k3','เมื่อลงสนาม'],'[ACT]':['k1','ACT'],'[SHIELD]':['k2','SHIELD'],'[GO ON]':['k3','GO ON'],'[COUNTER]':['k4','COUNTER'],'[TRIGGER]':['k2','ทริกเกอร์'],'[AUTO]':['k5','อัตโนมัติ']};
@@ -1800,6 +1831,7 @@ const TRACKS=[
   {f:'bgm2_mingyue.ogg',t:'ฝืนลิขิตฟ้า 「Mingyue」 (Off Vocal)'},
   {f:'bgm3_yaoxing.ogg',t:'Yaoxing Dance Theme'},
   {f:'bgm4_luard.ogg',t:'Luard Main Theme'},
+  {f:'bgm5_suvarnara.ogg',t:'Eclipsa : Suvarnara Main Theme'},
 ];
 const trackSrc=f=>(window.AUDIO&&AUDIO[f])||('audio/'+f);
 // LAST FIGHT: plays when someone's life reaches 0 (both players hear it), loops until the match ends
@@ -2031,10 +2063,10 @@ function myName(){const v=cleanName(store.get('eclipsa-name')||($('#pname')&&$('
 // guest: NET.conn = link to the host · host: NET.links = Map(pid → link) of every guest.
 const ROOM_MAX={'1v1':2,'2v2':4},PUB_SLOTS=12,QP_SLOTS=4;
 let ROOM=null,MYPID='',CHAT=[];
-function myProfileMsg(){const dp=dProfile();return {name:myName(),avatar:myAvatar(),did:dp?String(dp.id||'').replace(/\D/g,''):'',duser:dp?cleanName(dp.username||''):'',leader:loadLeader(),deck:loadDeck(),foils:myFoilMap(),arts:myArtMap(),tb:myBadge()}}
+function myProfileMsg(){const dp=dProfile(),L=TOUR.inMatch&&tourLockedDeck();return {name:myName(),avatar:myAvatar(),did:dp?String(dp.id||'').replace(/\D/g,''):'',duser:dp?cleanName(dp.username||''):'',leader:L?L.leader:loadLeader(),deck:L?L.deck:loadDeck(),foils:myFoilMap(),arts:myArtMap(),tb:myBadge()}}
 function cleanPlayer(m){
   m=m||{};const leader=validLeader(m.leader)?m.leader:LEADERS[0];
-  return {name:cleanName(m.name)||'ผู้เล่น',avatar:safeAvatar(m.avatar),did:String(m.did||'').replace(/\D/g,'').slice(0,20),duser:cleanName(m.duser),leader,deck:validDeck(m.deck,leader)?m.deck:{...DECKLIST},foils:cleanFoils(m.foils),arts:cleanArts(m.arts),tb:cleanBadge(m.tb)};
+  return {name:cleanName(m.name)||'ผู้เล่น',avatar:safeAvatar(m.avatar),did:String(m.did||'').replace(/\D/g,'').slice(0,20),duser:cleanName(m.duser),leader,deck:validDeck(m.deck,leader)?m.deck:(()=>{const f=fixLimits(m.deck,leader);return f!==m.deck&&validDeck(f,leader)?f:{...DECKLIST}})(),foils:cleanFoils(m.foils),arts:cleanArts(m.arts),tb:cleanBadge(m.tb)};
 }
 const roomInfo=()=>ROOM?{code:ROOM.qp?'':ROOM.code,mode:ROOM.mode,max:ROOM.max,count:ROOM.players.length,started:!!ROOM.started,name:(ROOM.players.find(p=>p.host)||{}).name||'',qp:!!ROOM.qp}:{};
 function roomState(){return {code:ROOM.qp?'':ROOM.code,mode:ROOM.mode,max:ROOM.max,qp:!!ROOM.qp,started:!!ROOM.started,tsec:ROOM.tsec??TURN_SEC,players:ROOM.players.map(p=>({pid:p.pid,name:p.name,avatar:p.avatar,host:p.host,ready:p.ready,slot:p.slot,leader:p.leader,did:p.did,duser:p.duser}))}}
@@ -2073,6 +2105,15 @@ function roomAccept(conn){
         pid='spec';return;
       }
       if(m.t!=='rjoin')return;
+      // tournament match: the player who dropped comes back (same Discord account) → back into the same game
+      if(ROOM&&ROOM.started&&G&&G.tour&&!G.over&&G.players){
+        // (also when the old link has not timed out yet: the new connection replaces it)
+        const c=cleanPlayer(m),p=c.did&&G.players.find(x=>x.remote&&x.did===c.did);
+        if(p){pid=p.pid;const old=NET.links.get(pid);NET.links.set(pid,conn);if(old&&old!==conn){try{old.close()}catch(e){}}
+          ROOM.players=ROOM.players.filter(x=>x.pid!==pid);ROOM.players.push({pid,host:false,ready:true,slot:1,...c});
+          try{conn.send({t:'rstate',room:roomState(),you:pid})}catch(e){}
+          if(p.away)tourBack(p);else{sendSnap();render()}return}
+      }
       if(!ROOM||ROOM.started||ROOM.players.length>=ROOM.max){try{conn.send({t:'rfull',started:!!(ROOM&&ROOM.started)})}catch(e){}setTimeout(()=>conn.close(),400);return}
       pid='p'+(++NET.req)+randCode().slice(0,3);NET.links.set(pid,conn);
       const pl={pid,host:false,ready:!!ROOM.qp,slot:freeSlot(),...cleanPlayer(m)};
@@ -2082,7 +2123,7 @@ function roomAccept(conn){
     if(pid==='spec')return; // spectators only watch
     onNet(m,pid);
   });
-  conn.on('close',()=>{if(pid&&pid!=='spec')roomLeft(pid)});
+  conn.on('close',()=>{if(pid&&pid!=='spec'&&(!NET.links.has(pid)||NET.links.get(pid)===conn))roomLeft(pid)}); // a replaced (rejoined) link closing is not a leave
 }
 function roomLeft(pid){
   NET.links.delete(pid);
@@ -2094,6 +2135,7 @@ function roomLeft(pid){
   if(G&&!G.over&&G.players){
     const p=G.players.find(x=>x.pid===pid);
     if(p&&G.players.length>2){try{eliminate(p,'หลุดออกจากเกม')}catch(e){if(e!==OVER)console.error(e)}render();if(G.cur===p&&!G.busy)run(endTurn);return}
+    if(p&&G.tour){tourAway(p);return}
     if(p){lost();return}
   }
   if(pl)roomSys(`${pl.name} ออกจากห้อง`);
@@ -2153,8 +2195,76 @@ function guestClosed(){
   netMsg(why);sfx('debuff');
   const box=$('#modal .box');box.innerHTML=`<h2>${KICKED?'ถูกเตะออกจากห้อง':'ห้องถูกปิด'}</h2><p style="font-size:16px">${why}</p><div class="foot"><button class="primary" onclick="location.reload()">กลับหน้าแรก</button></div>`;$('#modal').style.display='flex';
 }
+// ---------- tournament: a player drops → the match waits for them (TOUR_AWAY_SEC), they come back into the same game ----------
+const TOUR_AWAY_SEC=300;
+function tourAway(p){
+  if(!G||G.over||p.away)return;
+  p.away=Date.now();sfx('debuff');
+  log(null,`📡 ${p.name} หลุดการเชื่อมต่อ — รอกลับมา ${TOUR_AWAY_SEC/60} นาที (เกมหยุดรอ)`);
+  clearInterval(G.awayTick);
+  G.awayTick=setInterval(()=>{
+    if(!G||G.over||!G.players.some(x=>x.away)){clearInterval(G&&G.awayTick);tourAwayBar();return}
+    const q=G.players.find(x=>x.away),left=TOUR_AWAY_SEC-Math.floor((Date.now()-q.away)/1000);
+    if(left<=0){clearInterval(G.awayTick);tourAwayBar();q.away=0;G.awayLoss=true;tourOppLeft();return}
+    tourAwayBar(`📡 <b>${tEsc(q.name)}</b> หลุดการเชื่อมต่อ — รอให้กลับมาเล่นต่อ <b>${left/60|0}:${String(left%60).padStart(2,'0')}</b><br><small>ถ้าไม่กลับมาภายในเวลา คุณชนะคู่นี้</small>`);
+  },1000);
+  render();
+}
+function tourBack(p){
+  p.away=0;sfx('buff');log(null,`📡 ${p.name} กลับมาแล้ว — เล่นต่อ`);
+  if(!G.players.some(x=>x.away)){clearInterval(G.awayTick);tourAwayBar()}
+  showBanner('กลับมาแล้ว!',`${p.name} กลับเข้าเกม — เล่นต่อได้เลย`,false,1400);
+  sendSnap();render();
+}
+function tourAwayBar(html){
+  let b=$('#awaybar');if(!b){b=document.createElement('div');b.id='awaybar';b.style.cssText='position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:94;padding:10px 18px;border-radius:14px;background:#2a1018f2;border:2px solid #ff7a7a;color:#ffe2e2;font-size:15px;text-align:center;box-shadow:0 0 20px #ff4a4a66;max-width:calc(100vw - 24px)';document.body.append(b)}
+  b.style.display=html?'block':'none';if(html)b.innerHTML=html;
+}
+// guest of a tournament match lost the link: the host keeps the game → reload and the tournament screen puts us back in
+function tourRejoin(){
+  if($('#awaybar')&&$('#awaybar').dataset.re)return;
+  tourAwayBar('📡 การเชื่อมต่อหลุด — <b>กำลังกลับเข้าแมตช์เดิม…</b>');$('#awaybar').dataset.re='1';
+  setTimeout(()=>{location.hash='tour';location.reload()},2500);
+}
+// ---------- tournament: the match is SAVED on both devices — after a reload / crash it comes back exactly as it was ----------
+// the room host keeps a checkpoint every 2 s while the game waits for a move (main phase, nothing resolving);
+// both players remember which side they were on, so after a reload the host re-opens the room and the guest only joins it
+const TM_SAVE='eclipsa-tm-save',TM_SIDE='eclipsa-tm-side';
+function tmSide(){try{const s=JSON.parse(store.get(TM_SIDE)||'null');return s&&s.key===TOUR_CFG.key?s:null}catch(e){return null}}
+function tmLoad(mid){try{const s=JSON.parse(store.get(TM_SAVE)||'null');return s&&s.key===TOUR_CFG.key&&s.mid===mid&&s.st?s:null}catch(e){return null}}
+function tmClear(){store.set(TM_SAVE,'');store.set(TM_SIDE,'')}
+function tmSave(){
+  if(!G||!G.tour||G.spec||G.over||!G.players)return;
+  if(!tmSide()||tmSide().mid!==G.tour||tmSide().gid!==G.gid)store.set(TM_SIDE,JSON.stringify({key:TOUR_CFG.key,mid:G.tour,host:G.mode==='host',gid:G.gid||''}));
+  if(G.mode!=='host'||G.busy||G.phase!=='main'||G.halt)return;
+  try{
+    const st={players:G.players.map(p=>({...p,away:0})),cur:G.players.indexOf(G.cur),foe:G.players.indexOf(G.foe),turn:G.turn,tsec:G.tsec,tLeft:G.tLeft,acted:!!G.acted,gid:G.gid||(G.gid=randCode()),uid:UID};
+    store.set(TM_SAVE,JSON.stringify({key:TOUR_CFG.key,mid:G.tour,at:Date.now(),st}));
+  }catch(e){console.warn('tm save',e)}
+}
+setInterval(tmSave,2000);
+// host after a reload: the room is open again → put the saved game back and wait for the other player to come back
+function tmRestore(sv){
+  if(G||!ROOM||!sv)return false;
+  const st=sv.st,ps=st.players;if(!Array.isArray(ps)||ps.length!==2)return false;
+  const me=ps.find(p=>!p.remote);if(!me)return false;
+  audioInit();hideMenuChrome();$('#start').classList.remove('searching');$('#qpbar').style.display='none';
+  QP.on=false;clearInterval(QP.tick);clearInterval(QP.probe);
+  UID=Math.max(UID,+st.uid||0)+1000;
+  me.pid='h';
+  G={mode:'host',turn:st.turn,players:ps,me,cur:ps[st.cur]||ps[0],foe:ps[st.foe]||ps[1],busy:false,over:false,phase:'main',wait:false,
+    tour:sv.mid,tsec:st.tsec,tLeft:st.tLeft,acted:st.acted,gid:st.gid};
+  ROOM.started=true;ROOM.tour=sv.mid;
+  setView();showInfo(G.me.leader);matchMusic();$('#chatbtn').style.display='';renderChat(false);
+  log(null,'💾 โหลดเกมที่เซฟไว้ — กลับมาที่เดิม');
+  render();
+  const other=ps.find(p=>p.remote);if(other)tourAway(other);
+  showBanner('💾 กลับมาที่เกมเดิม',`รอ ${cleanName(other&&other.name)} กลับเข้าเกม…`,false,1800);
+  return true;
+}
 function lost(){
   if(G&&G.over)return;
+  if(G&&G.tour&&!G.spec&&G.mode==='guest'){tourRejoin();return}
   if(G&&G.tour&&!G.spec){tourOppLeft();return}
   surrClose();
   const box=$('#modal .box');box.innerHTML=`<h2>การเชื่อมต่อหลุด</h2><p style="font-size:16px">อีกฝ่ายออกจากเกม หรืออินเทอร์เน็ตมีปัญหา</p><div class="foot"><button class="primary" onclick="location.reload()">กลับหน้าแรก</button></div>`;
@@ -2209,10 +2319,10 @@ function onNet(m,pid){
 }
 function ser(p,hide){
   return {name:p.name,avatar:p.avatar||'',ai:false,remote:false,team:p.team,out:!!p.out,pid:p.pid||'',did:p.did||'',duser:p.duser||'',leader:p.leader,allies:p.allies,guard:p.guard,guardSum:p.guardSum||0,vehicle:p.vehicle,trash:p.trash,manaDeck:p.manaDeck,manaActive:p.manaActive,manaRested:p.manaRested,once:p.once,tianxingBlocked:p.tianxingBlocked,
-    tb:p.tb||'',quit:!!p.quit,hand:hide?p.hand.map(c=>({uid:c.uid})):p.hand,deck:p.deck.map(c=>({uid:c.uid})),life:p.life.map(c=>({uid:c.uid}))};
+    tb:p.tb||'',quit:!!p.quit,qs:p.qs||{},hand:hide?p.hand.map(c=>({uid:c.uid})):p.hand,deck:p.deck.map(c=>({uid:c.uid})),life:p.life.map(c=>({uid:c.uid}))};
 }
 // p = null → a spectator's view: every hand hidden
-const snapFor=p=>({t:'snap',players:G.players.map(x=>ser(x,x!==p)),you:p?G.players.indexOf(p):0,spec:!p,cur:G.players.indexOf(G.cur),foe:G.players.indexOf(G.foe),turn:G.turn,phase:G.phase,over:G.over,busy:G.busy,wait:G.wait,speed:SPEED,tour:G.tour||''});
+const snapFor=p=>({t:'snap',players:G.players.map(x=>ser(x,x!==p)),you:p?G.players.indexOf(p):0,spec:!p,cur:G.players.indexOf(G.cur),foe:G.players.indexOf(G.foe),turn:G.turn,phase:G.phase,over:G.over,busy:G.busy,wait:G.wait,speed:SPEED,tour:G.tour||'',gid:G.gid||(G.gid=randCode())});
 function sendSnap(){
   if(NET.snapQ)return;NET.snapQ=true;
   queueMicrotask(()=>{NET.snapQ=false;if(!G||!G.players)return;for(const p of G.players)if(p.remote&&p.pid)sendTo(p.pid,snapFor(p));if(NET.specs.size)specSend(snapFor(null))});
@@ -2225,6 +2335,7 @@ function applySnap(s){
   if(first){G={mode:'guest',spec:!!s.spec};hideMenuChrome();QP.on=false;clearInterval(QP.tick);$('#chatbtn').style.display=s.spec?'none':'';if(s.spec)specBar(true)}
   Object.assign(G,{turn:s.turn,phase:s.phase,over:s.over,busy:s.busy,wait:s.wait});
   if(s.tour&&!G.spec)G.tour=String(s.tour);
+  if(s.gid)G.gid=String(s.gid).slice(0,12);
   G.players=s.players;G.me=G.players[s.you];G.cur=G.players[s.cur]||null;G.foe=G.players[s.foe]||null;SPEED=s.speed||1;
   setView();
   if(first)showInfo(G.me.leader);
@@ -2850,6 +2961,8 @@ function chainFx(c,owner,label,n,list){
     <div class="nm" style="left:${Rr+16}px;top:${B-ch*.12}px;max-width:${Math.max(160,W-Rr-30)}px">${nm(c)}</div>`;
   s.className='show'+(foe?' foe':'');
   const ms=(foe?1900:1400)*Math.min(SPEED||1,1.4);
+  // the close is armed FIRST: an error in the extras below (foil / sound) must never leave the overlay stuck on screen
+  // (a newer chain scene replaces this one → only the newest one may clear the overlay)
   const tok=s._tok=(s._tok||0)+1;
   const p=new Promise(res=>{let done=false;const end=()=>{if(done)return;done=true;if(s._tok!==tok){res();return}s.classList.add('out');setTimeout(()=>{if(s._tok===tok){s.className='';s.innerHTML=''}res()},260)};s.onclick=end;setTimeout(end,Math.min(ms,4000))});
   try{
@@ -2860,6 +2973,7 @@ function chainFx(c,owner,label,n,list){
   }catch(e){console.warn(e)}
   return p;
 }
+// safety net: a chain scene never stays on screen longer than 6 s
 setInterval(()=>{const s=$('#chainfx');if(!s)return;if(s.classList.contains('show')){s._seen=s._seen||Date.now();if(Date.now()-s._seen>6000){s.className='';s.innerHTML='';s._seen=0}}else s._seen=0},1000);
 // plain=true: a normal summon — just a quick name pop, not a chain link
 function spotlight(c,owner,label,ms,chain,plain){
@@ -3290,6 +3404,7 @@ function showResult(winner,quit){
       <div class="foot"><button class="primary" onclick="location.hash='';location.reload()">🏠 กลับหน้าเมนู</button></div>`;
     $('#modal').style.display='flex';return;
   }
+  if(!G.tut){try{const q=quit||(G.me.quit?G.me:null);questGameEnd(winner===G.me||(G.players.length>2&&winner&&winner.team===G.me.team)||(!!q&&q!==G.me&&(G.players.length<=2||q.team!==G.me.team)),q===G.me)}catch(e){console.warn(e)}}
   if(G.tour){tourReportResult(winner,quit);return}
   if(G.tut){tutResult(winner,quit);return}
   if(!quit&&G.me.quit)quit=G.me;
@@ -3349,6 +3464,7 @@ const deckCount=d=>Object.values(d).reduce((s,n)=>s+n,0);
 const LIMITS={
   // แบนลิสถูกปลดทั้งหมดแล้ว — เหลือแค่การ์ดที่ตัวการ์ดเขียนเองว่าใส่ได้ 1 ใบ
   x_xuan2:{max:2,when:null,why:'ตัวการ์ดระบุว่าใส่ได้ 2 ใบ'},
+  luart:{max:2,when:null,why:'ลิมิตลิส: ใส่ได้ 2 ใบ'},
 };
 const limitOf=(id,leader)=>{const l=LIMITS[id];return l&&(!l.when||l.when===leader)?l.max:OWN_EACH};
 const LIMIT_SVG=n=>`<svg class="limico" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#c0101a" stroke="#fff" stroke-width="3"/><circle cx="20" cy="20" r="12" fill="none" stroke="#ffd23a" stroke-width="2"/><text x="20" y="27" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff" font-family="Arial">${n}</text></svg>`;
@@ -3356,7 +3472,21 @@ const LIMIT_SVG=n=>`<svg class="limico" viewBox="0 0 40 40"><circle cx="20" cy="
 const groupCount=(d,id)=>{const b=baseOf(id);let s=0;for(const [k,n] of Object.entries(d||{}))if(CARDS[k]&&baseOf(k)===b)s+=n;return s};
 const groupLeft=(d,id,leader)=>limitOf(baseOf(id),leader)-groupCount(d,id);
 function validDeck(d,leader){return !!d&&typeof d==='object'&&deckCount(d)===DECK_SIZE&&Object.entries(d).every(([id,n])=>CARDS[id]&&(CARDS[id].type!=='leader'||CARDS[id].inDeck)&&Number.isInteger(n)&&n>=0&&n<=limitOf(id,leader)&&groupLeft(d,id,leader)>=0)}
-function loadDeck(){try{const d=JSON.parse(store.get('eclipsa-deck')||'null');if(validDeck(d,loadLeader())&&Object.keys(d).every(id=>!d[id]||isOwned(id)))return d}catch(e){}return {...DECKLIST}}
+// a deck that went over a NEW limit (e.g. ลูอาร์ต 4 → 2): remove the extra copies and fill back up to 50
+// with more copies of cards already in the deck (then the starter list), so nobody loses their deck
+function fixLimits(d,leader){
+  if(!d||typeof d!=='object')return d;
+  const out={...d};let cut=0;
+  for(const id of Object.keys(out)){if(!CARDS[id])continue;
+    while(out[id]>0&&(out[id]>limitOf(id,leader)||groupLeft(out,id,leader)<0)){out[id]--;cut++}}
+  if(!cut)return d;
+  const room=id=>CARDS[id]&&(CARDS[id].type!=='leader'||CARDS[id].inDeck)&&isOwned(id)&&(out[id]||0)<limitOf(id,leader)&&groupLeft(out,id,leader)>0;
+  const order=[...Object.keys(out).filter(id=>out[id]>0).sort((a,b)=>out[b]-out[a]),...Object.keys(DECKLIST)];
+  for(const id of order){while(deckCount(out)<DECK_SIZE&&room(id))out[id]=(out[id]||0)+1}
+  for(const id of Object.keys(out))if(!out[id])delete out[id];
+  return out;
+}
+function loadDeck(){try{let d=JSON.parse(store.get('eclipsa-deck')||'null');const f=fixLimits(d,loadLeader());if(f!==d&&validDeck(f,loadLeader())){d=f;store.set('eclipsa-deck',JSON.stringify(d))}if(validDeck(d,loadLeader())&&Object.keys(d).every(id=>!d[id]||isOwned(id)))return d}catch(e){}return {...DECKLIST}}
 const LEADERS=Object.keys(CARDS).filter(id=>CARDS[id].type==='leader'&&!CARDS[id].inDeck);
 const validLeader=id=>LEADERS.includes(id);
 function loadLeader(){const l=store.get('eclipsa-leader');return validLeader(l)&&isOwned(l)?l:LEADERS[0]}
@@ -3474,7 +3604,7 @@ function renderDeck(){
 $('#dq').oninput=()=>renderDeck();$('#dsort').onchange=()=>{sfx('click');renderDeck()};
 // ---------- saved deck slots: keep many decks (name + character + cards), load one with a click ----------
 const SLOT_MAX=20;
-function getSlots(){try{const a=JSON.parse(store.get('eclipsa-decks')||'[]');return Array.isArray(a)?a.filter(s=>s&&s.deck&&typeof s.name==='string'):[]}catch(e){return []}}
+function getSlots(){try{const a=JSON.parse(store.get('eclipsa-decks')||'[]');return Array.isArray(a)?a.filter(s=>s&&s.deck&&typeof s.name==='string').map(s=>{const f=fixLimits(s.deck,s.leader);return f!==s.deck&&validDeck(f,s.leader)?{...s,deck:f}:s}):[]}catch(e){return []}}
 function setSlots(a){store.set('eclipsa-decks',JSON.stringify(a.slice(0,SLOT_MAX)))}
 const slotSame=s=>s.leader===DB.leader&&JSON.stringify(Object.entries(s.deck).filter(x=>x[1]).sort())===JSON.stringify(Object.entries(DB.edit).filter(x=>x[1]).sort());
 function slotProblem(s){
@@ -4571,7 +4701,7 @@ async function summon(p,card,from,over){
     popAt(over,'ถูกทับ → ดรอป','#d0c0c8');await sleep(500);
     removeAlly(p,over);p.trash.push(strip(over));log(p,`${nm(over)} ถูกทับ ลงช่องดรอป`);
   }else if(p.allies.length>=3)return false;
-  unitize(card);p.allies.splice(idx,0,card);
+  unitize(card);p.allies.splice(idx,0,card);qInc(p,'ally');
   if(p.leader.id==='longyexin'&&G.turn>firstRound())card.sick=false; // หลงเยี่ยซิน: not the first turn → allies can attack the turn they come out
   log(p,`เรียก ${nm(card)}${from?' จาก'+from:''}${over?' (ทับ '+nm(over)+')':''}`);render();await sleep(500);
   await spotlight(card,p,`${p.name} เรียกพวกพ้อง${from?' จาก'+from:''}`,null,null,true);
@@ -4743,7 +4873,7 @@ function whyNot(p,c){
   return 'ยังใช้ไม่ได้ตอนนี้';
 }
 async function castEvent(p,c){
-  const d=D(c),o=opp(p);chainReset();
+  const d=D(c),o=opp(p);chainReset();qInc(p,'ev');
   pay(p,d.cost);p.hand.splice(p.hand.indexOf(c),1);
   log(p,`ใช้เหตุการณ์ "${d.name}" (มานา ${d.cost})`);render();
   await spotlight(c,p,`${p.name} ใช้เหตุการณ์ · มานา ${d.cost}`);
@@ -4861,7 +4991,7 @@ async function castEvent(p,c){
   p.trash.push(c);render();
 }
 async function playVehicle(p,c){
-  chainReset();pay(p,D(c).cost);p.hand.splice(p.hand.indexOf(c),1);
+  chainReset();qInc(p,'veh');pay(p,D(c).cost);p.hand.splice(p.hand.indexOf(c),1);
   // ร้านขาประจำเหวยเฉิน can be installed any number of times: another copy stacks on the one in play (deck limit stays 4)
   if(c.id==='wc_teahouse'&&p.vehicle&&p.vehicle.id==='wc_teahouse'){
     p.vehicle.extra=[...(p.vehicle.extra||[]),strip(c)];const n=1+p.vehicle.extra.length;
@@ -4915,7 +5045,8 @@ async function attack(p,u,target){
   const o=opp(p);chainReset();
   log(p,`${nm(u)} (${atkPow(p,u)}) โจมตี ${nm(target)}`);
   render();await fxAttack(u,target);
-  u.rested=true;render();await sleep(300);
+  u.rested=true;qInc(p,'atk');render();await sleep(300);
+  await wcLeaderAttack(p,u);
   if(u.id==='yaoxing'){
     const cands=p.trash.filter(c=>hasTag(c,SAN));
     if(cands.length){const t=await choose(p,{title:'เหยาซิง: นำการ์ดเผ่าสามพี่น้องในช่องดรอปกลับใต้กองการ์ด?',items:cardItems(cands,p),min:0,max:1,ai:it=>[it[0].value]});
@@ -4946,7 +5077,7 @@ async function attack(p,u,target){
     for(const c of t){boost+=boostVal(c);trashFromHand(p,c)}
     if(boost){log(p,`เพิ่มพลังโจมตี +${boost}`);render();popAt(u,'+'+boost,'#ff8a6a');await sleep(600)}
   }
-  const shields=o.allies.filter(a=>D(a).shield&&a!==target); // the card being attacked can't SHIELD for itself
+  const shields=o.allies.filter(a=>D(a).shield&&a!==target&&!a.rested&&!a.attacked); // the card being attacked can't SHIELD for itself; only standing (vertical) allies that haven't attacked can SHIELD
   if(shields.length&&atk()>=defNow()){
     const t=await choose(o,{title:`SHIELD: นำ${[...new Set(shields.map(nm))].join(' / ')}ลงช่องดรอป เพื่อยกเลิกการโจมตีนี้?`,sub:sub(),items:cardItems(shields,o),min:0,max:1,
       ai:it=>(DIFF>1&&target===o.leader&&o.life.length<=(DIFF>=3?2:1))?[it[0].value]:[]});
@@ -5064,23 +5195,35 @@ async function attack(p,u,target){
 }
 // character เหวยเฉิน (1/turn): after a เหวยเฉิน ally's battle → put it on the bottom of the deck + discard 1 →
 // summon a เหวยเฉิน ally from deck / drop / hand, standing and able to attack
-async function wcAfterBattle(p,u){
-  if(p.leader.id!=='weichenL'||p.once.wcLeader||!p.allies.includes(u)||!isWC(u)||!p.hand.length)return;
+async function wcAfterBattle(p,u){} // old skill 2 (replaced by wcLeaderAttack)
+// character เหวยเฉิน skill 2 (1/turn): when this character attacks → discard 2 from hand; if so,
+// up to 1 of our allies goes under the deck, and up to 1 "เหวยเฉิน" ally from deck / drop / hand enters free and can attack at once
+async function wcLeaderAttack(p,u){
+  if(u!==p.leader||p.leader.id!=='weichenL'||p.once.wcLeader||p.hand.length<2)return;
   const pool=()=>[...p.deck,...p.trash,...p.hand].filter(x=>D(x).type==='ally'&&isWC(x));
-  if(!pool().length)return;
-  const go=await yesno(p,`เหวยเฉิน: จบการต่อสู้ — นำ ${nm(u)} กลับใต้กอง และทิ้งมือ 1 ใบ เพื่อเรียก "เหวยเฉิน" ลงสนามไหม?`,true,'ค้นหาได้จาก กอง / ช่องดรอป / มือ · ใบที่ลงมาอยู่ในสภาพตีได้ · ใช้ได้ 1 ครั้งต่อเทิร์น');
+  const go=await yesno(p,'เหวยเฉิน: ทิ้งการ์ดบนมือ 2 ใบ เพื่อใช้ความสามารถไหม?',pool().length>0,'หากทำ: เลือกพวกพ้องในสนามไม่เกิน 1 ใบ กลับใต้กอง · และเรียกพวกพ้อง "เหวยเฉิน" ไม่เกิน 1 ใบ จาก กอง / ดรอป / มือ ลงสนามฟรี โจมตีได้ทันที · 1 ครั้งต่อเทิร์น');
   if(!go)return;
   p.once.wcLeader=1;
-  popAt(u,'กลับใต้กอง','#9fd0ff');await sleep(400);
-  removeAlly(p,u);p.deck.unshift(strip(u));log(p,`เหวยเฉิน: ${nm(u)} กลับใต้กอง`);render();
-  if(u.id==='wc_isit'){log(p,'อันนี้ใช่เหวยเฉินไหม กลับใต้กอง → รีมานา');remana(p,1)}
-  await backToDeck(p,[u]);
-  await sleep(300);
-  await discardChoose(p,p.leader,'เหวยเฉิน: ทิ้งการ์ดบนมือ 1 ใบ');
+  await spotlight(p.leader,p,`${p.name} · เหวยเฉิน`);
+  const d2=await choose(p,{title:'เหวยเฉิน: เลือกทิ้งการ์ดบนมือ 2 ใบ',items:cardItems(p.hand,p),min:2,max:2,okText:'ทิ้ง',
+    ai:it=>it.slice().sort((a,b)=>aiValue(p,a.value)-aiValue(p,b.value)).slice(0,2).map(i=>i.value)});
+  for(const c of d2)if(p.hand.includes(c))await discard(p,c,p.leader);
+  if(p.allies.length){
+    const t=await choose(p,{title:'เหวยเฉิน: เลือกพวกพ้องในสนามไม่เกิน 1 ใบ นำกลับใต้กองการ์ด',items:cardItems(p.allies,p,a=>String(D(a).power)),min:0,max:1,okText:'กลับใต้กอง',
+      ai:it=>p.allies.length>=3?[it.slice().sort((a,b)=>aiValue(p,a.value)-aiValue(p,b.value))[0].value]:[]});
+    const b=t[0];
+    if(b&&p.allies.includes(b)){
+      popAt(b,'กลับใต้กอง','#9fd0ff');await sleep(400);
+      removeAlly(p,b);p.deck.unshift(strip(b));log(p,`เหวยเฉิน: ${nm(b)} กลับใต้กอง`);render();
+      if(b.id==='wc_isit'){log(p,'อันนี้ใช่เหวยเฉินไหม กลับใต้กอง → รีมานา');remana(p,1)}
+      await backToDeck(p,[b]);await sleep(300);
+    }
+  }
   const all=pool(),where=x=>p.deck.includes(x)?'จากกอง':p.trash.includes(x)?'จากดรอป':'จากมือ';
   const uniq=[...new Map(all.map(x=>[x.id+where(x),x])).values()];
   if(!uniq.length)return;
-  const t=await choose(p,{title:'เหวยเฉิน: เลือกพวกพ้อง "เหวยเฉิน" ที่จะเรียกลงสนาม (สภาพตีได้)',items:cardItems(uniq,p,where),min:1,max:1,ai:it=>[it.sort((a,b)=>aiValue(p,b.value)-aiValue(p,a.value))[0].value]});
+  const t=await choose(p,{title:'เหวยเฉิน: เลือกพวกพ้อง "เหวยเฉิน" ไม่เกิน 1 ใบ เรียกลงสนามฟรี (โจมตีได้ทันที)',items:cardItems(uniq,p,where),min:0,max:1,ai:it=>[it.sort((a,b)=>aiValue(p,b.value)-aiValue(p,a.value))[0].value]});
+  if(!t.length)return;
   const x=t[0],src=p.deck.includes(x)?p.deck:p.trash.includes(x)?p.trash:p.hand,txt=where(x).slice(3);
   src.splice(src.indexOf(x),1); // no shuffle: the card just put under the deck stays at the bottom
   if(await summonAnywhere(p,x,txt)!==false&&p.allies.includes(x)){x.sick=false;x.rested=false;popAt(x,'ตีได้ทันที!','#8ff0a8');render();await sleep(400)}
@@ -5097,6 +5240,7 @@ function counterUsable(p,c,b){ // p = attacking player, b = the battle {o (defen
   return p.allies.length>0;
 }
 async function castCounter(o,c,p,u){
+  qInc(o,'ev');qInc(o,'cnt');
   pay(o,D(c).cost);o.hand.splice(o.hand.indexOf(c),1);
   log(o,`[COUNTER] ${nm(c)} (มานา ${D(c).cost})`);render();
   await spotlight(c,o,`${o.name} · COUNTER!`);
@@ -5153,6 +5297,7 @@ async function castCounter(o,c,p,u){
   return res;
 }
 async function damage(o){
+  if(G.cur&&G.cur!==o)qInc(G.cur,'hit');
   if(!o.life.length){
     if(G.players.length>2){log(null,`${o.name} ไม่มีพลังชีวิตเหลือ!`);eliminate(o,'ไม่มีพลังชีวิตเหลือ');return}
     log(null,`${o.name} ไม่มีพลังชีวิตเหลือ!`);await bannerX(o,'จบเกม!','จบเกม!',`${o.name} ไม่มีพลังชีวิตเหลือ`,1500);win(opp(o))}
@@ -5265,15 +5410,16 @@ async function endTurn(){
     await destroy(cp,a,null);
     if(cp.hand.length)await discardChoose(cp,a,'เหวยเฉินฟาร์มเมอร์: ทิ้งการ์ดบนมือ 1 ใบ');
   }
-  // hand limit: at the end of your turn keep at most 8 cards
+  // hand limit: at the end of your turn keep at most HAND_MAX (5) cards
   if(cp.hand.length>HAND_MAX){
     const n=cp.hand.length-HAND_MAX;
     log(cp,`มือเกิน ${HAND_MAX} ใบ → ต้องทิ้ง ${n} ใบ`);
     await bannerX(cp,`มือเกิน ${HAND_MAX} ใบ!`,`${cp.name} มือเกิน ${HAND_MAX} ใบ`,`ทิ้งให้เหลือ ${HAND_MAX} ใบ (ทิ้ง ${n} ใบ)`,1100);
     const t=await choose(cp,{title:`มือเกิน ${HAND_MAX} ใบ — เลือกทิ้ง ${n} ใบ`,sub:`จบเทิร์นแล้วถือการ์ดได้ไม่เกิน ${HAND_MAX} ใบ`,items:cardItems(cp.hand,cp),min:n,max:n,okText:'ทิ้ง',
       ai:it=>it.slice().sort((a,b)=>aiValue(cp,a.value)-aiValue(cp,b.value)).slice(0,n).map(i=>i.value)});
-    for(const c of t)if(cp.hand.includes(c))await discard(cp,c,null);
-    // discard effects (draw) can push the hand back over the limit → trim again without effects
+    // cards thrown away by the hand-limit rule do NOT use their own abilities (no "when discarded" effects)
+    for(const c of t)if(cp.hand.includes(c)){trashFromHand(cp,c);log(cp,`ทิ้ง ${nm(c)} (มือเกิน ${HAND_MAX} · ไม่ทำงานความสามารถ)`)}
+    render();await sleep(300);
     while(cp.hand.length>HAND_MAX){const x=cp.hand.slice().sort((a,b)=>aiValue(cp,a)-aiValue(cp,b))[0];trashFromHand(cp,x);log(cp,`ทิ้ง ${nm(x)} (มือเกิน ${HAND_MAX})`)}
     render();
   }
@@ -5639,6 +5785,7 @@ function renderMat(mat,p,oppSide){
 }
 function render(){
   if(!G||!G.me)return;
+  try{questTick()}catch(e){}
   setView();
   if(G.mode==='host')sendSnap();
   const before=new Map();
@@ -5703,13 +5850,13 @@ const RULES=`<div class="rules">
 <p><b>เป้าหมาย:</b> โจมตีคาแรคเตอร์ฝ่ายตรงข้ามให้เข้า ตอนที่เขาไม่มีพลังชีวิตเหลือแล้ว (หรือฝ่ายตรงข้ามไม่มีการ์ดให้จั่ว)</p>
 <p><b>เริ่มเกม:</b> จั่ว 5 ใบ แล้ววางพลังชีวิตคว่ำตามค่า "เลือด" ของคาแรคเตอร์ (เซวียนเหิง 5) เด็คมานาแยก 10 ใบ</p>
 <p><b>ลำดับเทิร์น:</b> ตั้งการ์ดทั้งหมดขึ้น → จั่ว 1 (คนเล่นก่อนไม่จั่วเทิร์นแรก) → รับมานา 2 ใบ (เทิร์นแรกของเกม 1 ใบ) → เฟสหลัก</p>
-<p><b>ลิมิตมือ:</b> จบเทิร์นแล้วถือการ์ดบนมือได้ไม่เกิน <b>8 ใบ</b> ถ้าเกินต้องเลือกทิ้งจนเหลือ 8</p>
+<p><b>ลิมิตมือ:</b> จบเทิร์นแล้วถือการ์ดบนมือได้ไม่เกิน <b>5 ใบ</b> ถ้าเกินต้องเลือกทิ้งจนเหลือ 5 · การ์ดที่ถูกทิ้งเพราะกฎนี้ (หรือกฎของเกม) <b>ไม่ทำงานความสามารถ</b>ของการ์ดนั้น</p>
 <p><b>เฟสหลัก:</b> ลงพวกพ้องได้สูงสุด 3 ช่อง (จ่ายมานาตามเลขในวงกลมฟ้าบนการ์ด ใบที่ไม่มีเลข = ไม่เสียมานา) · ใช้เหตุการณ์/พาหนะโดยจ่ายมานาตามเลขบนการ์ด · ติดมานาให้คาแรคเตอร์/พวกพ้อง ใบละ <b>+1000</b> (เฉพาะตาตัวเอง) · โจมตี</p>
 <p><b>โจมตี:</b> พลิกการ์ดนอนแล้วเลือกเป้าหมาย: คาแรคเตอร์ หรือพวกพ้องที่ "นอน" อยู่ พวกพ้องที่เพิ่งลงยังโจมตีไม่ได้ และทั้งสองฝ่ายโจมตีไม่ได้ในเทิร์นแรกของตัวเอง</p>
 <p><b>เรียกทับ:</b> ลงพวกพ้องทับพวกพ้องที่อยู่ในสนามได้ ใบที่ถูกทับจะลง<b>ช่องดรอป</b></p>
 <p><b>ค่า + ด้านซ้ายของการ์ด:</b> <span class="vtab g">+ สีเทา</span> = พลังป้องกัน (วางลงช่องป้องกันตอนถูกโจมตี) · <span class="vtab r">+ สีแดง</span> = พลังโจมตี (ทิ้งจากมือตอนโจมตี)</p>
 <p><b>ช่องป้องกัน (เหมือนแวนการ์ด):</b> ตอนถูกโจมตี วางการ์ดจากมือลงช่องป้องกันได้<b>กี่ใบก็ได้</b> บวกค่า + สีเทาเข้าไปในพลังป้องกัน เช่น โดนตี 8000 แต่ป้องกัน 6000 ต้องวางให้ได้อีกอย่างน้อย +2001 · พวกพ้องที่มี <b>GO ON</b> ย้ายจากสนามมาช่องป้องกันได้ · จบการต่อสู้แล้วการ์ดในช่องป้องกันลงช่องดรอปทั้งหมด</p>
-<p><b>ป้องกันอื่นๆ:</b> <b>SHIELD</b> นำการ์ดลงช่องดรอปเพื่อยกเลิกการโจมตี · <b>[COUNTER]</b> การ์ดเหตุการณ์ที่ใช้ได้ตอนเรากำลังถูกโจมตี (จ่ายมานา)</p>
+<p><b>ป้องกันอื่นๆ:</b> <b>SHIELD</b> นำการ์ดลงช่องดรอปเพื่อยกเลิกการโจมตี (ใช้ได้เฉพาะพวกพ้องที่ยังตั้งอยู่ / ยังไม่ได้โจมตี) · <b>[COUNTER]</b> การ์ดเหตุการณ์ที่ใช้ได้ตอนเรากำลังถูกโจมตี (จ่ายมานา)</p>
 <p><b>↶ ย้อน:</b> ตอนเล่นกับบอท กดย้อนการกระทำล่าสุดได้ 1 ครั้ง (เฉพาะในตาของเรา)</p>
 <p><b>🏳 ยอมแพ้:</b> เล่นกับบอทยอมแพ้ได้ทันที · เล่นออนไลน์ต้องให้ฝ่ายตรงข้ามตกลงก่อน ถ้าไม่ตอบภายใน 50 วินาทีถือว่าตกลง · คนยอมแพ้ไม่ได้เหรียญ ส่วนคนชนะได้เหรียญเมื่อเกมถึงเทิร์น 3 แล้ว</p>
 <p><b>ผลการต่อสู้:</b> พลังโจมตี ≥ พลังป้องกัน = โจมตีเข้า → พวกพ้องถูกทำลาย / คาแรคเตอร์เสียพลังชีวิต 1 ใบขึ้นมือ ถ้าการ์ดนั้นมี <b>ทริกเกอร์</b> เลือกใช้ความสามารถได้ฟรี</p>
@@ -5825,6 +5972,7 @@ const TT={side:null,s:null,last:-1,tot:TURN_SEC};
 // host: count down the current player's turn (paused while waiting for someone else's answer / a surrender question)
 setInterval(()=>{
   if(!G||G.mode!=='host'||G.over||G.halt||!G.cur||G.tLeft==null)return;
+  if(G.players&&G.players.some(p=>p.away))return; // tournament: a player dropped → the clock waits for them
   // the clock runs only while the current player can act: idle in their turn, or answering their own question —
   // it stops while someone else is answering (block / COUNTER / trigger …), during animations, and during a surrender question
   const own=!G.busy||G.askP===G.cur;
@@ -6017,6 +6165,8 @@ $('#pname').value=store.get('eclipsa-name')||'';
 if(window.GAME_VERSION)$('#verlabel').textContent='Eclipsa เวอร์ชัน '+window.GAME_VERSION;
 applyProfile();
 // remember the name as soon as it is typed (it survives "เล่นใหม่" and restarting the game)
+setTimeout(renderTitlePick,0); // defined with the tournament code further down
+$('#ptitle').onchange=()=>{const v=$('#ptitle').value;store.set('eclipsa-title',myTitles().includes(v)?v:'');sfx('click');updBadge()};
 $('#pname').addEventListener('input',()=>{store.set('eclipsa-name',cleanName($('#pname').value));const n=$('#dcname');if(n)n.textContent=myName()});
 updWallets();
 $('#startbtn').onclick=async()=>{
@@ -6156,7 +6306,7 @@ function tutResult(winner,quit){
 $('#tutbtn').onclick=()=>tutStart(1);
 addEventListener('resize',()=>{if(G&&G.tut)tutTick()});
 setTimeout(tutAsk,2500);
-// ============ NEW VERSION WATCH: warn everyone, 5 minutes to finish, then everyone moves to the new version ============
+// ============ NEW VERSION WATCH: tell everyone a new version is out; they update when they press the button ============
 // (the deck being edited is saved first, so nobody loses their work)
 const UPD={next:0,at:0,tick:0,repo:'aarrkk1122334455-commits/eclipsacardgame',url:''};
 async function updCheck(){
@@ -6174,10 +6324,10 @@ async function updCheck(){
 function updBar(){
   let b=$('#updbar');if(!b){b=document.createElement('div');b.id='updbar';document.body.append(b)}
   const left=Math.max(0,UPD.at-Date.now()),s=Math.ceil(left/1000);
-  b.innerHTML=`🔔 <b>เกมจะอัปเดตเป็นเวอร์ชัน ${UPD.next}</b> ใน <span class="ut">${String(s/60|0)}:${String(s%60).padStart(2,'0')}</span> — ${G&&!G.over?'รีบจบเกมนี้นะ!':'บันทึกเด็คให้เรียบร้อย'}${G?'':' <button id="updnow">อัปเดตเลย</button>'}`;
-  b.classList.toggle('hot',s<=60);
+  // no forced countdown any more (it reloaded players in the middle of tournament matches): just a notice + a button
+  b.innerHTML=`🔔 <b>มีเวอร์ชันใหม่ ${UPD.next}</b>${G&&!G.over?' — อัปเดตได้หลังจบเกมนี้':' <button id="updnow">อัปเดตเลย</button>'}`;
+  b.classList.remove('hot');
   const n=$('#updnow');if(n)n.onclick=()=>updApply();
-  if(left<=0){clearInterval(UPD.tick);updApply()}
 }
 function updSaveDeck(){
   try{
@@ -6228,12 +6378,120 @@ function setArtUse(id,k){const o=artData();o.use=o.use&&typeof o.use==='object'?
 function myArtMap(){const m={};for(const k of Object.keys(ARTS)){const id=ARTS[k].base,s=artSel(id);if(s)m[id]=s}return m}
 function cleanArts(m){const o={};if(m&&typeof m==='object')for(const id of Object.keys(m).slice(0,20))if(ARTS[m[id]]&&ARTS[m[id]].base===id)o[id]=m[id];return o}
 
+// ============ QUESTS: daily (5) · weekly (3) · monthly (2) — Thai time (UTC+7) ============
+// daily resets every day 00:00 · weekly every Monday 00:00 · monthly on the 1st 00:00 (the month's real length)
+// counters come from the match (host counts for every player, guests read their own from the snapshot)
+function qInc(p,k,n=1){if(!p||!G||G.tut||G.spec)return;const q=p.qs||(p.qs={});q[k]=(q[k]||0)+n}
+const Q_BKK=7*3600e3,qPad=n=>String(n).padStart(2,'0');
+function qNow(t=Date.now()){const d=new Date(t+Q_BKK);return {y:d.getUTCFullYear(),m:d.getUTCMonth(),d:d.getUTCDate(),wd:d.getUTCDay()}}
+const qKey=ms=>{const d=new Date(ms);return `${d.getUTCFullYear()}-${qPad(d.getUTCMonth()+1)}-${qPad(d.getUTCDate())}`};
+function qPeriods(){
+  const n=qNow(),off=(n.wd+6)%7; // days since Monday
+  const day=Date.UTC(n.y,n.m,n.d),wk=Date.UTC(n.y,n.m,n.d-off),mo=Date.UTC(n.y,n.m,1);
+  return {
+    d:{key:'d'+qKey(day),from:qKey(day),to:qKey(day),end:Date.UTC(n.y,n.m,n.d+1)-Q_BKK,name:'รายวัน',n:5,rw:[4000,6000,100]},
+    w:{key:'w'+qKey(wk),from:qKey(wk),to:qKey(wk+6*864e5),end:Date.UTC(n.y,n.m,n.d-off+7)-Q_BKK,name:'รายสัปดาห์',n:3,rw:[10000,24000,500]},
+    m:{key:'m'+qKey(mo).slice(0,7),from:qKey(mo),to:qKey(Date.UTC(n.y,n.m+1,0)),end:Date.UTC(n.y,n.m+1,1)-Q_BKK,name:'รายเดือน',n:2,rw:[50000,55000,500]},
+    today:qKey(day)};
+}
+// quest pools: k = counter, days = "play N games a day" counted in days · [min,max] target
+const Q_TXT={veh:'ใช้พาหนะ {n} ครั้ง',ev:'ใช้การ์ดเหตุการณ์ {n} ครั้ง',atk:'โจมตี {n} ครั้ง',onl:'เล่นกับผู้เล่นออนไลน์ {n} รอบ',onlwin:'ชนะผู้เล่นออนไลน์ {n} รอบ',
+  ally:'ลงพวกพ้องในสนาม {n} ใบ',hit:'โจมตีเข้าพลังชีวิตคาแรคเตอร์ฝ่ายตรงข้าม {n} ครั้ง',cnt:'ใช้ COUNTER {n} ครั้ง',botwinH:'ชนะบอทระดับ "เก่ง" ขึ้นไป {n} รอบ',
+  games:'เล่นเกม {n} รอบ',win:'ชนะเกม {n} รอบ',g5:'เข้าเล่นเกมให้ครบ 5 รอบต่อวัน ให้ได้ {n} วัน',o3:'เล่นกับผู้เล่นออนไลน์ให้ครบ 3 รอบต่อวัน ให้ได้ {n} วัน'};
+const Q_POOL={
+  d:{fixed:[],pool:[['veh',6,8],['ev',10,12],['atk',15,20],['onl',4,5],['onlwin',2,3],['ally',18,22],['hit',12,15],['cnt',4,5],['botwinH',3,3],['games',6,8]]},
+  w:{fixed:[['g5',5,7]],pool:[['onlwin',12,15],['veh',35,45],['ev',55,70],['atk',100,130],['onl',25,30],['hit',80,100],['win',20,25]]},
+  m:{fixed:[['g5',12,16]],pool:[['onlwin',50,60],['o3',12,16],['atk',450,550],['onl',100,120]]}};
+const Q_DAYS={g5:['g',5],o3:['o',3]};
+function qSeed(s){let h=1779033703^s.length;for(let i=0;i<s.length;i++){h=Math.imul(h^s.charCodeAt(i),3432918353);h=h<<13|h>>>19}
+  return ()=>{h=Math.imul(h^h>>>16,2246822507);h=Math.imul(h^h>>>13,3266489909);h^=h>>>16;return (h>>>0)/4294967296}}
+function qPlayer(){let id=myDid();if(!id){id=store.get('eclipsa-qid');if(!id){id=randCode();store.set('eclipsa-qid',id)}}return id}
+function qList(t){
+  const P=qPeriods()[t],r=qSeed(P.key+'|'+qPlayer()),def=Q_POOL[t];
+  const pool=def.pool.slice();for(let i=pool.length-1;i>0;i--){const j=r()*(i+1)|0;[pool[i],pool[j]]=[pool[j],pool[i]]}
+  const pick=[...def.fixed,...pool].slice(0,P.n);
+  return pick.map(([k,a,b],i)=>{const n=a+Math.floor(r()*(b-a+1)),[lo,hi,st]=P.rw,rw=lo+Math.round(r()*(hi-lo)/st)*st;
+    return {id:t+i+k,k,n,rw,text:Q_TXT[k].replace('{n}',n.toLocaleString())}});
+}
+function qState(){let s;try{s=JSON.parse(store.get('eclipsa-quests')||'null')}catch(e){}s=s&&typeof s==='object'?s:{};s.p=s.p||{};s.days=s.days||{};return s}
+function qSave(s){
+  const P=qPeriods(),keep=new Set([P.d.key,P.w.key,P.m.key]);for(const k of Object.keys(s.p))if(!keep.has(k))delete s.p[k];
+  const old=qKey(Date.UTC(qNow().y,qNow().m,qNow().d-40));for(const k of Object.keys(s.days))if(k<old)delete s.days[k];
+  store.set('eclipsa-quests',JSON.stringify(s));
+}
+const qPer=(s,key)=>s.p[key]||(s.p[key]={c:{},got:[],told:[]});
+function qProgress(s,t,q){
+  const P=qPeriods()[t];
+  if(Q_DAYS[q.k]){const [f,need]=Q_DAYS[q.k];return Object.entries(s.days).filter(([d,v])=>d>=P.from&&d<=P.to&&(v[f]||0)>=need).length}
+  return (qPer(s,P.key).c[q.k]||0);
+}
+function qAdd(s,k,n){const P=qPeriods();for(const t of ['d','w','m']){const c=qPer(s,P[t].key).c;c[k]=(c[k]||0)+n}}
+// new progress → tell the player once when a quest is finished
+function qCheckDone(s){
+  const P=qPeriods();let msg='';
+  for(const t of ['d','w','m']){const per=qPer(s,P[t].key);for(const q of qList(t))if(qProgress(s,t,q)>=q.n&&!per.told.includes(q.id)){per.told.push(q.id);msg=`✅ เควส${P[t].name}สำเร็จ: ${q.text} — กดรับรางวัลที่ปุ่ม "📜 เควส"`}}
+  if(msg)qToast(msg);
+}
+function qToast(t){let e=$('#qtoast');if(!e){e=document.createElement('div');e.id='qtoast';document.body.append(e)}e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),3800)}
+// during a match: add what the counters gained since last time (kept per game, so a reload / rejoin never counts twice)
+function questTick(){
+  if(!G||G.spec||G.tut||!G.me||!G.me.qs)return;
+  const gid=G.gid||(G.gid=randCode());
+  if(!G._qa||G._qa.gid!==gid){let a=null;try{a=JSON.parse(store.get('eclipsa-q-applied')||'null')}catch(e){}G._qa=a&&a.gid===gid?a:{gid,c:{}}}
+  const qs=G.me.qs,a=G._qa.c;let s=null;
+  for(const k of Object.keys(Q_TXT)){const v=+qs[k]||0,d=v-(a[k]||0);if(d>0){s=s||qState();qAdd(s,k,d);a[k]=v}}
+  if(s){store.set('eclipsa-q-applied',JSON.stringify(G._qa));qCheckDone(s);qSave(s)}
+}
+// end of a match (counted only when it reached turn 3 — no farming with instant surrenders)
+function questGameEnd(won,iQuit){
+  if(!G||G.spec||G.tut||G.qEnd)return;G.qEnd=true;questTick();
+  if((G.turn||0)<3)return;
+  const online=G.mode==='guest'||G.players.some(p=>p.remote),s=qState(),day=qPeriods().today,dv=s.days[day]||(s.days[day]={g:0,o:0});
+  qAdd(s,'games',1);dv.g++;
+  if(online){qAdd(s,'onl',1);dv.o++}
+  if(won&&!iQuit){qAdd(s,'win',1);if(online)qAdd(s,'onlwin',1);else if(typeof DIFF!=='undefined'&&DIFF>=3)qAdd(s,'botwinH',1)}
+  qCheckDone(s);qSave(s);updQuestDot();
+}
+function qClaimable(){const s=qState(),P=qPeriods();let n=0;for(const t of ['d','w','m']){const per=s.p[P[t].key];for(const q of qList(t))if(qProgress(s,t,q)>=q.n&&!(per&&per.got.includes(q.id)))n++}return n}
+function updQuestDot(){const e=$('#qdot');if(!e)return;const n=qClaimable();e.style.display=n?'inline-block':'none';e.textContent=n}
+function qLeft(ms){const s=Math.max(0,ms-Date.now())/1000|0,d=s/86400|0;return `${d?d+' วัน ':''}${qPad((s%86400)/3600|0)}:${qPad((s%3600)/60|0)}:${qPad(s%60)}`}
+let Q_TAB='d',Q_TICK=0;
+function openQuests(){audioInit();sfx('click');renderQuests();$('#modal').style.display='flex';clearInterval(Q_TICK);
+  Q_TICK=setInterval(()=>{if($('#modal').style.display!=='flex'||!$('#qreset')){clearInterval(Q_TICK);return}const P=qPeriods()[Q_TAB];if(!$('#qreset').dataset.k||$('#qreset').dataset.k!==P.key){renderQuests();return}$('#qreset b').textContent=qLeft(P.end)},1000)}
+function renderQuests(){
+  const s=qState(),P=qPeriods(),box=$('#modal .box');box.classList.remove('prompt');
+  const cnt=t=>{const per=s.p[P[t].key];return qList(t).filter(q=>qProgress(s,t,q)>=q.n&&!(per&&per.got.includes(q.id))).length};
+  const per=s.p[P[Q_TAB].key],rows=qList(Q_TAB).map(q=>{const v=Math.min(q.n,qProgress(s,Q_TAB,q)),done=v>=q.n,got=!!(per&&per.got.includes(q.id));
+    return `<div class="qit${done?' done':''}${got?' got':''}"><div class="qt"><b>${q.text}</b><small>${v.toLocaleString()} / ${q.n.toLocaleString()}</small><div class="qbar"><i style="width:${Math.round(v/q.n*100)}%"></i></div></div>
+      <span class="qrw">${COIN_SVG}${q.rw.toLocaleString()}</span><button data-q="${q.id}"${done&&!got?' class="primary"':' disabled'}>${got?'✔ รับแล้ว':done?'🎁 รับรางวัล':'ยังไม่สำเร็จ'}</button></div>`}).join('');
+  box.innerHTML=`<div class="qbox"><h2>📜 เควส</h2>
+    <div class="qtabs">${['d','w','m'].map(t=>`<button data-t="${t}" class="${Q_TAB===t?'on':''}">${P[t].name}${cnt(t)?`<i>${cnt(t)}</i>`:''}</button>`).join('')}</div>
+    <div class="qreset" id="qreset" data-k="${P[Q_TAB].key}">⏳ รีเซ็ตใหม่ใน <b>${qLeft(P[Q_TAB].end)}</b> <small style="color:var(--muted)">(${Q_TAB==='d'?'ทุกวัน 00:00':Q_TAB==='w'?'ทุกวันจันทร์ 00:00':'ทุกวันที่ 1 เวลา 00:00'} · เวลาไทย)</small></div>
+    <div class="qlist">${rows}</div>
+    <p style="font-size:12px;color:var(--muted);margin:8px 0 0">นับเฉพาะเกมที่เล่นถึงเทิร์น 3 ขึ้นไป · ยอมแพ้ไม่นับเป็นชนะ · เควสที่ไม่ได้กดรับก่อนรีเซ็ตจะหายไป</p>
+    <div class="foot"><button class="primary" id="qclose">ปิด</button></div></div>`;
+  box.querySelectorAll('.qtabs button').forEach(b=>b.onclick=()=>{sfx('click');Q_TAB=b.dataset.t;renderQuests()});
+  box.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>questClaim(b.dataset.q));
+  $('#qclose').onclick=()=>{sfx('click');$('#modal').style.display='none';clearInterval(Q_TICK)};
+}
+function questClaim(id){
+  const s=qState(),P=qPeriods(),t=id[0],q=qList(t).find(x=>x.id===id);if(!q)return;
+  const per=qPer(s,P[t].key);if(per.got.includes(id)||qProgress(s,t,q)<q.n)return;
+  per.got.push(id);qSave(s);addCoins(q.rw);sfx('win');qToast(`🎁 ได้รับ ${q.rw.toLocaleString()} เหรียญ!`);renderQuests();updQuestDot();
+}
+$('#questbtn').onclick=openQuests;
+updQuestDot();setInterval(()=>{if(!G)updQuestDot()},60000);
+
 // ============ TOURNAMENT: ECLIPSA CARD GAME — TOURNAMENT ============
 // The organizer's computer (Discord dzssluggerg_ · 389718804244201472) IS the tournament server: it opens the
 // tournament room, keeps the registrations (max 32), the bracket, the results and the prizes. Everyone else connects to it.
 // Registration stays closed until the organizer opens the room. Each match is a normal 1v1 room between the two players.
 const TOUR_ADMIN_IDS=['389718804244201472'],TOUR_ADMIN_USERS=['dzssluggerg_'];
-const TOUR_CFG={key:'t20261127',peer:'eclipsa-tour-20261127',max:32,title:'ECLIPSA CARD GAME — TOURNAMENT',when:'27 พฤศจิกายน 2026 · 19:00 น.',at:Date.parse('2026-11-27T19:00:00+07:00')};
+const TOUR_CFG={key:'t20261127',peer:'eclipsa-tour-20261127',max:32,title:'ECLIPSA CARD GAME — TOURNAMENT',when:'27 พฤศจิกายน 2026 · 19:00 น.',at:Date.parse('2026-11-27T19:00:00+07:00'),
+  closeAt:Date.parse('2026-11-28T06:00:00+07:00'),closeText:'รอกิจกรรม 01'}; // after closeAt the event banner is chained shut
+const tourClosed=()=>Date.now()>=TOUR_CFG.closeAt;
+// local testing only (localhost + ?tourtest=x): a separate tournament room so tests never touch the real one
+{const tt=new URLSearchParams(location.search).get('tourtest');if(tt&&/^[a-z0-9]{3,12}$/.test(tt)&&/(^|\.)localhost$/.test(location.hostname)){TOUR_CFG.peer+='-'+tt;TOUR_CFG.key+=tt;TOUR_CFG.closeAt=Infinity}}
 const TOUR_ROLL=['jin','fire','cat'];   // everybody gets one of these 3 at the start
 const TOUR_JOIN_COINS=100000;
 const TOUR_PRIZE=[
@@ -6245,9 +6503,23 @@ const TOUR={peer:null,conn:null,host:false,S:null,links:new Map(),view:null,you:
 // only the Discord user id of dzssluggerg_ may open / run the tournament
 function isTourAdmin(){const p=dProfile();return !!(p&&TOUR_ADMIN_IDS.includes(String(p.id||'')))}
 function myDid(){const p=dProfile();return p?String(p.id||'').replace(/\D/g,''):''}
-function cleanBadge(s){s=String(s||'');return /^TOP (1|2|4|8|16|32)$/.test(s)?s:''}
-function myBadge(){return cleanBadge(store.get('eclipsa-tour-badge'))}
-const badgeOfPlace=pl=>pl?'TOP '+(pl===1?1:(pl-1)*2):'';
+// ---------- titles (ฉายา): every player of tournament 00 gets "TRN0 Top N" for the place they finished ----------
+// the player picks which earned title to show (beside the name box on the home screen); a player only has their own place
+const TRN_RE=/^TRN0 Top (1|2|3-4|5-8|9-16|17-32)$/;
+function cleanBadge(s){s=String(s||'');return /^TOP (1|2|4|8|16|32)$/.test(s)||TRN_RE.test(s)?s:''}
+const titleOfPlace=pl=>!pl?'':pl===1?'TRN0 Top 1':pl===2?'TRN0 Top 2':`TRN0 Top ${pl}-${(pl-1)*2}`;
+function myTitles(){try{const a=JSON.parse(store.get('eclipsa-titles')||'[]');return Array.isArray(a)?[...new Set(a.filter(t=>TRN_RE.test(t)))]:[]}catch(e){return []}}
+function addTitle(t){if(!TRN_RE.test(t))return;const a=myTitles();if(!a.includes(t)){a.push(t);store.set('eclipsa-titles',JSON.stringify(a));if(!store.get('eclipsa-title'))store.set('eclipsa-title',t)}renderTitlePick()}
+function myBadge(){const t=store.get('eclipsa-title')||'';return myTitles().includes(t)?t:''}
+// players who already finished (prize received) under the old "TOP n" badge get their title now
+(function(){const old=String(store.get('eclipsa-tour-badge')||''),m=/^TOP (1|2|4|8|16|32)$/.exec(old);
+  if(m&&store.get('eclipsa-tour-prize')==='t20261127'&&!myTitles().length){const n=+m[1];addTitle(titleOfPlace(n===1?1:n/2+1))}})();
+function renderTitlePick(){
+  const s=document.getElementById('ptitle');if(!s)return;const a=myTitles(),cur=myBadge();
+  if(!a.length){s.style.display='none';return}
+  s.style.display='';s.innerHTML=`<option value="">🏷 ไม่ใช้ฉายา</option>`+a.map(t=>`<option value="${t}"${t===cur?' selected':''}>🏆 ${t}</option>`).join('');
+}
+const badgeOfPlace=titleOfPlace;
 const prizeOf=pl=>TOUR_PRIZE.find(x=>pl>=x.from&&pl<=x.to)||null;
 const tEsc=s=>cleanName(s);
 function tourMsg(t){TOUR.msg=t||'';const m=$('#trmsg');if(m)m.innerHTML=TOUR.msg}
@@ -6256,7 +6528,9 @@ function tourMsg(t){TOUR.msg=t||'';const m=$('#trmsg');if(m)m.innerHTML=TOUR.msg
 // registration stays closed until the organizer presses "เปิดรับลงทะเบียน"
 function tourNew(){return {key:TOUR_CFG.key,open:false,drawn:false,started:false,done:false,players:[],size:0,salt:'',rounds:[],places:{},rolls:{}}}
 function tourSave(){if(TOUR.host&&TOUR.S)store.set('eclipsa-tour-host',JSON.stringify(TOUR.S))}
-function tourLoad(){try{const s=JSON.parse(store.get('eclipsa-tour-host')||'null');return s&&s.key===TOUR_CFG.key?s:null}catch(e){return null}}
+function tourLoad(){try{const s=JSON.parse(store.get('eclipsa-tour-host')||'null');if(s&&s.key===TOUR_CFG.key){if(s.started&&s.live==null)s.live=s.rounds.length;return s}return null}catch(e){return null}}
+// a round is "live" once the organizer starts it: only then are its players sent into their matches
+const tourLiveR=r=>{const S=TOUR.S;return !!S&&S.started&&r<=(S.live==null?0:S.live)};
 function tourHost(){
   if(!isTourAdmin())return tourMsg('เฉพาะผู้จัดเท่านั้น');
   if(!window.Peer)return tourMsg('โหลดระบบออนไลน์ไม่ได้');
@@ -6296,18 +6570,20 @@ function tourBroadcast(){
 const tourPl=did=>TOUR.S.players.find(p=>p.did===did);
 function tourView(){
   const S=TOUR.S;
-  return {open:S.open,drawn:!!S.drawn,started:S.started,done:S.done,max:TOUR_CFG.max,size:S.size,
-    players:S.players.map(p=>({did:p.did,name:p.name,avatar:p.avatar})),
-    rounds:S.rounds.map(r=>r.map(m=>({a:m.a,b:m.b,w:m.w,peer:m.a&&m.b&&!m.w?m.peer:''}))),places:S.places};
+  return {open:S.open,drawn:!!S.drawn,started:S.started,done:S.done,max:TOUR_CFG.max,size:S.size,live:S.live==null?0:S.live,
+    players:S.players.map(p=>({did:p.did,name:p.name,avatar:p.avatar,dk:p.deck?1:0})),
+    rounds:S.rounds.map((r,ri)=>r.map(m=>({a:m.a,b:m.b,w:m.w,rep:m.w?'':m.rep||'',peer:m.a&&m.b&&!m.w&&tourLiveR(ri)?m.peer:''}))),places:S.places};
 }
 function tourYou(did){
   const S=TOUR.S;if(!did)return {reg:false};
-  const reg=S.players.some(p=>p.did===did);if(!reg)return {reg:false};
-  const out={reg:true,roll:S.rolls[did]||'',place:S.places[did]||0,badge:''};
+  const me=S.players.find(p=>p.did===did);if(!me)return {reg:false};
+  const out={reg:true,roll:S.rolls[did]||'',place:S.places[did]||0,badge:'',deck:me.deck||null};
   if(out.place)out.badge=badgeOfPlace(out.place);
   else if(S.started){let r=0;S.rounds.forEach((rd,i)=>{if(rd.some(m=>m.a===did||m.b===did))r=i});out.badge='TOP '+(S.size>>r)}
+  // a match result reported (waiting for the organizer to confirm) → no more auto-join into that match
   if(S.started&&!S.done)S.rounds.forEach((rd,r)=>rd.forEach((m,i)=>{
-    if(!m.w&&m.a&&m.b&&(m.a===did||m.b===did)){const o=tourPl(m.a===did?m.b:m.a)||{};out.match={mid:r+'-'+i,peer:m.peer,role:m.a===did?'host':'join',round:r,opp:{name:o.name,avatar:o.avatar,did:o.did}}}
+    if(!m.w&&m.a&&m.b&&(m.a===did||m.b===did)&&m.rep){out.wait={mid:r+'-'+i,rep:m.rep}}
+    if(!m.w&&!m.rep&&m.a&&m.b&&tourLiveR(r)&&(m.a===did||m.b===did)){const o=tourPl(m.a===did?m.b:m.a)||{};out.match={mid:r+'-'+i,peer:m.peer,role:m.a===did?'host':'join',round:r,opp:{name:o.name,avatar:o.avatar,did:o.did}}}
   }));
   return out;
 }
@@ -6319,7 +6595,11 @@ function tourHandle(m,who){
     if(S.players.some(p=>p.did===who.did))return reply('คุณลงทะเบียนแล้ว');
     if(!S.open||S.started)return reply('ปิดรับลงทะเบียนแล้ว');
     if(S.players.length>=TOUR_CFG.max)return reply(`เต็มแล้ว (${TOUR_CFG.max} คน)`);
-    S.players.push({did:who.did,name:who.name,avatar:who.avatar,duser:who.duser});reply('✔ ลงทะเบียนสำเร็จ!');tourBroadcast();return;
+    // the deck chosen at registration is locked for the whole tournament
+    const d=m.deck||{},leader=String(d.leader||'');
+    if(!validLeader(leader)||!validDeck(d.deck,leader))return reply('เด็คที่เลือกไม่ถูกต้อง — เลือกเด็คที่ครบ 50 ใบก่อนลงทะเบียน');
+    const deck={leader,deck:{...d.deck},name:cleanName(d.name)||'เด็ค'};
+    S.players.push({did:who.did,name:who.name,avatar:who.avatar,duser:who.duser,deck});reply('✔ ลงทะเบียนสำเร็จ! เด็คถูกล็อคจนจบทัวร์นาเมนต์');tourBroadcast();return;
   }
   if(m.t==='tunreg'){if(S.started||S.drawn)return reply('จับสายแล้ว ยกเลิกไม่ได้ — ติดต่อผู้จัด');S.players=S.players.filter(p=>p.did!==who.did);reply('ยกเลิกการลงทะเบียนแล้ว');tourBroadcast();return}
   if(m.t==='tres'){
@@ -6327,7 +6607,9 @@ function tourHandle(m,who){
     if(!mt||mt.w||!mt.a||!mt.b)return;
     if(who.did!==mt.a&&who.did!==mt.b&&!who.admin)return;
     const w=String(m.w||'');if(w!==mt.a&&w!==mt.b)return;
-    tourDecide(r,i,w);return;
+    // the players only REPORT (green = reported winner, red = loser); the organizer (dev) always makes the decision
+    if(mt.rep&&mt.rep!==w){mt.rep='?';mt.repWhy='ผลที่รายงานไม่ตรงกัน'}else{mt.rep=w;mt.repWhy=String(m.why||'').slice(0,40)}
+    tourBroadcast();if(TOUR.host)tourMsg(`📩 มีผลแมตช์รอยืนยัน — ดูแท็บ "สายการแข่ง"`);return;
   }
   // organizer only (local)
   if(!who.admin)return;
@@ -6336,6 +6618,10 @@ function tourHandle(m,who){
   if(m.t==='tdraw')return tourDraw();
   if(m.t==='tstart')return tourStart();
   if(m.t==='tset'){const [r,i]=String(m.mid).split('-').map(Number),mt=S.rounds[r]&&S.rounds[r][i];if(mt&&!mt.w&&(m.w===mt.a||m.w===mt.b))tourDecide(r,i,m.w);return}
+  // replay: clear a reported result → both players are sent into that match again
+  if(m.t==='treplay'){const [r,i]=String(m.mid).split('-').map(Number),mt=S.rounds[r]&&S.rounds[r][i];if(mt&&!mt.w){mt.rep='';mt.repWhy='';mt.peer=`eclipsa-tm-${S.salt}-${r}-${i}-${randCode().toLowerCase().slice(0,4)}`;tourBroadcast()}return}
+  // start the next round (players are only sent into their matches when the organizer starts the round)
+  if(m.t==='tlive'){if(S.started&&!S.done&&(S.live==null?0:S.live)<S.rounds.length-1){S.live=(S.live==null?0:S.live)+1;tourMsg(`🏁 เริ่ม${tourRoundName(S.live)}แล้ว`);sfx('win');tourBroadcast()}return}
   if(m.t==='treset'){TOUR.S=tourNew();tourBroadcast();tourMsg('รีเซ็ตทัวร์นาเมนต์แล้ว');return}
 }
 // "🎲 สุ่มสายการแข่ง": random bracket, shown to everyone; can be redrawn until the start (closes registration)
@@ -6352,14 +6638,14 @@ function tourDraw(){
 function tourStart(){
   const S=TOUR.S;if(S.started)return;
   if(!S.drawn)return tourMsg('กด "🎲 สุ่มสายการแข่ง" ก่อน');
-  S.salt=randCode().toLowerCase();S.started=true;S.open=false;S.places={};S.rolls={};
+  S.salt=randCode().toLowerCase();S.started=true;S.live=0;S.open=false;S.places={};S.rolls={};
   // the random special card for every participant (1 of 3)
   for(const p of S.players)S.rolls[p.did]=TOUR_ROLL[Math.random()*TOUR_ROLL.length|0];
   S.rounds[0].forEach((m,i)=>{m.peer=`eclipsa-tm-${S.salt}-0-${i}`;if(!m.a||!m.b)tourDecide(0,i,m.a||m.b,true)});
   tourMsg('🏁 เริ่มการแข่งขันแล้ว!');sfx('win');tourBroadcast();
 }
 function tourDecide(r,i,w,quiet){
-  const S=TOUR.S,m=S.rounds[r][i];m.w=w;
+  const S=TOUR.S,m=S.rounds[r][i];m.w=w;m.rep='';
   const loser=m.a===w?m.b:m.a;
   if(loser)S.places[loser]=(S.size>>(r+1))+1;
   if(r===S.rounds.length-1){S.places[w]=1;S.done=true}
@@ -6368,8 +6654,8 @@ function tourDecide(r,i,w,quiet){
 }
 
 // ---------- every player: connect to the organizer ----------
-function tourConnect(){
-  if(TOUR.host||!window.Peer||G)return;
+function tourConnect(force){
+  if(TOUR.host||!window.Peer||(G&&!force))return;
   if(TOUR.conn&&TOUR.conn.open)return;
   if(TOUR.connecting)return;TOUR.connecting=true;
   const peer=TOUR.peer&&!TOUR.peer.destroyed?TOUR.peer:new Peer();TOUR.peer=peer;
@@ -6386,6 +6672,14 @@ function tourConnect(){
   };
   if(peer.open)go();else{peer.once('open',go);peer.on('error',e=>{if(e.type==='peer-unavailable'){TOUR.connecting=false;TOUR.status='closed';tourUpdate()}})}
 }
+// my match result that the organizer may not have yet
+function tourPendingRes(){try{const p=JSON.parse(store.get('eclipsa-tour-res')||'null');return p&&p.key===TOUR_CFG.key&&p.mid?p:null}catch(e){return null}}
+function tourSendRes(){
+  const p=tourPendingRes();if(!p)return;
+  if(TOUR.host){tourHandle({t:'tres',mid:p.mid,w:p.w,why:p.why},{did:myDid(),admin:isTourAdmin(),conn:null});return}
+  if(TOUR.conn&&TOUR.conn.open){try{TOUR.conn.send({t:'tres',mid:p.mid,w:p.w,why:p.why})}catch(e){}}
+  else tourConnect(true);
+}
 function tourAct(m){
   if(TOUR.host){tourHandle(m,{did:myDid(),name:myName(),avatar:myAvatar(),duser:(dProfile()||{}).username||'',conn:null,admin:isTourAdmin()});return}
   if(!TOUR.conn||!TOUR.conn.open){tourMsg('ยังเชื่อมต่อห้องทัวร์นาเมนต์ไม่ได้ — ผู้จัดยังไม่เปิดห้อง');return}
@@ -6393,24 +6687,40 @@ function tourAct(m){
 }
 
 // ---------- what changed for me: card roll · prize · badge · my next match ----------
+// a result still waiting: the bracket already shows a winner for that match → done; otherwise send it (again)
+function tourResCheck(){
+  const p=tourPendingRes(),v=TOUR.view;if(!p||!v||!v.rounds)return;
+  const [r,i]=String(p.mid).split('-').map(Number),mt=v.rounds[r]&&v.rounds[r][i];
+  if(!mt||mt.w||mt.rep||!v.started){store.set('eclipsa-tour-res','');return}
+  tourSendRes();
+}
+setInterval(()=>{if(tourPendingRes()&&!TOUR.host&&!(TOUR.conn&&TOUR.conn.open))tourConnect(true)},8000);
 function tourUpdate(){
+  tourResCheck();
   const y=TOUR.you||{},K=TOUR_CFG.key,v=TOUR.view;
   if(y.reg)store.set('eclipsa-tour-reg',K);
   // the bracket was just drawn → show it to everyone
   if(v&&v.drawn&&!TOUR.sawDraw){TOUR.sawDraw=true;if(TOUR.tab==='rw'||TOUR.tab==='pl')TOUR.tab='br'}
   if(v&&!v.drawn)TOUR.sawDraw=false;
-  if(y.badge&&!G){store.set('eclipsa-tour-badge',y.badge)}
+  if(y.place)addTitle(titleOfPlace(y.place)); // final place → title "TRN0 Top N"
+  if(y.deck&&y.deck.leader)store.set('eclipsa-tour-deck',JSON.stringify({key:K,...y.deck}));
   // random special card (once)
   if(y.roll&&ARTS[y.roll]&&store.get('eclipsa-tour-roll')!==K&&!G){store.set('eclipsa-tour-roll',K);addArt(y.roll);tourRollFx(y.roll)}
   // prize after being knocked out / winning (once)
   else if(y.place&&store.get('eclipsa-tour-prize')!==K&&!G&&!$('#tourfx').classList.contains('show')){store.set('eclipsa-tour-prize',K);tourGivePrize(y.place)}
   // my next match
   // my next match: straight in, no "join now?" question (the organizer pressed start → everybody goes to their match)
-  if(y.match&&!G&&!ROOM&&TOUR.busy!==y.match.mid&&!$('#tourfx').classList.contains('show'))tourGoMatch(y.match);
+  if(y.match&&!G&&!ROOM&&!tourClosed()&&TOUR.busy!==y.match.mid&&!$('#tourfx').classList.contains('show'))tourGoMatch(y.match);
   tourBanner();updBadge();
   if($('#tour').classList.contains('show'))renderTour();
 }
-function updBadge(){const b=$('#tbadge'),t=myBadge();if(!t||G){b.style.display='none';return}b.style.display='flex';b.innerHTML=`🏆 ${t}<small>TOURNAMENT</small>`;b.title='อันดับของคุณในทัวร์นาเมนต์ ECLIPSA'}
+function updBadge(){const b=$('#tbadge'),t=myBadge();if(!t||G){b.style.display='none';return}b.style.display='flex';b.innerHTML=`🏆 ${t}<small>ฉายา</small>`;b.title='ฉายาของคุณ (เปลี่ยนได้ข้างช่องชื่อ)'}
+// the deck locked at registration (used for every match of this tournament)
+function tourLockedDeck(){
+  const y=TOUR.you||{};let d=y.deck;
+  if(!d){try{const s=JSON.parse(store.get('eclipsa-tour-deck')||'null');if(s&&s.key===TOUR_CFG.key)d=s}catch(e){}}
+  return d&&validLeader(d.leader)&&validDeck(d.deck,d.leader)?d:null;
+}
 function tourStatus(){
   const v=TOUR.view;
   if(!v)return {cls:'wait',t:'⏳ รอผู้จัดเปิดห้อง — ยังไม่เปิดลงทะเบียน'};
@@ -6423,8 +6733,12 @@ function tourStatus(){
 function tourBanner(){
   const b=$('#tourbtn');if(!b)return;
   if(G||$('#start').style.display==='none'){b.style.display='none';return}
-  b.style.display='flex';const st=tourStatus();
-  b.innerHTML=`<span class="tth" style="background-image:url(${A('E_inn_sera.png')})"></span><span class="ttx"><span class="tev">★ EVENT</span><span class="tti">${TOUR_CFG.title}</span><span class="twh">📅 ${TOUR_CFG.when}</span><span class="tst ${st.cls}">${st.t}</span></span>`;
+  b.style.display='flex';const st=tourStatus(),cl=tourClosed();
+  b.classList.toggle('closed',cl);
+  b.innerHTML=`<span class="tth" style="background-image:url(${A('E_inn_sera.png')})"></span><span class="ttx"><span class="tev">★ EVENT</span><span class="tti">${TOUR_CFG.title}</span><span class="twh">📅 ${TOUR_CFG.when}</span><span class="tst ${cl?'wait':st.cls}">${cl?'🔒 '+TOUR_CFG.closeText:st.t}</span></span>`+
+    (cl?`<svg class="tchain" viewBox="0 0 420 100" preserveAspectRatio="none"><defs><linearGradient id="tcSteel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8edf2"/><stop offset=".45" stop-color="#8a96a3"/><stop offset="1" stop-color="#3b434c"/></linearGradient>
+      <pattern id="tcLinks" width="34" height="20" patternUnits="userSpaceOnUse"><rect x="1" y="3" width="22" height="14" rx="7" fill="none" stroke="url(#tcSteel)" stroke-width="4.5"/><rect x="19" y="8" width="14" height="4" rx="2" fill="url(#tcSteel)"/></pattern></defs>
+      <rect x="-60" y="40" width="540" height="20" fill="url(#tcLinks)" transform="rotate(12 210 50)"/><rect x="-60" y="40" width="540" height="20" fill="url(#tcLinks)" transform="rotate(-12 210 50)"/></svg><span class="tlock">🔒 ${TOUR_CFG.closeText}</span>`:'');
 }
 function countdown(){const d=TOUR_CFG.at-Date.now();if(d<=0)return 'ถึงเวลาแข่งแล้ว!';const s=d/1000|0;return `${s/86400|0} วัน ${String((s%86400)/3600|0).padStart(2,'0')}:${String((s%3600)/60|0).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`}
 
@@ -6439,7 +6753,8 @@ function renderTour(){
   else if(!v)act=`<button class="tr-big" disabled>🔒 ลงทะเบียน (รอผู้จัดเปิดห้อง)</button>`;
   else if(y.reg&&!v.started)act=`<button class="tr-big" disabled style="opacity:1;border-color:#3fcf7a;color:#8ff0a8">✔ ลงทะเบียนแล้ว${v.drawn?' · จับสายแล้ว':''}</button>${v.drawn?'':'<button id="trunreg" style="font-size:13px">ยกเลิกการลงทะเบียน</button>'}`;
   else if(y.reg&&y.match)act=`<button class="primary tr-big" id="trgo">⚔ ไปแข่งแมตช์ของคุณ vs ${tEsc(y.match.opp.name)}</button>`;
-  else if(y.reg&&v.started&&!y.place)act=`<button class="tr-big" disabled>⏳ รอคู่แข่งรอบถัดไป…</button>`;
+  else if(y.reg&&y.wait&&!y.place)act=`<button class="tr-big" disabled style="opacity:1;border-color:#ffd23a;color:#ffe9a8">📩 ส่งผลแล้ว — รอผู้จัดยืนยันผล</button>`;
+  else if(y.reg&&v.started&&!y.place)act=`<button class="tr-big" disabled>⏳ รอผู้จัดเริ่มรอบถัดไป / รอคู่แข่ง…</button>`;
   else if(y.reg&&y.place)act=`<button class="tr-big" disabled style="opacity:1">🏆 จบที่ ${y.place===1?'อันดับ 1':badgeOfPlace(y.place)}</button>`;
   else if(v.started)act=`<button class="tr-big" disabled>เริ่มแข่งแล้ว — ดูสดได้ในแท็บ "ดูการแข่งสด"</button>`;
   else if(!v.open||v.players.length>=v.max)act=`<button class="tr-big" disabled>${v.players.length>=v.max?'เต็มแล้ว (32 คน)':'ปิดรับลงทะเบียน'}</button>`;
@@ -6450,18 +6765,23 @@ function renderTour(){
     else{const S=TOUR.S;admin=`<div class="tr-box tr-adm"><h3>🛠 ผู้จัด · เครื่องนี้คือห้องทัวร์นาเมนต์</h3>
       <div class="row2">${S.started?'':`<button id="tropen"${S.open?'':' class="primary"'}>${S.open?'⏸ ปิดรับลงทะเบียน':S.drawn?'↩ เปิดรับลงทะเบียนต่อ':'▶ เปิดรับลงทะเบียน'}</button>
         <button id="trdraw"${S.players.length<2?' disabled':''}>🎲 ${S.drawn?'สุ่มสายใหม่':'สุ่มสายการแข่ง'} (${S.players.length} คน)</button>
-        <button class="primary" id="trstart"${S.drawn?'':' disabled'}>🏁 เริ่มแข่ง</button>`}<button id="trreset">♻ รีเซ็ต</button></div>
+        <button class="primary" id="trstart"${S.drawn?'':' disabled'}>🏁 เริ่มแข่ง</button>`}${S.started&&!S.done&&(S.live==null?0:S.live)<S.rounds.length-1?`<button class="primary" id="trlive">🏁 เริ่ม${tourRoundName((S.live==null?0:S.live)+1)}</button>`:''}<button id="trreset">♻ รีเซ็ต</button></div>
+      ${S.started&&!S.done?`<small style="color:#ffe9a8">ตอนนี้แข่งถึง: <b>${tourRoundName(S.live==null?0:S.live)}</b> · ผลที่ผู้เล่นส่งมาจะขึ้น <b style="color:#8ff0a8">เขียว</b>/<b style="color:#ff8a8a">แดง</b> — กด "ชนะ" เพื่อยืนยัน หรือ "เล่นใหม่" ให้แข่งคู่นั้นใหม่</small>`:''}
       <small style="color:var(--muted)">1) เปิดรับลงทะเบียน → 2) สุ่มสาย (ทุกคนเห็นทันที สุ่มใหม่ได้) → 3) เริ่มแข่ง: ทุกคนสุ่มการ์ดพิเศษ 1 ใบ แล้วแข่งรอบแรก · ถ้าคู่ไหนมีปัญหา กด "ชนะ" ใต้ชื่อในแท็บสายการแข่ง</small></div>`}
   }
   const tabs=[['rw','🏆 รางวัล'],['br','🗂 สายการแข่ง'],['rk','🏅 Rankings'],['pl',`👥 ผู้สมัคร ${v?v.players.length:0}/${TOUR_CFG.max}`],['lv','👁 ดูการแข่งสด']];
   el.innerHTML=`<div class="tr-top"><button id="trback">← กลับ</button><h1>${TOUR_CFG.title}</h1><div class="tr-when">📅 ${TOUR_CFG.when}<b id="trcd">${countdown()}</b></div></div>
     <div class="tr-body"><div class="tr-hero"><div class="tr-card" style="background-image:url(${A('E_inn_sera.png')})"></div>
-      <div class="tr-box"><div class="tr-stat"><span class="tst ${st.cls}" style="font-size:14px">${st.t}</span><br>รับสูงสุด <b>32 คน</b> · แพ้คัดออก (Single Elimination)<br>${y.badge?`อันดับของคุณ: <b>🏆 ${y.badge}</b>`:''}</div>${act}<div class="tr-msg" id="trmsg">${TOUR.msg}</div></div>${admin}</div>
+      <div class="tr-box"><div class="tr-stat"><span class="tst ${st.cls}" style="font-size:14px">${st.t}</span><br>รับสูงสุด <b>32 คน</b> · แพ้คัดออก (Single Elimination)<br>${y.badge?`อันดับของคุณ: <b>🏆 ${y.badge}</b>`:''}${y.reg&&y.deck?`<br>🔒 เด็คที่ใช้แข่ง: <b>${tEsc(y.deck.name)}</b> (${(CARDS[y.deck.leader]||{}).name||''}) · ล็อคจนจบทัวร์`:''}</div>${act}<div class="tr-msg" id="trmsg">${TOUR.msg}</div></div>${admin}</div>
       <div><div class="tr-tabs">${tabs.map(([k,t])=>`<button data-k="${k}" class="${TOUR.tab===k?'on':''}">${t}</button>`).join('')}</div><div id="trpane">${tourPane(TOUR.tab)}</div></div></div>`;
   $('#trback').onclick=()=>closeTour();
   el.querySelectorAll('.tr-tabs button').forEach(b=>b.onclick=()=>{sfx('click');TOUR.tab=b.dataset.k;renderTour()});
   const on=(id,f)=>{const b=$('#'+id);if(b)b.onclick=()=>{sfx('click');f()}};
-  on('trlogin',discordLogin);on('trreg',()=>tourAct({t:'treg'}));on('trunreg',()=>tourAct({t:'tunreg'}));on('trgo',()=>tourGoMatch(y.match));
+  on('trlogin',discordLogin);on('trreg',tourPickDeck);
+  on('trlive',()=>{const S=TOUR.S,r=S.live==null?0:S.live,open=S.rounds[r].filter(m=>m.a&&m.b&&!m.w).length;
+    if(confirm(`เริ่ม${tourRoundName(r+1)}?${open?`\n(ยังมี ${open} คู่ใน${tourRoundName(r)}ที่ยังไม่ได้ยืนยันผล — คู่ที่ยังไม่ครบจะเริ่มเมื่อยืนยันผลแล้ว)`:''}`))tourAct({t:'tlive'})});
+  el.querySelectorAll('[data-replay]').forEach(b=>b.onclick=()=>{if(confirm('ให้คู่นี้แข่งใหม่? (ผลที่ส่งมาจะถูกล้าง แล้วทั้งคู่จะถูกพาเข้าแมตช์ใหม่)'))tourAct({t:'treplay',mid:b.dataset.replay})});
+  el.querySelectorAll('[data-deck]').forEach(b=>b.onclick=()=>tourShowDeck(b.dataset.deck));on('trunreg',()=>tourAct({t:'tunreg'}));on('trgo',()=>tourGoMatch(y.match));
   on('trhost',tourHost);on('tropen',()=>tourAct({t:'topen'}));on('trdraw',()=>tourAct({t:'tdraw'}));on('trstart',()=>{if(confirm(`เริ่มแข่งด้วยผู้เล่น ${TOUR.S.players.length} คน? (เริ่มแล้วรับสมัครเพิ่มไม่ได้)`))tourAct({t:'tstart'})});
   on('trreset',()=>{if(confirm('รีเซ็ตทัวร์นาเมนต์ทั้งหมด? รายชื่อและผลการแข่งจะหายทั้งหมด'))tourAct({t:'treset'})});
   el.querySelectorAll('[data-spec]').forEach(b=>b.onclick=()=>specJoin(b.dataset.spec,b.dataset.lbl));
@@ -6485,7 +6805,7 @@ function tourPane(k){
   if(k==='pl'){
     if(!v)return '<div class="tr-none">ผู้จัดยังไม่เปิดห้อง — ยังไม่มีผู้สมัคร</div>';
     if(!v.players.length)return '<div class="tr-none">ยังไม่มีผู้สมัคร — เป็นคนแรกเลย!</div>';
-    return `<div class="tr-pl">${v.players.map((p,i)=>`<div class="tr-p${p.did===me?' me':''}">${p.avatar?`<img src="${safeAvatar(p.avatar)}" alt="">`:`<span class="q">${tEsc(p.name).slice(0,1)}</span>`}<span style="flex:1;min-width:0"><b>${i+1}. ${tEsc(p.name)}</b><small>${v.places[p.did]?'🏆 '+badgeOfPlace(v.places[p.did]):v.started?'ยังอยู่ในการแข่ง':'ลงทะเบียนแล้ว'}</small></span>${TOUR.host&&!v.started?`<button data-kick="${p.did}" style="padding:2px 8px;font-size:12px">✕</button>`:''}</div>`).join('')}</div>`;
+    return `<div class="tr-pl">${v.players.map((p,i)=>`<div class="tr-p${p.did===me?' me':''}">${p.avatar?`<img src="${safeAvatar(p.avatar)}" alt="">`:`<span class="q">${tEsc(p.name).slice(0,1)}</span>`}<span style="flex:1;min-width:0"><b>${i+1}. ${tEsc(p.name)}</b><small>${v.places[p.did]?'🏆 '+badgeOfPlace(v.places[p.did]):v.started?'ยังอยู่ในการแข่ง':'ลงทะเบียนแล้ว'}</small></span>${TOUR.host&&isTourAdmin()&&p.dk?`<button data-deck="${p.did}" style="padding:2px 8px;font-size:12px">🃏 เด็ค</button>`:''}${TOUR.host&&!v.started?`<button data-kick="${p.did}" style="padding:2px 8px;font-size:12px">✕</button>`:''}</div>`).join('')}</div>`;
   }
   if(k==='rk'){ // TOURNAMENT RANKINGS — everyone sees it
     if(!v||!v.drawn&&!v.started)return '<div class="tr-none">อันดับจะแสดงหลังผู้จัดสุ่มสายการแข่ง</div>';
@@ -6513,8 +6833,11 @@ function tourBracketHTML(v){
   const me=myDid(),pn=did=>v&&v.players.find(p=>p.did===did);
   const rounds=v?v.rounds:[16,8,4,2,1].map(n=>[...Array(n)].map(()=>({})));
   const slot=(did,m)=>{if(!v||!did)return `<div class="tr-s e">${v&&m&&m.w&&!did?'BYE':'—'}</div>`;const p=pn(did)||{};
-    return `<div class="tr-s${m.w===did?' w':m.w?' l':''}${did===me?' me':''}" title="${tEsc(p.name)}">${p.avatar?`<img src="${safeAvatar(p.avatar)}" alt="">`:''}${tEsc(p.name)}</div>`};
-  const mm=(m,r,i)=>`<div class="tr-m${v&&m.peer?' live':''}">${slot(m.a,m)}${slot(m.b,m)}${TOUR.host&&v&&m.a&&m.b&&!m.w?`<div class="tr-ov"><button data-set="${r}-${i}|${m.a}">◀ ชนะ</button><button data-set="${r}-${i}|${m.b}">ชนะ ▶</button></div>`:''}${v&&m.peer?`<div class="tr-ov"><button data-spec="${m.peer}" data-lbl="${tEsc((pn(m.a)||{}).name)} vs ${tEsc((pn(m.b)||{}).name)}">👁 ดู</button></div>`:''}</div>`;
+    const rc=m.w?(m.w===did?' w':' l'):m.rep&&m.rep!=='?'?(m.rep===did?' rw':' rl'):'';
+    return `<div class="tr-s${rc}${did===me?' me':''}" title="${tEsc(p.name)}">${p.avatar?`<img src="${safeAvatar(p.avatar)}" alt="">`:''}${tEsc(p.name)}</div>`};
+  const repTxt=(m,r,i)=>{if(!v||m.w||!m.rep)return '';const why=TOUR.host&&TOUR.S&&TOUR.S.rounds[r]&&TOUR.S.rounds[r][i]?TOUR.S.rounds[r][i].repWhy:'';
+    return `<div class="tr-rep">${m.rep==='?'?'⚠ ผลที่ส่งมาไม่ตรงกัน':'📩 รอผู้จัดยืนยัน'}${why&&m.rep!=='?'?' · '+tEsc(why):''}</div>`};
+  const mm=(m,r,i)=>`<div class="tr-m${v&&m.peer?' live':''}">${slot(m.a,m)}${slot(m.b,m)}${repTxt(m,r,i)}${TOUR.host&&v&&m.a&&m.b&&!m.w?`<div class="tr-ov"><button data-set="${r}-${i}|${m.a}">◀ ชนะ</button>${m.rep?`<button data-replay="${r}-${i}">↻ เล่นใหม่</button>`:''}<button data-set="${r}-${i}|${m.b}">ชนะ ▶</button></div>`:''}${v&&m.peer?`<div class="tr-ov"><button data-spec="${m.peer}" data-lbl="${tEsc((pn(m.a)||{}).name)} vs ${tEsc((pn(m.b)||{}).name)}">👁 ดู</button></div>`:''}</div>`;
   const last=rounds.length-1,left=[],right=[];
   for(let r=0;r<last;r++){const rd=rounds[r],h=rd.length/2,nm=v?tourRoundName(r):'TOP '+(32>>r);
     left.push(`<div class="tr-col"><h4>${nm}</h4>${rd.slice(0,h).map((m,i)=>mm(m,r,i)).join('')}</div>`);
@@ -6563,9 +6886,36 @@ function tourMatchPrompt(m){
   $('#tmgo').onclick=()=>{$('#modal').style.display='none';tourGoMatch(m)};
   $('#tmlater').onclick=()=>{sfx('click');TOUR.busy=m.mid;$('#modal').style.display='none'};
 }
+// registration: pick the deck first (the saved deck or one of the deck slots) — it is locked until the tournament ends
+function tourPickDeck(){
+  const opts=[];
+  const cur={leader:loadLeader(),deck:loadDeck(),name:'เด็คที่บันทึกไว้ (ตอนนี้)'};
+  if(validDeck(cur.deck,cur.leader))opts.push(cur);
+  getSlots().forEach((s,i)=>{if(!slotProblem(s))opts.push({leader:s.leader,deck:s.deck,name:cleanName(s.name)||'เด็ค '+(i+1)})});
+  const box=$('#modal .box');box.classList.remove('prompt');
+  box.innerHTML=`<h2>📝 เลือกเด็คที่จะใช้แข่ง</h2><p style="color:#ffd76a;font-size:14px">⚠ เลือกแล้วจะ<b>ล็อคเด็คนี้</b>จนกว่าทัวร์นาเมนต์จะจบ — ทุกแมตช์จะใช้เด็คนี้เท่านั้น</p>
+    <div class="tr-dpick">${opts.length?opts.map((o,i)=>{const L=CARDS[o.leader]||CARDS.xuan;return `<button data-i="${i}"><span class="th" style="background-image:url(${A(L.img)})"></span><span><b>${tEsc(o.name)}</b><small>${L.name} · ${deckCount(o.deck)} ใบ</small></span></button>`}).join(''):'<div style="color:var(--muted);text-align:center;padding:16px">ยังไม่มีเด็คที่ครบ 50 ใบ — ไปจัดเด็คก่อน</div>'}</div>
+    <div class="foot"><button id="tdpno">ยกเลิก</button></div>`;
+  $('#modal').style.display='flex';sfx('click');
+  $('#tdpno').onclick=()=>{sfx('click');$('#modal').style.display='none'};
+  box.querySelectorAll('.tr-dpick button').forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];
+    if(!confirm(`ลงทะเบียนด้วยเด็ค "${o.name}"?\nเด็คจะถูกล็อคจนจบทัวร์นาเมนต์ เปลี่ยนไม่ได้`))return;
+    $('#modal').style.display='none';tourAct({t:'treg',deck:{leader:o.leader,deck:o.deck,name:o.name}})});
+}
+// organizer (dev) only: look at a participant's deck list
+function tourShowDeck(did){
+  if(!TOUR.host||!isTourAdmin())return;
+  const p=tourPl(did);if(!p||!p.deck)return;
+  const L=CARDS[p.deck.leader]||{},ids=Object.keys(p.deck.deck).filter(id=>p.deck.deck[id]>0&&CARDS[id]).sort((a,b)=>(CARDS[a].cost||0)-(CARDS[b].cost||0));
+  const box=$('#modal .box');box.classList.remove('prompt');
+  box.innerHTML=`<h2>🃏 เด็คของ ${tEsc(p.name)}</h2><p style="font-size:14px">${p.duser?'@'+tEsc(p.duser)+' · ':''}เด็ค: <b>${tEsc(p.deck.name)}</b> · คาแรคเตอร์: <b>${L.name||'-'}</b> · ${deckCount(p.deck.deck)} ใบ</p>
+    <div class="tr-dk"><div style="background-image:url(${A(L.img||'back.png')});outline:2px solid #ffd23a"><b>👑</b></div>${ids.map(id=>`<div title="${CARDS[id].name}" style="background-image:url(${A(CARDS[id].img)})"><b>×${p.deck.deck[id]}</b></div>`).join('')}</div>
+    <div class="foot"><button class="primary" id="tdkok">ปิด</button></div>`;
+  $('#modal').style.display='flex';sfx('click');$('#tdkok').onclick=()=>{sfx('click');$('#modal').style.display='none'};
+}
 async function tourGoMatch(m){
   if(!m||G||ROOM)return;
-  audioInit();sfx('click');TOUR.busy=m.mid;closeTour(true);
+  audioInit();sfx('click');TOUR.busy=m.mid;TOUR.inMatch=true;closeTour(true);
   // leave whatever screen is open (deck builder, a question …) — the match starts now
   $('#modal').style.display='none';closeDetail();if($('#deckb').classList.contains('show')){$('#deckb').classList.remove('show');updHero()}
   showBanner('⚔ แมตช์ทัวร์นาเมนต์เริ่มแล้ว!',`${tourRoundName(m.round)} · คุณ vs ${tEsc(m.opp.name)}`,false,1600);
@@ -6574,11 +6924,23 @@ async function tourGoMatch(m){
   // (the room address is fixed per match, so only one of the two can open it; the other's attempt fails and it joins)
   const tryHost=async()=>{try{await roomCreate('1v1',{pub:false,qp:true,peerId:m.peer});ROOM.tour=m.mid;return true}catch(e){return false}};
   const tryJoin=async()=>{try{await roomJoin(null,m.peer);return true}catch(e){return e==='full'||e==='started'?'gone':false}};
+  // a saved game of this match: the side that hosted it hosts again (and puts the game back), the other side only joins
+  const side=tmSide(),sv=tmLoad(m.mid),mine=side&&side.mid===m.mid?side:null;
+  if(mine&&mine.host&&sv){
+    for(let k=0;k<160&&!ROOM&&!G;k++){bar(`💾 กำลังเปิดเกมที่เซฟไว้ vs ${tEsc(m.opp.name)}…`);if(await tryHost())break;await new Promise(r=>setTimeout(r,1500))}
+    if(ROOM&&!G&&tmRestore(sv))return;
+  }
+  if(mine&&!mine.host){
+    for(let k=0;k<100&&!ROOM&&!G;k++){bar(`💾 กำลังกลับเข้าเกมเดิม vs ${tEsc(m.opp.name)}… (รออีกฝ่ายเปิดเกม)`);if((await tryJoin())===true)break;await new Promise(r=>setTimeout(r,1500))}
+    if(ROOM||G)return;
+  }
   for(let k=0;k<120&&!ROOM&&!G;k++){
     bar(`กำลังเข้าแมตช์ vs ${tEsc(m.opp.name)}…`);
     const first=(m.role==='host')===(k%2===0)?tryHost:tryJoin,second=first===tryHost?tryJoin:tryHost;
-    let r=await first();if(r===true)break;if(r==='gone'){bar('ห้องแข่งนี้เริ่มไปแล้ว');return}
-    r=await second();if(r===true)break;if(r==='gone'){bar('ห้องแข่งนี้เริ่มไปแล้ว');return}
+    // 'gone' = the room is mid-game and did not take us back yet (the old link may still be open) → keep trying
+    let r=await first();if(r===true)break;
+    r=await second();if(r===true)break;
+    if(r==='gone')bar(`กำลังกลับเข้าแมตช์เดิม vs ${tEsc(m.opp.name)}…`);
     await new Promise(r=>setTimeout(r,1500));
   }
   if(ROOM&&!G)bar(ROOM.players.length>1?'เข้าห้องแข่งแล้ว — กำลังเริ่ม…':`รอ ${tEsc(m.opp.name)} เข้าแมตช์…`);
@@ -6586,26 +6948,34 @@ async function tourGoMatch(m){
 }
 // match over → tell the organizer who won (the result screen of a tournament match)
 function tourReportResult(winner,quit){
-  G.over=true;surrClose();closeMenu();render();
+  G.over=true;tmClear();surrClose();closeMenu();render();
   const won=winner===G.me||(!!quit&&quit!==G.me);
   const opp=G.players.find(p=>p!==G.me)||{};
-  tourAct({t:'tres',mid:G.tour,w:won?myDid():String(opp.did||'')});
+  // the result is kept on this device and sent again on every (re)connection until the organizer has it —
+  // a dropped link at the end of the match must not lose it
+  if(won||opp.did){store.set('eclipsa-tour-res',JSON.stringify({key:TOUR_CFG.key,mid:G.tour,w:won?myDid():String(opp.did),why:G.awayLoss?'หลุดเกมเกิน 5 นาที':quit?'ยอมแพ้':''}));tourSendRes()}
   sfx(won?'win':'lose');
   const box=$('#modal .box');box.classList.remove('prompt');
-  box.innerHTML=`<h2 style="font-size:40px;text-align:center">${won?'🏆 คุณชนะ!':'คุณแพ้...'}</h2><p style="font-size:17px;text-align:center">${won?'ผ่านเข้ารอบต่อไป — รอคู่แข่งรอบถัดไป':'ตกรอบแล้ว — รางวัลจะถูกส่งให้อัตโนมัติ'}${quit?`<br><small>${quit===G.me?'คุณยอมแพ้':tEsc(quit.name)+' ยอมแพ้'}</small>`:''}</p>
-    <div class="foot"><button class="primary" id="tback">🏆 กลับไปหน้าทัวร์นาเมนต์</button></div>`;
+  box.innerHTML=`<h2 style="font-size:40px;text-align:center">${won?'🏆 คุณชนะ!':'คุณแพ้...'}</h2><p style="font-size:17px;text-align:center">${won?'ส่งผลให้ผู้จัดแล้ว — รอผู้จัดยืนยันผล แล้วรอคู่แข่งรอบถัดไป':'ส่งผลให้ผู้จัดแล้ว — เมื่อผู้จัดยืนยัน รางวัลจะถูกส่งให้อัตโนมัติ'}${quit?`<br><small>${quit===G.me?'คุณยอมแพ้':tEsc(quit.name)+' ยอมแพ้'}</small>`:''}</p>
+    <p style="text-align:center;color:#ffd76a" id="tbackcd">กลับไปหน้าทัวร์นาเมนต์ใน 5…</p>
+    <div class="foot"><button class="primary" id="tback">🏆 กลับไปหน้าทัวร์นาเมนต์เลย</button></div>`;
   $('#modal').style.display='flex';
-  $('#tback').onclick=()=>{sfx('click');setTimeout(()=>{location.hash='tour';location.reload()},300)};
+  // straight back to the tournament screen (the result is kept and re-sent from there if the link to the organizer dropped)
+  const back=()=>{if(G)G.leaving=true;setTimeout(()=>{location.hash='tour';location.reload()},300)};
+  let n=5;const t=setInterval(()=>{n--;const c=$('#tbackcd');if(c)c.textContent=`กลับไปหน้าทัวร์นาเมนต์ใน ${n}…`;if(n<=0){clearInterval(t);back()}},1000);
+  $('#tback').onclick=()=>{sfx('click');clearInterval(t);back()};
 }
 function tourOppLeft(){
   if(!G||G.over)return;
   const opp=G.players.find(p=>p!==G.me);
   G.halt=true;tourReportResult(G.me,opp);
-  const p=$('#modal .box p');if(p)p.innerHTML='คู่แข่งหลุดออกจากเกม — <b>คุณชนะ</b> และผ่านเข้ารอบต่อไป';
+  const p=$('#modal .box p');if(p)p.innerHTML=`คู่แข่ง${G.awayLoss?'หลุดเกมเกิน 5 นาที':'ออกจากเกม'} — <b>คุณชนะ</b> (ส่งผลให้ผู้จัดยืนยันแล้ว)`;
 }
 
 // ---------- start ----------
-$('#tourbtn').onclick=openTour;
+// after closeAt the banner is chained shut ("รอกิจกรรม 01") — only the organizer can still open the old tournament
+$('#tourbtn').onclick=()=>{if(tourClosed()&&!isTourAdmin()){sfx('debuff');const b=$('#tourbtn');b.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}],{duration:300});netMsg('🔒 '+TOUR_CFG.closeText);return}openTour()};
+setInterval(()=>{const b=$('#tourbtn');if(b&&b.style.display!=='none'&&tourClosed()!==b.classList.contains('closed'))tourBanner()},30000);
 tourBanner();updBadge();
 // the organizer's computer re-opens the tournament room by itself after a reload
 if(isTourAdmin()&&store.get('eclipsa-tour-hosting')===TOUR_CFG.key&&tourLoad())setTimeout(tourHost,600);
