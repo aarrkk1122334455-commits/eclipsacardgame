@@ -1305,6 +1305,11 @@ body.mobile .tr-pr{flex-wrap:wrap}body.mobile .tr-pr .lb{width:auto}
 #updbar{position:fixed;left:50%;top:8px;transform:translateX(-50%);z-index:140;padding:8px 16px;border-radius:14px;background:#2a1a06f2;border:2px solid #ffd23a;color:#ffe9a8;font-size:15px;box-shadow:0 0 20px #ffd23a66;white-space:nowrap;max-width:calc(100vw - 20px);overflow:hidden;text-overflow:ellipsis}
 #updbar .ut{font-weight:900;font-variant-numeric:tabular-nums;color:#fff}#updbar button{padding:3px 10px;font-size:13px;margin-left:6px}
 #updbar.hot{background:#4a0810f2;border-color:#ff4a5a;animation:canpulse 1s infinite}
+.zone .card.vstack{position:absolute;left:0;top:0;transform:translate(calc(var(--i) * 14%),calc(var(--i) * -10%)) rotate(calc(var(--i) * 3deg));filter:brightness(.72);z-index:0;pointer-events:auto}
+.stackbadge{position:absolute;right:-6px;top:-6px;z-index:6;min-width:26px;height:26px;padding:0 6px;border-radius:13px;background:linear-gradient(#ffd23a,#c08a10);color:#1a1004;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 0 10px #ffd23a}
+.underpeek{position:absolute;left:-14%;bottom:-6%;width:44%;aspect-ratio:480/671;border-radius:4px;background:center/cover;border:2px solid #ffd76a;box-shadow:0 2px 8px #000c,0 0 8px #ffd76a88;z-index:5;cursor:pointer;transform:rotate(-8deg);transition:transform .15s}
+.underpeek:hover{transform:rotate(-4deg) scale(1.15)}
+.underpeek span{position:absolute;left:0;right:0;bottom:0;font-size:9px;font-weight:bold;text-align:center;background:#000a;color:#ffe9a8;border-radius:0 0 3px 3px}
 /* เซวียนเหิง ร่าง 2 entrance */
 .x2fx{position:fixed;inset:0;z-index:130;pointer-events:none;overflow:hidden}
 .x2dark{position:absolute;inset:0;background:radial-gradient(ellipse at center,#30000aa0,#000000d8);opacity:0;animation:x2in .5s forwards}
@@ -1576,43 +1581,43 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
   <div class="gnote">ใช้เหรียญ (เหรียญ) ที่ได้จากการเล่น · ชนะได้ <b>1250</b> · แพ้ได้ <b>500</b> · ได้การ์ดซ้ำ คืน <b>100</b> เหรียญ</div>
 </div>
 
-<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=23;</script>
+<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=24;</script>
 <script>
 // ============ CARD DATA (transcribed from the card art) ============
 const SAN='สามพี่น้อง', SHIP='เรือหลวง', WCT='พี่น้องร่ำรา', MANA_MAX=10, HAND_MAX=8;
 const CARDS={
  xuan:{type:'leader',name:'เซวียนเหิง',img:'L_xuan.png',power:6000,life:5,tags:['มนุษย์','ดาบ',SHIP],
-  skill:['ถ้ามีพาหนะ <b>เรือหลวงสุริยคราส</b> อยู่ในช่องพาหนะ → พลัง <b>+1000</b>','[AUTO] เมื่อพลังชีวิตได้รับความเสียหาย ถ้าพลังชีวิตเหลือ <b>3 หรือน้อยกว่า</b> → เรียกพวกพ้องเผ่าเรือหลวง 1 ใบจากกองการ์ดหรือช่องครอบลงสนามได้ <b>โดยไม่ต้องใช้มานา</b> (1 ครั้งต่อเทิร์น)']},
+  skill:['ถ้ามีพาหนะ <b>เรือหลวงสุริยคราส</b> อยู่ในช่องพาหนะ → พลัง <b>+1000</b>','[AUTO] เมื่อพลังชีวิตได้รับความเสียหาย ถ้าพลังชีวิตเหลือ <b>3 หรือน้อยกว่า</b> → เรียกพวกพ้องเผ่าเรือหลวง 1 ใบจากกองการ์ดหรือช่องดรอปลงสนามได้ <b>โดยไม่ต้องใช้มานา</b> (1 ครั้งต่อเทิร์น)']},
  grandpa:{type:'ally',name:'คุณปู่สามพี่น้อง',img:'A_grandpa.png',power:0,counter:1000,tags:['มังกร'],
   skill:['[GUARD] เมื่อการ์ดใบนี้อยู่ที่<b>ช่องป้องกัน</b> → ได้พลังป้องกัน <b>+1000</b> เพิ่มตามจำนวนพวกพ้องเผ่า "สามพี่น้อง" ในสนามเรา','<i>วางจากมือลงช่องป้องกัน = +1000 (เทา) + โบนัสสามพี่น้อง</i>']},
  bingyue:{type:'ally',cost:2,name:'ปิงเย่ว',img:'A_bingyue.png',power:6000,counter:0,tags:['มังกร',SAN,SHIP],
   skill:['ถ้ามีพวกพ้องเผ่า "สามพี่น้อง" ใบอื่น <b>1 ใบ</b> → พลังโจมตี <b>+2000</b>','ถ้ามี <b>2 ใบ</b> → พลังโจมตี <b>+4000</b>']},
  luart:{type:'ally',cost:1,name:'ลูอาร์ต',img:'A_luart.png',power:5000,counter:2000,tags:['มนุษย์','จอมเวทย์',SHIP],shield:true,
-  skill:['[ON PLAY] ดูการ์ด 7 ใบบนสุด เลือก<b>พาหนะ</b>หรือ<b>พวกพ้อง</b>เผ่าเรือหลวง (ที่ไม่ใช่ลูอาร์ต) 1 ใบขึ้นมือ ที่เหลือสับไว้ใต้กอง','[ON PLAY] ถ้าคาแรคเตอร์เราเป็นเผ่าเรือหลวง → จั่ว 1 ใบ','[SHIELD] ตอนถูกโจมตี นำการ์ดนี้ลงช่องครอบ เพื่อ<b>ยกเลิก</b>การโจมตีนั้น']},
+  skill:['[ON PLAY] ดูการ์ด 7 ใบบนสุด เลือก<b>พาหนะ</b>หรือ<b>พวกพ้อง</b>เผ่าเรือหลวง (ที่ไม่ใช่ลูอาร์ต) 1 ใบขึ้นมือ ที่เหลือสับไว้ใต้กอง','[ON PLAY] ถ้าคาแรคเตอร์เราเป็นเผ่าเรือหลวง → จั่ว 1 ใบ','[SHIELD] ตอนถูกโจมตี นำการ์ดนี้ลงช่องดรอป เพื่อ<b>ยกเลิก</b>การโจมตีนั้น']},
  tianxing:{type:'ally',cost:1,name:'เทียนซิงยวี่',img:'A_tianxing.png',power:4000,counter:1000,tags:['มังกร',SAN,SHIP],
   skill:['ตอนโจมตี: ถ้ามีพวกพ้องเผ่าสามพี่น้องใบอื่นในสนาม → พลัง <b>+1000</b>','[ON PLAY] ถ้ามีพวกพ้องใบอื่น และคาแรคเตอร์เป็นเผ่าเรือหลวง → ทิ้งการ์ดเผ่าสามพี่น้อง 1 ใบจากมือ เพื่อ<b>จั่ว 2 ใบ</b> (แล้วจะลงเทียนซิงยวี่อีกไม่ได้ในเทิร์นนี้)']},
  yaoxing:{type:'ally',cost:1,name:'เหยาซิง',img:'A_yaoxing.png',power:6000,counter:0,tags:['มังกร',SAN,SHIP],
-  skill:['ตอนโจมตี: เลือกการ์ดเผ่าสามพี่น้อง 1 ใบในช่องครอบ แล้วนำกลับไปไว้<b>ใต้กองการ์ด</b>']},
+  skill:['ตอนโจมตี: เลือกการ์ดเผ่าสามพี่น้อง 1 ใบในช่องดรอป แล้วนำกลับไปไว้<b>ใต้กองการ์ด</b>']},
  yaoxingmini:{type:'ally',name:'เหยาซิงมินิ',img:'A_yaoxingmini.png',power:4000,counter:1000,tags:['มังกร',SAN,SHIP],
-  skill:['[ACT] นำการ์ดนี้จากสนามลงช่องครอบ → เลือกการ์ดเผ่าสามพี่น้อง 1 ใบจากช่องครอบ<b>ขึ้นมือ</b>']},
+  skill:['[ACT] นำการ์ดนี้จากสนามลงช่องดรอป → เลือกการ์ดเผ่าสามพี่น้อง 1 ใบจากช่องดรอป<b>ขึ้นมือ</b>']},
  yaoming:{type:'ally',cost:1,name:'เหยาหมิง',img:'A_yaoming.png',power:5000,counter:0,tags:['สัตว์อสูร',SHIP],
   skill:['ถ้ามีพวกพ้องชื่อ <b>เหยาซิง</b> ในสนาม → พลังโจมตี <b>+1000</b> และป้องกัน <b>+1000</b>','[GO ON] ตอนเราถูกโจมตี ย้ายการ์ดนี้จากสนามมาช่องป้องกันได้','[GUARD] ปาจากมือลงช่องป้องกันได้ — ถ้าอยู่ช่องป้องกันแล้ว<b>มีเหยาซิงในสนาม</b> → <b>+1000</b>']},
  weichen:{type:'ally',cost:1,name:'เหวยเฉิน',img:'A_weichen.png',power:6000,counter:1000,tags:['มนุษย์','พี่น้องร่ำรา'],
-  skill:['ถ้าคาแรคเตอร์เราคือ <b>เซวียนเหิง</b> → ได้ความสามารถ [GO ON] (รับการโจมตีแทน) และพลังป้องกัน <b>+2000</b>']},
+  skill:['ถ้าคาแรคเตอร์เราคือ <b>เซวียนเหิง</b> หรือ <b>เหวยเฉิน</b> → ได้ความสามารถ [GO ON] (รับการโจมตีแทน) และพลังป้องกัน <b>+2000</b>']},
  ship:{type:'vehicle',name:'เรือหลวงสุริยคราส',img:'V_ship.png',cost:6,power:0,tags:[SHIP],
   skill:['[ON PLAY] จนจบเทิร์นนี้ การ์ดเผ่าเรือหลวง<b>ทุกใบ</b>ของเรา พลังโจมตี <b>+5000</b>','ตลอดเวลา: พวกพ้องเผ่าเรือหลวงของเรา <b>ไม่ถูกทำลาย</b>และ<b>ไม่ถูกเด้งขึ้นมือ</b>จากความสามารถของคู่แข่ง']},
  meeting:{type:'event',name:'การประชุมของเรือหลวง',img:'E_meeting.png',cost:3,trigger:true,tags:[SHIP],
   skill:['จนจบเทิร์น พวกพ้องเผ่าเรือหลวงทั้งหมดของเรา พลังโจมตี <b>+2000</b>','[TRIGGER] จั่ว 1 ใบ และเก็บการ์ดนี้ขึ้นมือ']},
  love:{type:'event',name:'ความรักที่มีวันรอคอย',img:'E_love.png',cost:1,tags:[SHIP],
-  skill:['ถ้าในสนามเรามีการ์ดเผ่าเรือหลวง → นำการ์ดเผ่า<b>เรือหลวง</b> 1 ใบจาก<b>ช่องครอบ (ช่องดรอป)</b> กลับขึ้นมือ','ถ้าคาแรคเตอร์เราคือ <b>เซวียนเหิง</b> หรือ <b>จิน</b> → นำการ์ด<b>อะไรก็ได้</b>จากช่องครอบขึ้นมือแทน','ใช้ได้ 1 ครั้งต่อเทิร์น']},
+  skill:['ถ้าในสนามเรามีการ์ดเผ่าเรือหลวง → นำการ์ดเผ่า<b>เรือหลวง</b> 1 ใบจาก<b>ช่องดรอป</b> กลับขึ้นมือ','ถ้าคาแรคเตอร์เราคือ <b>เซวียนเหิง</b> หรือ <b>จิน</b> → นำการ์ด<b>อะไรก็ได้</b>จากช่องดรอปขึ้นมือแทน','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  bind:{type:'event',name:'จงตรึง',img:'E_bind.png',cost:2,counterEv:true,tags:[SHIP],
   skill:['[COUNTER] ใช้ได้<b>ตอนเรากำลังถูกโจมตี</b>เท่านั้น','เลือกพวกพ้องฝ่ายตรงข้าม <b>2 ใบ</b> จนจบเทิร์นนี้ การ์ดที่ถูกเลือก<b>โจมตีไม่ได้</b> (ถ้าเลือกตัวที่กำลังโจมตี การโจมตีนั้นถูกยกเลิก)']},
  goaway:{type:'event',name:'ทำใจฆ่าได้ละ ไปไหนก็ไป ไป',img:'E_goaway.png',cost:2,tags:[SHIP],
-  skill:['นำพวกพ้องเผ่าสามพี่น้องของเรา 1 ใบลงช่องครอบ → คู่แข่ง<b>ทิ้งการ์ดบนมือ 1 ใบ</b>','ถ้าใบที่เราทิ้งคือ <b>เหยาซิง</b> → จั่ว 1 ใบ']},
+  skill:['นำพวกพ้องเผ่าสามพี่น้องของเรา 1 ใบลงช่องดรอป → คู่แข่ง<b>ทิ้งการ์ดบนมือ 1 ใบ</b>','ถ้าใบที่เราทิ้งคือ <b>เหยาซิง</b> → จั่ว 1 ใบ']},
  death:{type:'event',name:'พวกเจ้ารนหาที่ตายเองนะ',img:'E_death.png',cost:1,counterEv:true,tags:[SHIP],
   skill:['[COUNTER] ใช้ได้ตอนเรากำลังถูกโจมตี','<b>ทำลาย</b>พวกพ้องฝ่ายตรงข้าม 1 ใบ','ถ้ามีพาหนะเป็น "เรือหลวง" → ทำลายการ์ดฝ่ายตรงข้ามเพิ่มอีก 1 ใบ']},
  spare:{type:'event',name:'ยังไงก็ทำใจฆ่าพวกเจ้าไม่ลง',img:'E_spare.png',cost:1,tags:[SHIP],
-  skill:['เรียกพวกพ้องเผ่าเรือหลวง 1 ใบจาก<b>ช่องครอบ</b>กลับลงสนาม','ถ้ามีพาหนะเรือหลวง → เรียกได้อีก 1 ใบ']},
+  skill:['เรียกพวกพ้องเผ่าเรือหลวง 1 ใบจาก<b>ช่องดรอป</b>กลับลงสนาม','ถ้ามีพาหนะเรือหลวง → เรียกได้อีก 1 ใบ']},
  signal:{type:'event',name:'สัญญาณขอความช่วยเหลือ',img:'E_signal.png',cost:1,tags:[SHIP],
   skill:['ดูการ์ด 5 ใบบนสุด เลือกพวกพ้องเผ่าเรือหลวงขึ้นมือได้<b>ไม่เกิน 3 ใบ</b> ที่เหลือไว้ใต้กอง','ถ้าเอาขึ้นมือ 3 ใบ ต้องทิ้งการ์ดบนมือ 1 ใบ','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  prepare:{type:'event',name:'เตรียมรับมือกับผู้ที่ไม่ถูกต้อนรับ',img:'E_prepare.png',cost:1,trigger:true,counterEv:true,tags:[SHIP],
@@ -1647,37 +1652,37 @@ const CARDS={
   skill:['เปิดการ์ด 5 ใบบนสุด หยิบพวกพ้องชื่อ "เหวยเฉิน" หรือ "ฉินเฟย" ไม่เกิน 2 ใบ และพาหนะไม่เกิน 1 ใบขึ้นมือ ที่เหลือกลับเข้ากองแล้ว<b>สับกอง</b>','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  wc_firstday:{type:'event',name:'วันแรก และ งานแรก',img:'E_firstday.png',cost:1,tags:[],gacha:'E',
   skill:['ทิ้ง "เหวยเฉิน" บนมือ 1 ใบ → <b>จั่ว 3 ใบ</b> — จนจบเทิร์นนี้ จั่วจากความสามารถของการ์ดชื่อ "เหวยเฉิน" ไม่ได้อีก','ใช้ได้ 1 ครั้งต่อเทิร์น']},
- // ===== ตู้ "EBX-01 เรือหลวง" (ได้จากตู้สุ่มเท่านั้น) — mystic 0.1% · legend 2% · epic 20% · rare ที่เหลือ (77.9%) =====
+ // ===== ตู้ "EBX-01 เรือหลวง" (ได้จากตู้สุ่มเท่านั้น) — mystic 0.05% · legend 2% · epic 20% · rare ที่เหลือ (77.95%) =====
  x_xuan2:{type:'leader',inDeck:true,deckMax:2,name:'เซวียนเหิง',img:'X_xuan2.png',power:8000,tags:['มนุษย์','ดาบ',SHIP,'บาป'],gacha:'M',box:'ebx',
-  skill:['การ์ดใบนี้ใส่ใน<b>ช่องคาแรคเตอร์ไม่ได้</b> แต่ใส่ใน<b>กองการ์ดได้ 2 ใบ</b>เท่านั้น','เมื่อพลังชีวิตของเรากลายเป็น <b>0</b> และคาแรคเตอร์เราชื่อ "เซวียนเหิง" → วางการ์ดนี้<b>ทับคาแรคเตอร์</b> และนำการ์ดบนสุดของกอง 1 ใบเข้า<b>พลังชีวิต</b> (คว่ำหน้า)','การ์ดนี้ได้รับ<b>ความสามารถของการ์ดที่ถูกทับ</b>','เมื่อการ์ดนี้โจมตีคาแรคเตอร์ฝ่ายตรงข้าม → เลือกพวกพ้องฝ่ายตรงข้ามที่<b>ตั้งหรือนอน</b>อยู่ได้ 1 ใบ การ์ดนี้<b>โจมตีใบนั้นด้วย</b>','เมื่อพลังชีวิตของเราได้รับความเสียหาย → นำการ์ดนี้ลงช่องครอบ (การ์ดที่ถูกทับกลับมาเป็นคาแรคเตอร์) · 1 ครั้งต่อเกม']},
+  skill:['การ์ดใบนี้ใส่ใน<b>ช่องคาแรคเตอร์ไม่ได้</b> แต่ใส่ใน<b>กองการ์ดได้ 2 ใบ</b>เท่านั้น','เมื่อพลังชีวิตของเรากลายเป็น <b>0</b> และคาแรคเตอร์เราชื่อ "เซวียนเหิง" → วางการ์ดนี้<b>ทับคาแรคเตอร์</b> และนำการ์ดบนสุดของกอง 1 ใบเข้า<b>พลังชีวิต</b> (คว่ำหน้า)','การ์ดนี้ได้รับ<b>ความสามารถของการ์ดที่ถูกทับ</b>','เมื่อการ์ดนี้โจมตีคาแรคเตอร์ฝ่ายตรงข้าม → เลือกพวกพ้องฝ่ายตรงข้ามที่<b>ตั้งหรือนอน</b>อยู่ได้ 1 ใบ การ์ดนี้<b>โจมตีใบนั้นด้วย</b>','เมื่อพลังชีวิตของเราได้รับความเสียหาย → นำการ์ดนี้ลงช่องดรอป (การ์ดที่ถูกทับกลับมาเป็นคาแรคเตอร์) · 1 ครั้งต่อเกม']},
  x_origin:{type:'event',name:'ก่อกำเนิดเรือหลวงสุริยคราส',img:'E_x_origin.png',cost:2,tags:[SHIP],gacha:'G',box:'ebx',
   skill:['ค้นหาพวกพ้องเผ่า "เรือหลวง" จากกองการ์ด<b>ไม่เกิน 2 ใบ</b>ขึ้นมือ','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  x_shield:{type:'event',name:'โล่แห่งเวทย์ที่ไม่มีวันแตกสลาย',img:'E_x_shield.png',cost:0,counterEv:true,trigger:true,tags:[SHIP],gacha:'G',box:'ebx',
   skill:['ใช้ได้เมื่อการ์ดในสนามเราถูกโจมตีด้วยพลังโจมตี<b>ไม่เกิน 8000</b> และเรามีพวกพ้องเผ่า "เรือหลวง" ในสนาม','[COUNTER] <b>ยกเลิก</b>การโจมตีนั้น','[TRIGGER] ถ้าพลังชีวิตเรา 3 หรือต่ำกว่า และคาแรคเตอร์ชื่อ "เซวียนเหิง" → นำการ์ดบนสุดของกองเข้า<b>พลังชีวิต</b> (คว่ำหน้า)']},
  x_tianxing:{type:'ally',name:'เทียนซิงยวี่',img:'A_x_tianxing.png',power:4000,counter:2000,tags:['มังกร',SAN,SHIP],gacha:'G',box:'ebx',
-  skill:['เมื่อการ์ดนี้ถูก<b>ทิ้งจากมือ</b> → <b>รีมานา 2</b>','เมื่อการ์ดนี้ถูกนำ<b>กลับเข้ากองการ์ด</b> → <b>รีมานา 4</b>','เมื่อการ์ดนี้<b>เข้าสู่สนาม</b> → <b>รีมานา 1</b>']},
+  skill:['สกิลทั้งหมดจะทำงานเมื่อคาแรคเตอร์ของเราเป็นเผ่า <b>"เรือหลวง"</b>','เมื่อการ์ดนี้ถูก<b>ทิ้งจากมือ</b> → <b>รีมานา 2</b>','เมื่อการ์ดนี้ถูกนำ<b>กลับเข้ากองการ์ด</b> → <b>รีมานา 4</b>','เมื่อการ์ดนี้<b>เข้าสู่สนาม</b> → <b>รีมานา 1</b>']},
  x_bingyue1:{type:'ally',name:'ปิงเย่ว',img:'A_x_bingyue1.png',cost:1,power:4000,counter:1000,tags:['มังกร',SAN,SHIP],gacha:'R',box:'ebx',
   skill:['[GUARD] เมื่อการ์ดนี้เข้าสู่<b>ช่องป้องกัน</b> → พลังป้องกัน <b>+1000</b> ตามจำนวนเผ่า "สามพี่น้อง" ในสนามเรา']},
  x_bingyue2:{type:'ally',name:'ปิงเย่ว',img:'A_x_bingyue2.png',cost:2,power:6000,counter:0,tags:['มังกร',SAN,SHIP],gacha:'R',box:'ebx',
-  skill:['[ON PLAY] ถ้าพลังชีวิตเรา 3 หรือต่ำกว่า → เรียกพวกพ้องเผ่า "สามพี่น้อง" จากช่องครอบ<b>ไม่เกิน 1 ใบ</b>ลงสนาม โดยจ่ายค่ามานา (1 ครั้งต่อเทิร์น)','เมื่อโจมตี: ทิ้งการ์ดเผ่า "สามพี่น้อง" จากมือ 1 ใบ → การ์ดนี้พลังโจมตี <b>+2000</b>']},
+  skill:['[ON PLAY] ถ้าพลังชีวิตเรา 3 หรือต่ำกว่า → เรียกพวกพ้องเผ่า "สามพี่น้อง" จากช่องดรอป<b>ไม่เกิน 1 ใบ</b>ลงสนาม โดยจ่ายค่ามานา (1 ครั้งต่อเทิร์น)','เมื่อโจมตี: ทิ้งการ์ดเผ่า "สามพี่น้อง" จากมือ 1 ใบ → การ์ดนี้พลังโจมตี <b>+2000</b>']},
  x_yaoxing5:{type:'ally',name:'เหยาซิง',img:'A_x_yaoxing5.png',cost:5,power:10000,counter:0,tags:['มังกร',SAN,SHIP],gacha:'P',box:'ebx',
   skill:['เมื่อพวกพ้องชื่อ "ปิงเย่ว" ของเราถูก<b>ทำลายด้วยการโจมตี</b>ของคู่แข่ง → ลงการ์ดนี้จากมือได้<b>โดยไม่ต้องจ่ายมานา</b> และโจมตีได้ในเทิร์นเรา','ถ้าลงมาด้วยความสามารถนี้ → <b>จบเทิร์นของเรา ทำลายการ์ดนี้</b>']},
  x_yaoxing1:{type:'ally',name:'เหยาซิง',img:'A_x_yaoxing1.png',cost:1,power:5000,counter:1000,tags:['มังกร',SAN,SHIP],gacha:'R',box:'ebx',
-  skill:['[ON PLAY] นำการ์ดเผ่า "สามพี่น้อง" จากช่องครอบ <b>3 ใบ</b>กลับเข้ากอง → <b>จั่ว 1 ใบ</b> และ <b>รีมานา 2</b> (1 ครั้งต่อเทิร์น)']},
+  skill:['[ON PLAY] นำการ์ดเผ่า "สามพี่น้อง" จากช่องดรอป <b>3 ใบ</b>กลับเข้ากอง → <b>จั่ว 1 ใบ</b> และ <b>รีมานา 2</b> (1 ครั้งต่อเทิร์น)']},
  x_sail:{type:'event',name:'เตรียมออกเรือ',img:'E_x_sail.png',cost:0,counterEv:true,alsoMain:true,trigger:true,tags:[SHIP],gacha:'P',box:'ebx',
-  skill:['ใช้ได้เมื่อพลังชีวิตเรา <b>3 หรือต่ำกว่า</b>','[COUNTER] นำพวกพ้องเผ่า "เรือหลวง" ในสนามเรา <b>3 ใบ</b>ลงช่องครอบ → <b>รีมานาทั้งหมด</b>','ใช้ใน<b>เทิร์นของเรา</b>ก็ได้ หรือใช้<b>ตอนถูกโจมตี</b>ก็ได้','[TRIGGER] ถ้าสนามเรามีพวกพ้อง → นำพวกพ้องของเรา 1 ใบลงช่องครอบ']},
+  skill:['ใช้ได้เมื่อพลังชีวิตเรา <b>3 หรือต่ำกว่า</b>','[COUNTER] นำพวกพ้องเผ่า "เรือหลวง" ในสนามเรา <b>3 ใบ</b>ลงช่องดรอป → <b>รีมานาทั้งหมด</b>','ใช้ใน<b>เทิร์นของเรา</b>ก็ได้ หรือใช้<b>ตอนถูกโจมตี</b>ก็ได้','[TRIGGER] ถ้าสนามเรามีพวกพ้อง → นำพวกพ้องของเรา 1 ใบลงช่องดรอป']},
  x_meet:{type:'event',name:'การพบกัน ณ วันแรกพบ',img:'E_x_meet.png',cost:1,counterEv:true,alsoMain:true,trigger:true,tags:[SHIP],gacha:'R',box:'ebx',
   skill:['ใช้ได้เมื่อเรามีพวกพ้องชื่อ "ลูอาร์ต" ในสนาม','[COUNTER] <b>จั่ว 2 ใบ</b> (1 ครั้งต่อเทิร์น)','ใช้ใน<b>เทิร์นของเรา</b>ก็ได้ หรือใช้<b>ตอนถูกโจมตี</b>ก็ได้','[TRIGGER] ทิ้งการ์ดบนมือ 2 ใบ']},
  x_moon:{type:'event',name:'คืนจันทร์วันพักผ่อน',img:'E_x_moon.png',cost:0,tags:[SHIP],gacha:'R',box:'ebx',
-  skill:['ใช้ได้เมื่อคาแรคเตอร์เราชื่อ "เซวียนเหิง" และพลังชีวิต <b>3 หรือต่ำกว่า</b>','เปิดการ์ด 5 ใบบนสุด เรียกพวกพ้อง<b>ไม่เกิน 1 ใบ</b>ลงสนามโดยจ่ายค่ามานา ที่เหลือกลับกองแล้วสับ','ใช้ได้ 1 ครั้งต่อเทิร์น']},
+  skill:['ใช้ได้เมื่อคาแรคเตอร์เราชื่อ "เซวียนเหิง" และพลังชีวิต <b>3 หรือต่ำกว่า</b>','เปิดการ์ด 5 ใบบนสุด เรียกพวกพ้อง<b>ไม่เกิน 1 ใบ</b>ลงสนามโดยจ่ายค่ามานา ที่เหลือกลับกองแล้วสับ และการ์ดที่ถูกเรียก<b>โจมตีได้ทันที</b>','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  x_stance:{type:'event',name:'ตั้งท่าพร้อมรบ',img:'E_x_stance.png',cost:2,counterEv:true,tags:[SHIP],gacha:'R',box:'ebx',
   skill:['ใช้ได้เมื่อคาแรคเตอร์ชื่อ "เซวียนเหิง" ถูกโจมตี','[COUNTER] จนจบเทิร์นนี้ คาแรคเตอร์ของเราได้รับพลัง <b>+3000</b>']},
  x_wcwhere:{type:'event',name:'ที่นี้ที่ไหนเนี่ยห๊ะ แล้วพาข้ามาทำไมเนี่ย',img:'E_x_wcwhere.png',cost:4,tags:[WCT],gacha:'G',box:'ebx',
-  skill:['ใช้ได้เมื่อพลังชีวิตเรา <b>3 หรือต่ำกว่า</b> และคาแรคเตอร์ชื่อ "เหวยเฉิน"','เลือกพวกพ้องในสนาม 1 ใบลงช่องครอบ (ถือว่า<b>ถูกทิ้งจากมือ</b>) → เรียกพวกพ้องชื่อ "เหวยเฉิน" จากกอง<b>ไม่เกิน 1 ใบ</b>ลงสนาม <b>โจมตีได้ทันที</b>','จบเทิร์น: นำใบที่เรียกมากลับ<b>ใต้กอง</b> และนำใบที่ลงช่องครอบ<b>กลับลงสนาม</b>','ถ้ามีพาหนะ "ร้านขาประจำเหวยเฉิน" → เรียกได้ <b>2 ใบ</b> แทน','ใช้ได้ 1 ครั้งต่อเทิร์น']},
+  skill:['ใช้ได้เมื่อพลังชีวิตเรา <b>3 หรือต่ำกว่า</b> และคาแรคเตอร์ชื่อ "เหวยเฉิน"','เลือกพวกพ้องในสนาม 1 ใบลงช่องดรอป (ถือว่า<b>ถูกทิ้งจากมือ</b>) → เรียกพวกพ้องชื่อ "เหวยเฉิน" จากกอง<b>ไม่เกิน 1 ใบ</b>ลงสนาม <b>โจมตีได้ทันที</b>','จบเทิร์น: นำใบที่เรียกมากลับ<b>ใต้กอง</b> และนำใบที่ลงช่องดรอป<b>กลับลงสนาม</b>','ถ้ามีพาหนะ "ร้านขาประจำเหวยเฉิน" → เรียกได้ <b>2 ใบ</b> แทน','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  x_wckid:{type:'event',name:'ก็ข้านี้ไงเด็กผู้ชายที่ถูกจับตัวไป',img:'E_x_wckid.png',cost:3,counterEv:true,tags:[WCT],gacha:'P',box:'ebx',
-  skill:['ใช้ได้เมื่อการ์ดในสนามเราถูกโจมตี','[COUNTER] ทิ้งพวกพ้องชื่อ "เหวยเฉิน" บนมือ<b>กี่ใบก็ได้</b> — ถ้าทิ้ง และคาแรคเตอร์ชื่อ "เหวยเฉิน" → เลือกพวกพ้องฝ่ายตรงข้าม<b>กี่ใบก็ได้</b> การ์ดเหล่านั้น<b>โจมตีไม่ได้</b> (1 ครั้งต่อเทิร์น)']},
+  skill:['ใช้ได้เมื่อการ์ดในสนามเราถูกโจมตี','[COUNTER] ทิ้งพวกพ้องชื่อ "เหวยเฉิน" บนมือ<b>กี่ใบก็ได้</b> — ถ้าทิ้ง และคาแรคเตอร์ชื่อ "เหวยเฉิน" → เลือกพวกพ้องฝ่ายตรงข้าม<b>เท่ากับจำนวนที่ทิ้ง</b> การ์ดเหล่านั้น<b>โจมตีไม่ได้</b> (1 ครั้งต่อเทิร์น)']},
  wc_teahouse:{type:'vehicle',name:'ร้านขาประจำเหวยเฉิน',img:'V_teahouse.png',cost:4,power:0,tags:[],gacha:'V',
-  skill:['การ์ดทุกใบที่มีชื่อ "เหวยเฉิน" พลังโจมตี <b>+1000</b>','[ACT] นำการ์ดชื่อ "เหวยเฉิน" จากช่องดรอปกลับใต้กอง <b>5 ใบ</b> → <b>ทำลาย</b>พวกพ้องฝ่ายตรงข้าม 1 ใบ']},
+  skill:['การ์ดทุกใบที่มีชื่อ "เหวยเฉิน" พลังโจมตี <b>+1000</b>','[ACT] นำการ์ดชื่อ "เหวยเฉิน" จากช่องดรอปกลับใต้กอง <b>5 ใบ</b> → <b>ทำลาย</b>พวกพ้องฝ่ายตรงข้าม 1 ใบ','สามารถติดตั้งพาหนะนี้ได้<b>กี่ใบก็ได้</b>']},
 };
 const isWC=c=>!!(c&&c.id&&CARDS[c.id]&&(CARDS[c.id].allNames||CARDS[c.id].name.includes('เหวยเฉิน')));
 // "ถ้าคาแรคเตอร์เราคือ X" — หลงเยี่ยซินถือว่าเป็นทุกชื่อ จึงผ่านเงื่อนไขชื่อคาแรคเตอร์ทุกแบบ (แต่ไม่ได้สกิลของคาแรคเตอร์นั้น)
@@ -1761,7 +1766,7 @@ function bonus(p,u,mode){
   if((id==='xuan'||(id==='x_xuan2'&&u.under&&u.under.id==='xuan'))&&hasShip(p))v+=1000;
   if(id==='yaoming'&&p.allies.some(a=>a.id==='yaoxing'))v+=1000;
   if(mode==='atk'){
-    if(p.vehicle&&p.vehicle.id==='wc_teahouse'&&isWC(u))v+=1000;
+    if(p.vehicle&&p.vehicle.id==='wc_teahouse'&&isWC(u))v+=1000*(1+((p.vehicle.extra||[]).length)); // +1000 for every installed copy
     if(id==='bingyue'){const n=sanCount(p,u);if(n>=1)v+=2000;if(n>=2)v+=2000;}
     if(id==='tianxing'&&sanCount(p,u)>=1)v+=1000;
   }
@@ -1772,7 +1777,7 @@ function guardVal(p,c,fromField){
   let v=D(c).counter||0;
   if(c.id==='grandpa'||c.id==='x_bingyue1')v+=1000*sanCount(p,null);
   if(fromField){
-    if(c.id==='weichen'&&leaderNamed(p,'xuan'))v+=2000;
+    if(c.id==='weichen'&&wcAllyBoost(p))v+=2000;
   }
   // เหยาหมิง in the defense slot (from hand or field): +1000 while เหยาซิง is on our field
   if(c.id==='yaoming'&&p.allies.some(a=>a.id==='yaoxing'))v+=1000;
@@ -2713,6 +2718,7 @@ function renderDetail(){
   if(d.gacha&&d.gacha!=='T'&&d.gacha!=='F')r('🎰',`ตู้สุ่ม · <span class="rt ${d.gacha}" style="position:static;opacity:1;transform:none;display:inline-block;border-radius:8px;padding:0 6px;font-size:12px;color:#fff">${TIER(d.gacha).glow}</span> ${RARITY_TH[d.gacha]||TIER(d.gacha).name} · ${boxOf(c.id).name}`);
   if(LIMITS[c.id])r(`<span style="width:20px;height:20px;display:inline-block">${LIMIT_SVG(LIMITS[c.id].max)}</span>`,`ลิมิต: ${LIMITS[c.id].why}`);
   let foot=`<button id="cd3d">🔍 ดูแบบ 3D</button>`;
+  if(c.under&&CARDS[c.under.id]){r('🃏',`ทับการ์ด <b>${CARDS[c.under.id].name}</b> อยู่ — ได้รับความสามารถของการ์ดนั้น`);foot+=`<button id="cdunder" class="primary">👁 ดูการ์ดที่ถูกทับ (${CARDS[c.under.id].name})</button>`}
   // foil picker (outside a match): which owned foil this card shows
   // foil picker only for the character card; deck cards have one entry per foil
   const myFoils=!G&&c.id!=='longyexin'&&d.type==='leader'&&!d.inDeck?foilsOf(c.id):[],shownFoil=c.foil||d.foil||(G||d.type!=='leader'||d.inDeck?'':foilSel(c.id));
@@ -2737,7 +2743,8 @@ function renderDetail(){
   el.querySelectorAll('.cdfoil').forEach(b=>b.onclick=()=>{sfx('click');setFoilUse(c.id,b.dataset.f);renderDetail();if($('#deckb').classList.contains('show'))renderDeck()});
   el.querySelectorAll('.cdart').forEach(b=>b.onclick=()=>{sfx('click');setArtUse(c.id,b.dataset.k);renderDetail();if($('#deckb').classList.contains('show'))renderDeck()});
   $('#cdx').onclick=()=>{sfx('click');closeDetail()};
-  $('#cd3d').onclick=()=>zoomCard(c.id);el.querySelector('.cdimg').onclick=()=>zoomCard(c.id);
+  $('#cd3d').onclick=()=>zoomCard(c.id);
+  if($('#cdunder'))$('#cdunder').onclick=e=>{e.stopPropagation();sfx('click');openDetail(c.under)};el.querySelector('.cdimg').onclick=()=>zoomCard(c.id);
   if($('#cdm'))$('#cdm').onclick=()=>deckAdd(c.id,-1);
   if($('#cdp'))$('#cdp').onclick=()=>deckAdd(c.id,1);
 }
@@ -3600,7 +3607,7 @@ const BOXES={
   wc:{name:'เหวยเฉิน of หมิงเย่ว',cost:PULL_COST,cost10:PULL10_COST,tiers:RARITY},
   ebx:{name:'EBX-01 เรือหลวง',cost:3000,cost10:30000,tiers:[
     {k:'S',p:0.0001,name:'ซีเคร็ท',glow:'SECRET'},
-    {k:'M',p:0.1,name:'มิสติก',glow:'MYSTIC'},
+    {k:'M',p:0.05,name:'มิสติก',glow:'MYSTIC'},
     {k:'G',p:2,name:'เลเจนด์',glow:'LEGEND'},
     {k:'P',p:20,name:'เอพิค',glow:'EPIC'},
     {k:'R',p:null,name:'แรร์',glow:'RARE'}],
@@ -3915,7 +3922,7 @@ function rareCine(r){
     const sparks=Array.from({length:46},(_,i)=>{const a=Math.random()*Math.PI*2,d=25+Math.random()*45;return `<i class="spark" style="background:${col[i%col.length]};box-shadow:0 0 10px ${col[i%col.length]};--x:${(Math.cos(a)*d).toFixed(1)}vmax;--y:${(Math.sin(a)*d).toFixed(1)}vmax;animation-delay:${(T0+Math.random()*.4).toFixed(2)}s"></i>`}).join('');
     const stars=S?Array.from({length:260},()=>`${(Math.random()*200-100).toFixed(1)}vmax ${(Math.random()*200-100).toFixed(1)}vmax 0 ${Math.random()<.15?1:0}px ${['#fff','#ffd9d9','#cfe0ff','#ffe9a8'][Math.random()*4|0]}`).join(','):'';
     s.innerHTML=`${S?`<div class="gal"><div class="neb"></div><div class="arm"></div><div class="stars" style="box-shadow:${stars}"></div></div><canvas class="drg"></canvas><div class="lyxfog"><i class="eye l"></i><i class="eye r"></i></div><div class="lb t"></div><div class="lb b"></div>`:''}<div class="rays"></div><div class="orb"></div>${sparks}<div class="card3" style="background-image:url(${A(CARDS[r.id].img)})"></div>
-      <div class="rtx">${{S:'SECRET',L:'LEGENDARY',M:'MYSTIC',G:'LEGEND'}[r.k]||'SUPER RARE'}</div><div class="rnm">${CARDS[r.id].name}<small>${{S:'ซีเคร็ท · โอกาส 0.0001%',L:'คาแรคเตอร์ · โอกาส 1%',M:'มิสติก · EBX-01 · โอกาส 0.1%',G:'เลเจนด์ · EBX-01 · โอกาส 2%'}[r.k]||'พาหนะ · โอกาส 3%'}${r.dup?` · ซ้ำ +${DUP_REFUND} เหรียญ`:' · NEW!'} · คลิกเพื่อไปต่อ</small></div>`;
+      <div class="rtx">${{S:'SECRET',L:'LEGENDARY',M:'MYSTIC',G:'LEGEND'}[r.k]||'SUPER RARE'}</div><div class="rnm">${CARDS[r.id].name}<small>${{S:'ซีเคร็ท · โอกาส 0.0001%',L:'คาแรคเตอร์ · โอกาส 1%',M:'มิสติก · EBX-01 · โอกาส 0.05%',G:'เลเจนด์ · EBX-01 · โอกาส 2%'}[r.k]||'พาหนะ · โอกาส 3%'}${r.dup?` · ซ้ำ +${DUP_REFUND} เหรียญ`:' · NEW!'} · คลิกเพื่อไปต่อ</small></div>`;
     s.className='show '+r.k;s.style.setProperty('--T',T0+'s');
     if(S)addAura(s.querySelector('.card3'),22);
     let stopDrg=null,gateSnd=null;
@@ -4561,7 +4568,7 @@ async function discard(p,c,src){
     popAt(p.leader,nm(c)+'!','#ffd38a');log(p,`${nm(c)} ถูกทิ้งจากมือ → จั่ว 1 ใบ และรีมานา 1`);
     await abilityDraw(p,1,c);remana(p,1);await sleep(300);
   }
-  if(c.id==='x_tianxing'){popAt(p.leader,nm(c)+'!','#9cc8ff');log(p,`${nm(c)} ถูกทิ้งจากมือ → รีมานา 2`);remana(p,2);await sleep(300)}
+  if(c.id==='x_tianxing'&&shipLead(p)){popAt(p.leader,nm(c)+'!','#9cc8ff');log(p,`${nm(c)} ถูกทิ้งจากมือ → รีมานา 2`);remana(p,2);await sleep(300)}
   if(c.id==='wc_fish'&&src&&isWC(src)){popAt(p.leader,nm(c)+'!','#ffd38a');log(p,`${nm(c)} ถูกทิ้งจากความสามารถของ ${nm(src)} → จั่ว 1 ใบ`);await abilityDraw(p,1,c)}
 }
 async function discardChoose(p,src,title,filter){
@@ -4571,7 +4578,9 @@ async function discardChoose(p,src,title,filter){
 }
 // put cards from the drop zone on the bottom of the deck (อันนี้ใช่เหวยเฉินไหม → รีมานา 1)
 // cards that just went back into the deck: เทียนซิงยวี่ (EBX-01) → รีมานา 4
-async function backToDeck(p,arr){const n=arr.filter(c=>c.id==='x_tianxing').length;if(n){log(p,'เทียนซิงยวี่ถูกนำกลับเข้ากอง → รีมานา 4');remana(p,4*n);await sleep(300)}}
+// EBX เทียนซิงยวี่: every skill works only while our character is of the "เรือหลวง" tribe
+const shipLead=p=>!!p&&!!p.leader&&hasTag(p.leader,SHIP);
+async function backToDeck(p,arr){const n=shipLead(p)?arr.filter(c=>c.id==='x_tianxing').length:0;if(n){log(p,'เทียนซิงยวี่ถูกนำกลับเข้ากอง → รีมานา 4');remana(p,4*n);await sleep(300)}}
 function trashToBottom(p,arr){
   for(const c of arr){p.trash.splice(p.trash.indexOf(c),1);p.deck.unshift(strip(c))}
   log(p,`นำ ${arr.length} ใบจากช่องดรอปกลับใต้กอง`);render();backToDeck(p,arr);
@@ -4596,10 +4605,10 @@ async function summonAnywhere(p,card,fromTxt,keep){
 
 async function onPlay(p,u){
   const o=opp(p);
-  if(u.id==='x_tianxing'){log(p,'เทียนซิงยวี่เข้าสู่สนาม → รีมานา 1');remana(p,1);await sleep(300)}
+  if(u.id==='x_tianxing'&&shipLead(p)){log(p,'เทียนซิงยวี่เข้าสู่สนาม → รีมานา 1');remana(p,1);await sleep(300)}
   if(u.id==='x_yaoxing1'&&!p.once.x_yaoxing1&&p.trash.filter(c=>hasTag(c,SAN)).length>=3){
     const cands=p.trash.filter(c=>hasTag(c,SAN));
-    const t=await choose(p,{title:'เหยาซิง: นำการ์ดเผ่า "สามพี่น้อง" จากช่องครอบ 3 ใบกลับเข้ากอง → จั่ว 1 และรีมานา 2?',sub:'เลือกให้ครบ 3 ใบ หรือกด "ข้าม"',items:cardItems(cands,p),min:0,max:3,okText:'นำกลับเข้ากอง',ai:it=>it.slice(0,3).map(i=>i.value)});
+    const t=await choose(p,{title:'เหยาซิง: นำการ์ดเผ่า "สามพี่น้อง" จากช่องดรอป 3 ใบกลับเข้ากอง → จั่ว 1 และรีมานา 2?',sub:'เลือกให้ครบ 3 ใบ หรือกด "ข้าม"',items:cardItems(cands,p),min:0,max:3,okText:'นำกลับเข้ากอง',ai:it=>it.slice(0,3).map(i=>i.value)});
     if(t.length===3){
       p.once.x_yaoxing1=1;
       for(const c of t){p.trash.splice(p.trash.indexOf(c),1);p.deck.push(strip(c))}
@@ -4611,8 +4620,8 @@ async function onPlay(p,u){
   if(u.id==='x_bingyue2'&&!p.once.x_bingyue2&&p.life.length<=3&&p.allies.length<3){
     const cands=p.trash.filter(c=>D(c).type==='ally'&&hasTag(c,SAN)&&p.manaActive>=(D(c).cost||0));
     if(cands.length){
-      const t=await choose(p,{title:'ปิงเย่ว: เรียกพวกพ้องเผ่า "สามพี่น้อง" จากช่องครอบ 1 ใบลงสนาม (จ่ายค่ามานา)?',items:cardItems(cands,p,c=>'มานา '+(D(c).cost||0)),min:0,max:1,okText:'เรียกลงสนาม',ai:it=>[it.sort((a,b)=>aiValue(p,b.value)-aiValue(p,a.value))[0].value]});
-      if(t.length){p.once.x_bingyue2=1;const x=t[0];p.trash.splice(p.trash.indexOf(x),1);pay(p,D(x).cost||0);await summon(p,x,'ช่องครอบ')}
+      const t=await choose(p,{title:'ปิงเย่ว: เรียกพวกพ้องเผ่า "สามพี่น้อง" จากช่องดรอป 1 ใบลงสนาม (จ่ายค่ามานา)?',items:cardItems(cands,p,c=>'มานา '+(D(c).cost||0)),min:0,max:1,okText:'เรียกลงสนาม',ai:it=>[it.sort((a,b)=>aiValue(p,b.value)-aiValue(p,a.value))[0].value]});
+      if(t.length){p.once.x_bingyue2=1;const x=t[0];p.trash.splice(p.trash.indexOf(x),1);pay(p,D(x).cost||0);await summon(p,x,'ช่องดรอป')}
     }
   }
   if(u.id==='wc_where'&&!p.once.wc_where){
@@ -4701,9 +4710,9 @@ function whyNot(p,c){
   if(c.id==='x_wcwhere')return p.once.x_wcwhere?'ใช้ไปแล้วในเทิร์นนี้':'ต้องมีคาแรคเตอร์ชื่อ "เหวยเฉิน" พลังชีวิต 3 หรือต่ำกว่า และมีพวกพ้องในสนาม';
   if(c.id==='wc_firstday')return 'บนมือไม่มีการ์ดชื่อ "เหวยเฉิน" ให้ทิ้ง';
   if(c.id==='death'||c.id==='prepare')return 'ไม่มีพวกพ้องฝ่ายตรงข้ามที่เลือกได้';
-  if(c.id==='spare')return 'ไม่มีพวกพ้องเรือหลวงในช่องครอบ หรือสนามเต็ม';
+  if(c.id==='spare')return 'ไม่มีพวกพ้องเรือหลวงในช่องดรอป หรือสนามเต็ม';
   if(c.id==='goaway')return 'ไม่มีพวกพ้องเผ่าสามพี่น้องในสนาม';
-  if(c.id==='love')return 'ช่องครอบไม่มีการ์ดที่เลือกได้';
+  if(c.id==='love')return 'ช่องดรอปไม่มีการ์ดที่เลือกได้';
   return 'ยังใช้ไม่ได้ตอนนี้';
 }
 async function castEvent(p,c){
@@ -4737,23 +4746,23 @@ async function castEvent(p,c){
     case 'spare':{
       for(let k=0;k<(hasShip(p)?2:1);k++){
         const cands=p.trash.filter(x=>D(x).type==='ally'&&hasTag(x,SHIP));if(!cands.length||p.allies.length>=3)break;
-        const t=await choose(p,{title:'เรียกพวกพ้องเผ่าเรือหลวงจากช่องครอบ',items:cardItems(cands,p),min:0,max:1,ai:it=>[it.sort((a,b)=>aiValue(p,b.value)-aiValue(p,a.value))[0].value]});
-        if(!t.length)break;p.trash.splice(p.trash.indexOf(t[0]),1);await summon(p,t[0],'ช่องครอบ');
+        const t=await choose(p,{title:'เรียกพวกพ้องเผ่าเรือหลวงจากช่องดรอป',items:cardItems(cands,p),min:0,max:1,ai:it=>[it.sort((a,b)=>aiValue(p,b.value)-aiValue(p,a.value))[0].value]});
+        if(!t.length)break;p.trash.splice(p.trash.indexOf(t[0]),1);await summon(p,t[0],'ช่องดรอป');
       }
       break;}
     case 'goaway':{
       const cands=p.allies.filter(a=>hasTag(a,SAN));
-      const t=await choose(p,{title:'เลือกพวกพ้องเผ่าสามพี่น้องของเรา 1 ใบลงช่องครอบ',items:cardItems(cands,p),min:1,max:1,ai:it=>[it.sort((a,b)=>aiValue(p,a.value)-aiValue(p,b.value))[0].value]});
-      const a=t[0];removeAlly(p,a);p.trash.push(strip(a));log(p,`นำ ${nm(a)} ลงช่องครอบ`);render();await sleep(500);
+      const t=await choose(p,{title:'เลือกพวกพ้องเผ่าสามพี่น้องของเรา 1 ใบลงช่องดรอป',items:cardItems(cands,p),min:1,max:1,ai:it=>[it.sort((a,b)=>aiValue(p,a.value)-aiValue(p,b.value))[0].value]});
+      const a=t[0];removeAlly(p,a);p.trash.push(strip(a));log(p,`นำ ${nm(a)} ลงช่องดรอป`);render();await sleep(500);
       if(o.hand.length){const x=await choose(o,{title:`${p.name} บังคับให้คุณทิ้งการ์ดบนมือ 1 ใบ`,items:cardItems(o.hand,o),min:1,max:1,ai:aiDiscard(o)});await discard(o,x[0],c);await sleep(200)}
       if(a.id==='yaoxing'){await drawAnim(p,1);log(p,'ทิ้งเหยาซิง จั่ว 1 ใบ')}
       break;}
     case 'love':{
       p.once.love=1;const tg=loveTargets(p);
       const any=leaderNamed(p,'xuan')||p.leader.id==='jin';
-      const t=await choose(p,{title:'ความรักที่มีวันรอคอย: เลือกการ์ดจากช่องครอบขึ้นมือ',sub:any?'คาแรคเตอร์เป็นเซวียนเหิง → เลือกการ์ดอะไรก็ได้':'เลือกได้เฉพาะการ์ดเผ่าเรือหลวง',items:cardItems(tg,p),min:1,max:1,
+      const t=await choose(p,{title:'ความรักที่มีวันรอคอย: เลือกการ์ดจากช่องดรอปขึ้นมือ',sub:any?'คาแรคเตอร์เป็นเซวียนเหิง → เลือกการ์ดอะไรก็ได้':'เลือกได้เฉพาะการ์ดเผ่าเรือหลวง',items:cardItems(tg,p),min:1,max:1,
         ai:it=>[it.slice().sort((a,b)=>aiValue(p,b.value)-aiValue(p,a.value))[0].value]});
-      const x=t[0];p.trash.splice(p.trash.indexOf(x),1);p.hand.push(x);log(p,`นำ ${nm(x)} จากช่องครอบขึ้นมือ`);render();await sleep(600);break;}
+      const x=t[0];p.trash.splice(p.trash.indexOf(x),1);p.hand.push(x);log(p,`นำ ${nm(x)} จากช่องดรอปขึ้นมือ`);render();await sleep(600);break;}
     case 'meeting':
       for(const a of p.allies)if(hasTag(a,SHIP)){a.tmp.atk+=2000;popAt(a,'+2000','#8ff0a8')}
       log(p,'พวกพ้องเผ่าเรือหลวงทั้งหมด พลังโจมตี +2000 จนจบเทิร์น');render();await sleep(800);break;
@@ -4788,16 +4797,16 @@ async function castEvent(p,c){
     case 'x_meet':p.once.x_meet=1;await drawAnim(p,2);log(p,'การพบกัน ณ วันแรกพบ: จั่ว 2 ใบ');break;
     case 'x_sail':{
       const cands=p.allies.filter(a=>hasTag(a,SHIP));
-      const t=await choose(p,{title:'เตรียมออกเรือ: เลือกพวกพ้องเผ่าเรือหลวง 3 ใบลงช่องครอบ',items:cardItems(cands,p),min:3,max:3,okText:'ลงช่องครอบ',ai:it=>it.slice(0,3).map(i=>i.value)});
+      const t=await choose(p,{title:'เตรียมออกเรือ: เลือกพวกพ้องเผ่าเรือหลวง 3 ใบลงช่องดรอป',items:cardItems(cands,p),min:3,max:3,okText:'ลงช่องดรอป',ai:it=>it.slice(0,3).map(i=>i.value)});
       for(const a of t){removeAlly(p,a);p.trash.push(strip(a))}
-      log(p,`เตรียมออกเรือ: ${t.map(nm).join(', ')} ลงช่องครอบ → รีมานาทั้งหมด`);render();await sleep(400);remana(p,p.manaRested);await sleep(400);
+      log(p,`เตรียมออกเรือ: ${t.map(nm).join(', ')} ลงช่องดรอป → รีมานาทั้งหมด`);render();await sleep(400);remana(p,p.manaRested);await sleep(400);
       break;}
     case 'x_wcwhere':{
       p.once.x_wcwhere=1;
-      const t=await choose(p,{title:'ที่นี้ที่ไหนเนี่ยห๊ะ: เลือกพวกพ้องในสนาม 1 ใบลงช่องครอบ (ถือว่าถูกทิ้งจากมือ)',sub:'จบเทิร์นใบนี้จะกลับลงสนาม',items:cardItems(p.allies,p),min:1,max:1,ai:it=>[it.slice().sort((a,b)=>aiValue(p,a.value)-aiValue(p,b.value))[0].value]});
-      const a=t[0];removeAlly(p,a);const ac=strip(a);p.trash.push(ac);p.wcBack=ac;log(p,`${nm(a)} ลงช่องครอบ (ถือว่าถูกทิ้งจากมือ)`);render();await sleep(400);
+      const t=await choose(p,{title:'ที่นี้ที่ไหนเนี่ยห๊ะ: เลือกพวกพ้องในสนาม 1 ใบลงช่องดรอป (ถือว่าถูกทิ้งจากมือ)',sub:'จบเทิร์นใบนี้จะกลับลงสนาม',items:cardItems(p.allies,p),min:1,max:1,ai:it=>[it.slice().sort((a,b)=>aiValue(p,a.value)-aiValue(p,b.value))[0].value]});
+      const a=t[0];removeAlly(p,a);const ac=strip(a);p.trash.push(ac);p.wcBack=ac;log(p,`${nm(a)} ลงช่องดรอป (ถือว่าถูกทิ้งจากมือ)`);render();await sleep(400);
       if(['wc_stay','wc_diver','wc_flood'].includes(a.id)){log(p,`${nm(a)} ถูกทิ้ง → จั่ว 1 ใบ และรีมานา 1`);await abilityDraw(p,1,a);remana(p,1)}
-      if(a.id==='x_tianxing'){log(p,`${nm(a)} ถูกทิ้ง → รีมานา 2`);remana(p,2)}
+      if(a.id==='x_tianxing'&&shipLead(p)){log(p,`${nm(a)} ถูกทิ้ง → รีมานา 2`);remana(p,2)}
       const n=p.vehicle&&p.vehicle.id==='wc_teahouse'?2:1;
       for(let k=0;k<n&&p.allies.length<3;k++){
         const cands=[...new Map(p.deck.filter(x=>D(x).type==='ally'&&isWC(x)).map(x=>[x.id,x])).values()];if(!cands.length)break;
@@ -4813,7 +4822,8 @@ async function castEvent(p,c){
         ai:it=>it.length?[it.sort((a,b)=>aiValue(p,b.value)-aiValue(p,a.value))[0].value]:[]}):[];
       for(const x of t)top.splice(top.indexOf(x),1);
       p.deck.push(...top);shuffle(p.deck);render();
-      if(t.length){pay(p,D(t[0]).cost||0);await summon(p,t[0],'กองการ์ด')}
+      if(t.length){const x=t[0];pay(p,D(x).cost||0);await summon(p,x,'กองการ์ด');
+        if(p.allies.includes(x)){x.sick=false;popAt(x,'โจมตีได้ทันที!','#ffd76a');log(p,`คืนจันทร์วันพักผ่อน: ${nm(x)} โจมตีได้ทันที`);render()}} // the called card can attack right away
       break;}
     case 'wc_firstday':{
       p.once.wc_firstday=1;
@@ -4825,7 +4835,13 @@ async function castEvent(p,c){
 }
 async function playVehicle(p,c){
   chainReset();pay(p,D(c).cost);p.hand.splice(p.hand.indexOf(c),1);
-  if(p.vehicle){p.trash.push(strip(p.vehicle))}
+  // ร้านขาประจำเหวยเฉิน can be installed any number of times: another copy stacks on the one in play (deck limit stays 4)
+  if(c.id==='wc_teahouse'&&p.vehicle&&p.vehicle.id==='wc_teahouse'){
+    p.vehicle.extra=[...(p.vehicle.extra||[]),strip(c)];const n=1+p.vehicle.extra.length;
+    log(p,`ติดตั้งพาหนะ ${nm(c)} ซ้อน (รวม ${n} ใบ) — การ์ดชื่อ "เหวยเฉิน" พลังโจมตี +${n*1000}`);
+    render();await spotlight(c,p,`${p.name} ติดตั้งพาหนะซ้อน · ${n} ใบ`);flash('#ffd38a');popAt(p.vehicle,`×${n}`,'#ffd76a');render();await sleep(500);return;
+  }
+  if(p.vehicle){p.trash.push(strip(p.vehicle));for(const x of p.vehicle.extra||[])p.trash.push(x)}
   p.vehicle=unitize(c);render();await sleep(400);
   if(c.id!=='ship'){log(p,`ติดตั้งพาหนะ ${nm(c)}`);await spotlight(c,p,`${p.name} ติดตั้งพาหนะ`);flash('#ffd38a');render();await sleep(500);return}
   log(p,'ติดตั้งพาหนะ เรือหลวงสุริยคราส!');
@@ -4840,8 +4856,8 @@ async function runTrigger(p,c){
   if(c.id==='meeting'||c.id==='wc_queue'){p.hand.push(c);await drawAnim(p,1);log(p,'จั่ว 1 ใบ และนำการ์ดนี้ขึ้นมือ');return}
   if(c.id==='inn'){await drawAnim(p,2);log(p,'ทริกเกอร์โรงเตี๊ยมของพีช: จั่ว 2 ใบ')}
   if(c.id==='x_shield'&&p.life.length<=3&&leaderNamed(p,'xuan')&&p.deck.length){p.life.push(p.deck.pop());popAt(p.leader,'+1 ชีวิต','#8ff0a8');log(p,'โล่แห่งเวทย์: นำการ์ดบนสุดเข้าพลังชีวิต');render();await sleep(500)}
-  if(c.id==='x_sail'&&p.allies.length){const t=await choose(p,{title:'เตรียมออกเรือ (ทริกเกอร์): นำพวกพ้องของเรา 1 ใบลงช่องครอบ',items:cardItems(p.allies,p),min:1,max:1,ai:it=>[it.slice().sort((a,b)=>aiValue(p,a.value)-aiValue(p,b.value))[0].value]});
-    const a=t[0];removeAlly(p,a);p.trash.push(strip(a));log(p,`${nm(a)} ลงช่องครอบ`);render();await sleep(400)}
+  if(c.id==='x_sail'&&p.allies.length){const t=await choose(p,{title:'เตรียมออกเรือ (ทริกเกอร์): นำพวกพ้องของเรา 1 ใบลงช่องดรอป',items:cardItems(p.allies,p),min:1,max:1,ai:it=>[it.slice().sort((a,b)=>aiValue(p,a.value)-aiValue(p,b.value))[0].value]});
+    const a=t[0];removeAlly(p,a);p.trash.push(strip(a));log(p,`${nm(a)} ลงช่องดรอป`);render();await sleep(400)}
   if(c.id==='x_meet'){for(let k=0;k<2&&p.hand.length;k++)await discardChoose(p,c,`การพบกัน ณ วันแรกพบ (ทริกเกอร์): ทิ้งการ์ดบนมือ (${k+1}/2)`)}
   if(c.id==='death'){
     const cands=o.allies.filter(a=>!isProtected(o,a));
@@ -4858,7 +4874,9 @@ async function runTrigger(p,c){
 // ---------- battle ----------
 // a card can only attack while it is still on the field (it may have been destroyed earlier this turn)
 const canAttack=(p,u)=>G.cur===p&&G.turn>firstRound()&&units(p).includes(u)&&!u.rested&&!u.sick&&!u.noAttack;
-const canGoOn=(p,a)=>a.id==='yaoming'||(a.id==='weichen'&&leaderNamed(p,'xuan'));
+// พวกพ้อง เหวยเฉิน: GO ON + defence +2000 when our character is "เซวียนเหิง" or "เหวยเฉิน"
+function wcAllyBoost(p){return leaderNamed(p,'xuan')||leaderNamed(p,'weichenL')}
+const canGoOn=(p,a)=>a.id==='yaoming'||(a.id==='weichen'&&wcAllyBoost(p));
 function whyNoAttack(p,u){
   if(G.turn<=firstRound())return 'เทิร์นแรกยังโจมตีไม่ได้';
   if(u.rested)return 'การ์ดนอนอยู่ (โจมตีไปแล้ว)';
@@ -4873,7 +4891,7 @@ async function attack(p,u,target){
   u.rested=true;render();await sleep(300);
   if(u.id==='yaoxing'){
     const cands=p.trash.filter(c=>hasTag(c,SAN));
-    if(cands.length){const t=await choose(p,{title:'เหยาซิง: นำการ์ดเผ่าสามพี่น้องในช่องครอบกลับใต้กองการ์ด?',items:cardItems(cands,p),min:0,max:1,ai:it=>[it[0].value]});
+    if(cands.length){const t=await choose(p,{title:'เหยาซิง: นำการ์ดเผ่าสามพี่น้องในช่องดรอปกลับใต้กองการ์ด?',items:cardItems(cands,p),min:0,max:1,ai:it=>[it[0].value]});
       for(const c of t){p.trash.splice(p.trash.indexOf(c),1);p.deck.unshift(c);log(p,`นำ ${nm(c)} กลับใต้กอง`)}await backToDeck(p,t)}
   }
   if(u.id==='x_bingyue2'){
@@ -4903,7 +4921,7 @@ async function attack(p,u,target){
   }
   const shields=o.allies.filter(a=>D(a).shield&&a!==target); // the card being attacked can't SHIELD for itself
   if(shields.length&&atk()>=defNow()){
-    const t=await choose(o,{title:`SHIELD: นำ${[...new Set(shields.map(nm))].join(' / ')}ลงช่องครอบ เพื่อยกเลิกการโจมตีนี้?`,sub:sub(),items:cardItems(shields,o),min:0,max:1,
+    const t=await choose(o,{title:`SHIELD: นำ${[...new Set(shields.map(nm))].join(' / ')}ลงช่องดรอป เพื่อยกเลิกการโจมตีนี้?`,sub:sub(),items:cardItems(shields,o),min:0,max:1,
       ai:it=>(DIFF>1&&target===o.leader&&o.life.length<=(DIFF>=3?2:1))?[it[0].value]:[]});
     if(t.length)await spotlight(t[0],o,`${o.name} · SHIELD!`);
     // หลงเยี่ยซิน (1/turn): destroy one of our allies to cancel that SHIELD — the shield card stays, the attack goes on
@@ -4918,7 +4936,7 @@ async function attack(p,u,target){
         t.length=0;
       }
     }
-    if(t.length){removeAlly(o,t[0]);o.trash.push(strip(t[0]));log(o,`SHIELD! ${nm(t[0])}ลงช่องครอบ ยกเลิกการโจมตี`);render();emit({f:'sfx',n:'guard'});sfx('guard');await bannerX(o,'SHIELD!','SHIELD!','การโจมตีถูกยกเลิก',1300);return}
+    if(t.length){removeAlly(o,t[0]);o.trash.push(strip(t[0]));log(o,`SHIELD! ${nm(t[0])}ลงช่องดรอป ยกเลิกการโจมตี`);render();emit({f:'sfx',n:'guard'});sfx('guard');await bannerX(o,'SHIELD!','SHIELD!','การโจมตีถูกยกเลิก',1300);return}
   }
   // character เหวยเฉิน [COUNTER]: rock-paper-scissors (once per turn) — win = the battle is cancelled
   if(o.leader.id==='weichenL'&&o.rpsT!==G.turn&&atk()>=defNow()){
@@ -5077,17 +5095,20 @@ async function castCounter(o,c,p,u){
   if(c.id==='x_shield'){res='cancel';log(o,'โล่แห่งเวทย์ที่ไม่มีวันแตกสลาย: ยกเลิกการโจมตี');emit({f:'sfx',n:'guard'});sfx('guard');await bannerX(o,'ยกเลิกการโจมตี!','ยกเลิกการโจมตี!','โล่แห่งเวทย์ที่ไม่มีวันแตกสลาย',1200)}
   if(c.id==='x_sail'){
     const cands=o.allies.filter(a=>hasTag(a,SHIP));
-    const t=await choose(o,{title:'เตรียมออกเรือ: เลือกพวกพ้องเผ่าเรือหลวง 3 ใบลงช่องครอบ',items:cardItems(cands,o),min:3,max:3,okText:'ลงช่องครอบ',ai:it=>it.slice(0,3).map(i=>i.value)});
+    const t=await choose(o,{title:'เตรียมออกเรือ: เลือกพวกพ้องเผ่าเรือหลวง 3 ใบลงช่องดรอป',items:cardItems(cands,o),min:3,max:3,okText:'ลงช่องดรอป',ai:it=>it.slice(0,3).map(i=>i.value)});
     for(const a of t){removeAlly(o,a);o.trash.push(strip(a))}
-    log(o,`เตรียมออกเรือ: ${t.map(nm).join(', ')} ลงช่องครอบ → รีมานาทั้งหมด`);render();await sleep(400);remana(o,o.manaRested);await sleep(400);
+    log(o,`เตรียมออกเรือ: ${t.map(nm).join(', ')} ลงช่องดรอป → รีมานาทั้งหมด`);render();await sleep(400);remana(o,o.manaRested);await sleep(400);
   }
   if(c.id==='x_wckid'){
     o.once.x_wckid=1;
     const cands=o.hand.filter(x=>D(x).type==='ally'&&isWC(x));
     const t=await choose(o,{title:'ก็ข้านี้ไง: ทิ้งพวกพ้องชื่อ "เหวยเฉิน" บนมือกี่ใบก็ได้',items:cardItems(cands,o),min:1,max:cands.length,okText:'ทิ้ง',ai:it=>it.slice(0,1).map(i=>i.value)});
     for(const x of t)if(o.hand.includes(x))await discard(o,x,c);
-    if(t.length&&leaderNamed(o,'weichenL')&&p.allies.length){
-      const s=await choose(o,{title:'เลือกพวกพ้องฝ่ายตรงข้ามกี่ใบก็ได้ — การ์ดเหล่านั้นโจมตีไม่ได้',sub:'ถ้าเลือกตัวที่กำลังโจมตี การโจมตีนี้จะถูกยกเลิก',items:cardItems(p.allies,p),min:0,max:p.allies.length,okText:'ห้ามโจมตี',ai:it=>it.map(i=>i.value)});
+    // choose as many opposing allies as the number of "เหวยเฉิน" discarded
+    const n=Math.min(t.length,p.allies.length);
+    if(n&&leaderNamed(o,'weichenL')){
+      const s=await choose(o,{title:`เลือกพวกพ้องฝ่ายตรงข้าม ${n} ใบ (เท่ากับจำนวนเหวยเฉินที่ทิ้ง) — การ์ดเหล่านั้นโจมตีไม่ได้`,sub:'ถ้าเลือกตัวที่กำลังโจมตี การโจมตีนี้จะถูกยกเลิก',items:cardItems(p.allies,p),min:n,max:n,okText:'ห้ามโจมตี',
+        ai:it=>{const s=it.some(i=>i.value===u)?[u]:[];for(const i of it){if(s.length>=n)break;if(!s.includes(i.value))s.push(i.value)}return s}});
       for(const a of s){a.noAttack=true;popAt(a,'โจมตีไม่ได้!','#9fd0ff')}
       render();await sleep(500);
       if(s.includes(u)){res='cancel';log(o,`${nm(u)} โจมตีไม่ได้ — การโจมตีถูกยกเลิก`);await bannerX(o,'ยกเลิกการโจมตี!','ยกเลิกการโจมตี!',`${nm(u)} โจมตีไม่ได้`,1100)}
@@ -5121,7 +5142,7 @@ async function damage(o){
   // เซวียนเหิง (deck card): our life was hit → it goes to the drop and the card under it is the character again
   if(wasX2&&o.leader.id==='x_xuan2'){
     const x=o.leader,old=unitize({...x.under});old.sick=false;old.rested=x.rested;
-    o.leader=old;o.trash.push(strip(x));log(o,'เซวียนเหิง (การ์ดทับ) ลงช่องครอบ — คาแรคเตอร์เดิมกลับมา');popAt(old,'กลับมา','#d0c0c8');render();await sleep(600);
+    o.leader=old;o.trash.push(strip(x));log(o,'เซวียนเหิง (การ์ดทับ) ลงช่องดรอป — คาแรคเตอร์เดิมกลับมา');popAt(old,'กลับมา','#d0c0c8');render();await sleep(600);
   }
   // our life became 0 → เซวียนเหิง (deck card) from the hand may be laid over the character
   if(xuan2Ready(o)){
@@ -5132,9 +5153,9 @@ async function damage(o){
     const cands=[...o.deck,...o.trash].filter(x=>D(x).type==='ally'&&hasTag(x,SHIP));
     const uniq=[...new Map(cands.map(x=>[x.id+(o.deck.includes(x)?'d':'t'),x])).values()];
     if(uniq.length){
-      const t=await choose(o,{title:'เซวียนเหิง: ชีวิตเหลือ 3 หรือน้อยกว่า — เรียกพวกพ้องเผ่าเรือหลวงลงสนาม?',items:cardItems(uniq,o,x=>o.deck.includes(x)?'จากกองการ์ด':'จากช่องครอบ'),min:0,max:1,
+      const t=await choose(o,{title:'เซวียนเหิง: ชีวิตเหลือ 3 หรือน้อยกว่า — เรียกพวกพ้องเผ่าเรือหลวงลงสนาม?',items:cardItems(uniq,o,x=>o.deck.includes(x)?'จากกองการ์ด':'จากช่องดรอป'),min:0,max:1,
         ai:it=>[it.sort((a,b)=>aiValue(o,b.value)-aiValue(o,a.value))[0].value]});
-      if(t.length){o.xuanT=G.turn;const x=t[0];const fromDeck=o.deck.includes(x);(fromDeck?o.deck:o.trash).splice((fromDeck?o.deck:o.trash).indexOf(x),1);if(fromDeck)shuffle(o.deck);await summon(o,x,fromDeck?'กองการ์ด':'ช่องครอบ')}
+      if(t.length){o.xuanT=G.turn;const x=t[0];const fromDeck=o.deck.includes(x);(fromDeck?o.deck:o.trash).splice((fromDeck?o.deck:o.trash).indexOf(x),1);if(fromDeck)shuffle(o.deck);await summon(o,x,fromDeck?'กองการ์ด':'ช่องดรอป')}
     }
   }
 }
@@ -5210,7 +5231,7 @@ async function endTurn(){
   // ที่นี้ที่ไหนเนี่ยห๊ะ: the summoned เหวยเฉิน go under the deck, the card sent to the drop comes back
   const temps=cp.allies.filter(a=>a.wcTemp);
   if(temps.length){for(const a of temps){removeAlly(cp,a);cp.deck.unshift(strip(a))}log(cp,`จบเทิร์น: ${temps.map(nm).join(', ')} กลับใต้กอง`);render();await backToDeck(cp,temps);await sleep(300)}
-  if(cp.wcBack){const b=cp.wcBack;cp.wcBack=null;if(cp.trash.includes(b)&&cp.allies.length<3){cp.trash.splice(cp.trash.indexOf(b),1);log(cp,`จบเทิร์น: ${nm(b)} กลับลงสนาม`);await summon(cp,b,'ช่องครอบ')}}
+  if(cp.wcBack){const b=cp.wcBack;cp.wcBack=null;if(cp.trash.includes(b)&&cp.allies.length<3){cp.trash.splice(cp.trash.indexOf(b),1);log(cp,`จบเทิร์น: ${nm(b)} กลับลงสนาม`);await summon(cp,b,'ช่องดรอป')}}
   for(const a of cp.allies.slice())if(a.expire){log(cp,`จบเทิร์น: ${nm(a)} (ลงมาด้วยความสามารถ) ถูกทำลาย`);await destroy(cp,a,null)}
   for(const a of cp.allies.slice())if(a.id==='wc_farmer'&&a.attacked){
     log(cp,'จบเทิร์น: เหวยเฉินฟาร์มเมอร์เคยโจมตี → ทำลายตัวเอง และทิ้งการ์ดบนมือ 1 ใบ');
@@ -5348,9 +5369,9 @@ async function aiTurn(p){
 }
 async function actMini(p,a){
   await spotlight(a,p,`${p.name} · [ACT] เหยาซิงมินิ`);
-  removeAlly(p,a);p.trash.push(strip(a));log(p,'[ACT] เหยาซิงมินิ ลงช่องครอบ');render();await sleep(400);
+  removeAlly(p,a);p.trash.push(strip(a));log(p,'[ACT] เหยาซิงมินิ ลงช่องดรอป');render();await sleep(400);
   const cands=p.trash.filter(c=>hasTag(c,SAN)&&c.uid!==a.uid);
-  if(cands.length){const t=await choose(p,{title:'เหยาซิงมินิ: เลือกการ์ดเผ่าสามพี่น้องจากช่องครอบขึ้นมือ',items:cardItems(cands,p),min:1,max:1,ai:it=>[it.sort((x,y)=>aiValue(p,y.value)-aiValue(p,x.value))[0].value]});
+  if(cands.length){const t=await choose(p,{title:'เหยาซิงมินิ: เลือกการ์ดเผ่าสามพี่น้องจากช่องดรอปขึ้นมือ',items:cardItems(cands,p),min:1,max:1,ai:it=>[it.sort((x,y)=>aiValue(p,y.value)-aiValue(p,x.value))[0].value]});
     p.trash.splice(p.trash.indexOf(t[0]),1);p.hand.push(t[0]);log(p,`นำ ${nm(t[0])} ขึ้นมือ`);render();await sleep(400)}
 }
 
@@ -5404,7 +5425,7 @@ function handActions(c,p=G.me){
     return [
       ['ลงสนาม (ช่องว่าง)'+(d.cost?` · มานา ${d.cost}`:''),()=>{take();pay(p,d.cost||0);return summon(p,c)},p.allies.length<3&&!blocked&&p.manaActive>=(d.cost||0),blocked?'ลงซ้ำไม่ได้เทิร์นนี้':p.manaActive<(d.cost||0)?`มานาไม่พอ (ต้องใช้ ${d.cost})`:'สนามเต็ม — ใช้ "ลงทับ" แทน'],
       ['⤵ ลงทับพวกพ้อง (ใบเก่าลงช่องดรอป)',async()=>{
-        const t=await choose(p,{title:`ลง ${nm(c)} ทับพวกพ้องใบไหน?`,sub:'พวกพ้องที่ถูกทับจะลงช่องดรอป (ช่องครอบ)',items:cardItems(p.allies,p,a=>String(D(a).power)),min:0,max:1,okText:'ลงทับ'});
+        const t=await choose(p,{title:`ลง ${nm(c)} ทับพวกพ้องใบไหน?`,sub:'พวกพ้องที่ถูกทับจะลงช่องดรอป',items:cardItems(p.allies,p,a=>String(D(a).power)),min:0,max:1,okText:'ลงทับ'});
         if(t.length){take();pay(p,d.cost||0);await summon(p,c,null,t[0])}
       },p.allies.length>0&&!blocked&&p.manaActive>=(d.cost||0),blocked?'ลงซ้ำไม่ได้เทิร์นนี้':p.manaActive<(d.cost||0)?`มานาไม่พอ (ต้องใช้ ${d.cost})`:'ยังไม่มีพวกพ้องให้ทับ'],
       ...(c.id==='wc_isit'?[['[ACT] ทิ้งใบนี้ → หยิบ "เหวยเฉิน" จากดรอปขึ้นมือ',()=>actIsit(p,c),p.trash.some(isWC),'ช่องดรอปไม่มีการ์ดชื่อ "เหวยเฉิน"']]:[]),
@@ -5427,7 +5448,7 @@ function unitActions(u,p=G.me){
     acts.push(['💧 ติดมานา (+1000)',async()=>{p.manaActive--;u.mana++;log(p,`ติดมานาให้ ${nm(u)}`);render();popAt(u,'+1000','#9cc8ff');await sleep(300)},p.manaActive>0,'ไม่มีมานาพร้อมใช้']);
   }
   if(u.id==='longyexin'&&u===p.leader)acts.push(['[ACT] ทำลายพวกพ้องของเรา 1 ตน → จั่ว 1 ใบ',()=>actLyx(p),!p.once.lyxAct&&p.allies.length>0,p.once.lyxAct?'ใช้ไปแล้วเทิร์นนี้':'ไม่มีพวกพ้องในสนาม']);
-  if(u.id==='yaoxingmini')acts.push(['[ACT] ลงช่องครอบ → หยิบสามพี่น้องขึ้นมือ',()=>actMini(p,u),true]);
+  if(u.id==='yaoxingmini')acts.push(['[ACT] ลงช่องดรอป → หยิบสามพี่น้องขึ้นมือ',()=>actMini(p,u),true]);
   if(u.id==='wc_teahouse'){
     // usable whenever 5 เหวยเฉิน are in the drop; the destroy part just has no target if the opponent has none / they're protected
     const n=p.trash.filter(isWC).length;
@@ -5502,6 +5523,11 @@ function unitEl(p,u){
     const b=document.createElement('div');b.className='pow'+(v>base?' up':v<base?' down':'');b.textContent=v;e.append(b);
   }
   if(u.mana){const m=document.createElement('div');m.className='mbadge';m.textContent='+'+u.mana;e.append(m)}
+  if(u.extra&&u.extra.length){const s=document.createElement('div');s.className='stackbadge';s.textContent='×'+(1+u.extra.length);s.title=`ติดตั้งซ้อน ${1+u.extra.length} ใบ`;e.append(s)}
+  // a card laid over another (เซวียนเหิง ร่าง 2): the covered card peeks out — tap it to read it
+  if(u.under&&CARDS[u.under.id]){const k=document.createElement('div');k.className='underpeek';k.title=`การ์ดที่ถูกทับ: ${CARDS[u.under.id].name} — แตะเพื่อดู`;
+    k.style.backgroundImage=`url(${A(D(u.under).img)})`;k.innerHTML='<span>ทับอยู่</span>';
+    k.onclick=ev=>{ev.stopPropagation();sfx('click');openDetail(u.under)};k.onmouseenter=()=>showInfo(u.under);e.append(k)}
   if(p===G.me&&myMain()&&canAttack(p,u))e.classList.add('can');
   if(u.noAttack)e.classList.add('dim');
   if(pinned&&pinned.uid===u.uid)e.classList.add('pinned');
@@ -5554,7 +5580,10 @@ function renderMat(mat,p,oppSide){
   if(G.players.length>2){const t=document.createElement('div');t.className='mattag';t.textContent=`${G.cur===p?'▶ ':isFoe?'🎯 ':''}${p===G.me?'คุณ':p.name} · ชีวิต ${p.life.length}${p.out?' · ☠ ออกแล้ว':''}`;mat.append(t)}
   zone(mat,'leader',oppSide).append(unitEl(p,p.leader));
   p.allies.forEach((a,i)=>zone(mat,'a'+i,oppSide).append(unitEl(p,a)));
-  if(p.vehicle)zone(mat,'vehicle',oppSide).append(unitEl(p,p.vehicle));
+  if(p.vehicle){const vz=zone(mat,'vehicle',oppSide);
+    // stacked copies (ร้านขาประจำเหวยเฉิน) sit behind the top one, fanned out so you can count them
+    (p.vehicle.extra||[]).forEach((x,i,arr)=>{const e=cardEl(x);e.classList.add('vstack');e.style.setProperty('--i',arr.length-i);e.onclick=ev=>{ev.stopPropagation();openDetail(x)};vz.append(e)});
+    vz.append(unitEl(p,p.vehicle))}
   if(p.guard&&p.guard.length){
     const gz=zone(mat,'guard',oppSide,'guard');
     for(const c of p.guard){const e=cardEl(c);tag(e,c,side,'guard');gz.append(e)}
@@ -5563,7 +5592,7 @@ function renderMat(mat,p,oppSide){
   const dk=zone(mat,'deck',oppSide);if(p.deck.length){const c=cardEl(null,{back:'back.png'});c.style.cursor='default';c.innerHTML=`<div class="cnt">${p.deck.length}</div>`;dk.append(c)}
   const md=zone(mat,'manaDeck',oppSide);if(p.manaDeck){const c=cardEl(null,{back:'back_mana.png'});c.style.cursor='default';c.innerHTML=`<div class="cnt">${p.manaDeck}</div>`;md.append(c)}
   const tr=zone(mat,'trash',oppSide);
-  if(p.trash.length){const top=p.trash[p.trash.length-1];const c=cardEl(top);tag(c,top,side,'trash');c.innerHTML=`<div class="cnt">${p.trash.length}</div>`;c.onclick=ev=>{ev.stopPropagation();viewPile(`ช่องครอบของ ${p.name} (${p.trash.length} ใบ)`,p.trash)};tr.append(c)}
+  if(p.trash.length){const top=p.trash[p.trash.length-1];const c=cardEl(top);tag(c,top,side,'trash');c.innerHTML=`<div class="cnt">${p.trash.length}</div>`;c.onclick=ev=>{ev.stopPropagation();viewPile(`ช่องดรอปของ ${p.name} (${p.trash.length} ใบ)`,p.trash)};tr.append(c)}
   const ma=zone(mat,'manaArea',oppSide,'manaarea');
   for(let i=0;i<p.manaActive;i++)ma.append(cardEl(null,{back:'mana.png'}));
   for(let i=0;i<p.manaRested;i++){const c=cardEl(null,{back:'mana.png'});c.classList.add('spent');ma.append(c)}
@@ -5646,14 +5675,14 @@ const RULES=`<div class="rules">
 <p><b>ลิมิตมือ:</b> จบเทิร์นแล้วถือการ์ดบนมือได้ไม่เกิน <b>8 ใบ</b> ถ้าเกินต้องเลือกทิ้งจนเหลือ 8</p>
 <p><b>เฟสหลัก:</b> ลงพวกพ้องได้สูงสุด 3 ช่อง (จ่ายมานาตามเลขในวงกลมฟ้าบนการ์ด ใบที่ไม่มีเลข = ไม่เสียมานา) · ใช้เหตุการณ์/พาหนะโดยจ่ายมานาตามเลขบนการ์ด · ติดมานาให้คาแรคเตอร์/พวกพ้อง ใบละ <b>+1000</b> (เฉพาะตาตัวเอง) · โจมตี</p>
 <p><b>โจมตี:</b> พลิกการ์ดนอนแล้วเลือกเป้าหมาย: คาแรคเตอร์ หรือพวกพ้องที่ "นอน" อยู่ พวกพ้องที่เพิ่งลงยังโจมตีไม่ได้ และทั้งสองฝ่ายโจมตีไม่ได้ในเทิร์นแรกของตัวเอง</p>
-<p><b>เรียกทับ:</b> ลงพวกพ้องทับพวกพ้องที่อยู่ในสนามได้ ใบที่ถูกทับจะลง<b>ช่องดรอป</b> (ช่องครอบ)</p>
+<p><b>เรียกทับ:</b> ลงพวกพ้องทับพวกพ้องที่อยู่ในสนามได้ ใบที่ถูกทับจะลง<b>ช่องดรอป</b></p>
 <p><b>ค่า + ด้านซ้ายของการ์ด:</b> <span class="vtab g">+ สีเทา</span> = พลังป้องกัน (วางลงช่องป้องกันตอนถูกโจมตี) · <span class="vtab r">+ สีแดง</span> = พลังโจมตี (ทิ้งจากมือตอนโจมตี)</p>
 <p><b>ช่องป้องกัน (เหมือนแวนการ์ด):</b> ตอนถูกโจมตี วางการ์ดจากมือลงช่องป้องกันได้<b>กี่ใบก็ได้</b> บวกค่า + สีเทาเข้าไปในพลังป้องกัน เช่น โดนตี 8000 แต่ป้องกัน 6000 ต้องวางให้ได้อีกอย่างน้อย +2001 · พวกพ้องที่มี <b>GO ON</b> ย้ายจากสนามมาช่องป้องกันได้ · จบการต่อสู้แล้วการ์ดในช่องป้องกันลงช่องดรอปทั้งหมด</p>
-<p><b>ป้องกันอื่นๆ:</b> <b>SHIELD</b> นำการ์ดลงช่องครอบเพื่อยกเลิกการโจมตี · <b>[COUNTER]</b> การ์ดเหตุการณ์ที่ใช้ได้ตอนเรากำลังถูกโจมตี (จ่ายมานา)</p>
+<p><b>ป้องกันอื่นๆ:</b> <b>SHIELD</b> นำการ์ดลงช่องดรอปเพื่อยกเลิกการโจมตี · <b>[COUNTER]</b> การ์ดเหตุการณ์ที่ใช้ได้ตอนเรากำลังถูกโจมตี (จ่ายมานา)</p>
 <p><b>↶ ย้อน:</b> ตอนเล่นกับบอท กดย้อนการกระทำล่าสุดได้ 1 ครั้ง (เฉพาะในตาของเรา)</p>
 <p><b>🏳 ยอมแพ้:</b> เล่นกับบอทยอมแพ้ได้ทันที · เล่นออนไลน์ต้องให้ฝ่ายตรงข้ามตกลงก่อน ถ้าไม่ตอบภายใน 50 วินาทีถือว่าตกลง · คนยอมแพ้ไม่ได้เหรียญ ส่วนคนชนะได้เหรียญเมื่อเกมถึงเทิร์น 3 แล้ว</p>
 <p><b>ผลการต่อสู้:</b> พลังโจมตี ≥ พลังป้องกัน = โจมตีเข้า → พวกพ้องถูกทำลาย / คาแรคเตอร์เสียพลังชีวิต 1 ใบขึ้นมือ ถ้าการ์ดนั้นมี <b>ทริกเกอร์</b> เลือกใช้ความสามารถได้ฟรี</p>
-<p><b>ช่องครอบ</b> = กองทิ้ง (ช่องดรอป) · <b>[ACT]</b> = กดใช้เองในตาของเรา · ชี้เมาส์/คลิกการ์ดเพื่อดูคำอธิบายสกิลทางขวา</p>
+<p><b>ช่องดรอป</b> = กองทิ้ง · <b>[ACT]</b> = กดใช้เองในตาของเรา · ชี้เมาส์/คลิกการ์ดเพื่อดูคำอธิบายสกิลทางขวา</p>
 <p><b>เล่นออนไลน์:</b> <b>⚡ ควิกเพลย์</b> = กดแล้วรอ เจอคนที่กดอยู่เหมือนกันก็เข้าต่อสู้ทันที · <b>🏠 สร้างห้อง</b> เลือก 1v1 หรือ 2v2 แล้วส่งรหัส 6 ตัวให้เพื่อน (หรือให้เพื่อนเลือกจาก "รายการห้อง") · ทุกคนกด "พร้อม" แล้วเจ้าของห้องกด "เริ่มเล่น"</p>
 <p><b>2v2:</b> ทุกคนมีคาแรคเตอร์ สนาม และเด็คของตัวเอง · เล่นสลับทีมทีละคน · ตาเราเลือกศัตรูที่จะสู้ด้วย (🎯 ในแถบทีม) · พลังชีวิตหมดหรือไม่มีการ์ดให้จั่ว = ออกจากเกม · ทีมไหนออกหมดก่อนแพ้</p>
 </div>`;
@@ -6011,7 +6040,7 @@ const TUT_TOUR=[
   {el:'#mymat .z-manaArea',t:'💧 <b>มานา</b> = <b>เงิน</b>ไว้จ่ายลงการ์ด<br>ได้เพิ่ม<b>เทิร์นละ 2</b> (มาจากกองมานาข้างๆ)<br>การ์ดเลข <span class="tm">2</span> = จ่าย 2 มานา<br>มานาเหลือ → <b>ติด</b>ให้การ์ดในสนาม = พลัง +1000'},
   {el:'#mymat .z-vehicle',t:'⛵ <b>ช่องพาหนะ</b><br>การ์ดพาหนะช่วยทั้งทีม',lv:2},
   {el:'#mymat .z-deck',t:'🃏 <b>กองการ์ด</b><br>จั่วเทิร์นละ 1 ใบ'},
-  {el:'#mymat .z-trash',t:'🗑 <b>ช่องครอบ</b><br>การ์ดที่ใช้แล้ว / ถูกทำลาย'},
+  {el:'#mymat .z-trash',t:'🗑 <b>ช่องดรอป</b><br>การ์ดที่ใช้แล้ว / ถูกทำลาย'},
   {el:'#oppmat .z-leader',t:'🎯 <b>คาแรคเตอร์ครูบอท</b><br>ตีจน<b>พลังชีวิตหมด</b> แล้วตีอีกที = <b>ชนะ!</b>'},
 ];
 // what to point at right now
