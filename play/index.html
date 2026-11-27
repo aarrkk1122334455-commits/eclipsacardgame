@@ -1298,6 +1298,17 @@ body.mobile .tr-pr{flex-wrap:wrap}body.mobile .tr-pr .lb{width:auto}
 #tturn.warn .ttface{background:radial-gradient(circle at 35% 30%,#7a1018,#1a0406 75%);border-color:#ff4a5a}
 #tturn.warn b{color:#fff;text-shadow:0 2px 0 #000,0 0 14px #ff2a3a}
 #tturn.warn .ttin{animation:ttShake .5s ease-in-out infinite}
+#tturn.paused .ttring{background:conic-gradient(#8a8a92 var(--p,360deg),#ffffff12 0)!important;box-shadow:none!important;filter:none!important}
+#tturn.paused .ttface{background:radial-gradient(circle at 35% 30%,#3a3a40,#121214 75%)!important;border-color:#6a6a72!important}
+#tturn.paused b{color:#c8c8d0!important;text-shadow:0 2px 0 #000!important}#tturn.paused .ttin{animation:none!important}
+#tturn.paused small::after{content:' · หยุด'}
+#tturn2{position:fixed;z-index:93;width:76px;height:76px;display:none;pointer-events:none;perspective:300px;animation:pop .25s}
+#tturn2 .ttin{position:absolute;inset:0;transform-style:preserve-3d;animation:ttSpin 4s ease-in-out infinite}
+#tturn2 .ttring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(#4ad8ff var(--p,360deg),#ffffff18 0);box-shadow:0 0 16px #4ad8ff88}
+#tturn2 .ttface{position:absolute;inset:9px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%,#10405a,#04121a 75%);border:2px solid #4ad8ff}
+#tturn2 b{font-size:24px;line-height:1;color:#e0f8ff;font-variant-numeric:tabular-nums;text-shadow:0 2px 0 #000,0 0 10px #4ad8ff}
+#tturn2 small{font-size:9px;color:#a8e8ff;letter-spacing:1px}
+#tturn2.warn .ttring{background:conic-gradient(#ff2a3a var(--p,360deg),#ffffff18 0)}
 @keyframes ttShake{0%,100%{transform:rotateX(14deg) rotateZ(-6deg) scale(1.05)}50%{transform:rotateX(14deg) rotateZ(6deg) scale(1.12)}}
 /* player plates beside the board */
 .pplate{position:fixed;z-index:40;display:none;flex-direction:column;gap:6px;padding:9px 12px;border-radius:14px;background:linear-gradient(160deg,#1e1018f0,#0c0709f0);border:2px solid #5a3a46;box-shadow:0 8px 24px #000a;color:#fff;pointer-events:none;animation:fadeIn .3s}
@@ -1429,7 +1440,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
 <button id="chatbtn" title="แชท" style="display:none">💬<i></i></button>
 <div id="chatfloat"><div class="cfh">💬 แชท<button id="cfclose">✕</button></div><div class="chatmsgs" id="cfmsgs"></div><div class="chatin"><input id="cfin" maxlength="140" placeholder="พิมพ์ข้อความ… (Enter ส่ง)" autocomplete="off"><button id="cfsend">ส่ง</button></div></div>
 <button id="codebtn" title="ใส่โค้ดรับรางวัล">🔭<span>ใส่โค้ด</span></button>
-<button id="paybtn" title="ส่ง / รับเหลียนกับผู้เล่นอื่น">💸<span>ส่งเงิน</span></button>
+<button id="paybtn" title="ส่ง / รับเหรียญกับผู้เล่นอื่น">💸<span>ส่งเงิน</span></button>
 <button id="tradebtn" title="แลกการ์ดกับผู้เล่นอื่น">🔄<span>เทรด</span></button>
 <div id="trade"></div>
 <div id="cdetail"></div>
@@ -1513,10 +1524,10 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
     </div>
     </div>
   </div>
-  <div class="gnote">ใช้เหรียญ (เหลียน) ที่ได้จากการเล่น · ชนะได้ <b>1250</b> · แพ้ได้ <b>500</b> · ได้การ์ดซ้ำ คืน <b>100</b> เหลียน</div>
+  <div class="gnote">ใช้เหรียญ (เหรียญ) ที่ได้จากการเล่น · ชนะได้ <b>1250</b> · แพ้ได้ <b>500</b> · ได้การ์ดซ้ำ คืน <b>100</b> เหรียญ</div>
 </div>
 
-<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=21;</script>
+<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=22;</script>
 <script>
 // ============ CARD DATA (transcribed from the card art) ============
 const SAN='สามพี่น้อง', SHIP='เรือหลวง', WCT='พี่น้องร่ำรา', MANA_MAX=10, HAND_MAX=8;
@@ -2108,6 +2119,7 @@ function onNet(m,pid){
       return;
     }
     if(m.t==='end'&&p){if(canAct(p))run(endTurn);return}
+    if(m.t==='touch'&&p){if(G.cur===p)G.acted=true;return}
     if(m.t==='hshuf'&&p){if(!G.over){shuffle(p.hand);render()}return}
     if(m.t==='foe'&&p){setFoe(p,G.players[m.idx]);return}
     if(m.t==='srq'&&p){surrRequest(p);return}
@@ -2185,7 +2197,7 @@ function renderRoom(){
   const isCur=s=>s.leader===curL&&JSON.stringify(Object.entries(s.deck).filter(x=>x[1]).sort())===curD;
   el.innerHTML=`<div class="rtop">
       <button id="rleave">← ออกจากห้อง</button>
-      <div class="rtitle">ห้อง ${R.mode.toUpperCase()}<span class="rmode m${R.max}">${R.mode}</span><span class="rtsec" title="เวลาต่อเทิร์น — หมดเวลา = ยอมแพ้อัตโนมัติ">⏱ ${(R.tsec??TURN_SEC)?(R.tsec??TURN_SEC)+' วิ/เทิร์น':'ไม่จำกัดเวลา'}</span></div>
+      <div class="rtitle">ห้อง ${R.mode.toUpperCase()}<span class="rmode m${R.max}">${R.mode}</span><span class="rtsec" title="เวลาต่อเทิร์น — หมดเวลา: ถ้าเล่นไปแล้ว = จบเทิร์น · ถ้าไม่ได้ทำอะไรเลย = แพ้">⏱ ${(R.tsec??TURN_SEC)?(R.tsec??TURN_SEC)+' วิ/เทิร์น':'ไม่จำกัดเวลา'}</span></div>
       <div class="rcode" id="rcode" title="กดเพื่อคัดลอกรหัสห้อง">รหัสห้อง <b>${R.code}</b> <small>📋 ชวนเพื่อน (คัดลอก)</small></div>
     </div>
     <div class="rbody">
@@ -2335,7 +2347,7 @@ function openCreateRoom(){
   box.innerHTML=`<h2>🏠 สร้างห้อง</h2>
     <div class="cmode"><button class="cm1 on" data-m="1v1"><b>1 v 1</b><small>2 คน</small></button><button class="cm1" data-m="2v2"><b>2 v 2</b><small>4 คน · แยกสนามคนละชุด</small></button></div>
     <label class="cpub"><input type="checkbox" id="cpub" checked> แสดงห้องนี้ใน "รายการห้อง" (ไม่ติ๊ก = เข้าได้ด้วยรหัสเท่านั้น)</label>
-    <div class="ctime"><b>⏱ เวลาต่อเทิร์น</b> <small>(หมดเวลา = ยอมแพ้อัตโนมัติ)</small><div class="ctrow">${[[60,'60 วิ'],[90,'90 วิ'],[120,'120 วิ'],[180,'180 วิ'],[300,'5 นาที'],[0,'ไม่จำกัด']].map(([v,t])=>`<button class="ct${v===TURN_SEC?' on':''}" data-v="${v}">${t}</button>`).join('')}</div></div>
+    <div class="ctime"><b>⏱ เวลาต่อเทิร์น</b> <small>(หมดเวลา: เล่นไปแล้ว = จบเทิร์น · ไม่ได้ทำอะไรเลย = แพ้)</small><div class="ctrow">${[[60,'60 วิ'],[90,'90 วิ'],[120,'120 วิ'],[180,'180 วิ'],[300,'5 นาที'],[0,'ไม่จำกัด']].map(([v,t])=>`<button class="ct${v===TURN_SEC?' on':''}" data-v="${v}">${t}</button>`).join('')}</div></div>
     <div id="cmsg" style="min-height:22px;text-align:center;color:#ffe2a8"></div>
     <div class="foot"><button id="cno">ยกเลิก</button><button class="primary" id="cok">สร้างห้อง</button></div>`;
   $('#modal').style.display='flex';
@@ -2472,7 +2484,7 @@ let LASTMATCH=null; // who was in the last match (for reports)
 function resetMatch(){
   if(G)G.halt=true;
   G=null;UNDO=[];pinned=null;SR.req=null;surrClose();
-  for(const s of ['#plate-opp','#plate-me','#tturn']){const e=$(s);if(e)e.style.display='none'}TT.side=null;TT.last=-1;
+  for(const s of ['#plate-opp','#plate-me','#tturn','#tturn2']){const e=$(s);if(e)e.style.display='none'}TT.side=null;TT.last=-1;
   for(const s of ['#modal','#cdetail'])$(s).style.display='none';
   for(const s of ['#banner','#spot','#vs','#cutin','#eyes','#dice','#rps','#chainfx','#vsintro'])$(s).className='';
   $('#log').innerHTML='';$('#chatfloat').classList.remove('open');$('#chatbtn').style.display='none';
@@ -2563,7 +2575,7 @@ function playFx(m){
     case 'mystic':deathOverlay(String(m.title||'').slice(0,40));break;
     case 'lf':lastFightMusic();cutIn(playerOf(m.sp),playerOf(m.so));break;
     case 'x2fx':xuan2Fx(String(m.side));break;
-    case 'timer':timerShow(String(m.side),m.left==null?null:Math.max(0,m.left|0),Math.max(0,m.tot|0)||null);break;
+    case 'timer':timerShow(String(m.side),m.left==null?null:Math.max(0,m.left|0),Math.max(0,m.tot|0)||null,!!m.paused,m.aside==null?null:String(m.aside),m.aleft==null?null:Math.max(0,m.aleft|0));break;
   }
 }
 
@@ -3101,17 +3113,29 @@ function updPickBar(){
   const ok=$('#pickok');ok.disabled=P.sel.size<P.min;
   ok.onclick=e=>{e.stopPropagation();sfx('click');const vals=[...P.sel].map(i=>P.items[i].value);G.pick=null;$('#boardcol').classList.remove('picking');updPickBar();render();P.res(vals)};
 }
-function choose(p,{title,sub,items,min=0,max=1,ai,okText,live}){
+// who is being asked right now — the turn clock only runs while it's the current player's own decision (see TURN TIMER)
+// the answer used when someone runs out of time: 'no' for yes/no questions, otherwise the fewest allowed
+function defaultPick(items,min){const ok=(items||[]).filter(i=>!i.disabled);const no=ok.find(i=>i.value===false);if(no&&min<=1)return [no.value];return ok.slice(0,min||0).map(i=>i.value)}
+function choose(p,o){
+  if(!G||p.ai)return chooseRaw(p,o);
+  if(G.forceEnd===p)return Promise.resolve(defaultPick(o.items,o.min));
+  const g=G,prev=g.askP,prevEnd=g.askEnd;g.askP=p;
+  if(g.cur&&p!==g.cur&&(g.tsec??TURN_SEC)>0&&g.mode!=='ai')g.askEnd=Date.now()+PROMPT_SEC*1000;
+  const pr=chooseRaw(p,o);
+  pr.then(()=>{if(g.askP===p){g.askP=prev||null;g.askEnd=prevEnd}},()=>{});
+  return pr;
+}
+function chooseRaw(p,{title,sub,items,min=0,max=1,ai,okText,live}){
   // items with disabled:true are shown greyed out (e.g. revealed cards you can't take) and can't be picked
   if(p.ai){const ok=items.filter(i=>!i.disabled);return Promise.resolve(ai?(ok.length?ai(ok):[]):ok.slice(0,min).map(i=>i.value))}
   if(G&&G.halt&&(p.ai||p.remote||G.players&&G.players.includes(p)))return HALTED();
   if(p.remote){
     return new Promise(res=>{
       const id=++NET.req;G.wait=true;
-      const f=idx=>{G.wait=false;const out=idx.filter(i=>items[i]).slice(0,max).map(i=>items[i].value);res(out.length>=min?out:items.slice(0,min).map(i=>i.value))};
+      const f=idx=>{G.wait=false;const out=idx.filter(i=>items[i]).slice(0,max).map(i=>items[i].value);res(out.length>=min?out:defaultPick(items,min))};
       f.pid=p.pid;NET.pending[id]=f;
       // anti-stalling: the other player has PROMPT_SEC to answer (only in timed rooms), then the default answer is used
-      if((G.tsec??TURN_SEC)>0)setTimeout(()=>{if(NET.pending[id]===f){delete NET.pending[id];sendTo(p.pid,{t:'chx'});log(null,`⏰ ${p.name} ไม่ตอบภายใน ${PROMPT_SEC} วินาที — ใช้ตัวเลือกปกติ`);f([])}},PROMPT_SEC*1000);
+      if((G.tsec??TURN_SEC)>0&&G.mode!=='ai')setTimeout(()=>{if(NET.pending[id]===f){delete NET.pending[id];sendTo(p.pid,{t:'chx'});log(null,`⏰ ${p.name} ไม่ตอบภายใน ${PROMPT_SEC} วินาที — ใช้ตัวเลือกปกติ`);f([])}},PROMPT_SEC*1000);
       sendTo(p.pid,{t:'choose',id,title,sub,min,max,okText,live:live||null,items:items.map(it=>({card:it.card?strip(it.card):null,text:it.text??null,v:it.v||0,disabled:!!it.disabled}))});
       render();
     });
@@ -3139,7 +3163,9 @@ function choose(p,{title,sub,items,min=0,max=1,ai,okText,live}){
     const instant=min===1&&max===1&&!live;
     const upd=()=>{hint.textContent=max===0?'':(min===max?`เลือก ${min} ใบ`:`เลือก ${min}–${max}`)+` (เลือกแล้ว ${sel.size})`;ok.disabled=sel.size<min||sel.size>max;ok.textContent=sel.size===0&&min===0&&max>0?'ข้าม':(okText||'ตกลง');
       liveEl.innerHTML=liveText(live,[...sel].reduce((s,i)=>s+(items[i].v||0),0))};
-    const finish=()=>{sfx('click');$('#modal').style.display='none';box.classList.remove('prompt');res([...sel].map(i=>items[i].value))};
+    const finish=()=>{if(G&&G.abortModal===abort)G.abortModal=null;sfx('click');$('#modal').style.display='none';box.classList.remove('prompt');res([...sel].map(i=>items[i].value))};
+    const abort=()=>{sel.clear();const d=defaultPick(items,min);items.forEach((it,i)=>{if(d.includes(it.value)&&sel.size<Math.max(min,d.length))sel.add(i)});finish()};
+    if(G)G.abortModal=abort;
     items.forEach((it,i)=>{
       let el;
       if(it.card){el=cardEl(it.card);if(it.text){const t=document.createElement('div');t.className='pow';t.textContent=it.text;el.append(t)}}
@@ -3218,7 +3244,7 @@ function showResult(winner,quit){
 // ============ COINS ============
 const REWARD_WIN=1250,REWARD_LOSE=500;
 const COIN_SVG=`<svg class="coin" viewBox="0 0 64 64"><defs><radialGradient id="cg" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff6c0"/><stop offset=".45" stop-color="#f2b53a"/><stop offset="1" stop-color="#8a5208"/></radialGradient></defs><circle cx="32" cy="32" r="30" fill="url(#cg)" stroke="#6a3e04" stroke-width="3"/><circle cx="32" cy="32" r="22" fill="none" stroke="#fff3b0" stroke-opacity=".55" stroke-width="2"/><path d="M24 20h17v5H30v4.5h9v5h-9V39h11v5H24z" fill="#7a4a0a"/></svg>`;
-// Discord accounts with unlimited เหลียน (∞)
+// Discord accounts with unlimited เหรียญ (∞)
 const INFINITE_IDS=['389718804244201472'];
 const isInfinite=()=>{const p=dProfile();return !!(p&&INFINITE_IDS.includes(String(p.id||'')))};
 const fmtCoins=v=>v===Infinity?'∞':v.toLocaleString();
@@ -3546,7 +3572,7 @@ function showRates(bx='wc'){
     <div class="rcards">${poolOf(t.k,bx).map(id=>{const hid=t.k==='S'&&!isOwned(id);return `<div class="rcard r-${t.k}${hid?' hid':''}${isOwned(id)?' own':''}" data-id="${hid?'':id}" style="background-image:url(${A(hid?'back_ch.png':CARDS[id].img)})">${hid?'<span>???</span>':''}${isOwned(id)&&!hid?'<i>มีแล้ว</i>':''}</div>`}).join('')}</div></div>`).join('');
   const box=$('#modal .box');box.classList.remove('prompt');
   box.innerHTML=`<h2>${B.name} — การ์ดในตู้และอัตราการออก</h2><div class="rtiers">${rows}</div>
-    <p style="color:var(--muted);font-size:14px;margin:10px 0 0">1 ครั้ง = 1 ซอง = การ์ด 1 ใบ · ราคา ${B.cost.toLocaleString()} (10 ครั้ง ${B.cost10.toLocaleString()}) · ได้การ์ดที่มีอยู่แล้ว → คืน ${DUP_REFUND} เหลียน<br>✦ ทุกซองมีโอกาส ${FOIL_CHANCE*100}% ได้เป็น<b>การ์ดฟอย</b> (${Object.values(FOILS).map(f=>f.name).join(' / ')}) — ได้ฟอยใหม่ของการ์ดที่มีแล้วไม่นับว่าซ้ำ · เลือกลายฟอยที่จะใช้ได้โดยกดการ์ดในหน้าจัดเด็ค<br>การ์ดที่ได้จะปลดล็อกในหน้าจัดเด็ค (ใส่ได้ใบละ 4) · คาแรคเตอร์เหวยเฉินเลือกได้ในหน้าจัดเด็ค</p>
+    <p style="color:var(--muted);font-size:14px;margin:10px 0 0">1 ครั้ง = 1 ซอง = การ์ด 1 ใบ · ราคา ${B.cost.toLocaleString()} (10 ครั้ง ${B.cost10.toLocaleString()}) · ได้การ์ดที่มีอยู่แล้ว → คืน ${DUP_REFUND} เหรียญ<br>✦ ทุกซองมีโอกาส ${FOIL_CHANCE*100}% ได้เป็น<b>การ์ดฟอย</b> (${Object.values(FOILS).map(f=>f.name).join(' / ')}) — ได้ฟอยใหม่ของการ์ดที่มีแล้วไม่นับว่าซ้ำ · เลือกลายฟอยที่จะใช้ได้โดยกดการ์ดในหน้าจัดเด็ค<br>การ์ดที่ได้จะปลดล็อกในหน้าจัดเด็ค (ใส่ได้ใบละ 4) · คาแรคเตอร์เหวยเฉินเลือกได้ในหน้าจัดเด็ค</p>
     <div class="foot"><button class="primary" onclick="document.getElementById('modal').style.display='none'">ปิด</button></div>`;
   box.querySelectorAll('.rcard[data-id]:not([data-id=""])').forEach(c=>c.onclick=e=>{e.stopPropagation();sfx('click');openDetail({id:c.dataset.id})});
   $('#modal').style.display='flex';
@@ -3557,7 +3583,7 @@ async function doPull(n,bx='wc'){
   audioInit();sfx('click');
   if(PULLING)return;
   const cost=n===1?BOXES[bx].cost:BOXES[bx].cost10;
-  if(!spendCoins(cost)){sfx('debuff');gachaMsg(`เหลียนไม่พอ — ต้องใช้ ${COIN_SVG} <b style="color:#ffd76a">${cost.toLocaleString()}</b><br><span style="font-size:15px;color:var(--muted)">มีอยู่ ${fmtCoins(getCoins())} · ชนะได้ 1250 แพ้ได้ 500</span>`);return}
+  if(!spendCoins(cost)){sfx('debuff');gachaMsg(`เหรียญไม่พอ — ต้องใช้ ${COIN_SVG} <b style="color:#ffd76a">${cost.toLocaleString()}</b><br><span style="font-size:15px;color:var(--muted)">มีอยู่ ${fmtCoins(getCoins())} · ชนะได้ 1250 แพ้ได้ 500</span>`);return}
   PULLING=true;
   // roll and save first, so nothing is lost if the game is closed during the animation
   const res=[];let refund=0;
@@ -3829,7 +3855,7 @@ function rareCine(r){
     const sparks=Array.from({length:46},(_,i)=>{const a=Math.random()*Math.PI*2,d=25+Math.random()*45;return `<i class="spark" style="background:${col[i%col.length]};box-shadow:0 0 10px ${col[i%col.length]};--x:${(Math.cos(a)*d).toFixed(1)}vmax;--y:${(Math.sin(a)*d).toFixed(1)}vmax;animation-delay:${(T0+Math.random()*.4).toFixed(2)}s"></i>`}).join('');
     const stars=S?Array.from({length:260},()=>`${(Math.random()*200-100).toFixed(1)}vmax ${(Math.random()*200-100).toFixed(1)}vmax 0 ${Math.random()<.15?1:0}px ${['#fff','#ffd9d9','#cfe0ff','#ffe9a8'][Math.random()*4|0]}`).join(','):'';
     s.innerHTML=`${S?`<div class="gal"><div class="neb"></div><div class="arm"></div><div class="stars" style="box-shadow:${stars}"></div></div><canvas class="drg"></canvas><div class="lyxfog"><i class="eye l"></i><i class="eye r"></i></div><div class="lb t"></div><div class="lb b"></div>`:''}<div class="rays"></div><div class="orb"></div>${sparks}<div class="card3" style="background-image:url(${A(CARDS[r.id].img)})"></div>
-      <div class="rtx">${{S:'SECRET',L:'LEGENDARY',M:'MYSTIC',G:'LEGEND'}[r.k]||'SUPER RARE'}</div><div class="rnm">${CARDS[r.id].name}<small>${{S:'ซีเคร็ท · โอกาส 0.0001%',L:'คาแรคเตอร์ · โอกาส 1%',M:'มิสติก · EBX-01 · โอกาส 0.1%',G:'เลเจนด์ · EBX-01 · โอกาส 2%'}[r.k]||'พาหนะ · โอกาส 3%'}${r.dup?` · ซ้ำ +${DUP_REFUND} เหลียน`:' · NEW!'} · คลิกเพื่อไปต่อ</small></div>`;
+      <div class="rtx">${{S:'SECRET',L:'LEGENDARY',M:'MYSTIC',G:'LEGEND'}[r.k]||'SUPER RARE'}</div><div class="rnm">${CARDS[r.id].name}<small>${{S:'ซีเคร็ท · โอกาส 0.0001%',L:'คาแรคเตอร์ · โอกาส 1%',M:'มิสติก · EBX-01 · โอกาส 0.1%',G:'เลเจนด์ · EBX-01 · โอกาส 2%'}[r.k]||'พาหนะ · โอกาส 3%'}${r.dup?` · ซ้ำ +${DUP_REFUND} เหรียญ`:' · NEW!'} · คลิกเพื่อไปต่อ</small></div>`;
     s.className='show '+r.k;s.style.setProperty('--T',T0+'s');
     if(S)addAura(s.querySelector('.card3'),22);
     let stopDrg=null,gateSnd=null;
@@ -3862,7 +3888,7 @@ function pullScene(res,refund){
     const lbl={C:'',R:'แรร์!',H:'หายาก!',P:'เอพิค!!',E:'หายากมาก!!',V:'สุดยอด!!!',G:'เลเจนด์!!!!',L:'ในตำนาน!!!!',M:'MYSTIC!!!!!',S:'SECRET!!!!!'};
     s.innerHTML=`<div class="ptitle">${one?'เปิดซอง…':'เปิด 10 ซอง…'}</div>
       <div class="pgrid">${res.map(r=>`<div class="pc r-${r.k}"><div class="beam"></div><div class="in"><div class="b"></div><div class="f" style="background-image:url(${A(CARDS[r.id].img)})"></div></div>
-        <div class="rt ${r.k}">${TIER(r.k).glow}</div><div class="tagx ${r.foil&&!r.dup?'foilt':r.dup?'dup':'new'}">${r.dup?`ซ้ำ +${DUP_REFUND} เหลียน`:r.foil?`✦ FOIL ${FOILS[r.foil].name}!`:'NEW!'}</div></div>`).join('')}</div>
+        <div class="rt ${r.k}">${TIER(r.k).glow}</div><div class="tagx ${r.foil&&!r.dup?'foilt':r.dup?'dup':'new'}">${r.dup?`ซ้ำ +${DUP_REFUND} เหรียญ`:r.foil?`✦ FOIL ${FOILS[r.foil].name}!`:'NEW!'}</div></div>`).join('')}</div>
       <div class="pfoot"><button id="pskip">⏭ ข้าม</button></div>`;
     const cards=[...s.querySelectorAll('.pc')];
     res.forEach((r,j)=>{if(r.k==='S')addFoil(cards[j].querySelector('.f'));else if(r.foil)addFoilType(cards[j].querySelector('.f'),r.foil)});
@@ -3878,7 +3904,7 @@ function pullScene(res,refund){
       cards.forEach(reveal);
       const news=res.filter(r=>!r.dup).length;
       s.querySelector('.ptitle').innerHTML=best!=='C'?`<span style="color:${{R:'#4ab3ff',H:'#4ab3ff',P:'#d27aff',E:'#ffd23a',V:'#c07aff',G:'#ffe08a',L:'#fff',M:'#ff2a3a',S:'#ff2a3a'}[best]}">${lbl[best]}</span>`:'ผลการสุ่ม';
-      s.querySelector('.pfoot').innerHTML=`<span class="psum">การ์ดใหม่ ${news} ใบ${refund?` · ซ้ำ คืน ${COIN_SVG} ${refund} เหลียน`:''}</span><button class="primary" id="pok">ตกลง</button>`;
+      s.querySelector('.pfoot').innerHTML=`<span class="psum">การ์ดใหม่ ${news} ใบ${refund?` · ซ้ำ คืน ${COIN_SVG} ${refund} เหรียญ`:''}</span><button class="primary" id="pok">ตกลง</button>`;
       $('#pok').onclick=()=>{sfx('click');s.className='';s.innerHTML='';done()};
     };
     $('#pskip').onclick=()=>{sfx('click');finish()};
@@ -4085,13 +4111,13 @@ function openCode(){
     const used=usedCodes();
     if(used.includes(k)){sfx('debuff');msg.innerHTML='<span style="color:#ffb0b0">ใช้โค้ดนี้ไปแล้ว</span>';return}
     used.push(k);store.set('eclipsa-codes',JSON.stringify(used));addCoins(CODES[k]);sfx('win');
-    msg.innerHTML=`<span style="color:#8ff0a8">✓ ได้รับ ${COIN_SVG} <b style="color:#ffd76a">${CODES[k].toLocaleString()}</b> เหลียน!</span>`;inp.value='';
+    msg.innerHTML=`<span style="color:#8ff0a8">✓ ได้รับ ${COIN_SVG} <b style="color:#ffd76a">${CODES[k].toLocaleString()}</b> เหรียญ!</span>`;inp.value='';
   };
   $('#codeok').onclick=redeem;inp.onkeydown=e=>{if(e.key==='Enter')redeem()};
   $('#codeclose').onclick=()=>{sfx('click');$('#modal').style.display='none'};
 }
 $('#codebtn').onclick=openCode;
-// ---------- send เหลียน to another player (direct peer-to-peer, both players online) ----------
+// ---------- send เหรียญ to another player (direct peer-to-peer, both players online) ----------
 // sender makes a transfer code → receiver types it → sender sees who connected and confirms → coins move once
 const PAY_MAX=1000000;
 const PAY={peer:null,conn:null};
@@ -4112,11 +4138,11 @@ function openPay(tab){
 }
 const payMsg=(h,c)=>{$('#paymsg').innerHTML=c?`<span style="color:${c}">${h}</span>`:h};
 const payFoot=h=>{$('#payfoot').innerHTML=h;const x=$('#payx');if(x)x.onclick=()=>{sfx('click');payClose();$('#modal').style.display='none'}};
-const coinTxt=n=>`${COIN_SVG} <b style="color:#ffd76a">${n.toLocaleString()}</b> เหลียน`;
+const coinTxt=n=>`${COIN_SVG} <b style="color:#ffd76a">${n.toLocaleString()}</b> เหรียญ`;
 function paySendUI(){
   const bal=getCoins();
-  $('#paybody').innerHTML=`<p style="text-align:center;font-size:16px;margin:6px 0">คุณมี ${COIN_SVG} <b style="color:#ffd76a">${fmtCoins(bal)}</b> เหลียน · ใส่จำนวนที่จะส่ง</p>
-    <input id="payamt" class="codein" type="number" min="1" step="1" placeholder="จำนวนเหลียน" autocomplete="off">
+  $('#paybody').innerHTML=`<p style="text-align:center;font-size:16px;margin:6px 0">คุณมี ${COIN_SVG} <b style="color:#ffd76a">${fmtCoins(bal)}</b> เหรียญ · ใส่จำนวนที่จะส่ง</p>
+    <input id="payamt" class="codein" type="number" min="1" step="1" placeholder="จำนวนเหรียญ" autocomplete="off">
     <p style="text-align:center;font-size:13px;opacity:.75;margin:0">ทั้งสองคนต้องเปิดเกมและต่ออินเทอร์เน็ตอยู่ · เงินจะออกก็ต่อเมื่อคุณกดยืนยันชื่อคนรับ</p>`;
   payFoot(`<button id="payx">ปิด</button><button class="primary" id="paygo">สร้างรหัสโอน</button>`);
   const inp=$('#payamt');inp.focus();
@@ -4124,7 +4150,7 @@ function paySendUI(){
     const n=Number(inp.value);
     if(!Number.isInteger(n)||n<1)return payMsg('ใส่จำนวนเป็นเลขจำนวนเต็มตั้งแต่ 1 ขึ้นไป','#ffb0b0');
     if(n>PAY_MAX)return payMsg(`ส่งได้ไม่เกิน ${PAY_MAX.toLocaleString()} ต่อครั้ง`,'#ffb0b0');
-    if(n>getCoins()){sfx('debuff');return payMsg('เหลียนไม่พอ','#ffb0b0')}
+    if(n>getCoins()){sfx('debuff');return payMsg('เหรียญไม่พอ','#ffb0b0')}
     if(!window.Peer)return payMsg('โหลดระบบออนไลน์ไม่ได้ — ต้องต่ออินเทอร์เน็ตแล้วเปิดเกมใหม่','#ffb0b0');
     sfx('click');paySendWait(n);
   };
@@ -4153,7 +4179,7 @@ function paySendWait(n){
         $('#payyes').onclick=()=>{
           if(state!=='ask')return;
           if(!conn.open){payMsg('คนรับหลุดการเชื่อมต่อไปแล้ว — เงินไม่ได้ถูกหัก','#ffb0b0');return}
-          if(!spendCoins(n)){sfx('debuff');payMsg('เหลียนไม่พอแล้ว','#ffb0b0');return}
+          if(!spendCoins(n)){sfx('debuff');payMsg('เหรียญไม่พอแล้ว','#ffb0b0');return}
           state='sent';conn.send({t:'pay',amount:n,tx,from:myName()});
           $('#paybody').innerHTML=`<p style="text-align:center;font-size:18px">กำลังส่ง ${coinTxt(n)} ให้ <b>${who}</b>…</p>`;payFoot('');
           setTimeout(()=>{if(state==='sent'){payMsg('ส่งออกไปแล้ว แต่ยังไม่ได้รับการยืนยันจากคนรับ — ให้เขาเช็คยอดเงินดู','#ffd38a');payFoot(`<button id="payx">ปิด</button>`)}},15000);
@@ -4214,7 +4240,7 @@ function payRecvJoin(code){
 $('#paybtn').onclick=()=>openPay('send');
 // ---------- card trading (direct peer-to-peer, both players online) ----------
 // each side picks cards to give · both press "ยืนยันเทรด" on the same two offers → cards swap ownership on both computers
-// SECRET cards cannot be traded. Getting a card you already own = +100 เหลียน (like a duplicate pull).
+// SECRET cards cannot be traded. Getting a card you already own = +100 เหรียญ (like a duplicate pull).
 const TRADE_MAX=20;
 const TR={peer:null,conn:null,mine:[],theirs:[],themOwn:[],them:null,okMine:null,okTheirs:null,done:false};
 const tradeable=id=>CARDS[id]&&CARDS[id].gacha&&CARDS[id].gacha!=='S';
@@ -4300,7 +4326,7 @@ function renderTrade(){
     el.innerHTML=`<div class="th"><h2>🔄 เทรดสำเร็จ!</h2></div>
       <div class="tcols"><div class="tcol"><h3>คุณส่งให้ ${them.name}</h3><div class="toffer">${TR.mine.map(id=>`<div class="card" style="background-image:url(${A(CARDS[id].img)})"></div>`).join('')||'<span style="opacity:.6">— ไม่มี —</span>'}</div></div>
       <div class="tcol"><h3>คุณได้รับ</h3><div class="toffer">${TR.theirs.map(id=>`<div class="card" style="background-image:url(${A(CARDS[id].img)})"></div>`).join('')||'<span style="opacity:.6">— ไม่มี —</span>'}</div>
-      ${refund?`<div class="tstat">การ์ดที่มีอยู่แล้ว คืน ${COIN_SVG} <b style="color:#ffd76a">${refund}</b> เหลียน</div>`:''}</div></div>
+      ${refund?`<div class="tstat">การ์ดที่มีอยู่แล้ว คืน ${COIN_SVG} <b style="color:#ffd76a">${refund}</b> เหรียญ</div>`:''}</div></div>
       <div class="tfoot"><button class="primary" id="trclose">ปิด</button></div>`;
     $('#trclose').onclick=tradeExit;return;
   }
@@ -5027,7 +5053,7 @@ async function yaoxingRevenge(o,deadName){
 }
 // ============ TURN FLOW ============
 async function startTurn(p){
-  G.cur=p;G.foe=G.players.length===2?opp(p):nextEnemy(p);G.turn++;G.phase='start';UNDO=[];setView();
+  G.cur=p;G.foe=G.players.length===2?opp(p):nextEnemy(p);G.turn++;G.phase='start';UNDO=[];setView();G.acted=false;G.forceEnd=null;
   if(G.mode==='host'){const ts=G.tsec??TURN_SEC;G.tLeft=ts?ts*1000:null;if(!ts){TT.last=-1;emit({f:'timer',side:sideOf(p),left:null});timerShow(sideOf(p),null)}} // online: a fresh timer for this turn
   for(const u of units(p)){p.manaRested+=u.mana;u.mana=0;u.rested=false;u.sick=false;u.noAttack=false;u.attacked=false}
   p.manaActive+=p.manaRested;p.manaRested=0;p.once={};p.tianxingBlocked=false;p.overDone=false;
@@ -5206,15 +5232,17 @@ function doUndo(){
 async function run(fn){
   if(!G||G.busy||G.over)return;
   const g=G;
+  if(G.cur&&G.phase==='main'&&(G.cur===G.me||G.mode==='host'))G.acted=true; // the current player did something this turn
   if(myMain())saveUndo();
   G.busy=true;closeMenu();chainReset();render();
   try{await fn()}catch(e){if(e!==OVER)console.error(e)}
   if(G!==g)return;
-  G.busy=false;if(!G.over){render();if(G.mode==='host'&&G.cur&&G.cur.out)run(endTurn)}
+  G.busy=false;if(!G.over){render();if(G.mode==='host'&&G.cur&&G.cur.out)run(endTurn);else if(G.forceEnd&&G.forceEnd===G.cur&&fn!==endTurn){G.forceEnd=null;run(endTurn)}}
 }
 function closeMenu(){$('#menu').style.display='none'}
 function openMenu(ev,c,actions,kind){
   ev.stopPropagation();sfx('click');
+  if(G&&G.cur===G.me&&G.phase==='main'){if(G.mode==='guest'){if(G.touchT!==G.turn){G.touchT=G.turn;send({t:'touch'})}}else G.acted=true}
   pinned=c;showInfo(c);openDetail(c);render();
   const m=$('#menu');m.innerHTML='';
   if(!actions.length){closeMenu();return}
@@ -5596,40 +5624,82 @@ function surrDeclined(){
 }
 function surrCancelled(){if(SR.theirs)surrClose()}
 // ============ TURN TIMER (online matches): 180 s per turn · ≤20 s warning beeps · 0 = gives up automatically ============
-const TURN_SEC=120,WARN_SEC=20,PROMPT_SEC=45; // PROMPT_SEC: time to answer a question during the other player's turn (block, counter …)   // default 120 s; the room owner can pick another time or no limit
+// time up: played something this turn → the turn ends · did nothing at all → gives up
+const TURN_SEC=180,WARN_SEC=20,PROMPT_SEC=45; // PROMPT_SEC: time to answer a question during the other player's turn (block, counter …)   // default 180 s (normal rooms, quick play, tournaments); the room owner can pick another time or no limit
 const TT={side:null,s:null,last:-1,tot:TURN_SEC};
 // host: count down the current player's turn (paused while waiting for someone else's answer / a surrender question)
 setInterval(()=>{
   if(!G||G.mode!=='host'||G.over||G.halt||!G.cur||G.tLeft==null)return;
-  if(!G.wait&&!SR.req)G.tLeft-=250;
-  const s=Math.max(0,Math.ceil(G.tLeft/1000)),side=sideOf(G.cur);
-  if(s!==TT.last||side!==TT.side){TT.last=s;const tot=G.tsec??TURN_SEC;emit({f:'timer',side,left:s,tot});timerShow(side,s,tot)}
+  // the clock runs only while the current player can act: idle in their turn, or answering their own question —
+  // it stops while someone else is answering (block / COUNTER / trigger …), during animations, and during a surrender question
+  const own=!G.busy||G.askP===G.cur;
+  if(own&&!SR.req)G.tLeft-=250;
+  const s=Math.max(0,Math.ceil(G.tLeft/1000)),side=sideOf(G.cur),paused=!own||!!SR.req;
+  // someone else is answering (block / COUNTER / ability): show their answering clock, the turn clock goes grey
+  const asker=G.busy&&G.askP&&G.askP!==G.cur&&G.askEnd?G.askP:null;
+  const aside=asker?sideOf(asker):null,aleft=asker?Math.max(0,Math.ceil((G.askEnd-Date.now())/1000)):null;
+  const key=s+'|'+side+'|'+paused+'|'+aside+'|'+aleft;
+  if(key!==TT.key){TT.key=key;TT.last=s;const tot=G.tsec??TURN_SEC;emit({f:'timer',side,left:s,tot,paused,aside,aleft});timerShow(side,s,tot,paused,aside,aleft)}
+  // the host's own answer ran out of time → the normal choice (remote answers already have their own time-out)
+  if(asker&&aleft<=0&&!asker.remote&&!asker.ai){
+    G.askEnd=null;
+    if(G.pick){const P=G.pick,vals=P.items.filter(i=>!i.disabled).slice(0,P.min).map(i=>i.value);G.pick=null;$('#boardcol').classList.remove('picking');updPickBar();render();P.res(vals)}
+    else if(G.abortModal)G.abortModal();
+    showBanner('⏰ หมดเวลาเลือก','ใช้ตัวเลือกปกติให้แล้ว',false,1400);
+  }
+  if(G.tLeft<=0&&G.acted){
+    // time is up but they did play this turn → the turn simply ends (an open question gets the normal answer)
+    const p=G.cur;G.tLeft=null;G.forceEnd=p;
+    log(null,`⏰ ${p.name} หมดเวลา — จบเทิร์นอัตโนมัติ`);
+    emit({f:'banner',side:sideOf(p),tMine:'⏰ หมดเวลา',tOpp:`⏰ ${p.name} หมดเวลา`,sub:'จบเทิร์นอัตโนมัติ',ms:1400});
+    showBanner(p===G.me?'⏰ หมดเวลา':`⏰ ${p.name} หมดเวลา`,'จบเทิร์นอัตโนมัติ',p!==G.me,1400);
+    if(!G.busy){G.forceEnd=null;run(endTurn)}
+    else if(G.askP===p){
+      if(p.remote){for(const id in NET.pending)if(NET.pending[id].pid===p.pid){const f=NET.pending[id];delete NET.pending[id];sendTo(p.pid,{t:'chx'});f([])}}
+      else if(G.pick){const P=G.pick,vals=P.items.filter(i=>!i.disabled).slice(0,P.min).map(i=>i.value);G.pick=null;$('#boardcol').classList.remove('picking');updPickBar();render();P.res(vals)}
+      else if(G.abortModal)G.abortModal();
+    }
+    return;
+  }
   if(G.tLeft<=0){
+    // did nothing at all this turn → loses (gives up automatically)
     const p=G.cur;G.tLeft=null;
-    log(null,`⏰ ${p.name} หมดเวลา (${G.tsec??TURN_SEC} วินาที) — ยอมแพ้อัตโนมัติ`);
+    log(null,`⏰ ${p.name} หมดเวลา (${G.tsec??TURN_SEC} วินาที) โดยไม่ได้ทำอะไรเลย — ยอมแพ้อัตโนมัติ`);
     emit({f:'banner',side:sideOf(p),tMine:'⏰ หมดเวลา',tOpp:`⏰ ${p.name} หมดเวลา`,sub:'ยอมแพ้อัตโนมัติ',ms:1600});
     showBanner(p===G.me?'⏰ หมดเวลา':`⏰ ${p.name} หมดเวลา`,'ยอมแพ้อัตโนมัติ',p!==G.me,1600);
     try{surrEnd(p)}catch(e){if(e!==OVER)console.error(e)}
   }
 },250);
 // everyone: the 3D countdown dial on the corner of the current player's mat
-function timerShow(side,s,tot){
-  TT.side=side;TT.s=s;if(tot)TT.tot=tot;
+function timerShow(side,s,tot,paused,aside,aleft){
+  TT.side=side;TT.s=s;if(tot)TT.tot=tot;TT.paused=!!paused;TT.aside=aside;TT.aleft=aleft;
+  answerClock(aside,aleft);
   let el=$('#tturn');if(!el){el=document.createElement('div');el.id='tturn';el.innerHTML='<div class="ttin"><div class="ttring"></div><div class="ttface"><b></b><small>วินาที</small></div></div>';document.body.append(el)}
   const p=G&&G.players?playerOf(side):null;
   if(!G||G.over||s==null||!p){el.style.display='none';return}
   const mine=p===(G.vb||G.me),mat=$(G.players.length>2?(mine?'#mymat':'#oppmat'):(mine?'#mymat':'#oppmat'));if(!mat){el.style.display='none';return}
   const r=mat.getBoundingClientRect();el.style.display='block';el.style.left=(r.left+14)+'px';el.style.top=(r.top+14)+'px';
-  el.classList.toggle('warn',s<=WARN_SEC);el.classList.toggle('opp',!mine);
+  el.classList.toggle('warn',s<=WARN_SEC&&!paused);el.classList.toggle('opp',!mine);el.classList.toggle('paused',!!paused);
   el.style.setProperty('--p',(Math.min(1,s/(TT.tot||TURN_SEC))*360).toFixed(1)+'deg');
   const b=el.querySelector('b');if(b.textContent!==String(s)){b.textContent=s;el.classList.remove('tick');void el.offsetWidth;el.classList.add('tick')}
-  el.title=mine?'เวลาเทิร์นของคุณ — หมดเวลาจะยอมแพ้อัตโนมัติ':`เวลาเทิร์นของ ${p.name}`;
+  el.title=mine?'เวลาเทิร์นของคุณ — หมดเวลา: ถ้าเล่นไปแล้วจะจบเทิร์น ถ้าไม่ได้ทำอะไรเลยจะแพ้':`เวลาเทิร์นของ ${p.name}`;
   // warning sound from 20 s down (louder / higher for the last 5)
-  if(s<=WARN_SEC&&s>0&&AU.ctx&&AU.on&&AU.on.sfx&&(mine||G.spec)){
+  if(!paused&&s<=WARN_SEC&&s>0&&AU.ctx&&AU.on&&AU.on.sfx&&(mine||G.spec)){
     try{const t=now();tone({type:'square',f:s<=5?1560:1180,t,dur:.06,r:.08,g:mine?.07:.03,lp:5000});if(s<=5)tone({type:'square',f:1560,t:t+.13,dur:.05,r:.06,g:mine?.06:.025,lp:5000})}catch(e){}
   }
 }
-addEventListener('resize',()=>{if(G&&TT.side!=null)timerShow(TT.side,TT.s)});
+addEventListener('resize',()=>{if(G&&TT.side!=null)timerShow(TT.side,TT.s,null,TT.paused,TT.aside,TT.aleft)});
+// the answering player's clock, on their own mat
+function answerClock(aside,aleft){
+  let el=$('#tturn2');if(!el){el=document.createElement('div');el.id='tturn2';el.innerHTML='<div class="ttin"><div class="ttring"></div><div class="ttface"><b></b><small>ตอบ</small></div></div>';document.body.append(el)}
+  const p=G&&G.players&&aside!=null?playerOf(aside):null;
+  if(!G||G.over||!p||aleft==null){el.style.display='none';return}
+  const mine=p===(G.vb||G.me),mat=$(mine?'#mymat':'#oppmat');if(!mat){el.style.display='none';return}
+  const r=mat.getBoundingClientRect();el.style.display='block';el.style.left=(r.right-90)+'px';el.style.top=(r.top+14)+'px';
+  el.classList.toggle('warn',aleft<=10);el.style.setProperty('--p',(Math.min(1,aleft/PROMPT_SEC)*360).toFixed(1)+'deg');
+  el.querySelector('b').textContent=aleft;el.title=mine?'เวลาตอบของคุณ':`${p.name} กำลังคิด…`;
+  if(mine&&aleft<=10&&aleft>0&&AU.ctx&&AU.on&&AU.on.sfx&&TT.abeep!==aleft){TT.abeep=aleft;try{tone({type:'square',f:1320,t:now(),dur:.05,r:.06,g:.05,lp:5000})}catch(e){}}
+}
 
 function surrEnd(loser){
   if(!G||G.over||G.mode==='guest')return;
@@ -5774,7 +5844,7 @@ function tutAsk(){
   if($('#modal').style.display==='flex'||$('#tour').classList.contains('show'))return setTimeout(tutAsk,4000);
   store.set(tutKey('ask'),'1');
   const box=$('#modal .box');box.classList.remove('prompt');
-  box.innerHTML=`<h2 style="text-align:center">🎓 เล่นเป็นหรือยัง?</h2><p style="text-align:center;font-size:18px">ให้สอนเล่นไหม? ใช้เวลาแป๊บเดียว<br>เล่นกับ <b>ครูบอท</b> แล้วทำตามลูกศร<br><b style="color:#ffd76a">ชนะครูบอทรับ ${TUT_REWARD.toLocaleString()} เหลียน!</b></p>
+  box.innerHTML=`<h2 style="text-align:center">🎓 เล่นเป็นหรือยัง?</h2><p style="text-align:center;font-size:18px">ให้สอนเล่นไหม? ใช้เวลาแป๊บเดียว<br>เล่นกับ <b>ครูบอท</b> แล้วทำตามลูกศร<br><b style="color:#ffd76a">ชนะครูบอทรับ ${TUT_REWARD.toLocaleString()} เหรียญ!</b></p>
     <div class="foot"><button id="tutno">ไม่ เล่นเป็นแล้ว</button><button class="primary" id="tutyes">✔ สอนเลย!</button></div>`;
   $('#modal').style.display='flex';sfx('buff');
   $('#tutno').onclick=()=>{sfx('click');$('#modal').style.display='none'};
