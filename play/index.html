@@ -69,6 +69,7 @@ h1,h2,h3,.title{font-family:Torsilp,"Leelawadee UI",sans-serif;font-weight:norma
 .skill{font-size:16.5px;line-height:1.6}
 .skill div{margin-bottom:6px;padding-left:2px}
 .skill .kw{display:inline-block;font-size:12px;font-weight:bold;border-radius:5px;padding:0 6px;margin-right:4px;vertical-align:2px}
+.skill .kwi{height:1.35em;vertical-align:-.3em;margin:0 2px}
 .kw.k1{background:#8f2a8f;color:#fff}.kw.k2{background:#e0782a;color:#fff}.kw.k3{background:#2f9e57;color:#fff}.kw.k4{background:#c43a3a;color:#fff}.kw.k5{background:#2c63b8;color:#fff}
 #status{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:7px 10px;line-height:1.55;flex:none}
 #status .who{font-family:Torsilp,sans-serif;font-size:19px;color:var(--gold)}
@@ -601,6 +602,15 @@ body.mobile .dbar{padding-right:110px}body.mobile .dbar button{padding:6px 8px;f
 .gbox.ebx:hover{box-shadow:0 0 70px #ff2a3a99,inset 0 0 40px #000c}
 .gbox.ebx .gart{inset:5% 12% 27%;opacity:1;filter:none;border-radius:10px;box-shadow:0 0 24px #ff3a3a88;background-size:cover;background-position:center 20%}
 .gbox.ebx .gname{color:#ffe0d8;text-shadow:0 0 10px #000,0 0 18px #ff3a3a;font-size:clamp(18px,6.6vw,24px)}
+.gbox.ebx2{background:linear-gradient(160deg,#0a1c3a,#05080f 55%,#2a2006);border-color:#ffd23a;box-shadow:0 0 40px #4aa8ff66,inset 0 0 40px #000c}
+.gbox.ebx2:hover{box-shadow:0 0 70px #4aa8ffaa,inset 0 0 40px #000c}
+.gbox.ebx2 .gart{inset:5% 12% 27%;opacity:1;filter:none;border-radius:10px;box-shadow:0 0 24px #4aa8ff88;background-size:cover;background-position:center 20%;transition:opacity .5s}
+.gbox.ebx2 .gname{color:#fff3c8;text-shadow:0 0 10px #000,0 0 18px #4aa8ff;font-size:clamp(15px,5.2vw,20px)}
+/* lobby gacha button: promo for the new box (mystic cards take turns) */
+#gachabtn.promo{position:relative;padding-left:58px;overflow:visible}
+#gachabtn.promo .gp-art{position:absolute;left:6px;top:50%;width:44px;aspect-ratio:480/671;transform:translateY(-50%) rotate(-6deg);border-radius:5px;background:center/cover no-repeat;box-shadow:0 0 10px #4aa8ff,0 2px 6px #000;transition:opacity .45s,transform .45s}
+#gachabtn.promo .gp-art.fade{opacity:0;transform:translateY(-50%) rotate(-6deg) scale(.85)}
+#gachabtn.promo .gp-new{position:absolute;top:-13px;right:-8px;background:linear-gradient(90deg,#ff2a3a,#ffd23a);color:#200;font-size:12px;font-weight:bold;border-radius:8px;padding:1px 8px;white-space:nowrap;box-shadow:0 0 12px #ff2a3a;animation:secretPulse .9s ease-in-out infinite alternate}
 .gtagnew{position:absolute;top:10px;right:10px;z-index:3;background:linear-gradient(90deg,#ff2a3a,#ffd23a);color:#200;font-weight:bold;font-size:13px;border-radius:7px;padding:1px 8px;box-shadow:0 0 12px #ff2a3a;animation:secretPulse .9s ease-in-out infinite alternate}
 .rt.R{background:#2a8cff}.rt.P{background:linear-gradient(90deg,#8a2cff,#d24cff)}.rt.G{background:linear-gradient(90deg,#ffb000,#fff0a0,#ffb000);color:#3a2000}.rt.M{background:linear-gradient(90deg,#000,#8a0010,#ff2a3a,#8a0010,#000);background-size:200% 100%;animation:rbText 1.6s linear infinite;box-shadow:0 0 10px #ff1a2a}
 #pull .pc.r-R .f{box-shadow:0 0 0 3px #4ab3ff,0 0 30px #4ab3ff,0 0 60px #1e7bff}
@@ -772,7 +782,7 @@ button.ghost{background:#2a1a1e;border-color:#7a3a42;color:#ffb0b0}
 .dov .fb{position:absolute;inset:0;box-shadow:inset 0 0 18vh 6vh #8a0010;background:#20000040;opacity:0}
 .gbox.wc .gart{inset:5% 12% 27%;opacity:1;filter:none;border-radius:10px;box-shadow:0 0 24px #3fcf9a88;background-size:cover}
 .gbox.wc .gname{color:#d8fff0;text-shadow:0 0 10px #000,0 0 18px #3fcf9a;font-size:clamp(18px,6.6vw,24px)}
-.gbtns{display:flex;gap:8px}.gbtns button{font-size:15px;padding:9px 14px;display:flex;align-items:center;gap:6px}
+.gbtns{display:flex;gap:8px}.gbtns button{font-size:14px;padding:9px 10px;display:flex;align-items:center;gap:5px;white-space:nowrap}
 .glink{background:none;border:none;color:#9fd8c0;text-decoration:underline;font-size:13px;padding:2px}
 #pull{position:fixed;inset:0;z-index:95;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:radial-gradient(ellipse at center,#16322ae8,#030807f6)}
 #pull.show{display:flex;animation:fadeIn .25s}
@@ -1342,6 +1352,24 @@ body.mobile .tr-pr{flex-wrap:wrap}body.mobile .tr-pr .lb{width:auto}
 .stackbadge{position:absolute;right:-6px;top:-6px;z-index:6;min-width:26px;height:26px;padding:0 6px;border-radius:13px;background:linear-gradient(#ffd23a,#c08a10);color:#1a1004;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 0 10px #ffd23a}
 .underpeek{position:absolute;left:-14%;bottom:-6%;width:44%;aspect-ratio:480/671;border-radius:4px;background:center/cover;border:2px solid #ffd76a;box-shadow:0 2px 8px #000c,0 0 8px #ffd76a88;z-index:5;cursor:pointer;transform:rotate(-8deg);transition:transform .15s}
 .underpeek:hover{transform:rotate(-4deg) scale(1.15)}
+/* วิชาลับ under พีช (sticks out on the right side) */
+.secretpeek{position:absolute;right:-16%;bottom:-4%;width:44%;aspect-ratio:480/671;border-radius:4px;background:center/cover;border:2px solid #7a5cff;box-shadow:0 2px 8px #000c;z-index:5;cursor:pointer;transform:rotate(9deg);transition:transform .2s}
+.secretpeek:hover{transform:rotate(4deg) scale(1.15)}
+.secretpeek.up{border-color:#bfe9ff;box-shadow:0 0 14px #8fdcff,0 0 4px #fff;animation:spGlow 1.6s ease-in-out infinite}
+.secretpeek.used{filter:grayscale(1) brightness(.5)}
+.secretpeek span{position:absolute;left:0;right:0;bottom:0;font-size:9px;font-weight:bold;text-align:center;background:#000a;color:#d8e8ff;border-radius:0 0 3px 3px}
+@keyframes spGlow{50%{box-shadow:0 0 24px #bfeaff,0 0 8px #fff}}
+.kwbadge{position:absolute;left:50%;top:4%;transform:translateX(-50%);display:flex;gap:3px;z-index:4;pointer-events:none}
+.kwbadge img{height:16px}.kwbadge span{font:bold 10px/16px sans-serif;padding:0 6px;border-radius:8px;background:#22be60;color:#fff;border:1px solid #062}
+/* วิชาลับหงาย: slow snow over the field + the magic circle turning slowly in the middle */
+#peachfx{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0;transition:opacity 1.2s} /* behind the field + cards */
+#peachfx.burst{z-index:60} /* only the opening moment plays over everything */
+#peachfx.on{opacity:1}
+#peachfx canvas{position:absolute;inset:0;width:100%;height:100%}
+#peachfx .pcirc{position:absolute;left:50%;top:50%;width:min(70vmin,720px);aspect-ratio:1;margin:calc(min(70vmin,720px)/-2) 0 0 calc(min(70vmin,720px)/-2);background:center/contain no-repeat;opacity:.2;mix-blend-mode:screen;animation:pcSpin 60s linear infinite}
+#peachfx.burst .pcirc{animation:pcBurst 2.6s ease-out,pcSpin 60s linear infinite}
+@keyframes pcSpin{to{transform:rotate(360deg)}}
+@keyframes pcBurst{0%{opacity:0;transform:scale(.3) rotate(-90deg)}25%{opacity:1;transform:scale(1.15)}60%{opacity:.85}100%{opacity:.2;transform:scale(1) rotate(0)}}
 .underpeek span{position:absolute;left:0;right:0;bottom:0;font-size:9px;font-weight:bold;text-align:center;background:#000a;color:#ffe9a8;border-radius:0 0 3px 3px}
 /* เซวียนเหิง ร่าง 2 entrance */
 .x2fx{position:fixed;inset:0;z-index:130;pointer-events:none;overflow:hidden}
@@ -1534,7 +1562,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
 <div id="trade"></div>
 <div id="cdetail"></div>
 <div id="chainfx"></div>
-<div class="wallet" id="wallet" title="เหรียญ: ชนะ +1250 · แพ้ +500"></div>
+<div class="wallet" id="wallet" title="เหรียญ: ชนะ +5000 · แพ้ +2500"></div>
 <div id="verlabel" style="position:fixed;left:12px;bottom:8px;z-index:81;color:#ffffff55;font-size:12px;pointer-events:none"></div>
 <div id="deckb">
   <div class="dbar">
@@ -1559,7 +1587,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
       <div class="dptab">📋 รายการการ์ด</div>
       <div class="dsearch"><input id="dq" placeholder="🔍 ค้นหาชื่อการ์ด / เผ่า" autocomplete="off"><select id="dsort" title="เรียงการ์ด">
         <option value="type">เรียง: ประเภท</option><option value="cost">เรียง: มานา</option><option value="power">เรียง: พลัง</option><option value="name">เรียง: ชื่อ</option><option value="own">เรียง: มีแล้วก่อน</option><option value="rare">เรียง: ความหายาก</option></select></div>
-      <div class="dtabs" id="dtabs"><button data-f="all" class="on">ทั้งหมด</button><button data-f="ally">พวกพ้อง</button><button data-f="event">เหตุการณ์</button><button data-f="vehicle">พาหนะ</button><button data-f="leader">คาแรคเตอร์</button><button data-f="own">มีแล้ว</button></div>
+      <div class="dtabs" id="dtabs"><button data-f="all" class="on">ทั้งหมด</button><button data-f="ally">พวกพ้อง</button><button data-f="event">เหตุการณ์</button><button data-f="vehicle">พาหนะ</button><button data-f="leader">คาแรคเตอร์</button><button data-f="secret" id="dtabsecret">วิชาลับ</button><button data-f="own">มีแล้ว</button></div>
       <div class="dgrid" id="dgrid"></div>
       <div class="dphelp">แตะ = ดูรายละเอียด · ดับเบิลคลิก = ใส่เด็ค · ใส่ได้ใบละ 4 · เด็คต้องมี 50 ใบพอดี</div>
     </div>
@@ -1574,13 +1602,12 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
         <div class="gname">เหวยเฉิน of หมิงเย่ว</div>
         <div class="gsub">1 ครั้ง = 1 ซอง (การ์ด 6 ใบ)</div>
       </div>
-      <div class="gbtns"><button class="gachabtn" id="pull1">สุ่ม 1 ครั้ง · <span class="cp"></span> 1,000</button><button class="gachabtn" id="pull10">สุ่ม 10 ครั้ง · <span class="cp"></span> 10,000</button></div>
+      <div class="gbtns"><button class="gachabtn" id="pull1">สุ่ม 1 ครั้ง · <span class="cp"></span> 3,000</button><button class="gachabtn" id="pull10">สุ่ม 10 ครั้ง · <span class="cp"></span> 30,000</button></div>
       <button class="glink" id="grates">ดูอัตราการออก / การ์ดในตู้</button>
     </div>
     <div class="gcol">
       <div class="gbox ebx" id="gboxebx">
         <div class="gart" style="background-image:url(img/X_xuan2.webp)"></div>
-        <div class="gtagnew">NEW</div>
         <div class="gname">EBX-01 เรือหลวง</div>
         <div class="gsub">1 ครั้ง = 1 ซอง (การ์ด 6 ใบ)</div>
       </div>
@@ -1588,9 +1615,19 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
       <button class="glink" id="gratesE">ดูอัตราการออก / การ์ดในตู้</button>
     </div>
     <div class="gcol">
+      <div class="gbox ebx2" id="gboxebx2">
+        <div class="gart" id="gart2" style="background-image:url(img/L_lyx9.webp)"></div>
+        <div class="gtagnew">NEW</div>
+        <div class="gname">EBX-02 9 ประกาศิตเที่ยงธรรม</div>
+        <div class="gsub">1 ครั้ง = 1 ซอง (การ์ด 6 ใบ)</div>
+      </div>
+      <div class="gbtns"><button class="gachabtn" id="pullF1">สุ่ม 1 ครั้ง · <span class="cp"></span> 3,000</button><button class="gachabtn" id="pullF10">สุ่ม 10 ครั้ง · <span class="cp"></span> 30,000</button></div>
+      <button class="glink" id="gratesF">ดูอัตราการออก / การ์ดในตู้</button>
+    </div>
+    <div class="gcol">
     <div class="gbox" id="gbox9">
       <div class="gart"></div>
-      <div class="gname">9 ประกาศิตเที่ยงธรรม</div>
+      <div class="gname">Panithan</div>
       <div class="gsub">ตู้สุ่มการ์ด</div>
       <svg class="chains" viewBox="0 0 300 420" preserveAspectRatio="none">
         <defs>
@@ -1613,15 +1650,15 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
     </div>
     </div>
   </div>
-  <div class="gnote">ใช้เหรียญ (เหรียญ) ที่ได้จากการเล่น · ชนะได้ <b>1250</b> · แพ้ได้ <b>500</b> · ได้การ์ดซ้ำ คืน <b>100</b> เหรียญ</div>
+  <div class="gnote">ใช้เหรียญ (เหรียญ) ที่ได้จากการเล่น · ชนะได้ <b>5000</b> · แพ้ได้ <b>2500</b> · ได้การ์ดซ้ำ คืน <b>100</b> เหรียญ</div>
 </div>
 
-<script>window.ASSET={"A_bingyue.png": "img/A_bingyue.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "haki.png": "img/haki.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=33;</script>
+<script>window.ASSET={"A_a9_akit.png": "img/A_a9_akit.webp", "A_a9_bod.png": "img/A_a9_bod.webp", "A_a9_fok.png": "img/A_a9_fok.webp", "A_a9_luart.png": "img/A_a9_luart.webp", "A_a9_lyx.png": "img/A_a9_lyx.webp", "A_a9_nikki.png": "img/A_a9_nikki.webp", "A_a9_peach.png": "img/A_a9_peach.webp", "A_a9_qf.png": "img/A_a9_qf.webp", "A_a9_qfcute.png": "img/A_a9_qfcute.webp", "A_a9_qffluff.png": "img/A_a9_qffluff.webp", "A_a9_smile.png": "img/A_a9_smile.webp", "A_a9_tsukinol.png": "img/A_a9_tsukinol.webp", "A_bingyue.png": "img/A_bingyue.webp", "A_g_farmer.png": "img/A_g_farmer.webp", "A_g_gate.png": "img/A_g_gate.webp", "A_g_shield.png": "img/A_g_shield.webp", "A_g_sword.png": "img/A_g_sword.webp", "A_g_vip.png": "img/A_g_vip.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_doctor.png": "img/A_wc_doctor.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_n_cheat.png": "img/E_n_cheat.webp", "E_n_guilty.png": "img/E_n_guilty.webp", "E_n_letter.png": "img/E_n_letter.webp", "E_n_nightmare.png": "img/E_n_nightmare.webp", "E_n_nowin.png": "img/E_n_nowin.webp", "E_n_story.png": "img/E_n_story.webp", "E_n_stranger.png": "img/E_n_stranger.webp", "E_n_warn.png": "img/E_n_warn.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_lyx9.png": "img/L_lyx9.webp", "L_peach.png": "img/L_peach.webp", "L_qinfei.png": "img/L_qinfei.webp", "L_tsukinol.png": "img/L_tsukinol.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "L_xuan9.png": "img/L_xuan9.webp", "S_peach.png": "img/S_peach.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "fx_peachmagic.png": "img/fx_peachmagic.webp", "haki.png": "img/haki.webp", "kw_rest.png": "img/kw_rest.webp", "kw_rush.png": "img/kw_rush.webp", "kw_stand.png": "img/kw_stand.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=34;</script>
 <script>
 // ============ CARD DATA (transcribed from the card art) ============
-const SAN='สามพี่น้อง', SHIP='เรือหลวง', WCT='พี่น้องร่ำรา', MANA_MAX=10, HAND_MAX=5;
+const SAN='สามพี่น้อง', SHIP='เรือหลวง', WCT='พี่น้องร่ำรา', NINE='9 ประกาศิต', MANA_MAX=10, HAND_MAX=5;
 const CARDS={
- xuan:{type:'leader',name:'เซวียนเหิง',img:'L_xuan.png',power:6000,life:5,tags:['มนุษย์','ดาบ',SHIP],
+ xuan:{type:'leader',name:'เซวียนเหิง',img:'L_xuan.png',power:6000,life:5,tags:['มนุษย์','ดาบ',WCT,SHIP],
   skill:['ถ้ามีพาหนะ <b>เรือหลวงสุริยคราส</b> อยู่ในช่องพาหนะ → พลัง <b>+1000</b>','[AUTO] เมื่อพลังชีวิตได้รับความเสียหาย ถ้าพลังชีวิตเหลือ <b>3 หรือน้อยกว่า</b> → เรียกพวกพ้องเผ่าเรือหลวง 1 ใบจากกองการ์ดหรือช่องดรอปลงสนามได้ <b>โดยไม่ต้องใช้มานา</b> (1 ครั้งต่อเทิร์น)']},
  grandpa:{type:'ally',name:'คุณปู่สามพี่น้อง',img:'A_grandpa.png',power:0,counter:1000,tags:['มังกร'],
   skill:['[GUARD] เมื่อการ์ดใบนี้อยู่ที่<b>ช่องป้องกัน</b> → ได้พลังป้องกัน <b>+1000</b> เพิ่มตามจำนวนพวกพ้องเผ่า "สามพี่น้อง" ในสนามเรา','<i>วางจากมือลงช่องป้องกัน = +1000 (เทา) + โบนัสสามพี่น้อง</i>']},
@@ -1656,7 +1693,7 @@ const CARDS={
  signal:{type:'event',name:'สัญญาณขอความช่วยเหลือ',img:'E_signal.png',cost:1,tags:[SHIP],
   skill:['ดูการ์ด 5 ใบบนสุด เลือกพวกพ้องเผ่าเรือหลวงขึ้นมือได้<b>ไม่เกิน 3 ใบ</b> ที่เหลือไว้ใต้กอง','ถ้าเอาขึ้นมือ 3 ใบ ต้องทิ้งการ์ดบนมือ 1 ใบ','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  prepare:{type:'event',name:'เตรียมรับมือกับผู้ที่ไม่ถูกต้อนรับ',img:'E_prepare.png',cost:1,trigger:true,counterEv:true,tags:[SHIP],
-  skill:['[COUNTER] ใช้ได้ตอนเรากำลังถูกโจมตี','เลือกพวกพ้องฝ่ายตรงข้าม <b>2 ใบ</b> การ์ดเหล่านั้นพลังโจมตี <b>-2000</b> จนจบเทิร์น','[TRIGGER] การ์ดฝ่ายตรงข้าม 1 ใบ พลัง <b>-3000</b> จนจบเทิร์น']},
+  skill:['[COUNTER] ใช้ได้ตอนเรากำลังถูกโจมตี','เลือกพวกพ้องฝ่ายตรงข้าม <b>1 ใบ</b> การ์ดนั้นพลังโจมตี <b>-2000</b> จนจบเทิร์น','[TRIGGER] การ์ดฝ่ายตรงข้าม 1 ใบ พลัง <b>-3000</b> จนจบเทิร์น']},
  inn:{type:'event',name:'โรงเตี๊ยมของพีช',img:'E_inn.png',cost:0,trigger:true,tags:[],
   skill:['<b>จั่ว 2 ใบ</b> (ไม่ต้องใช้มานา)','ใช้ได้ 1 ครั้งต่อเทิร์น','[TRIGGER] จั่วการ์ด 2 ใบ']},
  // ===== ตู้ "เหวยเฉิน of หมิงเย่ว" (ได้จากตู้สุ่มเท่านั้น) — rare: L 1% · V 3% · E 10% · H 25% · C ที่เหลือ (61%) =====
@@ -1684,11 +1721,11 @@ const CARDS={
  wc_queue:{type:'event',name:'ไปต่อท้ายแถว',img:'E_queue.png',cost:1,trigger:true,tags:[],gacha:'E',
   skill:['ค้นหาการ์ดชื่อ "เหวยเฉิน" จากกองลง<b>ช่องดรอป</b>ไม่เกิน 2 ใบ — ถ้าช่องดรอปมีเหวยเฉิน <b>5 ใบ</b>ขึ้นไป นำเหวยเฉิน 1 ใบกลับขึ้นมือได้','ใช้ได้ 1 ครั้งต่อเทิร์น','[TRIGGER] จั่ว 1 ใบ และนำการ์ดนี้ขึ้นมือ']},
  wc_pointless:{type:'event',name:'การต่อสู้ที่ไม่มีความหมาย',img:'E_pointless.png',cost:1,tags:[],gacha:'E',
-  skill:['เปิดการ์ด 5 ใบบนสุด หยิบพวกพ้องชื่อ "เหวยเฉิน" หรือ "ฉินเฟย" ไม่เกิน 2 ใบ และพาหนะไม่เกิน 1 ใบขึ้นมือ ที่เหลือกลับเข้ากองแล้ว<b>สับกอง</b>','ใช้ได้ 1 ครั้งต่อเทิร์น']},
+  skill:['เปิดการ์ด 5 ใบบนสุด หยิบพวกพ้องชื่อ "เหวยเฉิน" หรือ "ฉินเฟย" ไม่เกิน 1 ใบ และพาหนะไม่เกิน 1 ใบขึ้นมือ ที่เหลือกลับเข้ากองแล้ว<b>สับกอง</b>','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  wc_firstday:{type:'event',name:'วันแรก และ งานแรก',img:'E_firstday.png',cost:1,tags:[],gacha:'E',
   skill:['ทิ้ง "เหวยเฉิน" บนมือ 1 ใบ → <b>จั่ว 3 ใบ</b> — จนจบเทิร์นนี้ จั่วจากความสามารถของการ์ดชื่อ "เหวยเฉิน" ไม่ได้อีก','ใช้ได้ 1 ครั้งต่อเทิร์น']},
  // ===== ตู้ "EBX-01 เรือหลวง" (ได้จากตู้สุ่มเท่านั้น) — mystic 0.05% · legend 2% · epic 20% · rare ที่เหลือ (77.95%) =====
- x_xuan2:{type:'leader',inDeck:true,deckMax:2,name:'เซวียนเหิง',img:'X_xuan2.png',power:8000,tags:['มนุษย์','ดาบ',SHIP,'บาป'],gacha:'M',box:'ebx',
+ x_xuan2:{type:'leader',inDeck:true,deckMax:2,name:'เซวียนเหิง',img:'X_xuan2.png',power:8000,tags:['มนุษย์','ดาบ',WCT,SHIP,'บาป'],gacha:'M',box:'ebx',
   skill:['การ์ดใบนี้ใส่ใน<b>ช่องคาแรคเตอร์ไม่ได้</b> แต่ใส่ใน<b>กองการ์ดได้ 2 ใบ</b>เท่านั้น','เมื่อพลังชีวิตของเรากลายเป็น <b>0</b> และคาแรคเตอร์เราชื่อ "เซวียนเหิง" → วางการ์ดนี้<b>ทับคาแรคเตอร์</b> และนำการ์ดบนสุดของกอง 1 ใบเข้า<b>พลังชีวิต</b> (คว่ำหน้า)','การ์ดนี้ได้รับ<b>ความสามารถของการ์ดที่ถูกทับ</b>','เมื่อการ์ดนี้โจมตีคาแรคเตอร์ฝ่ายตรงข้าม → เลือกพวกพ้องฝ่ายตรงข้ามที่<b>ตั้งหรือนอน</b>อยู่ได้ 1 ใบ การ์ดนี้<b>โจมตีใบนั้นด้วย</b>','เมื่อพลังชีวิตของเราได้รับความเสียหาย → นำการ์ดนี้ลงช่องดรอป (การ์ดที่ถูกทับกลับมาเป็นคาแรคเตอร์) · 1 ครั้งต่อเกม']},
  x_origin:{type:'event',name:'ก่อกำเนิดเรือหลวงสุริยคราส',img:'E_x_origin.png',cost:2,tags:[SHIP],gacha:'G',box:'ebx',
   skill:['ค้นหาพวกพ้องเผ่า "เรือหลวง" จากกองการ์ด<b>ไม่เกิน 2 ใบ</b>ขึ้นมือ','ใช้ได้ 1 ครั้งต่อเทิร์น']},
@@ -1718,15 +1755,106 @@ const CARDS={
   skill:['ใช้ได้เมื่อการ์ดในสนามเราถูกโจมตี','[COUNTER] ทิ้งพวกพ้องชื่อ "เหวยเฉิน" บนมือ<b>กี่ใบก็ได้</b> — ถ้าทิ้ง และคาแรคเตอร์ชื่อ "เหวยเฉิน" → เลือกพวกพ้องฝ่ายตรงข้าม<b>เท่ากับจำนวนที่ทิ้ง</b> การ์ดเหล่านั้น<b>โจมตีไม่ได้</b> (1 ครั้งต่อเทิร์น)']},
  wc_teahouse:{type:'vehicle',name:'ร้านขาประจำเหวยเฉิน',img:'V_teahouse.png',cost:4,power:0,tags:[],gacha:'V',
   skill:['การ์ดทุกใบที่มีชื่อ "เหวยเฉิน" พลังโจมตี <b>+1000</b>','[ACT] นำการ์ดชื่อ "เหวยเฉิน" จากช่องดรอปกลับใต้กอง <b>5 ใบ</b> → <b>ทำลาย</b>พวกพ้องฝ่ายตรงข้าม 1 ใบ','สามารถติดตั้งพาหนะนี้ได้<b>กี่ใบก็ได้</b>']},
+ // ===== ชุดใหม่ 5 คาแรคเตอร์ (dev:true = มีเฉพาะตอนเปิดจาก localhost — ยังไม่ลงตัวเกมจริง) =====
+ lyx9:{type:'leader',gacha:'M',box:'ebx2',name:'หลงเยี่ยซิน',img:'L_lyx9.png',power:7000,life:4,tags:['มังกร','เทพ',NINE],
+  skill:['เมื่อคาแรคเตอร์นี้ทำการโจมตี → เลือกพวกพ้องฝ่ายตรงข้ามที่อยู่ในสภาพ [REST] (นอน) 1 ใบ <b>ทำลาย</b>การ์ดใบนั้น','[ACT] ทำลายพวกพ้องของเราที่มีเผ่า "9 ประกาศิต" 1 ใบ → <b>จั่ว 2 ใบ</b> (1 ครั้งต่อเทิร์น)']},
+ peach:{type:'leader',gacha:'M',box:'ebx2',name:'พีช',img:'L_peach.png',power:6000,life:6,tags:['มังกร','มังกรเหมันต์',NINE],
+  skill:['[COUNTER] [ACT] [REST] พวกพ้องหรือมานาที่<b>ตั้งอยู่</b>ของเรา รวมกันให้ได้ <b>6 ใบ</b> — หากทำ → การ์ดนี้พลังต่อสู้ <b>+4000</b> จนจบเทิร์นฝ่ายตรงข้าม (1 ครั้งต่อเทิร์น)','[AUTO] เมื่อเราถูกโจมตี และพลังชีวิตเหลือ <b>1 หรือต่ำกว่า</b> → <b>หงาย</b>การ์ด "วิชาลับ" ที่อยู่ใต้การ์ดนี้']},
+ peach_secret:{type:'secret',gacha:'M',box:'ebx2',under:'peach',name:'ขยายเขตแดนเวท ท่าสังหารอนันตทิต',img:'S_peach.png',power:4000,tags:[],
+  skill:['การ์ดใบนี้อยู่<b>ใต้คาแรคเตอร์ชื่อ "พีช"</b> เท่านั้น (คว่ำไว้ตั้งแต่เริ่มเกม) · ใส่ได้ <b>1 ใบ</b> · เป็นการ์ดพิเศษ <b>ไม่นับรวม 50 ใบ</b>ในกอง','เมื่อการ์ดนี้ถูกเปิด → <b>จั่ว 1 ใบ</b>','ขณะหงายหน้า: พีชพลัง <b>+4000</b>','เมื่อพีชโจมตี → การ์ดนี้<b>โจมตีพวกพ้องฝ่ายตรงข้ามได้อีก 1 ใบ</b> ไม่ว่าจะ [STAND] หรือ [REST]','เมื่อจบ<b>เทิร์นที่ 2 ของเรา</b> (นับจากที่หงาย) → <b>คว่ำ</b>การ์ดนี้ และหงายอีกไม่ได้']},
+ tsukinol:{type:'leader',gacha:'M',box:'ebx2',name:'สึกิน่อล',img:'L_tsukinol.png',power:5000,life:6,tags:['มนุษย์','จอมเวทย์',NINE],
+  skill:['เมื่อเราใช้การ์ดเหตุการณ์ → เลือกการ์ดในสนามของเรา 1 ใบ ได้พลังโจมตีและป้องกัน <b>+500</b> (จนจบเทิร์น)','เมื่อการ์ดเหตุการณ์ทำให้เราจั่ว → <b>จั่วเพิ่ม 1 ใบ</b> (1 ครั้งต่อเทิร์น)','เมื่อจบเทิร์นของเรา → <b>รีมานา 2</b>']},
+ xuan9:{type:'leader',gacha:'M',box:'ebx2',name:'เซวียนเหิง',img:'L_xuan9.png',power:6000,life:5,tags:['มนุษย์','ดาบ',WCT,SHIP],
+  skill:['เมื่อการ์ดนี้โจมตี ถ้าพลังชีวิตเรา <b>3 หรือต่ำกว่า</b> → เรียกพวกพ้องเผ่า "เรือหลวง" จากกองการ์ดไม่เกิน 1 ใบลงสนาม ในสถานะ [RUSH]','เมื่อจบเทิร์น → เลือกพวกพ้องเผ่า "เรือหลวง" ไม่เกิน 1 ใบ ได้รับ [GO ON] และ [STAND] การ์ดนั้น','ถ้าเรามีพาหนะ "เรือหลวง" → การ์ดนี้พลัง <b>+1000</b>']},
+ qinfei:{type:'leader',gacha:'M',box:'ebx2',name:'ฉินเฟย',img:'L_qinfei.png',power:6000,life:5,tags:['สัตว์',WCT],
+  skill:['เมื่อการ์ดนี้ถูกโจมตี → เลือกการ์ดชื่อ "ฉินเฟย" จากกองไม่เกิน 2 ใบ นำเข้า<b>ช่องป้องกัน</b> (1 ครั้งต่อเทิร์น)','เมื่อการ์ดนี้โจมตี → เลือกพวกพ้องในสนามของเรา 1 ใบ [STAND] การ์ดนั้น — ถ้าเป็นการ์ดที่ลงสนามเทิร์นนี้ (ไม่ใช่เทิร์นแรกของเรา) จะได้ [RUSH] แทน']},
+ // ===== ชุดใหม่: พวกพ้อง 17 ใบ (dev:true) — need: เผ่า/ชื่อคาแรคเตอร์ที่ต้องมีถึงจะลงสนามได้ · "1 per call" = 1 ครั้งต่อการลงสนาม 1 ครั้ง =====
+ a9_peach:{type:'ally',gacha:'G',box:'ebx2',cost:2,name:'พีช',img:'A_a9_peach.png',power:6000,counter:1000,tags:['มังกร','มังกรเหมันต์',NINE],need:{tag:NINE},
+  skill:['ลงสนามได้เมื่อคาแรคเตอร์ของเรามีเผ่า "9 ประกาศิต" เท่านั้น','[ON PLAY] <b>จั่ว 1 ใบ</b>','เมื่อการ์ดนี้โจมตี → [REST] มานา 2 ใบได้ หากทำ พวกพ้อง<b>ทุกใบ</b>ของเรา พลังโจมตี <b>+2000</b> (จนจบเทิร์น · 1 ครั้งต่อการลงสนาม)','เมื่อการ์ดนี้ถูกทำลายจาก<b>ความสามารถของการ์ดเรา</b> → <b>รีมานา 1</b>']},
+ a9_smile:{type:'ally',gacha:'P',box:'ebx2',cost:1,name:'สไมล์ไวท์',img:'A_a9_smile.png',power:6000,counter:0,tags:['มนุษย์','นักฆ่า','หน้ากาก'],
+  skill:['เมื่อการ์ดนี้โจมตี → ใช้ <b>"ทิ้งร่องรอย"</b> ได้ (1 ครั้งต่อการลงสนาม)','"ทิ้งร่องรอย": การ์ดนี้<b>โจมตีพวกพ้องฝ่ายตรงข้ามได้อีก 1 ใบ</b> (ตั้งหรือนอนก็ได้) และเมื่อจบเทิร์น <b>ทำลายการ์ดนี้</b>']},
+ a9_bod:{type:'ally',gacha:'P',box:'ebx2',cost:1,name:'โบ๊ด',img:'A_a9_bod.png',power:5000,counter:1000,tags:['มนุษย์','ผู้กล้า'],goOn:true,
+  skill:['ทุกครั้งที่การ์ดนี้โจมตี → พลังป้องกัน <b>+1000</b> จนกว่าจะออกจากสนาม','[GO ON] ย้ายจากสนามมาช่องป้องกันได้ — ถ้าย้ายมาตอนมีพลังป้องกัน <b>3000 ขึ้นไป</b> → <b>รีมานา 2</b>']},
+ a9_fok:{type:'ally',gacha:'P',box:'ebx2',cost:1,name:'โฟ๊ค',img:'A_a9_fok.png',power:5000,counter:2000,tags:['เอนทิตี้',NINE],need:{tag:NINE},
+  skill:['ลงสนามได้เมื่อคาแรคเตอร์ของเรามีเผ่า "9 ประกาศิต" เท่านั้น','[ON PLAY] เปิดการ์ด 7 ใบบนสุด หยิบการ์ดเผ่า "9 ประกาศิต" ไม่เกิน 1 ใบขึ้นมือ (ที่เหลือไว้ใต้กอง) และ<b>จั่ว 1 ใบ</b>','เมื่อการ์ดนี้ถูกทำลายจาก<b>ความสามารถของการ์ดเรา</b> → <b>จั่ว 1 ใบ</b>']},
+ a9_qf:{type:'ally',gacha:'R',box:'ebx2',cost:0,name:'ฉินเฟย',img:'A_a9_qf.png',power:6000,counter:2000,tags:['สัตว์',WCT],any:true,
+  skill:['ใส่ในกองการ์ดได้<b>กี่ใบก็ได้</b>','ถ้าคาแรคเตอร์ของเราชื่อ "ฉินเฟย" จะได้รับความสามารถทั้งหมดนี้:','[ON PLAY] "มาแล้วครับพี่น้อง" <b>จั่ว 2 ใบ</b> (1 ครั้งต่อเทิร์น)','พลังโจมตี <b>+2000</b> และพลังป้องกัน <b>+2000</b>']},
+ a9_qfcute:{type:'ally',gacha:'P',box:'ebx2',cost:2,name:'ฉินเฟยน่ารัก',img:'A_a9_qfcute.png',power:5000,counter:1000,tags:['สัตว์',WCT],
+  skill:['[ON PLAY] ถ้าคาแรคเตอร์ของเราชื่อ "ฉินเฟย" → ถามคู่แข่งว่า <b>"ข้าน่ารักไหม"</b> (1 ครั้งต่อเทิร์น)','ตอบ "น่ารัก" → เรา<b>จั่ว 2 ใบ</b> · ตอบ "ไม่น่ารัก" → คู่แข่ง<b>ทิ้งการ์ดบนมือ 1 ใบ</b> (การ์ดที่ถูกทิ้งใช้ความสามารถเมื่อถูกทิ้งไม่ได้)']},
+ a9_qffluff:{type:'ally',gacha:'P',box:'ebx2',cost:1,name:'ฉินเฟยปุปุย',img:'A_a9_qffluff.png',power:4000,counter:2000,tags:['สัตว์',WCT],
+  skill:['[ON PLAY] ถ้าคาแรคเตอร์ของเราชื่อ "ฉินเฟย" → เลือกพวกพ้องชื่อ "ฉินเฟย" ไม่เกิน 2 ใบ พลังโจมตี <b>+2000</b> (จนจบเทิร์น)','[GUARD] เข้าช่องป้องกัน: ถ้าช่องพวกพ้องมี "ฉินเฟย" <b>3 ใบ</b> → ป้องกัน <b>+2000</b>']},
+ a9_nikki:{type:'ally',gacha:'P',box:'ebx2',cost:1,name:'นิกกี้',img:'A_a9_nikki.png',power:6000,counter:2000,tags:['มนุษย์','พนักงาน'],need:{lead:'peach'},
+  skill:['ลงสนามได้เมื่อคาแรคเตอร์ของเราชื่อ "พีช" เท่านั้น','[ON PLAY] สร้างความเสียหายใส่<b>พลังชีวิตของตัวเอง 1 ใบ</b>ได้ หากทำ → <b>จั่ว 2 ใบ</b> (ใบที่เสียไปลงช่องดรอปแทนการขึ้นมือ และทริกเกอร์ไม่ทำงาน)']},
+ a9_luart:{type:'ally',gacha:'P',box:'ebx2',cost:1,name:'ลูอาร์ต',img:'A_a9_luart.png',power:0,counter:2000,tags:['มนุษย์','จอมเวทย์',SHIP],
+  skill:['[ON PLAY] ถ้าคาแรคเตอร์ของเรามีเผ่า "เรือหลวง" → <b>จั่ว 1 ใบ</b>','ขณะอยู่ในสนาม: การ์ดเหตุการณ์ของเรา<b>ลดค่ามานาลง 1</b>','เมื่อจบเทิร์น → นำการ์ดนี้<b>ลงช่องดรอป</b>']},
+ a9_tsukinol:{type:'ally',gacha:'G',box:'ebx2',cost:1,name:'สึกิน่อล',img:'A_a9_tsukinol.png',power:6000,counter:2000,tags:['มนุษย์','จอมเวทย์',NINE],need:{tag:NINE},
+  skill:['ลงสนามได้เมื่อคาแรคเตอร์ของเรามีเผ่า "9 ประกาศิต" เท่านั้น','[ON PLAY] เปิดการ์ด 7 ใบบนสุด หยิบ<b>การ์ดเหตุการณ์</b>ไม่เกิน 1 ใบขึ้นมือ (ที่เหลือไว้ใต้กอง) และ<b>จั่ว 1 ใบ</b>','เมื่อเราใช้การ์ดเหตุการณ์ → เลือกการ์ดในสนาม 1 ใบ การ์ดนั้นและการ์ดนี้ พลังโจมตีและป้องกัน <b>+1000</b> (จนจบเทิร์น · 1 ครั้งต่อการลงสนาม)','เมื่อการ์ดนี้ถูกทำลาย → นำการ์ดเหตุการณ์จากช่องดรอป 1 ใบ<b>ขึ้นมือ</b>']},
+ a9_lyx:{type:'ally',gacha:'G',box:'ebx2',cost:2,name:'หลงเยี่ยซิน',img:'A_a9_lyx.png',power:7000,counter:2000,tags:['มังกร','เทพ',NINE],need:{tag:NINE},
+  skill:['ลงสนามได้เมื่อคาแรคเตอร์ของเรามีเผ่า "9 ประกาศิต" เท่านั้น','[ON PLAY] <b>จั่ว 1 ใบ</b> แล้วเก็บพวกพ้องเผ่า "9 ประกาศิต" ในสนามกลับ<b>ใต้กอง</b>ได้ — ทุก 1 ใบ <b>รีมานา 1</b>','[ON PLAY] <b>ทำลาย</b>พวกพ้องฝ่ายตรงข้าม 1 ใบ','เมื่อการ์ดนี้ถูกทำลายจาก<b>ความสามารถของการ์ดเรา</b> → <b>ทำลาย</b>พวกพ้องฝ่ายตรงข้าม 1 ใบ']},
+ a9_akit:{type:'ally',gacha:'G',box:'ebx2',cost:1,name:'อากิต',img:'A_a9_akit.png',power:5000,counter:1000,tags:['มนุษย์',NINE],need:{tag:NINE},
+  skill:['ลงสนามได้เมื่อคาแรคเตอร์ของเรามีเผ่า "9 ประกาศิต" เท่านั้น','[ON PLAY] <b>จั่ว 1 ใบ</b> และนำพวกพ้องฝ่ายตรงข้าม 1 ใบ<b>กลับขึ้นมือ</b>','เมื่อการ์ดนี้ถูกทำลายจาก<b>ความสามารถของการ์ดเรา</b> → คู่แข่งเลือก<b>ทิ้งการ์ดบนมือ 1 ใบ</b>']},
+ wc_doctor:{type:'ally',gacha:'P',box:'ebx2',cost:0,name:'เหวยเฉินเป็นสำนักแพทแล้ว',img:'A_wc_doctor.png',power:6000,counter:0,tags:['มนุษย์',WCT],
+  skill:['เมื่อการ์ดนี้เข้าสู่สนามจาก<b>ความสามารถของการ์ดชื่อ "เหวยเฉิน"</b> → เลือกพวกพ้องชื่อ "เหวยเฉิน" ไม่เกิน 1 ใบ<b>กลับใต้กอง</b> และค้นหา "เหวยเฉิน" (ที่ไม่ใช่การ์ดนี้) ไม่เกิน 1 ใบจากกอง<b>เรียกลงสนาม</b>โดยจ่ายค่ามานา — ถ้าเป็นเทิร์นเรา ทิ้ง "เหวยเฉิน" บนมือ 1 ใบได้ → การ์ดที่เรียก<b>โจมตีได้ทันที</b>','ถ้าถูกเรียกจากความสามารถของ<b>คาแรคเตอร์ "เหวยเฉิน"</b> → พลังโจมตี <b>+2000</b> จนจบเทิร์น']},
+ // ===== ชุดใหม่: เหตุการณ์ 8 ใบ (dev:true) =====
+ n_nowin:{type:'event',gacha:'P',box:'ebx2',name:'การต่อสู้ที่ไม่มีทางชนะ',img:'E_n_nowin.png',cost:4,counterEv:true,tags:[],
+  skill:['ใช้ได้เมื่อการ์ดในสนามเราถูกโจมตีด้วยพลังโจมตี<b>ไม่เกิน 12000</b> · ถ้ามีพวกพ้องชื่อ "อากิต" → มานา <b>-2</b>','[COUNTER] <b>ยกเลิก</b>การโจมตีนั้น']},
+ n_warn:{type:'event',gacha:'P',box:'ebx2',name:'คำเตือนของท่านเจ้าสำนัก',img:'E_n_warn.png',cost:0,tags:[],
+  skill:['ใช้ได้เมื่อคาแรคเตอร์ของเราชื่อ "ฉินเฟย" (ไม่ต้องจ่ายมานา)','<b>รีมานา</b>ตามจำนวนพวกพ้อง "ฉินเฟย" ในสนาม']},
+ n_letter:{type:'event',gacha:'P',box:'ebx2',name:'จดหมายสำคัญ',img:'E_n_letter.png',cost:1,counterEv:true,tags:[],
+  skill:['ใช้ได้เมื่อคาแรคเตอร์ของเรามีเผ่า "9 ประกาศิต"','[COUNTER] เลือกพวกพ้องจากช่องดรอป 1 ใบ <b>เรียกลงสนาม</b>โดยจ่ายค่ามานา']},
+ n_stranger:{type:'event',gacha:'R',box:'ebx2',name:'ชายปริศนา',img:'E_n_stranger.png',cost:1,tags:[],
+  skill:['เปิดการ์ด 5 ใบบนสุด นำ<b>พวกพ้อง</b>ไม่เกิน 1 ใบขึ้นมือ ที่เหลือไว้ใต้กอง','ใช้ได้ 1 ครั้งต่อเทิร์น']},
+ n_cheat:{type:'event',gacha:'R',box:'ebx2',name:'ผู้หลอกลวงความตาย',img:'E_n_cheat.png',cost:0,counterEv:true,tags:[],
+  skill:['[COUNTER] เลือกพวกพ้องของเรา 1 ใบ — ถ้าการ์ดนั้นจะถูกทำลาย (จนจบเทิร์นนี้ 1 ครั้ง) การ์ดนั้น<b>ยังคงอยู่ในสนาม</b>']},
+ n_nightmare:{type:'event',gacha:'P',box:'ebx2',name:'ฝันร้ายของเมือง',img:'E_n_nightmare.png',cost:6,counterEv:true,tags:[],
+  skill:['ถ้าคาแรคเตอร์ของเรามีเผ่า "9 ประกาศิต" → มานา <b>-2</b>','[COUNTER] เลือก<b>พาหนะ</b>ของฝ่ายตรงข้าม 1 ใบ นำลงช่องดรอป']},
+ n_story:{type:'event',gacha:'P',box:'ebx2',name:'เรื่องราวของข้าและเจ้า',img:'E_n_story.png',cost:2,tags:['มังกรอนันต์','เทพ'],noBottom:true,
+  skill:['ใช้ได้เมื่อคาแรคเตอร์ของเราชื่อ "หลงเยี่ยซิน"','<b>จั่ว 1 ใบ</b> และนำการ์ดบนสุดของกองเข้า<b>พลังชีวิต</b> (คว่ำหน้า)','การ์ดนี้<b>นำกลับใต้กองไม่ได้</b>']},
+ n_guilty:{type:'event',gacha:'R',box:'ebx2',name:'แกมีความผิด',img:'E_n_guilty.png',cost:4,counterEv:true,tags:[],
+  skill:['ถ้าคาแรคเตอร์ของเรามีเผ่า "9 ประกาศิต" → มานา <b>-2</b>','[COUNTER] เลือกพวกพ้องฝ่ายตรงข้ามไม่เกิน 1 ใบ พลังโจมตี <b>-4000</b> (จนจบเทิร์น)']},
+ g_farmer:{type:'ally',gacha:'R',box:'ebx2',cost:0,name:'ชาวไร่',img:'A_g_farmer.png',power:3000,counter:1000,tags:['มนุษย์','ชาวบ้าน'],
+  skill:['[ON PLAY] <b>รีมานา 1</b>']},
+ g_sword:{type:'ally',gacha:'R',box:'ebx2',cost:1,name:'ทหารดาบ',img:'A_g_sword.png',power:5000,counter:0,tags:['มนุษย์','ทหาร'],
+  skill:['เมื่อการ์ดนี้โจมตี<b>พวกพ้อง</b> → พลังโจมตี <b>+1000</b>']},
+ g_shield:{type:'ally',gacha:'R',box:'ebx2',cost:1,name:'ทหารโล่',img:'A_g_shield.png',power:2000,counter:4000,tags:['มนุษย์','ทหาร'],goOn:true,
+  skill:['[GO ON] ตอนเราถูกโจมตี ย้ายการ์ดนี้จากสนามมาช่องป้องกันได้']},
+ g_vip:{type:'ally',gacha:'R',box:'ebx2',cost:2,name:'ทหารสำคัญ',img:'A_g_vip.png',power:6000,counter:1000,tags:['มนุษย์','ทหาร'],
+  skill:['ถ้ามีพวกพ้องเผ่า "ทหาร" ใบอื่นในสนาม → พลังโจมตี <b>+1000</b>']},
+ g_gate:{type:'ally',gacha:'R',box:'ebx2',cost:2,name:'ผู้เฝ้าประตู',img:'A_g_gate.png',power:4000,counter:2000,tags:['มนุษย์','ทหาร'],
+  skill:['เมื่อการ์ดนี้ถูกทำลาย → <b>จั่ว 1 ใบ</b>']},
 };
+// the new characters stay out of the real game (web / PC) until they are released — only a localhost copy has them
+const DEV_NEW=/(^|\.)localhost$|^127\.0\.0\.1$/.test(location.hostname);
+if(!DEV_NEW)for(const id of Object.keys(CARDS))if(CARDS[id].dev)delete CARDS[id];
 const isWC=c=>!!(c&&c.id&&CARDS[c.id]&&(CARDS[c.id].allNames||CARDS[c.id].name.includes('เหวยเฉิน')));
 // "ถ้าคาแรคเตอร์เราคือ X" — หลงเยี่ยซินถือว่าเป็นทุกชื่อ จึงผ่านเงื่อนไขชื่อคาแรคเตอร์ทุกแบบ (แต่ไม่ได้สกิลของคาแรคเตอร์นั้น)
 const leaderNamed=(p,id)=>p.leader.id===id||!!CARDS[p.leader.id].allNames||CARDS[p.leader.id].name===CARDS[id].name;
 // the leader has เซวียนเหิง's own skills (เซวียนเหิง itself, or the deck card laid over it)
+// an ally that only enters the field with a certain character: need {tag} = the character's tribe · {lead} = the character's name
+const canEnter=(p,c)=>{const n=CARDS[c.id]&&CARDS[c.id].need;if(!n)return true;if(n.tag&&!hasTag(p.leader,n.tag))return false;if(n.lead&&!(CARDS[n.lead]&&leaderNamed(p,n.lead)))return false;return true};
+const needTxt=c=>{const n=CARDS[c.id]&&CARDS[c.id].need;return !n?'':n.tag?`ต้องมีคาแรคเตอร์เผ่า "${n.tag}"`:`ต้องมีคาแรคเตอร์ชื่อ "${CARDS[n.lead]?CARDS[n.lead].name:n.lead}"`};
+const qfLead=p=>!!CARDS.qinfei&&leaderNamed(p,'qinfei');   // คาแรคเตอร์ชื่อ "ฉินเฟย"
+const isQF=c=>nm(c).includes('ฉินเฟย');
+// "1 per call": once each time the card comes onto the field (the flags live on the field object, a new copy starts clean)
+const perCall=(u,k)=>{u.pc=u.pc||{};if(u.pc[k])return false;u.pc[k]=1;return true};
+const usedCall=(u,k)=>!!(u.pc&&u.pc[k]);
+// event cost: ลูอาร์ต (ใหม่) in our field → -1 each (while our character is "เรือหลวง")
+const evCost=(p,c)=>{let k=(D(c).cost||0)-(p&&p.allies&&shipLead(p)?p.allies.filter(a=>a.id==='a9_luart').length:0);
+  if(p&&p.leader){
+    if(c.id==='n_nowin'&&p.allies.some(a=>nm(a)==='อากิต'))k-=2;   // มีพวกพ้องชื่อ "อากิต" → -2
+    if(c.id==='n_nightmare'&&hasTag(p.leader,NINE))k-=2;           // คาแรคเตอร์ 9 ประกาศิต → -2
+    if(c.id==='n_guilty'&&hasTag(p.leader,NINE))k-=2;              // คาแรคเตอร์ 9 ประกาศิต → -2
+  }
+  return Math.max(0,k)};
 const xuanSkills=p=>p.leader.id==='xuan'||(p.leader.id==='x_xuan2'&&!!p.leader.under&&p.leader.under.id==='xuan');
 const DECKLIST={grandpa:4,bingyue:3,luart:2,tianxing:3,yaoxing:3,yaoxingmini:3,yaoming:3,weichen:3,ship:3,
  meeting:2,love:2,bind:3,goaway:2,death:3,spare:2,signal:3,prepare:3,inn:3}; // 50 cards
-const TYPE_TH={leader:'คาแรคเตอร์',ally:'พวกพ้อง',event:'เหตุการณ์',vehicle:'พาหนะ'};
+const TYPE_TH={leader:'คาแรคเตอร์',ally:'พวกพ้อง',event:'เหตุการณ์',vehicle:'พาหนะ',secret:'วิชาลับ'};
+// card back: characters and "วิชาลับ" use the purple character back
+const backOf=d=>d&&(d.type==='leader'||d.type==='secret')?'back_ch.png':'back.png';
+// inline keyword pills inside skill text (same pictures as on the card art)
+const KW_IN={'[REST]':'kw_rest.png','[STAND]':'kw_stand.png','[RUSH]':'kw_rush.png'};
+const kwInline=s=>s.replace(/\[(REST|STAND|RUSH)\]/g,m=>`<img class="kwi" src="${A(KW_IN[m])}" alt="${m.slice(1,-1)}">`).replace(/\[GO ON\]/g,'<span class="kw k3">GO ON</span>').replace(/\[(COUNTER|ACT)\]/g,(m,k)=>`<span class="kw ${k==='ACT'?'k1':'k4'}">${k}</span>`);
 const KW={'[GUARD]':['k5','ช่องป้องกัน'],'[ON PLAY]':['k3','เมื่อลงสนาม'],'[ACT]':['k1','ACT'],'[SHIELD]':['k2','SHIELD'],'[GO ON]':['k3','GO ON'],'[COUNTER]':['k4','COUNTER'],'[TRIGGER]':['k2','ทริกเกอร์'],'[AUTO]':['k5','อัตโนมัติ']};
 
 // ============ HELPERS ============
@@ -1755,7 +1883,7 @@ for(const k of Object.keys(ARTS)){const a=ARTS[k];CARDS[a.base+'_'+k]={...CARDS[
 // foil cards are their own deck entries too (id~prism …) so different foils + normal copies can sit in one deck,
 // all sharing the copy limit of the normal card (before, one chosen foil covered every copy)
 const FOIL_KEYS=['prism','glitter','pixel','hex'];
-for(const id of Object.keys(CARDS)){const d=CARDS[id];if(d.base||id==='longyexin'||(d.type==='leader'&&!d.inDeck))continue;
+for(const id of Object.keys(CARDS)){const d=CARDS[id];if(d.base||id==='longyexin'||d.type==='secret'||(d.type==='leader'&&!d.inDeck))continue;
   for(const f of FOIL_KEYS)CARDS[id+'~'+f]={...d,base:id,foil:f,gacha:'F',baseGacha:d.gacha||''}}
 const baseOf=id=>(CARDS[id]&&CARDS[id].base)||id;
 const D=c=>{const a=c.art&&ARTS[c.art];if(a&&a.base===c.id)return ARTD[c.art]||(ARTD[c.art]={...CARDS[c.id],img:a.img});return CARDS[c.id]};
@@ -1792,18 +1920,30 @@ function newPlayer(ai,leaderId,name,list,foils,arts){
   const deck=[];for(const [id,n] of Object.entries(list||DECKLIST))for(let i=0;i<n;i++)deck.push(mkCard(id));
   shuffle(deck);
   const leader=unitize(mkCard(leaderId));if(foils&&FOILS[foils[leaderId]])leader.foil=foils[leaderId];leader.sick=false;
+  // "วิชาลับ": taken out of the deck at the start and kept face-down under its character (พีช)
+  // (it is not one of the 50 deck cards, so it never stays in the deck)
+  for(let i=deck.length-1;i>=0;i--)if(CARDS[deck[i].id]&&CARDS[deck[i].id].type==='secret'){const s=deck.splice(i,1)[0];
+    if(!leader.secret&&leaderNamed({leader},CARDS[s.id].under))leader.secret={uid:s.uid,id:s.id,up:false,used:false}}
   return {ai,remote:false,name,leader,deck,hand:[],life:[],trash:[],allies:[],guard:[],vehicle:null,manaDeck:10,manaActive:0,manaRested:0,once:{},tianxingBlocked:false};
 }
 
 // ============ POWER ============
+const peachUp=p=>!!(p&&p.leader&&p.leader.secret&&p.leader.secret.up&&CARDS[p.leader.secret.id]);
+// b is an opponent of a (1v1: the other player · 2v2: the other team)
+const isEnemy=(a,b)=>!!a&&!!b&&a!==b&&(a.team==null||b.team==null||a.team!==b.team);
 function bonus(p,u,mode){
   let v=0;const id=u.id;
   if((id==='xuan'||(id==='x_xuan2'&&u.under&&u.under.id==='xuan'))&&hasShip(p))v+=1000;
   if(id==='yaoming'&&p.allies.some(a=>a.id==='yaoxing'))v+=1000;
+  if(id==='xuan9'&&p.vehicle&&hasTag(p.vehicle,SHIP))v+=1000;          // เซวียนเหิง (ใหม่): มีพาหนะเรือหลวง
+  if(u===p.leader&&peachUp(p))v+=D({id:u.secret.id}).power||4000;       // วิชาลับหงายอยู่ → พีช +4000
+  if(u.buffs)for(const b of u.buffs)v+=b.v;                              // พีช [REST] 4 ใบ → +2000 จนจบเทิร์นฝ่ายตรงข้าม
   if(mode==='atk'){
     if(p.vehicle&&p.vehicle.id==='wc_teahouse'&&isWC(u))v+=1000*(1+((p.vehicle.extra||[]).length)); // +1000 for every installed copy
     if(id==='bingyue'){const n=sanCount(p,u);if(n>=1)v+=2000;if(n>=2)v+=2000;}
     if(id==='tianxing'&&sanCount(p,u)>=1)v+=1000;
+    if(id==='a9_qf'&&qfLead(p))v+=2000;                                           // ฉินเฟย (พวกพ้อง): คาแรคเตอร์ฉินเฟย → +2000
+    if(id==='g_vip'&&p.allies.some(a=>a!==u&&hasTag(a,'ทหาร')))v+=1000;           // ทหารสำคัญ: มีทหารใบอื่น → +1000
   }
   return v;
 }
@@ -1813,7 +1953,10 @@ function guardVal(p,c,fromField){
   if(c.id==='grandpa'||c.id==='x_bingyue1')v+=1000*sanCount(p,null);
   if(fromField){
     if(c.id==='weichen'&&wcAllyBoost(p))v+=2000;
+    if(c.permDef)v+=c.permDef;                                                      // โบ๊ด: +1000 ทุกครั้งที่โจมตี
   }
+  if(c.id==='a9_qf'&&qfLead(p))v+=2000;
+  if(c.id==='a9_qffluff'&&p.allies.filter(a=>a!==c&&isQF(a)).length>=3)v+=2000;   // ฉินเฟยปุปุย: ช่องพวกพ้องมีฉินเฟย 3 ใบ
   // เหยาหมิง in the defense slot (from hand or field): +1000 while เหยาซิง is on our field
   if(c.id==='yaoming'&&p.allies.some(a=>a.id==='yaoxing'))v+=1000;
   // เหวยเฉินนักดำน้ำ: all 3 ally slots are เหวยเฉิน and the character is เหวยเฉิน → +3000
@@ -1851,8 +1994,41 @@ function matchMusic(){
   if(AU.on.music)a.play().catch(()=>{});
   $('#nowplay').textContent='🐉 '+LYX_TRACK.t;
 }
-function lastFightMusic(i){
+// a character's own LAST FIGHT music (the one who brought the life to 0): next = plays after the first track ends, then loops
+const LF_LEAD={
+  lyx9:{f:'lf_lyx2_intro.ogg',next:'lf_lyx2_justice.ogg',t:'หลงเยี่ยซิน — Brown Intro → Aeternitas Concordia Justice'},
+  peach:{f:'bgm_peachfight.ogg',t:'พีช — Peach Fight'},
+  tsukinol:{f:'lf_skinon_theme.ogg',t:'สึกิน่อล — Theme',sfx:'skinon'},
+  xuan9:{f:'lf_xuan_battle.ogg',t:'เซวียนเหิง — Battle'},
+  qinfei:{f:'bgm5_suvarnara.ogg',t:'ฉินเฟย — Eclipsa : Suvarnara Main Theme'},
+};
+const PEACH_TRACK={f:'bgm_peachfight.ogg',t:'❄ ขยายเขตแดนเวท ท่าสังหารอนันตทิต — Peach Fight'};
+function playLead(L){
+  const a=$('#bgm');AU.lfNext=false;a.loop=!L.next;a.src=trackSrc(L.f);a.volume=Math.min(1,AU.vol.music*1.25);
+  if(AU.on.music)a.play().catch(()=>{});$('#nowplay').textContent='🔥 '+L.t;
+}
+// วิชาลับ face up (either side) → peachfight loops on every computer; face down again → back to what was playing before
+function peachMusicSync(){
+  if(!G||!G.players||AU.lyx)return;
+  const on=G.players.some(p=>peachUp(p)),a=$('#bgm');
+  if(on&&!AU.peach){AU.peach=true;
+    if(!(AU.lfLead&&AU.lfLead.f===PEACH_TRACK.f)){a.loop=true;a.src=trackSrc(PEACH_TRACK.f);a.volume=Math.min(1,AU.vol.music*1.25);if(AU.on.music)a.play().catch(()=>{})}
+    $('#nowplay').textContent=PEACH_TRACK.t}
+  else if(!on&&AU.peach){AU.peach=false;
+    if(AU.lfLead){if(AU.lfLead.f!==PEACH_TRACK.f)playLead(AU.lfLead);else $('#nowplay').textContent='🔥 '+AU.lfLead.t} // พีชปิดเกม: เพลงเดิมเล่นต่อไม่หยุด
+    else if(AU.lf)lastFightMusic(LF_TRACKS.indexOf(AU.lf));
+    else{a.loop=false;curTrack=null;nextTrack()}}
+}
+function lastFightMusic(i,lid){
   if(AU.lyx)return;
+  const L=lid&&LF_LEAD[lid];
+  if(L&&i==null){
+    if(AU.lf)return;AU.lf=AU.lfLead=L;
+    if(L.sfx&&AU.ctx&&AU.on.sfx)try{sample(L.sfx,{g:1})}catch(e){}
+    if(AU.peach){if(L.f===PEACH_TRACK.f)$('#nowplay').textContent='🔥 '+L.t;return} // วิชาลับยังหงายอยู่ → เพลงพีชเล่นต่อ (ของคนอื่นรอจนวิชาลับคว่ำ)
+    playLead(L);return;
+  }
+  if(AU.lfLead)return;
   if(AU.lf&&i==null)return;
   const t=AU.lf=LF_TRACKS[i??(Math.random()*LF_TRACKS.length|0)];
   const a=$('#bgm');a.loop=true;a.src=trackSrc(t.f);a.volume=Math.min(1,AU.vol.music*1.25);
@@ -1861,6 +2037,10 @@ function lastFightMusic(i){
 }
 function nextTrack(force){
   if(AU.lyx){const a=$('#bgm');a.currentTime=0;if(AU.on.music)a.play().catch(()=>{});return}
+  if(AU.peach){const a=$('#bgm');a.currentTime=0;if(AU.on.music)a.play().catch(()=>{});return}
+  if(AU.lfLead){const a=$('#bgm'),L=AU.lfLead;
+    if(L.next&&!AU.lfNext){AU.lfNext=true;a.loop=true;a.src=trackSrc(L.next);if(AU.on.music)a.play().catch(()=>{})}
+    else{a.currentTime=0;if(AU.on.music)a.play().catch(()=>{})}return}
   if(AU.lf){lastFightMusic((LF_TRACKS.indexOf(AU.lf)+1)%LF_TRACKS.length);return}
   if(!playlist.length){playlist=shuffle(TRACKS.slice());if(curTrack&&playlist[0]===curTrack&&playlist.length>1)playlist.push(playlist.shift())}
   curTrack=playlist.shift();
@@ -1927,7 +2107,7 @@ function playStep(step,t){
   if(step%32===30)noise({t,dur:.4,a:.35,r:.3,g:.05,filt:'bandpass',f:500,f2:3000,q:.6,out});
 }
 // recorded effects (SFX eclipsa card game) — decoded once, played through the SFX volume
-const SAMPLE_FILES={button:'sfx_button.ogg',book:'sfx_book.ogg',impact:'sfx_impact.ogg',whoosh:'sfx_whoosh.ogg',roar:'sfx_shiproar.ogg',deathvoice:'sfx_deathvoice.ogg',haki:'sfx_haki.mp3',lyxgate:'sfx_lyxgate.ogg',xhcommand:'sfx_xhcommand.ogg'};
+const SAMPLE_FILES={button:'sfx_button.ogg',book:'sfx_book.ogg',impact:'sfx_impact.ogg',whoosh:'sfx_whoosh.ogg',roar:'sfx_shiproar.ogg',deathvoice:'sfx_deathvoice.ogg',haki:'sfx_haki.mp3',lyxgate:'sfx_lyxgate.ogg',xhcommand:'sfx_xhcommand.ogg',peachmagic:'sfx_peachmagic.ogg',skinon:'sfx_skinon_ult.ogg'};
 const SAMPLES={};
 async function loadSamples(){
   for(const [k,f] of Object.entries(SAMPLE_FILES)){
@@ -2750,7 +2930,9 @@ function playFx(m){
     case 'intro':playIntro();break;
     case 'elim':{const x=playerOf(m.side);if(x)showBanner(x===G.me?'คุณออกจากเกม':`${x.name} ออกจากเกม`,String(m.why||''),x.team!==G.me.team,1500);break}
     case 'mystic':deathOverlay(String(m.title||'').slice(0,40));break;
-    case 'lf':lastFightMusic();cutIn(playerOf(m.sp),playerOf(m.so));break;
+    case 'peachup':peachUpFx();break;
+    case 'peachdown':break; // the board (render) removes the snow + circle and the music goes back
+    case 'lf':lastFightMusic(null,(playerOf(m.sp)&&playerOf(m.sp).leader||{}).id);cutIn(playerOf(m.sp),playerOf(m.so));break;
     case 'x2fx':xuan2Fx(String(m.side));break;
     case 'timer':timerShow(String(m.side),m.left==null?null:Math.max(0,m.left|0),Math.max(0,m.tot|0)||null,!!m.paused,m.aside==null?null:String(m.aside),m.aleft==null?null:Math.max(0,m.aleft|0));break;
   }
@@ -2759,8 +2941,8 @@ function playFx(m){
 // ============ SKILL TEXT / INFO PANEL ============
 function skillHTML(c){
   return D(c).skill.map(s=>{
-    for(const [k,[cls,lbl]] of Object.entries(KW))if(s.startsWith(k))return `<div><span class="kw ${cls}">${lbl}</span>${s.slice(k.length).trim()}</div>`;
-    return `<div>• ${s}</div>`;
+    for(const [k,[cls,lbl]] of Object.entries(KW))if(s.startsWith(k))return `<div><span class="kw ${cls}">${lbl}</span>${kwInline(s.slice(k.length).trim())}</div>`;
+    return `<div>• ${kwInline(s)}</div>`;
   }).join('');
 }
 let pinned=null;
@@ -2880,7 +3062,7 @@ function zoomCard(id){
   if(!id||!CARDS[id])return;
   sfx('draw');
   const z=$('#zoom');
-  z.innerHTML=`<div class="zn">${CARDS[id].name}</div><div class="zc"><div class="front" style="background-image:url(${A(CARDS[id].img)})"></div><div class="back" style="background-image:url(${A(CARDS[id].type==='leader'?'back_ch.png':'back.png')})"></div><div class="glare"></div></div>
+  z.innerHTML=`<div class="zn">${CARDS[id].name}</div><div class="zc"><div class="front" style="background-image:url(${A(CARDS[id].img)})"></div><div class="back" style="background-image:url(${A(backOf(CARDS[id]))})"></div><div class="glare"></div></div>
     <div class="zt">ขยับเมาส์ = เอียงการ์ด · ลากค้าง = หมุนดูด้านหลัง · ล้อเมาส์ = ซูม · คลิก / Esc = ปิด</div>`;
   z.className='show';
   const card=z.querySelector('.zc'),gl=z.querySelector('.glare');
@@ -2960,7 +3142,7 @@ function chainFx(c,owner,label,n,list){
     <div class="arc"></div>
     ${stack.map(q=>`<div class="prev" style="left:${q.x}px;top:${q.y}px;height:${q.h}px;--d:${q.depth};background-image:url(${A(CARDS[q.id].img)})"><b>${q.no}</b></div>`).join('')}
     <div class="lbl">${label}</div>
-    <div class="stage" style="left:${L}px;top:${T}px;width:${cw}px;height:${ch}px"><div class="cc3"><div class="fr" style="background-image:url(${A(D(c).img)})"></div><div class="bk" style="background-image:url(${A(isLeader?'back_ch.png':'back.png')})"></div></div></div>
+    <div class="stage" style="left:${L}px;top:${T}px;width:${cw}px;height:${ch}px"><div class="cc3"><div class="fr" style="background-image:url(${A(D(c).img)})"></div><div class="bk" style="background-image:url(${A(isLeader||D(c).type==='secret'?'back_ch.png':'back.png')})"></div></div></div>
     <div class="no" style="left:${L-ch*.22}px;top:${B-ch*.4}px;font-size:${ch*.44}px">${n}</div>
     <div class="nm" style="left:${Rr+16}px;top:${B-ch*.12}px;max-width:${Math.max(160,W-Rr-30)}px">${nm(c)}</div>`;
   s.className='show'+(foe?' foe':'');
@@ -3152,11 +3334,12 @@ function hakiStrike(c){
   });
 }
 // ---------- LAST FIGHT: life reached 0 → cut-in for the player who did it + battle music ----------
-const CUT_FOCUS={xuan:[.6,.27],weichenL:[.58,.24]};
-const CUT_LINE={xuan:'สุริยคราสมาถึงแล้ว — นี่คือจุดจบของเจ้า!',weichenL:'เกมนี้… ฉันขอปิดเองนะ'};
+const CUT_FOCUS={xuan:[.6,.27],weichenL:[.58,.24],lyx9:[.45,.32],peach:[.7,.25],tsukinol:[.52,.32],xuan9:[.52,.2],qinfei:[.55,.33]};
+const CUT_LINE={xuan:'สุริยคราสมาถึงแล้ว — นี่คือจุดจบของเจ้า!',weichenL:'เกมนี้… ฉันขอปิดเองนะ',
+  lyx9:'ใกล้ถึงคราวที่ต้องตัดสินเจ้าแล้ว',peach:'ฮ่าๆๆๆๆๆชะตาขาดแล้วนะ',tsukinol:'ไฟแกหน่ะ ใกล้จะมอบดับลงไปแล้วนะ',xuan9:'ใกล้ถึงคราแล้วสินะ',qinfei:'มันจบลงแค่นี้แหละ'};
 async function lastFight(p,o){ // p brought o's life to 0
   emit({f:'lf',sp:sideOf(p),so:sideOf(o),track:null});
-  lastFightMusic();
+  lastFightMusic(null,p.leader.id);
   log(null,`LAST FIGHT! พลังชีวิตของ ${o.name} เหลือ 0`);
   await cutIn(p,o);
 }
@@ -3440,7 +3623,7 @@ function showResult(winner,quit){
   setTimeout(()=>requestAnimationFrame(step),500);
 }
 // ============ COINS ============
-const REWARD_WIN=1250,REWARD_LOSE=500;
+const REWARD_WIN=5000,REWARD_LOSE=2500;
 const COIN_SVG=`<svg class="coin" viewBox="0 0 64 64"><defs><radialGradient id="cg" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff6c0"/><stop offset=".45" stop-color="#f2b53a"/><stop offset="1" stop-color="#8a5208"/></radialGradient></defs><circle cx="32" cy="32" r="30" fill="url(#cg)" stroke="#6a3e04" stroke-width="3"/><circle cx="32" cy="32" r="22" fill="none" stroke="#fff3b0" stroke-opacity=".55" stroke-width="2"/><path d="M24 20h17v5H30v4.5h9v5h-9V39h11v5H24z" fill="#7a4a0a"/></svg>`;
 // Discord accounts with unlimited เหรียญ (∞)
 const INFINITE_IDS=['389718804244201472'];
@@ -3459,10 +3642,12 @@ function updWallets(bump){
 }
 // ============ DECK BUILDER ============
 const OWN_EACH=4,DECK_SIZE=50;
-const TYPE_ORDER={leader:-1,ally:0,vehicle:1,event:2};
+const TYPE_ORDER={leader:-1,ally:0,vehicle:1,event:2,secret:3};
 const ALL_IDS=Object.keys(CARDS).filter(id=>CARDS[id].type!=='leader'||CARDS[id].inDeck)
   .sort((a,b)=>TYPE_ORDER[CARDS[a].type]-TYPE_ORDER[CARDS[b].type]||(CARDS[a].cost||0)-(CARDS[b].cost||0)||(CARDS[b].power||0)-(CARDS[a].power||0));
-const deckCount=d=>Object.values(d).reduce((s,n)=>s+n,0);
+// วิชาลับ is its own special card: it sits under the character, NOT in the 50-card deck
+const isSecretId=id=>!!(CARDS[id]&&CARDS[id].type==='secret');
+const deckCount=d=>Object.entries(d).reduce((s,[id,n])=>s+(isSecretId(id)?0:n),0);
 // ---------- limit list (แบนลิส): max copies per deck ----------
 // when: only applies with that character (null = always)
 const LIMITS={
@@ -3470,7 +3655,10 @@ const LIMITS={
   x_xuan2:{max:2,when:null,why:'ตัวการ์ดระบุว่าใส่ได้ 2 ใบ'},
   luart:{max:2,when:null,why:'ลิมิตลิส: ใส่ได้ 2 ใบ'},
 };
-const limitOf=(id,leader)=>{const l=LIMITS[id];return l&&(!l.when||l.when===leader)?l.max:OWN_EACH};
+const limitOf=(id,leader)=>{const d=CARDS[id];
+  if(d&&d.any)return DECK_SIZE; // "ใส่ได้กี่ใบก็ได้"
+  if(d&&d.type==='secret')return leader&&CARDS[leader]&&leaderNamed({leader:{id:leader}},d.under)?1:0; // วิชาลับ: 1 ใบ และเฉพาะเด็คของคาแรคเตอร์นั้น
+  const l=LIMITS[id];return l&&(!l.when||l.when===leader)?l.max:OWN_EACH};
 const LIMIT_SVG=n=>`<svg class="limico" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#c0101a" stroke="#fff" stroke-width="3"/><circle cx="20" cy="20" r="12" fill="none" stroke="#ffd23a" stroke-width="2"/><text x="20" y="27" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff" font-family="Arial">${n}</text></svg>`;
 // copies of one card counted together with its special-art versions
 const groupCount=(d,id)=>{const b=baseOf(id);let s=0;for(const [k,n] of Object.entries(d||{}))if(CARDS[k]&&baseOf(k)===b)s+=n;return s};
@@ -3553,14 +3741,15 @@ function deckAdd(id,n){
   if(n>0&&!isOwned(id)){$('#dmsg').innerHTML=`<span style="color:#ffb0b0">🔒 ยังไม่มี ${CARDS[id].name} — ${CARDS[id].gacha==='T'?'ได้จากทัวร์นาเมนต์เท่านั้น':`สุ่มได้จากตู้ "${boxOf(id).name}"`}</span>`;sfx('debuff');return}
   const cur=DB.edit[id]||0,lim=cur+Math.max(0,groupLeft(DB.edit,id,DB.leader)),next=Math.max(0,Math.min(lim,cur+n));
   if(n>0&&next===cur&&groupCount(DB.edit,id)>cur){$('#dmsg').innerHTML=`<span style="color:#ffb0b0">${CARDS[id].name} ทุกลายรวมกันใส่ได้สูงสุด ${limitOf(baseOf(id),DB.leader)} ใบ (นับเป็นการ์ดใบเดียวกัน)</span>`;sfx('debuff');return}
-  if(n>0&&deckCount(DB.edit)>=DECK_SIZE){$('#dmsg').innerHTML='<span style="color:#ffb0b0">เด็คเต็ม 50 ใบแล้ว — เอาใบอื่นออกก่อน</span>';sfx('debuff');return}
+  if(n>0&&!isSecretId(id)&&deckCount(DB.edit)>=DECK_SIZE){$('#dmsg').innerHTML='<span style="color:#ffb0b0">เด็คเต็ม 50 ใบแล้ว — เอาใบอื่นออกก่อน</span>';sfx('debuff');return}
   if(next===cur){if(n>0){$('#dmsg').innerHTML=`<span style="color:#ffb0b0">${CARDS[id].name} ใส่ได้สูงสุด ${lim} ใบ${lim<OWN_EACH?' (ลิมิต: '+LIMITS[id].why+')':''}</span>`;sfx('debuff')}return}
   DB.edit[id]=next;if(!next)delete DB.edit[id];$('#dmsg').innerHTML='';sfx(n>0?'draw':'click');DB.sel=id;renderDeck();if(CD.c&&CD.opts.deck)renderDetail();
 }
 function renderDeck(){
   renderLeaders();
   const tot=deckCount(DB.edit);
-  const dc=$('#dcount');dc.textContent=`${tot} / ${DECK_SIZE}`;dc.className='dcount '+(tot===DECK_SIZE?'ok':'bad');
+  const sec=Object.keys(DB.edit).filter(id=>isSecretId(id)&&DB.edit[id]).length;
+  const dc=$('#dcount');dc.textContent=`${tot} / ${DECK_SIZE}${sec?' + วิชาลับ '+sec:''}`;dc.className='dcount '+(tot===DECK_SIZE?'ok':'bad');
   $('#dlistcount').textContent=tot;
   const overs=Object.entries(DB.edit).filter(([id,n])=>n>limitOf(id,DB.leader)||groupLeft(DB.edit,id,DB.leader)<0).map(([id])=>id);
   const sv=$('#dsave');sv.disabled=!DB.leader||tot!==DECK_SIZE||overs.length>0;
@@ -3581,7 +3770,7 @@ function renderDeck(){
   pool=pool.filter(id=>{const d=CARDS[id];
     if(DB.filter==='own'?!isOwned(id):DB.filter==='leader'?d.type!=='leader'||d.inDeck:DB.filter!=='all'&&(d.type!==DB.filter||d.inDeck))return false;
     return !q||d.name.toLowerCase().includes(q)||d.tags.some(t=>t.toLowerCase().includes(q))});
-  const T={leader:0,ally:1,vehicle:2,event:3},by={
+  const T={leader:0,ally:1,vehicle:2,event:3,secret:4},by={
     type:(a,b)=>T[CARDS[a].type]-T[CARDS[b].type]||(CARDS[a].cost||0)-(CARDS[b].cost||0)||(CARDS[b].power||0)-(CARDS[a].power||0),
     cost:(a,b)=>(CARDS[a].cost||0)-(CARDS[b].cost||0)||by.type(a,b),power:(a,b)=>(CARDS[b].power||0)-(CARDS[a].power||0)||by.type(a,b),
     name:(a,b)=>CARDS[a].name.localeCompare(CARDS[b].name,'th'),own:(a,b)=>(isOwned(b)-isOwned(a))||by.type(a,b),
@@ -3671,6 +3860,7 @@ $('#dclear').onclick=()=>{DB.edit={};sfx('debuff');renderDeck()};
 function cardScore(id,leader){
   const d=CARDS[id],L=CARDS[leader],ship=L.tags.includes(SHIP)||leader==='xuan',wc=leader==='weichenL',all=!!L.allNames;
   if(d.inDeck)return leaderNamed({leader:{id:leader}},'xuan')?14:-99; // เซวียนเหิง (deck card) only fits a เซวียนเหิง deck
+  if(d.type==='secret')return limitOf(id,leader)?30:-99; // วิชาลับ: always in its own character's deck
   let s=0;
   if(d.type==='ally')s=d.power/1000+(d.counter||0)/700+d.skill.length*.9-(d.cost||0)*.35+(d.shield?2:0);
   else if(d.type==='event')s=6-(d.cost||0)*.4+(d.counterEv?1.6:0)+(d.trigger?1.2:0);
@@ -3686,7 +3876,7 @@ function cardScore(id,leader){
 }
 function bestDeck(leader){
   const ids=ALL_IDS.filter(id=>isOwned(id)&&!CARDS[id].base).map(id=>({id,s:cardScore(id,leader),t:CARDS[id].type})).filter(x=>x.s>-50).sort((a,b)=>b.s-a.s);
-  const caps={ally:30,event:17,vehicle:3,leader:1},used={ally:0,event:0,vehicle:0,leader:0},deck={};
+  const caps={ally:30,event:17,vehicle:3,leader:1,secret:1},used={ally:0,event:0,vehicle:0,leader:0,secret:0},deck={};
   const fill=useCaps=>{for(const x of ids){let n=deck[x.id]||0;const lim=limitOf(x.id,leader);
     while(n<lim&&deckCount(deck)<DECK_SIZE&&(!useCaps||used[x.t]<caps[x.t])){n++;used[x.t]++;deck[x.id]=n}}};
   fill(true);if(deckCount(deck)<DECK_SIZE)fill(false);
@@ -3740,7 +3930,7 @@ function myFoilMap(){const m={};for(const id in foilData()){const f=foilSel(id);
 const cleanFoils=m=>{const o={};if(m&&typeof m==='object')for(const k of Object.keys(m).slice(0,100))if(CARDS[k]&&FOILS[m[k]])o[k]=m[k];return o};
 function addFoilType(el,f){if(!el||!FOILS[f]||el.querySelector(':scope>.foil'))return el;const d=document.createElement('div');d.className='foil f-'+f;el.append(d);return el}
 function removeOwned(id){const s=owned();s.delete(id);store.set('eclipsa-owned',JSON.stringify([...s]))}
-const PULL_COST=1000,PULL10_COST=10000,DUP_REFUND=100,PACK_SIZE=6; // 1 pull = 1 pack of 6 cards
+const PULL_COST=3000,PULL10_COST=30000,DUP_REFUND=100,PACK_SIZE=6; // 1 pull = 1 pack of 6 cards
 // rarity tiers of the "เหวยเฉิน of หมิงเย่ว" box (percent). C (common) takes whatever is left.
 const RARITY=[
   {k:'S',p:0.0001,name:'ซีเคร็ท',glow:'SECRET'},
@@ -3754,14 +3944,22 @@ const RARITY_ORDER='CRHPEVGLMS';
 // every box: its price and tiers (the SECRET card is in every box). EBX-01 lists its pools by hand (เหยาซิง 1 is in both rare and epic).
 const BOXES={
   wc:{name:'เหวยเฉิน of หมิงเย่ว',cost:PULL_COST,cost10:PULL10_COST,tiers:RARITY},
-  ebx:{name:'EBX-01 เรือหลวง',cost:3000,cost10:30000,tiers:[
+  ebx:{name:'EBX-01 เรือหลวง',cost:PULL_COST,cost10:PULL10_COST,tiers:[
     {k:'S',p:0.0001,name:'ซีเคร็ท',glow:'SECRET'},
     {k:'M',p:0.05,name:'มิสติก',glow:'MYSTIC'},
     {k:'G',p:2,name:'เลเจนด์',glow:'LEGEND'},
     {k:'P',p:20,name:'เอพิค',glow:'EPIC'},
     {k:'R',p:null,name:'แรร์',glow:'RARE'}],
     pools:{M:['x_xuan2'],G:['x_origin','x_tianxing','x_shield','x_wcwhere'],P:['x_yaoxing1','x_yaoxing5','x_sail','x_wckid'],R:['x_meet','x_moon','x_stance','x_bingyue2','x_bingyue1','x_yaoxing1']}},
+  // EBX-02: mystic 0.01% · legend 0.1% · epic 1% · rare = the rest (the card list is the box's own: CARDS[id].box==='ebx2')
+  ebx2:{name:'EBX-02 9 ประกาศิตเที่ยงธรรม',cost:PULL_COST,cost10:PULL10_COST,tiers:[
+    {k:'S',p:0.0001,name:'ซีเคร็ท',glow:'SECRET'},
+    {k:'M',p:0.01,name:'มิสติก',glow:'MYSTIC'},
+    {k:'G',p:0.1,name:'เลเจนด์',glow:'LEGEND'},
+    {k:'P',p:1,name:'เอพิค',glow:'EPIC'},
+    {k:'R',p:null,name:'แรร์',glow:'RARE'}]},
 };
+for(const id of Object.keys(CARDS)){const d=CARDS[id];if(d.box==='ebx2'&&!d.base){const P=BOXES.ebx2.pools=BOXES.ebx2.pools||{M:[],G:[],P:[],R:[]};P[d.gacha].push(id)}}
 const TIER=k=>{for(const b of Object.values(BOXES)){const t=b.tiers.find(x=>x.k===k);if(t)return t}return {k,name:k,glow:k}};
 const boxOf=id=>BOXES[CARDS[id].box||'wc'];
 function poolOf(k,bx='wc'){
@@ -3796,7 +3994,7 @@ async function doPull(n,bx='wc'){
   audioInit();sfx('click');
   if(PULLING)return;
   const cost=n===1?BOXES[bx].cost:BOXES[bx].cost10;
-  if(!spendCoins(cost)){sfx('debuff');gachaMsg(`เหรียญไม่พอ — ต้องใช้ ${COIN_SVG} <b style="color:#ffd76a">${cost.toLocaleString()}</b><br><span style="font-size:15px;color:var(--muted)">มีอยู่ ${fmtCoins(getCoins())} · ชนะได้ 1250 แพ้ได้ 500</span>`);return}
+  if(!spendCoins(cost)){sfx('debuff');gachaMsg(`เหรียญไม่พอ — ต้องใช้ ${COIN_SVG} <b style="color:#ffd76a">${cost.toLocaleString()}</b><br><span style="font-size:15px;color:var(--muted)">มีอยู่ ${fmtCoins(getCoins())} · ชนะได้ ${REWARD_WIN} แพ้ได้ ${REWARD_LOSE}</span>`);return}
   PULLING=true;
   // roll and save first, so nothing is lost if the game is closed during the animation · 1 pull = 1 pack = PACK_SIZE cards
   const packs=[];let refund=0;
@@ -4071,7 +4269,7 @@ function rareCine(r){
     const sparks=Array.from({length:46},(_,i)=>{const a=Math.random()*Math.PI*2,d=25+Math.random()*45;return `<i class="spark" style="background:${col[i%col.length]};box-shadow:0 0 10px ${col[i%col.length]};--x:${(Math.cos(a)*d).toFixed(1)}vmax;--y:${(Math.sin(a)*d).toFixed(1)}vmax;animation-delay:${(T0+Math.random()*.4).toFixed(2)}s"></i>`}).join('');
     const stars=S?Array.from({length:260},()=>`${(Math.random()*200-100).toFixed(1)}vmax ${(Math.random()*200-100).toFixed(1)}vmax 0 ${Math.random()<.15?1:0}px ${['#fff','#ffd9d9','#cfe0ff','#ffe9a8'][Math.random()*4|0]}`).join(','):'';
     s.innerHTML=`${S?`<div class="gal"><div class="neb"></div><div class="arm"></div><div class="stars" style="box-shadow:${stars}"></div></div><canvas class="drg"></canvas><div class="lyxfog"><i class="eye l"></i><i class="eye r"></i></div><div class="lb t"></div><div class="lb b"></div>`:''}<div class="rays"></div><div class="orb"></div>${sparks}<div class="card3" style="background-image:url(${A(CARDS[r.id].img)})"></div>
-      <div class="rtx">${{S:'SECRET',L:'LEGENDARY',M:'MYSTIC',G:'LEGEND'}[r.k]||'SUPER RARE'}</div><div class="rnm">${CARDS[r.id].name}<small>${{S:'ซีเคร็ท · โอกาส 0.0001%',L:'คาแรคเตอร์ · โอกาส 1%',M:'มิสติก · EBX-01 · โอกาส 0.05%',G:'เลเจนด์ · EBX-01 · โอกาส 2%'}[r.k]||'พาหนะ · โอกาส 3%'}${r.dup?` · ซ้ำ +${DUP_REFUND} เหรียญ`:' · NEW!'} · คลิกเพื่อไปต่อ</small></div>`;
+      <div class="rtx">${{S:'SECRET',L:'LEGENDARY',M:'MYSTIC',G:'LEGEND'}[r.k]||'SUPER RARE'}</div><div class="rnm">${CARDS[r.id].name}<small>${(()=>{const bx=CARDS[r.id].box,B=bx&&BOXES[bx],t=B&&B.tiers.find(x=>x.k===r.k);return r.k==='S'?'ซีเคร็ท · โอกาส 0.0001%':t&&(r.k==='M'||r.k==='G')?`${t.name} · ${B.name.split(' ')[0]} · โอกาส ${t.p}%`:{L:'คาแรคเตอร์ · โอกาส 1%'}[r.k]||'พาหนะ · โอกาส 3%'})()}${r.dup?` · ซ้ำ +${DUP_REFUND} เหรียญ`:' · NEW!'} · คลิกเพื่อไปต่อ</small></div>`;
     s.className='show '+r.k;s.style.setProperty('--T',T0+'s');
     if(S)addAura(s.querySelector('.card3'),22);
     let stopDrg=null,gateSnd=null;
@@ -4097,13 +4295,13 @@ function rareCine(r){
   });
 }
 // ---------- pack opening: 1 pull = 1 pack (front = the box's character card) → tear it open → its 6 cards flip one by one ----------
-const PACK_ART={wc:{img:'L_weichen.png',col:'#3fcf9a',col2:'#06261b'},ebx:{img:'X_xuan2.png',col:'#ff3a4a',col2:'#2a0408'}};
+const PACK_ART={wc:{img:'L_weichen.png',col:'#3fcf9a',col2:'#06261b'},ebx:{img:'X_xuan2.png',col:'#ff3a4a',col2:'#2a0408'},ebx2:{img:'L_lyx9.png',col:'#4aa8ff',col2:'#061230'}};
 const P_LBL={C:'',R:'แรร์!',H:'หายาก!',P:'เอพิค!!',E:'หายากมาก!!',V:'สุดยอด!!!',G:'เลเจนด์!!!!',L:'ในตำนาน!!!!',M:'MYSTIC!!!!!',S:'SECRET!!!!!'};
 const P_COL={C:'#ffffff',R:'#4ab3ff',H:'#4ab3ff',P:'#c05aff',E:'#ffd23a',V:'#b05aff',G:'#ffe08a',L:'#ffffff',M:'#ff1a2a',S:'#ff1a2a'};
 const P_TXT={R:'#4ab3ff',H:'#4ab3ff',P:'#d27aff',E:'#ffd23a',V:'#c07aff',G:'#ffe08a',L:'#fff',M:'#ff2a3a',S:'#ff2a3a'};
 const rIdx=k=>RARITY_ORDER.indexOf(k);
 const bestK=rs=>rs.reduce((b,r)=>rIdx(r.k)>rIdx(b)?r.k:b,'C');
-const pcHTML=(r,j)=>`<div class="pc r-${r.k}" style="--d:${j}"><div class="beam"></div><div class="in"><div class="b" style="background-image:url(${A(CARDS[r.id].type==='leader'?'back_ch.png':'back.png')})"></div><div class="f" style="background-image:url(${A(CARDS[r.id].img)})"></div></div>
+const pcHTML=(r,j)=>`<div class="pc r-${r.k}" style="--d:${j}"><div class="beam"></div><div class="in"><div class="b" style="background-image:url(${A(backOf(CARDS[r.id]))})"></div><div class="f" style="background-image:url(${A(CARDS[r.id].img)})"></div></div>
   <div class="rt ${r.k}">${TIER(r.k).glow}</div><div class="tagx ${r.foil&&!r.dup?'foilt':r.dup?'dup':'new'}">${r.dup?`ซ้ำ +${DUP_REFUND}`:r.foil?`✦ FOIL ${FOILS[r.foil].name}!`:'NEW!'}</div></div>`;
 function pcWire(s,rs){
   const cards=[...s.querySelectorAll('.pc')];
@@ -4170,9 +4368,12 @@ function cardStage(s,rs,pi,N,cine,refund){
         $('#pnext').onclick=()=>{sfx('click');res('next')};
       }
     };
-    const finish=async()=>{if(fin)return;fin=true;clearTimeout(timer);for(const r of rs)await cine(r);cards.forEach((c,j)=>pcReveal(c,rs[j].k));end()};
-    $('#pskip').onclick=()=>{sfx('click');if(final)finish();else{fin=true;clearTimeout(timer);res('skip')}};
-    const next=async()=>{if(fin)return;if(i>=cards.length){fin=true;end();return}
+    const finish=async()=>{if(fin)return;fin=true;s.onpointerup=null;clearTimeout(timer);for(const r of rs)await cine(r);cards.forEach((c,j)=>pcReveal(c,rs[j].k));end()};
+    // double-tap / double-click while the pack is opening → open every card of this pack at once
+    let lastTap=0;
+    s.onpointerup=e=>{if(fin||e.target.closest('button'))return;const t=Date.now();if(t-lastTap<380){lastTap=0;sfx('click');finish()}else lastTap=t};
+    $('#pskip').onclick=()=>{sfx('click');if(final)finish();else{fin=true;s.onpointerup=null;clearTimeout(timer);res('skip')}};
+    const next=async()=>{if(fin)return;if(i>=cards.length){fin=true;s.onpointerup=null;end();return}
       const r=rs[i];
       if('VLSGM'.includes(r.k)){await cine(r);if(fin)return}
       pcReveal(cards[i],r.k);i++;timer=setTimeout(next,rIdx(r.k)>=2?1000:420)};
@@ -4382,11 +4583,14 @@ async function mysticFx(p,title){emit({f:'mystic',title});await deathOverlay(tit
 const CODES={BROWNSUGARFOREVER:30000,DADAZ:30000,ECLIPSANUMBER1:30000,WTFISWEICHEN:2500,NERFWEICHEN:2500,OPENNOW:10000,NEWCARD:10000,LOYKRATONG:10000,ECLIPSA:50000,THEONE:50000,
   // new codes (tournament update)
   TOURNAMENT:20000,SORRYFORBUG:10000,NEWDECKBUILD:10000,
-  // pack update (6 cards per pack) — the only code that still works
-  NEWROLLINGCARD:100000};
-// codes that stop working at a set time (Thai time) — every code before NEWROLLINGCARD has expired
-const OLD_CODES_END=Date.parse('2026-11-27T00:00:00+07:00');
-const CODE_UNTIL=Object.fromEntries(Object.keys(CODES).filter(k=>k!=='NEWROLLINGCARD').map(k=>[k,OLD_CODES_END]));
+  // pack update (6 cards per pack)
+  NEWROLLINGCARD:100000,
+  // EBX-02 update — the only codes that still work
+  NEWSTYLE:6000,NEWSKILL:6000};
+// codes that stop working at a set time (Thai time) — every code before the EBX-02 update has expired
+const LIVE_CODES=['NEWSTYLE','NEWSKILL'];
+const OLD_CODES_END=Date.parse('2026-11-28T00:00:00+07:00');
+const CODE_UNTIL=Object.fromEntries(Object.keys(CODES).filter(k=>!LIVE_CODES.includes(k)).map(k=>[k,OLD_CODES_END]));
 // a code counts as used for this Discord account AND on this device (switching accounts can't reuse it here)
 const codeKeys=()=>['eclipsa-codes',...(myDid()?['eclipsa-codes-'+myDid()]:[])];
 function usedCodes(){const s=new Set();for(const k of codeKeys()){try{const a=JSON.parse(store.get(k)||'[]');if(Array.isArray(a))a.forEach(x=>s.add(x))}catch(e){}}return [...s]}
@@ -4664,13 +4868,22 @@ $('#tradebtn').onclick=openTrade;
 $('#pull1').onclick=()=>doPull(1,'wc');$('#pull10').onclick=()=>doPull(10,'wc');$('#grates').onclick=()=>showRates('wc');
 $('#gboxwc').onclick=()=>showRates('wc');
 $('#pullE1').onclick=()=>doPull(1,'ebx');$('#pullE10').onclick=()=>doPull(10,'ebx');$('#gratesE').onclick=()=>showRates('ebx');$('#gboxebx').onclick=()=>showRates('ebx');
+$('#pullF1').onclick=()=>doPull(1,'ebx2');$('#pullF10').onclick=()=>doPull(10,'ebx2');$('#gratesF').onclick=()=>showRates('ebx2');$('#gboxebx2').onclick=()=>showRates('ebx2');
+// EBX-02 promo: the lobby "ตู้สุ่มการ์ด" button and the box art cycle through the box's mystic cards
+(function(){
+  const imgs=(BOXES.ebx2.pools&&BOXES.ebx2.pools.M||[]).map(id=>CARDS[id].img);if(!imgs.length)return;
+  const b=$('#gachabtn');b.classList.add('promo');b.insertAdjacentHTML('afterbegin','<i class="gp-art"></i>');b.insertAdjacentHTML('beforeend','<span class="gp-new">ตู้ใหม่มาแล้ว!</span>');
+  const art=b.querySelector('.gp-art'),box=$('#gart2');let i=0;
+  const show=()=>{const u=`url(${A(imgs[i%imgs.length])})`;art.style.backgroundImage=u;if(box)box.style.backgroundImage=u};show();
+  setInterval(()=>{art.classList.add('fade');if(box)box.style.opacity=0;setTimeout(()=>{i++;show();art.classList.remove('fade');if(box)box.style.opacity=1},450)},2600);
+})();
 function openGacha(){audioInit();sfx('click');updWallets();cpIcons();$('#gacha').classList.add('show')}
 function closeGacha(){sfx('click');$('#gacha').classList.remove('show')}
 function lockedBox(e){
   const b=e.currentTarget;b.classList.remove('rattle');void b.offsetWidth;b.classList.add('rattle');
   if(AU.ctx&&AU.on.sfx){[1800,1500,2100].forEach((f,i)=>tone({type:'square',f,t:now()+i*.07,dur:.01,r:.25,g:.04,lp:6000}));noise({dur:.05,r:.15,g:.15,filt:'highpass',f:3000})}
   const box=$('#modal .box');
-  box.innerHTML=`<h2 style="text-align:center">🔒 9 ประกาศิตเที่ยงธรรม</h2><p style="font-size:20px;text-align:center;margin:18px 30px">ตู้นี้ยังถูกล่ามโซ่ไว้<br><b style="color:#ffd76a;font-size:26px">รอ update อยู่</b></p><div class="foot"><button class="primary" onclick="document.getElementById('modal').style.display='none'">ตกลง</button></div>`;
+  box.innerHTML=`<h2 style="text-align:center">🔒 ตู้ Panithan</h2><p style="font-size:20px;text-align:center;margin:18px 30px">ตู้นี้ยังถูกล่ามโซ่ไว้<br><b style="color:#ffd76a;font-size:26px">รอ update อยู่</b></p><div class="foot"><button class="primary" onclick="document.getElementById('modal').style.display='none'">ตกลง</button></div>`;
   setTimeout(()=>{$('#modal').style.display='flex'},350);
 }
 function win(p){
@@ -4685,16 +4898,28 @@ function draw(p,n=1){
     p.hand.push(p.deck.pop());
   }
 }
-async function drawAnim(p,n){draw(p,n);render();await sleep(450)}
+async function drawAnim(p,n){draw(p,n);render();await sleep(450);
+  // สึกิน่อล: an event card made us draw → draw 1 more (1 per turn)
+  if(p.evNow&&p.leader.id==='tsukinol'&&p.tsuDrawT!==G.turn){p.tsuDrawT=G.turn;popAt(p.leader,'จั่วเพิ่ม 1','#c8a8ff');log(p,'สึกิน่อล: การ์ดเหตุการณ์ทำให้จั่ว → จั่วเพิ่ม 1 ใบ');draw(p,1);render();await sleep(450)}}
+// สึกิน่อล: after we use an event → up to 1 card on our field gets +500 attack and defense (until end of turn)
+async function tsuBuff(p){
+  await allyEvBuff(p);
+  if(p.leader.id!=='tsukinol')return;
+  const t=await choose(p,{title:'สึกิน่อล: เลือกการ์ดในสนามของเรา 1 ใบ ได้พลังโจมตีและป้องกัน +500',items:cardItems(units(p),p,u=>String(shownPow(p,u))),min:0,max:1,okText:'+500',ai:it=>[it[0].value]});
+  for(const u of t){u.tmp.atk+=500;u.tmp.def+=500;popAt(u,'+500','#c8a8ff');log(p,`สึกิน่อล: ${nm(u)} พลัง +500`)}
+  render();if(t.length)await sleep(400);
+}
 const takeTop=(p,n)=>p.deck.splice(Math.max(0,p.deck.length-n)).reverse();
 const toBottom=(p,arr)=>p.deck.unshift(...shuffle(arr));
 function pay(p,n){p.manaActive-=n;p.manaRested+=n}
 function removeAlly(p,a){const i=p.allies.indexOf(a);if(i>=0)p.allies.splice(i,1);p.manaRested+=a.mana}
 async function destroy(p,a,by){
   if(by&&by!==p&&isProtected(p,a)){log(p,`${nm(a)} ไม่ถูกทำลาย (เรือหลวงสุริยคราสปกป้อง)`);popAt(a,'ปกป้อง!','#8fc8ff');await sleep(700);return false}
+  if(a.deathless===G.turn){a.deathless=null;log(p,`${nm(a)} ไม่ถูกทำลาย (ผู้หลอกลวงความตาย)`);popAt(a,'ยังอยู่!','#c8a8ff');await sleep(700);return false}
   await fxDestroy(a);
   removeAlly(p,a);p.trash.push(strip(a));log(p,`${nm(a)} ถูกทำลาย`);render();await sleep(300);
   if(a.id==='wc_stay'&&p.hand.length){log(p,'เหวยเฉินคาที่ถูกทำลาย → ทิ้งการ์ดบนมือ 1 ใบ');await discardChoose(p,a,'เหวยเฉินคาที่ถูกทำลาย: ทิ้งการ์ดบนมือ 1 ใบ')}
+  await newAllyDeath(p,a,by);
   // หลงเยี่ยซิน: a card on our field destroyed by the opponent's ability → draw 1
   if(by&&by!==p&&p.leader.id==='longyexin'){popAt(p.leader,'จั่ว 1','#ffd38a');log(p,`หลงเยี่ยซิน: ${nm(a)} ถูกทำลายด้วยความสามารถคู่แข่ง → จั่ว 1 ใบ`);await drawAnim(p,1)}
   return true;
@@ -4706,7 +4931,7 @@ async function summon(p,card,from,over){
     popAt(over,'ถูกทับ → ดรอป','#d0c0c8');await sleep(500);
     removeAlly(p,over);p.trash.push(strip(over));log(p,`${nm(over)} ถูกทับ ลงช่องดรอป`);
   }else if(p.allies.length>=3)return false;
-  unitize(card);p.allies.splice(idx,0,card);qInc(p,'ally');
+  unitize(card);card.enteredT=G.turn;card.sumBy=p.sumBy||null;p.sumBy=null;p.allies.splice(idx,0,card);qInc(p,'ally'); // sumBy = the card whose ability called it
   if(p.leader.id==='longyexin'&&G.turn>firstRound())card.sick=false; // หลงเยี่ยซิน: not the first turn → allies can attack the turn they come out
   log(p,`เรียก ${nm(card)}${from?' จาก'+from:''}${over?' (ทับ '+nm(over)+')':''}`);render();await sleep(500);
   await spotlight(card,p,`${p.name} เรียกพวกพ้อง${from?' จาก'+from:''}`,null,null,true);
@@ -4744,6 +4969,7 @@ async function discardChoose(p,src,title,filter){
 const shipLead=p=>!!p&&!!p.leader&&hasTag(p.leader,SHIP);
 async function backToDeck(p,arr){const n=shipLead(p)?arr.filter(c=>c.id==='x_tianxing').length:0;if(n){log(p,'เทียนซิงยวี่ถูกนำกลับเข้ากอง → รีมานา 4');remana(p,4*n);await sleep(300)}}
 function trashToBottom(p,arr){
+  arr=arr.filter(c=>!(CARDS[c.id]&&CARDS[c.id].noBottom)); // เรื่องราวของข้าและเจ้า: นำกลับใต้กองไม่ได้
   for(const c of arr){p.trash.splice(p.trash.indexOf(c),1);p.deck.unshift(strip(c))}
   log(p,`นำ ${arr.length} ใบจากช่องดรอปกลับใต้กอง`);render();backToDeck(p,arr);
   const n=arr.filter(c=>c.id==='wc_isit').length;if(n){log(p,'อันนี้ใช่เหวยเฉินไหม กลับใต้กอง → รีมานา');remana(p,n)}
@@ -4767,6 +4993,7 @@ async function summonAnywhere(p,card,fromTxt,keep){
 
 async function onPlay(p,u){
   const o=opp(p);
+  await newAllyPlay(p,u,o);
   if(u.id==='x_tianxing'&&shipLead(p)){log(p,'เทียนซิงยวี่เข้าสู่สนาม → รีมานา 1');remana(p,1);await sleep(300)}
   if(u.id==='x_yaoxing1'&&!p.once.x_yaoxing1&&p.trash.filter(c=>hasTag(c,SAN)).length>=3){
     const cands=p.trash.filter(c=>hasTag(c,SAN));
@@ -4831,6 +5058,137 @@ async function onPlay(p,u){
   }
 }
 
+// ---------- ชุดใหม่: พวกพ้อง 17 ใบ ----------
+// open the top n cards, take up to 1 that `ok` accepts, the rest go under the deck
+async function revealTake(p,n,ok,title,what){
+  const top=takeTop(p,n),good=top.filter(ok);
+  const pick=await choose(p,{title,sub:`เปิด <b>${n} ใบบนสุด</b> ของกอง — เจอ${what} ${good.length} ใบ · ใบสีเทาเลือกไม่ได้ · ที่เหลือไว้ใต้กอง`,
+    items:revealItems(top,c=>good.includes(c),p),min:0,max:1,ai:it=>it.length?[it.sort((a,b)=>aiValue(p,b.value)-aiValue(p,a.value))[0].value]:[]});
+  for(const c of pick){top.splice(top.indexOf(c),1);p.hand.push(c);log(p,`หยิบ ${nm(c)} ขึ้นมือ`)}
+  toBottom(p,top);render();await sleep(400);
+}
+async function killOpp(p,o,title){
+  const cands=o.allies.filter(a=>!isProtected(o,a));
+  if(!cands.length){log(p,`${title}: ไม่มีพวกพ้องฝ่ายตรงข้ามให้ทำลาย`);return}
+  const t=await choose(p,{title:`${title}: ทำลายพวกพ้องฝ่ายตรงข้าม 1 ใบ`,items:cardItems(cands,o,a=>String(defPow(o,a))),min:1,max:1,okText:'ทำลาย',ai:aiBestKill(o)});
+  await hakiStrike(t[0]);await destroy(o,t[0],p);
+}
+async function newAllyPlay(p,u,o){
+  switch(u.id){
+    case 'a9_peach':log(p,'พีช: เข้าสู่สนาม → จั่ว 1 ใบ');await abilityDraw(p,1,u);break;
+    case 'a9_fok':
+      await revealTake(p,7,c=>hasTag(c,NINE),'โฟ๊ค: หยิบการ์ดเผ่า "9 ประกาศิต" ไม่เกิน 1 ใบขึ้นมือ','การ์ด 9 ประกาศิต');
+      log(p,'โฟ๊ค: จั่ว 1 ใบ');await abilityDraw(p,1,u);break;
+    case 'a9_tsukinol':
+      await revealTake(p,7,c=>D(c).type==='event','สึกิน่อล: หยิบการ์ดเหตุการณ์ไม่เกิน 1 ใบขึ้นมือ','การ์ดเหตุการณ์');
+      log(p,'สึกิน่อล: จั่ว 1 ใบ');await abilityDraw(p,1,u);break;
+    case 'a9_qf':
+      if(qfLead(p)&&!p.once.a9qf){p.once.a9qf=1;popAt(u,'มาแล้วครับพี่น้อง!','#ffc8e8');log(p,'ฉินเฟย: "มาแล้วครับพี่น้อง" → จั่ว 2 ใบ');await abilityDraw(p,2,u)}break;
+    case 'a9_qfcute':{
+      if(!qfLead(p)||p.once.a9cute)break;
+      p.once.a9cute=1;await spotlight(u,p,`${p.name} · ฉินเฟยน่ารัก: "ข้าน่ารักไหม?"`);
+      const cute=await yesno(o,'ฉินเฟยน่ารัก ถามว่า: "ข้าน่ารักไหม?" 🦊',Math.random()<.5,'ตอบ <b>ใช่</b> (น่ารัก) → คู่แข่งจั่ว 2 ใบ · ตอบ <b>ไม่</b> (ไม่น่ารัก) → คุณต้องทิ้งการ์ดบนมือ 1 ใบ (ความสามารถเมื่อถูกทิ้งไม่ทำงาน)');
+      popAt(u,cute?'น่ารัก 💗':'ไม่น่ารัก…',cute?'#ffb0d8':'#b8c0d0');
+      if(cute){log(o,`${o.name} ตอบ "น่ารัก" → ${p.name} จั่ว 2 ใบ`);await abilityDraw(p,2,u)}
+      else if(o.hand.length){log(o,`${o.name} ตอบ "ไม่น่ารัก" → ทิ้งการ์ดบนมือ 1 ใบ`);
+        const t=await choose(o,{title:'ตอบ "ไม่น่ารัก" — ทิ้งการ์ดบนมือ 1 ใบ',sub:'การ์ดที่ถูกทิ้งใช้ความสามารถเมื่อถูกทิ้งไม่ได้',items:cardItems(o.hand,o),min:1,max:1,ai:aiDiscard(o)});
+        trashFromHand(o,t[0]);log(o,`ทิ้ง ${nm(t[0])} (ไม่ทำงานความสามารถ)`);render();await sleep(400)}
+      else log(o,`${o.name} ตอบ "ไม่น่ารัก" แต่ไม่มีการ์ดบนมือ`);
+      break;}
+    case 'a9_qffluff':{
+      if(!qfLead(p))break;
+      const cands=p.allies.filter(isQF);if(!cands.length)break;
+      const t=await choose(p,{title:'ฉินเฟยปุปุย: เลือกพวกพ้องชื่อ "ฉินเฟย" ไม่เกิน 2 ใบ พลังโจมตี +2000',items:cardItems(cands,p,a=>String(atkPow(p,a))),min:0,max:Math.min(2,cands.length),okText:'+2000',ai:it=>it.slice(0,2).map(i=>i.value)});
+      for(const a of t){a.tmp.atk+=2000;popAt(a,'+2000','#ffb0d8');log(p,`ฉินเฟยปุปุย: ${nm(a)} พลังโจมตี +2000`)}render();if(t.length)await sleep(400);break;}
+    case 'a9_nikki':{
+      if(!p.life.length||!perCall(u,'nikki'))break;
+      const go=await yesno(p,'นิกกี้: สร้างความเสียหายใส่พลังชีวิตของตัวเอง 1 ใบ เพื่อจั่ว 2 ใบไหม?',p.life.length>=3,`พลังชีวิตเหลือ ${p.life.length} · ใบที่เสียลง<b>ช่องดรอป</b> (ไม่ขึ้นมือ) และทริกเกอร์ไม่ทำงาน`);
+      if(!go)break;
+      const c=p.life.pop();p.trash.push(c);shakeScreen();flash('#ff4040');popAt(p.leader,'-1 ชีวิต','#ff5050');emit({f:'sfx',n:'life'});sfx('life');
+      log(p,`นิกกี้: เสียพลังชีวิต 1 (${nm(c)} ลงช่องดรอป · เหลือ ${p.life.length}) → จั่ว 2 ใบ`);render();await sleep(500);
+      if(!p.life.length)await lastFight(opp(p),p);
+      await abilityDraw(p,2,u);break;}
+    case 'a9_luart':if(shipLead(p)){log(p,'ลูอาร์ต: คาแรคเตอร์เป็นเรือหลวง → จั่ว 1 ใบ');await abilityDraw(p,1,u)}break;
+    case 'a9_lyx':{
+      log(p,'หลงเยี่ยซิน: จั่ว 1 ใบ');await abilityDraw(p,1,u);
+      const cands=p.allies.filter(a=>a!==u&&hasTag(a,NINE));
+      if(cands.length){
+        const t=await choose(p,{title:'หลงเยี่ยซิน: เก็บพวกพ้องเผ่า "9 ประกาศิต" กลับใต้กอง (กี่ใบก็ได้) — ทุก 1 ใบ รีมานา 1',items:cardItems(cands,p,a=>String(D(a).power)),min:0,max:cands.length,okText:'กลับใต้กอง',ai:()=>[]});
+        for(const a of t){popAt(a,'กลับใต้กอง','#9fd0ff');removeAlly(p,a);p.deck.unshift(strip(a));log(p,`หลงเยี่ยซิน: ${nm(a)} กลับใต้กอง`)}
+        if(t.length){render();await sleep(400);await backToDeck(p,t);remana(p,t.length);await sleep(300)}
+      }
+      await killOpp(p,o,'หลงเยี่ยซิน');break;}
+    case 'a9_akit':{
+      log(p,'อากิต: จั่ว 1 ใบ');await abilityDraw(p,1,u);
+      const cands=o.allies.filter(a=>!isProtected(o,a));
+      if(cands.length){const t=await choose(p,{title:'อากิต: นำพวกพ้องฝ่ายตรงข้าม 1 ใบกลับขึ้นมือ',items:cardItems(cands,o,a=>String(D(a).power)),min:1,max:1,okText:'เด้งขึ้นมือ',ai:aiBestKill(o)});
+        const a=t[0];popAt(a,'กลับขึ้นมือ!','#9fd0ff');await sleep(500);removeAlly(o,a);o.hand.push(strip(a));log(p,`อากิต: ${nm(a)} กลับขึ้นมือ`);render();await sleep(400)}
+      break;}
+    case 'g_farmer':log(p,'ชาวไร่: เข้าสู่สนาม → รีมานา 1');remana(p,1);await sleep(300);break;
+    case 'wc_doctor':{
+      const src=u.sumBy;if(!src||!isWC(src))break;
+      if(src===p.leader){u.tmp.atk+=2000;popAt(u,'+2000','#ff8a6a');log(p,'เหวยเฉินเป็นสำนักแพทแล้ว: ถูกเรียกจากคาแรคเตอร์เหวยเฉิน → พลังโจมตี +2000 จนจบเทิร์น');render();await sleep(300)}
+      await spotlight(u,p,`${p.name} · เหวยเฉินเป็นสำนักแพทแล้ว`);
+      const back=p.allies.filter(a=>a!==u&&isWC(a));
+      if(back.length){
+        const t=await choose(p,{title:'สำนักแพทย์: เลือกพวกพ้องชื่อ "เหวยเฉิน" ไม่เกิน 1 ใบ กลับใต้กอง',items:cardItems(back,p,a=>String(D(a).power)),min:0,max:1,okText:'กลับใต้กอง',ai:it=>p.allies.length>=3?[it.slice().sort((a,b)=>aiValue(p,a.value)-aiValue(p,b.value))[0].value]:[]});
+        for(const a of t){popAt(a,'กลับใต้กอง','#9fd0ff');removeAlly(p,a);p.deck.unshift(strip(a));log(p,`สำนักแพทย์: ${nm(a)} กลับใต้กอง`);if(a.id==='wc_isit')remana(p,1)}
+        if(t.length){render();await backToDeck(p,t);await sleep(300)}
+      }
+      if(p.allies.length>=3)break;
+      const cands=[...new Map(p.deck.filter(x=>D(x).type==='ally'&&isWC(x)&&x.id!=='wc_doctor'&&p.manaActive>=(D(x).cost||0)).map(x=>[x.id,x])).values()];
+      if(!cands.length){log(p,'สำนักแพทย์: ไม่มี "เหวยเฉิน" ในกองที่เรียกได้ (มานาไม่พอ / ไม่มี)');break}
+      const s=await choose(p,{title:'สำนักแพทย์: ค้นหา "เหวยเฉิน" 1 ใบจากกอง เรียกลงสนาม (จ่ายค่ามานา)',items:cardItems(cands,p,x=>'มานา '+(D(x).cost||0)),min:0,max:1,okText:'เรียกลงสนาม',ai:it=>[it.sort((a,b)=>aiValue(p,b.value)-aiValue(p,a.value))[0].value]});
+      if(!s.length)break;
+      const x=s[0];p.deck.splice(p.deck.indexOf(x),1);shuffle(p.deck);pay(p,D(x).cost||0);p.sumBy=u;
+      const okS=await summon(p,x,'กองการ์ด');p.sumBy=null;
+      if(!okS||!p.allies.includes(x))break;
+      const disc=p.hand.filter(isWC);
+      if(G.cur===p&&G.turn>firstRound()&&disc.length){
+        const d=await choose(p,{title:`สำนักแพทย์: ทิ้ง "เหวยเฉิน" บนมือ 1 ใบ → ${nm(x)} โจมตีได้ทันที?`,items:cardItems(disc,p),min:0,max:1,okText:'ทิ้ง',ai:it=>[it.slice().sort((a,b)=>aiValue(p,a.value)-aiValue(p,b.value))[0].value]});
+        if(d.length&&p.hand.includes(d[0])){await discard(p,d[0],u);if(p.allies.includes(x)){giveRush(x);log(p,`สำนักแพทย์: ${nm(x)} โจมตีได้ทันที`);render();await sleep(300)}}
+      }
+      break;}
+  }
+}
+// destroyed: by = whose ability did it (p itself = "จากความสามารถของการ์ดเรา") · null = battle / rules
+async function newAllyDeath(p,a,by){
+  const o=opp(p),own=by===p;
+  if(own&&a.id==='a9_peach'){log(p,'พีช: ถูกทำลายจากความสามารถของเรา → รีมานา 1');remana(p,1);await sleep(300)}
+  if(own&&a.id==='a9_fok'){log(p,'โฟ๊ค: ถูกทำลายจากความสามารถของเรา → จั่ว 1 ใบ');await abilityDraw(p,1,a)}
+  if(own&&a.id==='a9_lyx')await killOpp(p,o,'หลงเยี่ยซิน (ถูกทำลาย)');
+  if(own&&a.id==='a9_akit'&&o.hand.length){log(p,'อากิต: ถูกทำลายจากความสามารถของเรา → คู่แข่งทิ้งการ์ดบนมือ 1 ใบ');await discardChoose(o,a,`อากิต (${p.name}): เลือกทิ้งการ์ดบนมือของคุณ 1 ใบ`)}
+  if(a.id==='a9_tsukinol'){
+    const ev=p.trash.filter(c=>D(c).type==='event');
+    if(ev.length){const t=await choose(p,{title:'สึกิน่อล (ถูกทำลาย): นำการ์ดเหตุการณ์จากช่องดรอป 1 ใบขึ้นมือ',items:cardItems(ev,p),min:0,max:1,ai:it=>[it.sort((x,y)=>aiValue(p,y.value)-aiValue(p,x.value))[0].value]});
+      for(const c of t){p.trash.splice(p.trash.indexOf(c),1);p.hand.push(c);log(p,`สึกิน่อล: ${nm(c)} จากช่องดรอปขึ้นมือ`)}render();await sleep(300)}
+  }
+  if(a.id==='g_gate'){log(p,'ผู้เฝ้าประตู: ถูกทำลาย → จั่ว 1 ใบ');await abilityDraw(p,1,a)}
+}
+// attacking: พีช (rest 2 mana → all allies +2000) · โบ๊ด (+1000 defence) · ทหารดาบ (vs an ally +1000)
+async function newAllyAttack(p,u,target){
+  const o=opp(p);
+  if(u.id==='a9_peach'&&!usedCall(u,'peach')&&p.manaActive>=2&&p.allies.length){
+    if(await yesno(p,'พีช: REST มานา 2 ใบ → พวกพ้องทุกใบของเรา พลังโจมตี +2000 ไหม?',true,'จนจบเทิร์น · 1 ครั้งต่อการลงสนาม')){
+      perCall(u,'peach');pay(p,2);await spotlight(u,p,`${p.name} · พีช`);
+      for(const a of p.allies){a.tmp.atk+=2000;popAt(a,'+2000','#9fe8ff')}
+      log(p,'พีช: REST มานา 2 → พวกพ้องทุกใบ พลังโจมตี +2000');render();await sleep(500);
+    }
+  }
+  if(u.id==='a9_bod'){u.permDef=(u.permDef||0)+1000;popAt(u,'ป้องกัน +1000','#8fc8ff');log(p,`โบ๊ด: พลังป้องกัน +1000 (รวม +${(D(u).counter||0)+u.permDef})`);await sleep(300)}
+  if(u.id==='g_sword'&&target!==o.leader){u.tmp.atk+=1000;popAt(u,'+1000','#ff8a6a');log(p,'ทหารดาบ: โจมตีพวกพ้อง → พลังโจมตี +1000');await sleep(300)}
+}
+// สึกิน่อล (พวกพ้อง): we used an event → 1 card on our field and this card +1000 / +1000 (once per call)
+async function allyEvBuff(p){
+  for(const s of p.allies.filter(a=>a.id==='a9_tsukinol'&&!usedCall(a,'ev'))){
+    if(!p.allies.includes(s))continue;
+    const t=await choose(p,{title:'สึกิน่อล (พวกพ้อง): เลือกการ์ดในสนาม 1 ใบ — การ์ดนั้นและสึกิน่อล พลังโจมตีและป้องกัน +1000',items:cardItems(units(p),p,u=>String(shownPow(p,u))),min:0,max:1,okText:'+1000',ai:it=>[it[0].value]});
+    if(!t.length)continue;perCall(s,'ev');
+    for(const u of new Set([t[0],s])){u.tmp.atk+=1000;u.tmp.def+=1000;popAt(u,'+1000','#c8a8ff')}
+    log(p,`สึกิน่อล: ${nm(t[0])} และสึกิน่อล พลัง +1000`);render();await sleep(400);
+  }
+}
+
 // ---------- events ----------
 function loveTargets(p){
   if(leaderNamed(p,'xuan')||p.leader.id==='jin')return p.trash.slice();
@@ -4839,7 +5197,7 @@ function loveTargets(p){
 function eventPlayable(p,c){
   const d=D(c),o=opp(p);
   if(d.counterEv&&!d.alsoMain)return false;
-  if(p.manaActive<d.cost)return false;
+  if(p.manaActive<evCost(p,c))return false;
   const slots=p.allies.length<3;
   switch(c.id){
     case 'inn':return !p.once.inn;
@@ -4857,6 +5215,9 @@ function eventPlayable(p,c){
     case 'x_meet':return !p.once.x_meet&&p.allies.some(a=>nm(a)==='ลูอาร์ต');
     case 'x_sail':return p.life.length<=3&&p.allies.filter(a=>hasTag(a,SHIP)).length>=3;
     case 'x_moon':return !p.once.x_moon&&leaderNamed(p,'xuan')&&p.life.length<=3&&p.deck.length>0;
+    case 'n_warn':return qfLead(p);
+    case 'n_stranger':return !p.once.n_stranger&&p.deck.length>0;
+    case 'n_story':return !!CARDS.lyx9&&leaderNamed(p,'lyx9');
     case 'x_wcwhere':return !p.once.x_wcwhere&&p.life.length<=3&&leaderNamed(p,'weichenL')&&p.allies.length>0;
   }
   return false;
@@ -4866,11 +5227,14 @@ function whyNot(p,c){
   if(d.counterEv&&!d.alsoMain)return 'ใช้ได้ตอนถูกโจมตีเท่านั้น';
   if(c.id==='x_meet')return p.once.x_meet?'ใช้ไปแล้วในเทิร์นนี้':'ต้องมีพวกพ้องชื่อ "ลูอาร์ต" ในสนาม';
   if(c.id==='x_sail')return 'ต้องมีพลังชีวิต 3 หรือต่ำกว่า และพวกพ้องเผ่าเรือหลวงในสนาม 3 ใบ';
-  if(p.manaActive<d.cost)return `มานาไม่พอ (ต้องใช้ ${d.cost} มี ${p.manaActive})`;
+  if(p.manaActive<evCost(p,c))return `มานาไม่พอ (ต้องใช้ ${evCost(p,c)} มี ${p.manaActive})`;
   if(['inn','signal','love','wc_queue','wc_pointless','wc_firstday','x_origin','x_moon'].includes(c.id)&&p.once[c.id])return 'ใช้ไปแล้วในเทิร์นนี้';
   if(c.id==='x_moon')return 'ต้องมีคาแรคเตอร์ชื่อ "เซวียนเหิง" และพลังชีวิต 3 หรือต่ำกว่า';
   if(c.id==='x_wcwhere')return p.once.x_wcwhere?'ใช้ไปแล้วในเทิร์นนี้':'ต้องมีคาแรคเตอร์ชื่อ "เหวยเฉิน" พลังชีวิต 3 หรือต่ำกว่า และมีพวกพ้องในสนาม';
   if(c.id==='wc_firstday')return 'บนมือไม่มีการ์ดชื่อ "เหวยเฉิน" ให้ทิ้ง';
+  if(c.id==='n_warn')return 'ต้องมีคาแรคเตอร์ชื่อ "ฉินเฟย"';
+  if(c.id==='n_stranger')return p.once.n_stranger?'ใช้ไปแล้วในเทิร์นนี้':'กองการ์ดหมด';
+  if(c.id==='n_story')return 'ต้องมีคาแรคเตอร์ชื่อ "หลงเยี่ยซิน"';
   if(c.id==='death'||c.id==='prepare')return 'ไม่มีพวกพ้องฝ่ายตรงข้ามที่เลือกได้';
   if(c.id==='spare')return 'ไม่มีพวกพ้องเรือหลวงในช่องดรอป หรือสนามเต็ม';
   if(c.id==='goaway')return 'ไม่มีพวกพ้องเผ่าสามพี่น้องในสนาม';
@@ -4878,10 +5242,10 @@ function whyNot(p,c){
   return 'ยังใช้ไม่ได้ตอนนี้';
 }
 async function castEvent(p,c){
-  const d=D(c),o=opp(p);chainReset();qInc(p,'ev');
-  pay(p,d.cost);p.hand.splice(p.hand.indexOf(c),1);
-  log(p,`ใช้เหตุการณ์ "${d.name}" (มานา ${d.cost})`);render();
-  await spotlight(c,p,`${p.name} ใช้เหตุการณ์ · มานา ${d.cost}`);
+  const d=D(c),o=opp(p);chainReset();qInc(p,'ev');p.evNow=c.id;
+  const cost=evCost(p,c);pay(p,cost);p.hand.splice(p.hand.indexOf(c),1);
+  log(p,`ใช้เหตุการณ์ "${d.name}" (มานา ${cost}${cost<d.cost?' · ลดจากลูอาร์ต':''})`);render();
+  await spotlight(c,p,`${p.name} ใช้เหตุการณ์ · มานา ${cost}`);
   switch(c.id){
     case 'inn':p.once.inn=1;await drawAnim(p,2);log(p,'จั่ว 2 ใบ');break;
     case 'signal':{
@@ -4943,7 +5307,7 @@ async function castEvent(p,c){
     case 'wc_pointless':{
       p.once.wc_pointless=1;const top=takeTop(p,5);
       const al=top.filter(x=>D(x).type==='ally'&&(isWC(x)||D(x).name.includes('ฉินเฟย'))),vh=top.filter(x=>D(x).type==='vehicle');
-      const t=await choose(p,{title:'การต่อสู้ที่ไม่มีความหมาย: หยิบพวกพ้อง "เหวยเฉิน"/"ฉินเฟย" ไม่เกิน 2 ใบ',sub:`เปิด <b>5 ใบบนสุด</b> ของกอง — เจอที่เลือกได้ ${al.length} ใบ · ใบสีเทาเลือกไม่ได้`,items:revealItems(top,x=>al.includes(x),p),min:0,max:Math.min(2,al.length),ai:it=>it.slice(0,2).map(i=>i.value)});
+      const t=await choose(p,{title:'การต่อสู้ที่ไม่มีความหมาย: หยิบพวกพ้อง "เหวยเฉิน"/"ฉินเฟย" ไม่เกิน 1 ใบ',sub:`เปิด <b>5 ใบบนสุด</b> ของกอง — เจอที่เลือกได้ ${al.length} ใบ · ใบสีเทาเลือกไม่ได้`,items:revealItems(top,x=>al.includes(x),p),min:0,max:Math.min(1,al.length),ai:it=>it.slice(0,1).map(i=>i.value)});
       const v=vh.length?await choose(p,{title:'และหยิบพาหนะไม่เกิน 1 ใบ',items:cardItems(vh,p),min:0,max:1,ai:it=>[it[0].value]}):[];
       for(const x of [...t,...v]){top.splice(top.indexOf(x),1);p.hand.push(x)}
       p.deck.push(...top);shuffle(p.deck);log(p,`หยิบขึ้นมือ ${t.length+v.length} ใบ ที่เหลือกลับกองแล้วสับกอง`);render();await sleep(500);
@@ -4957,6 +5321,12 @@ async function castEvent(p,c){
       shuffle(p.deck);log(p,`ค้นหาพวกพ้องเรือหลวง ${t.length} ใบขึ้นมือ`);render();await sleep(500);
       break;}
     case 'x_meet':p.once.x_meet=1;await drawAnim(p,2);log(p,'การพบกัน ณ วันแรกพบ: จั่ว 2 ใบ');break;
+    case 'n_warn':{const n=p.allies.filter(isQF).length;log(p,`คำเตือนของท่านเจ้าสำนัก: พวกพ้องฉินเฟย ${n} ใบ → รีมานา ${n}`);if(n)remana(p,n);await sleep(400);break;}
+    case 'n_stranger':p.once.n_stranger=1;await revealTake(p,5,x=>D(x).type==='ally','ชายปริศนา: นำพวกพ้องไม่เกิน 1 ใบขึ้นมือ','พวกพ้อง');break;
+    case 'n_story':
+      await drawAnim(p,1);
+      if(p.deck.length){p.life.push(p.deck.pop());popAt(p.leader,'+1 ชีวิต','#8ff0a8');log(p,'เรื่องราวของข้าและเจ้า: จั่ว 1 ใบ และนำการ์ดบนสุดเข้าพลังชีวิต (คว่ำหน้า)');render();await sleep(500)}
+      break;
     case 'x_sail':{
       const cands=p.allies.filter(a=>hasTag(a,SHIP));
       const t=await choose(p,{title:'เตรียมออกเรือ: เลือกพวกพ้องเผ่าเรือหลวง 3 ใบลงช่องดรอป',items:cardItems(cands,p),min:3,max:3,okText:'ลงช่องดรอป',ai:it=>it.slice(0,3).map(i=>i.value)});
@@ -4979,7 +5349,7 @@ async function castEvent(p,c){
       break;}
     case 'x_moon':{
       p.once.x_moon=1;const top=takeTop(p,5);
-      const ok=top.filter(x=>D(x).type==='ally'&&p.manaActive>=(D(x).cost||0));
+      const ok=top.filter(x=>D(x).type==='ally'&&canEnter(p,x)&&p.manaActive>=(D(x).cost||0));
       const t=p.allies.length<3?await choose(p,{title:'คืนจันทร์วันพักผ่อน: เรียกพวกพ้องไม่เกิน 1 ใบลงสนาม (จ่ายค่ามานา)',sub:`เปิด 5 ใบบนสุด — เลือกได้ ${ok.length} ใบ · ที่เหลือกลับกองแล้วสับ`,items:revealItems(top,x=>ok.includes(x),p,'มานาไม่พอ / ไม่ใช่พวกพ้อง'),min:0,max:1,okText:'เรียกลงสนาม',
         ai:it=>it.length?[it.sort((a,b)=>aiValue(p,b.value)-aiValue(p,a.value))[0].value]:[]}):[];
       for(const x of t)top.splice(top.indexOf(x),1);
@@ -4993,7 +5363,8 @@ async function castEvent(p,c){
       await drawAnim(p,3);p.noWcDraw=G.turn;log(p,'จั่ว 3 ใบ — จนจบเทิร์นนี้ จั่วจากความสามารถของการ์ดชื่อ "เหวยเฉิน" ไม่ได้');
       break;}
   }
-  p.trash.push(c);render();
+  p.trash.push(c);p.evNow=null;render();
+  await tsuBuff(p);
 }
 async function playVehicle(p,c){
   chainReset();qInc(p,'veh');pay(p,D(c).cost);p.hand.splice(p.hand.indexOf(c),1);
@@ -5013,6 +5384,10 @@ async function playVehicle(p,c){
   log(p,'ลงพาหนะ เรือหลวงสุริยคราส! การ์ดเผ่าเรือหลวงทั้งหมด พลังโจมตี +5000 จนจบเทิร์น');render();await sleep(900);
 }
 async function runTrigger(p,c){
+  p.evNow=D(c).type==='event'?c.id:null;
+  try{await runTrigger0(p,c)}finally{p.evNow=null}
+}
+async function runTrigger0(p,c){
   const o=opp(p);log(p,`ทริกเกอร์: ${nm(c)}`);
   await spotlight(c,p,`${p.name} · ทริกเกอร์!`);
   if(c.id==='meeting'||c.id==='wc_queue'){p.hand.push(c);await drawAnim(p,1);log(p,'จั่ว 1 ใบ และนำการ์ดนี้ขึ้นมือ');return}
@@ -5038,7 +5413,7 @@ async function runTrigger(p,c){
 const canAttack=(p,u)=>G.cur===p&&G.turn>firstRound()&&units(p).includes(u)&&!u.rested&&!u.sick&&!u.noAttack;
 // พวกพ้อง เหวยเฉิน: GO ON + defence +2000 when our character is "เซวียนเหิง" or "เหวยเฉิน"
 function wcAllyBoost(p){return leaderNamed(p,'xuan')||leaderNamed(p,'weichenL')}
-const canGoOn=(p,a)=>a.id==='yaoming'||(a.id==='weichen'&&wcAllyBoost(p));
+const canGoOn=(p,a)=>a.id==='yaoming'||!!a.goOn||!!D(a).goOn||(a.id==='weichen'&&wcAllyBoost(p));
 function whyNoAttack(p,u){
   if(G.turn<=firstRound())return 'เทิร์นแรกยังโจมตีไม่ได้';
   if(u.rested)return 'การ์ดนอนอยู่ (โจมตีไปแล้ว)';
@@ -5052,6 +5427,9 @@ async function attack(p,u,target){
   render();await fxAttack(u,target);
   u.rested=true;qInc(p,'atk');render();await sleep(300);
   await wcLeaderAttack(p,u);
+  await newLeaderAttack(p,u);
+  await peachFlip(o);
+  await newAllyAttack(p,u,target);
   if(u.id==='yaoxing'){
     const cands=p.trash.filter(c=>hasTag(c,SAN));
     if(cands.length){const t=await choose(p,{title:'เหยาซิง: นำการ์ดเผ่าสามพี่น้องในช่องดรอปกลับใต้กองการ์ด?',items:cardItems(cands,p),min:0,max:1,ai:it=>[it[0].value]});
@@ -5064,10 +5442,21 @@ async function attack(p,u,target){
   }
   // เซวียนเหิง (deck card on the character zone): attacking the character → also attacks one opposing ally, standing OR rested
   let xTarget=null;
-  if(u.id==='x_xuan2'&&u===p.leader&&target===o.leader){
-    const st=o.allies.slice();
-    if(st.length){const t=await choose(p,{title:'เซวียนเหิง: เลือกพวกพ้องฝ่ายตรงข้าม 1 ใบ (ตั้งหรือนอนก็ได้) — การ์ดนี้จะโจมตีใบนั้นด้วย',items:cardItems(st,o,a=>'ป้องกัน '+defPow(o,a)),min:0,max:1,okText:'โจมตีด้วย',ai:aiBestKill(o)});xTarget=t[0]||null;
-      if(xTarget){log(p,`เซวียนเหิง: โจมตี ${nm(xTarget)} ด้วย`);popAt(xTarget,'เป้าหมายที่ 2!','#ff9a6a');await sleep(400)}}
+  const peachX=u===p.leader&&peachUp(p)&&units(o).includes(target); // วิชาลับ (หงาย): พีชโจมตี → ตีพวกพ้องอีก 1 ใบ
+  if((u.id==='x_xuan2'&&u===p.leader&&target===o.leader)||peachX){
+    const st=o.allies.filter(a=>a!==target),who=peachX?'ท่าสังหารอนันตทิต':'เซวียนเหิง';
+    if(st.length){const t=await choose(p,{title:`${who}: เลือกพวกพ้องฝ่ายตรงข้าม 1 ใบ (ตั้งหรือนอนก็ได้) — การ์ดนี้จะโจมตีใบนั้นด้วย`,items:cardItems(st,o,a=>'ป้องกัน '+defPow(o,a)),min:0,max:1,okText:'โจมตีด้วย',ai:aiBestKill(o)});xTarget=t[0]||null;
+      if(xTarget){log(p,`${who}: โจมตี ${nm(xTarget)} ด้วย`);popAt(xTarget,'เป้าหมายที่ 2!','#ff9a6a');await sleep(400)}}
+  }
+  // สไมล์ไวท์ "ทิ้งร่องรอย" (1 per call): attack 1 more opposing ally too — destroyed at the end of the turn
+  if(u.id==='a9_smile'&&!xTarget&&!usedCall(u,'smile')){
+    const st=o.allies.filter(a=>a!==target);
+    if(st.length&&await yesno(p,'สไมล์ไวท์: ใช้ "ทิ้งร่องรอย" ไหม?',st.some(a=>defPow(o,a)<=atkPow(p,u)),'โจมตีพวกพ้องฝ่ายตรงข้ามได้อีก 1 ใบ (ตั้งหรือนอนก็ได้) · <b>จบเทิร์นการ์ดนี้ถูกทำลาย</b>')){
+      perCall(u,'smile');u.expire=true;
+      const t=await choose(p,{title:'ทิ้งร่องรอย: เลือกพวกพ้องฝ่ายตรงข้ามอีก 1 ใบ — สไมล์ไวท์จะโจมตีใบนั้นด้วย',items:cardItems(st,o,a=>'ป้องกัน '+defPow(o,a)),min:1,max:1,okText:'โจมตีด้วย',ai:aiBestKill(o)});
+      xTarget=t[0]||null;await spotlight(u,p,`${p.name} · ทิ้งร่องรอย`);
+      if(xTarget){log(p,`ทิ้งร่องรอย: โจมตี ${nm(xTarget)} ด้วย`);popAt(xTarget,'เป้าหมายที่ 2!','#ff9a6a');await sleep(400)}
+    }
   }
   u.attacked=true;
   let boost=0,guardSum=0;
@@ -5138,16 +5527,30 @@ async function attack(p,u,target){
     removeAlly(o,w);o.trash.push(strip(w));log(o,'เหวยเฉินแถวไหน? ลงช่องดรอป');render();await sleep(400);
     const cands=[...new Map(o.deck.filter(x=>D(x).type==='ally'&&isWC(x)).map(x=>[x.id,x])).values()];
     const t=await choose(o,{title:'เลือกพวกพ้อง "เหวยเฉิน" จากกองเรียกลงสนาม',items:cardItems(cands,o),min:1,max:1,ai:it=>[it.sort((a,b)=>aiValue(o,b.value)-aiValue(o,a.value))[0].value]});
-    o.deck.splice(o.deck.indexOf(t[0]),1);shuffle(o.deck);await summonAnywhere(o,t[0],'กองการ์ด');
+    o.deck.splice(o.deck.indexOf(t[0]),1);shuffle(o.deck);o.sumBy=w;await summonAnywhere(o,t[0],'กองการ์ด');o.sumBy=null;
   }
   if(!units(p).includes(u)||(target!==o.leader&&!o.allies.includes(target))){log(null,`การโจมตีของ ${nm(u)} สิ้นสุด (เป้าหมายไม่อยู่ในสนามแล้ว)`);render();return}
+  // พีช [COUNTER]: rest 4 standing allies / mana → +2000 (until the end of this, the opponent's, turn)
+  if(o.leader.id==='peach'&&target===o.leader&&peachReady(o)&&atk()>=defNow()){
+    if(await yesno(o,`[COUNTER] พีช: REST พวกพ้อง/มานาที่ตั้งอยู่รวมกัน ${PEACH_N} ใบ → พลังต่อสู้ +${PEACH_V} ไหม?`,atk()-defNow()<PEACH_V,sub()+'<br>1 ครั้งต่อเทิร์น'))await peachRest(o,true);
+  }
   // [COUNTER] events (can chain several while mana lasts)
   for(let k=0;k<4;k++){
-    const evs=o.hand.filter(c=>D(c).counterEv&&o.manaActive>=D(c).cost&&counterUsable(p,c,{o,u,target,atk:atk()}));
+    const evs=o.hand.filter(c=>D(c).counterEv&&o.manaActive>=evCost(o,c)&&counterUsable(p,c,{o,u,target,atk:atk()}));
     if(!evs.length)break;
-    const t=await choose(o,{title:'ใช้การ์ด [COUNTER] ไหม?',sub:sub()+'<br>กด "ข้าม" ถ้าไม่ใช้',items:cardItems(evs,o,c=>'มานา '+D(c).cost),min:0,max:1,ai:it=>aiCounterEv(o,p,u,target,atk()-defNow(),it)});
+    const t=await choose(o,{title:'ใช้การ์ด [COUNTER] ไหม?',sub:sub()+'<br>กด "ข้าม" ถ้าไม่ใช้',items:cardItems(evs,o,c=>'มานา '+evCost(o,c)),min:0,max:1,ai:it=>aiCounterEv(o,p,u,target,atk()-defNow(),it)});
     if(!t.length)break;
-    if(await castCounter(o,t[0],p,u)==='cancel'){render();return}
+    if(await castCounter(o,t[0],p,u,target)==='cancel'){render();return}
+  }
+  // ฉินเฟย: this character is attacked → up to 2 cards named "ฉินเฟย" from the deck into the defense slot
+  if(target===o.leader&&o.leader.id==='qinfei'&&o.qfT!==G.turn){ // 1 per turn
+    const cands=o.deck.filter(c=>nm(c).includes('ฉินเฟย')&&D(c).type!=='leader');
+    if(cands.length){
+      const t=await choose(o,{title:'ฉินเฟย: เลือกการ์ดชื่อ "ฉินเฟย" จากกองไม่เกิน 2 ใบ นำเข้าช่องป้องกัน',sub:sub(),items:cands.map(c=>({card:c,value:c,text:'+'+guardVal(o,c,false),v:guardVal(o,c,false)})),min:0,max:Math.min(2,cands.length),okText:'นำเข้าช่องป้องกัน',
+        live:{kind:'def',base:defNow(),vs:atk()},ai:it=>it.slice(0,2).map(i=>i.value)});
+      for(const c of t){const v=guardVal(o,c,false);o.deck.splice(o.deck.indexOf(c),1);o.guard.push(c);guardSum+=v;o.guardSum=guardSum;log(o,`ฉินเฟย: ${nm(c)} จากกองเข้าช่องป้องกัน (+${v})`);render();popAt(c,'+'+v,'#8fc8ff');await sleep(450)}
+      if(t.length){shuffle(o.deck);o.qfT=G.turn}
+    }
   }
   // DEFENSE SLOT (like Vanguard guardians): gray "+" cards from hand, or GO ON allies from the field
   const handG=o.hand.filter(c=>guardVal(o,c,false)>0||c.id==='yaoming'); // เหยาหมิง can always be thrown in
@@ -5160,7 +5563,7 @@ async function attack(p,u,target){
     if(t.length)await spotlight(t[0],o,`${o.name} · ช่องป้องกัน! วาง ${t.length} ใบ`);
     for(const c of t){
       const fromField=o.allies.includes(c),v=guardVal(o,c,fromField);
-      if(fromField){removeAlly(o,c);log(o,`GO ON! ${nm(c)} ย้ายมาช่องป้องกัน (+${v})`)}
+      if(fromField){removeAlly(o,c);log(o,`GO ON! ${nm(c)} ย้ายมาช่องป้องกัน (+${v})`);if(c.id==='a9_bod'&&v>=3000){log(o,'โบ๊ด: GO ON ด้วยพลังป้องกัน 3000 ขึ้นไป → รีมานา 2');remana(o,2)}}
       else{o.hand.splice(o.hand.indexOf(c),1);log(o,`วาง ${nm(c)} ลงช่องป้องกัน (+${v})`)}
       o.guard.push(c);guardSum+=v;o.guardSum=guardSum;render();popAt(c,'+'+v,'#8fc8ff');await sleep(550);
       // เหวยเฉินประมง: bring up to 3 field allies into the defense slot too — they return to hand afterwards
@@ -5191,7 +5594,7 @@ async function attack(p,u,target){
   render();
   if(xTarget&&o.allies.includes(xTarget)&&units(p).includes(u)){
     const A2=atkPow(p,u),D2=defPow(o,xTarget),hit2=A2>=D2;
-    log(null,`เซวียนเหิง โจมตี ${nm(xTarget)}: ${A2} vs ${D2} → ${hit2?'เข้า!':'กันได้'}`);
+    log(null,`${nm(u)} โจมตี ${nm(xTarget)}: ${A2} vs ${D2} → ${hit2?'เข้า!':'กันได้'}`);
     await battleScene(p,u,o,xTarget,A2,D2,0,hit2);
     if(hit2){const nmT=nm(xTarget);if(await destroy(o,xTarget,null))await yaoxingRevenge(o,nmT)}
     render();
@@ -5231,7 +5634,124 @@ async function wcLeaderAttack(p,u){
   if(!t.length)return;
   const x=t[0],src=p.deck.includes(x)?p.deck:p.trash.includes(x)?p.trash:p.hand,txt=where(x).slice(3);
   src.splice(src.indexOf(x),1); // no shuffle: the card just put under the deck stays at the bottom
-  if(await summonAnywhere(p,x,txt)!==false&&p.allies.includes(x)){x.sick=false;x.rested=false;popAt(x,'ตีได้ทันที!','#8ff0a8');render();await sleep(400)}
+  p.sumBy=p.leader;
+  const ok=await summonAnywhere(p,x,txt);p.sumBy=null;
+  if(ok!==false&&p.allies.includes(x)){x.sick=false;x.rested=false;popAt(x,'ตีได้ทันที!','#8ff0a8');render();await sleep(400)}
+}
+// ---------- ชุดใหม่ 5 คาแรคเตอร์ ----------
+// a card that may attack the turn it came out (RUSH): also shown as a badge on the card
+function giveRush(a){a.sick=false;a.rested=false;a.rush=true;popAt(a,'RUSH!','#ff8a9a')}
+async function newLeaderAttack(p,u){
+  if(u!==p.leader)return;
+  const o=opp(p),id=u.id;
+  // หลงเยี่ยซิน (9 ประกาศิต): attacking → destroy 1 rested opposing ally
+  if(id==='lyx9'){
+    const cands=o.allies.filter(a=>a.rested);
+    if(cands.length){
+      const t=await choose(p,{title:'หลงเยี่ยซิน: เลือกพวกพ้องฝ่ายตรงข้ามที่นอนอยู่ 1 ใบ ทำลายการ์ดใบนั้น',items:cardItems(cands,o,a=>String(defPow(o,a))),min:1,max:1,okText:'ทำลาย',ai:aiBestKill(o)});
+      await spotlight(p.leader,p,`${p.name} · หลงเยี่ยซิน`);
+      await hakiStrike(t[0]);await destroy(o,t[0],p);
+    }
+  }
+  // เซวียนเหิง (ใหม่): life 3 or less → up to 1 "เรือหลวง" ally from the deck, with RUSH
+  if(id==='xuan9'&&p.life.length<=3){
+    const cands=[...new Map(p.deck.filter(x=>D(x).type==='ally'&&hasTag(x,SHIP)).map(x=>[x.id,x])).values()];
+    if(cands.length){
+      const t=await choose(p,{title:'เซวียนเหิง: เรียกพวกพ้องเผ่า "เรือหลวง" จากกองการ์ด 1 ใบลงสนาม (RUSH — โจมตีได้ทันที)?',items:cardItems(cands,p,c=>String(D(c).power)),min:0,max:1,okText:'เรียกลงสนาม',ai:it=>[it.sort((a,b)=>aiValue(p,b.value)-aiValue(p,a.value))[0].value]});
+      if(t.length){const x=t[0];p.deck.splice(p.deck.indexOf(x),1);shuffle(p.deck);
+        if(await summonAnywhere(p,x,'กองการ์ด')!==false&&p.allies.includes(x)){giveRush(x);render();await sleep(400)}}
+    }
+  }
+  // ฉินเฟย: attacking → STAND 1 of our allies (one that came out this turn, not on our first turn → RUSH instead)
+  if(id==='qinfei'&&p.allies.length){
+    const t=await choose(p,{title:'ฉินเฟย: เลือกพวกพ้องในสนามของเรา 1 ใบ STAND การ์ดนั้น',sub:'ถ้าเป็นการ์ดที่ลงสนามเทิร์นนี้ (และไม่ใช่เทิร์นแรกของเรา) จะได้ RUSH แทน — โจมตีได้ทันที',
+      items:cardItems(p.allies,p,a=>a.enteredT===G.turn&&G.turn>firstRound()?'RUSH':a.rested?'STAND':'ตั้งอยู่'),min:0,max:1,okText:'เลือก',ai:it=>[(it.find(i=>i.value.rested)||it[0]).value]});
+    const a=t[0];
+    if(a&&p.allies.includes(a)){
+      if(a.enteredT===G.turn&&G.turn>firstRound()){giveRush(a);log(p,`ฉินเฟย: ${nm(a)} ได้รับ RUSH`)}
+      else{a.rested=false;popAt(a,'STAND!','#ffd36a');log(p,`ฉินเฟย: STAND ${nm(a)}`)}
+      render();await sleep(400);
+    }
+  }
+}
+// พีช: allies + mana that are standing (can be rested)
+const peachStanding=p=>p.allies.filter(a=>!a.rested).length+p.manaActive;
+const PEACH_N=6,PEACH_V=4000;
+const peachReady=p=>p.peachT!==G.turn&&peachStanding(p)>=PEACH_N; // 1 per turn
+async function peachRest(p,counter){
+  if(!peachReady(p))return;
+  const st=p.allies.filter(a=>!a.rested);
+  const items=[...st.map(a=>({card:a,value:a,text:'พวกพ้อง'})),...Array.from({length:p.manaActive},(_,i)=>({text:`💧 มานา ${i+1}`,value:'m'+i}))];
+  const t=await choose(p,{title:`${counter?'[COUNTER]':'[ACT]'} พีช: เลือก ${PEACH_N} ใบที่จะ REST (พวกพ้อง / มานาที่ตั้งอยู่ รวมกัน)`,sub:`REST รวมกันครบ ${PEACH_N} ใบ → พีชพลังต่อสู้ +${PEACH_V} จนจบเทิร์นฝ่ายตรงข้าม (1 ครั้งต่อเทิร์น) · พวกพ้องที่นอนอยู่จะถูกโจมตีได้`,items,min:PEACH_N,max:PEACH_N,okText:'REST',
+    ai:it=>{const m=it.filter(i=>typeof i.value==='string');return [...m,...it.filter(i=>typeof i.value!=='string')].slice(0,PEACH_N).map(i=>i.value)}});
+  if(t.length<PEACH_N)return;
+  p.peachT=G.turn;
+  await spotlight(p.leader,p,`${p.name} · ${counter?'[COUNTER]':'[ACT]'} พีช`);
+  let m=0;for(const x of t){if(typeof x==='string')m++;else if(p.allies.includes(x)){x.rested=true;popAt(x,'REST','#9fb4e0')}}
+  m=Math.min(m,p.manaActive);p.manaActive-=m;p.manaRested+=m;
+  (p.leader.buffs=p.leader.buffs||[]).push({v:PEACH_V,k:'peach'});
+  popAt(p.leader,'+'+PEACH_V,'#9fe8ff');log(p,`พีช: REST ${t.length-m} พวกพ้อง + ${m} มานา → พลังต่อสู้ +${PEACH_V} จนจบเทิร์นฝ่ายตรงข้าม`);render();await sleep(500);
+}
+// วิชาลับ: we are attacked with 1 life or less → it turns face up (once)
+async function peachFlip(o){
+  const s=o.leader.secret;
+  if(o.leader.id!=='peach'||!s||s.up||s.used||o.life.length>1)return;
+  s.up=true;s.flipT=G.turn;render();
+  emit({f:'peachup'});await peachUpFx();
+  log(o,'วิชาลับ "ขยายเขตแดนเวท ท่าสังหารอนันตทิต" หงายหน้า! พีชพลัง +4000');
+  try{await bannerX(o,'ขยายเขตแดนเวท!','ขยายเขตแดนเวท!','ท่าสังหารอนันตทิต · พีชพลัง +4000',1400)}catch(e){if(e===OVER)throw e}popAt(o.leader,'+4000','#9fe8ff');
+  await abilityDraw(o,1,null);log(o,'วิชาลับ: จั่ว 1 ใบ');render();
+}
+async function actLyx9(p){
+  if(p.once.lyx9Act)return;
+  const cands=p.allies.filter(a=>hasTag(a,NINE));if(!cands.length)return;
+  const t=await choose(p,{title:'[ACT] หลงเยี่ยซิน: ทำลายพวกพ้องเผ่า "9 ประกาศิต" ของเรา 1 ใบ → จั่ว 2 ใบ',items:cardItems(cands,p,a=>String(D(a).power)),min:0,max:1,okText:'ทำลาย',ai:it=>[it[0].value]});
+  if(!t.length)return;
+  p.once.lyx9Act=1;await spotlight(p.leader,p,`${p.name} · [ACT] หลงเยี่ยซิน`);
+  await destroy(p,t[0],p);log(p,'หลงเยี่ยซิน: จั่ว 2 ใบ');await drawAnim(p,2);
+}
+// end of the current player's turn: สึกิน่อล รีมานา 2 · เซวียนเหิง GO ON + STAND · วิชาลับ คว่ำ · พีช +2000 expires
+async function newLeaderEnd(cp){
+  if(cp.leader.id==='tsukinol'){log(cp,'สึกิน่อล: จบเทิร์น → รีมานา 2');remana(cp,2);await sleep(300)}
+  if(cp.leader.id==='xuan9'){
+    const cands=cp.allies.filter(a=>hasTag(a,SHIP));
+    if(cands.length){
+      const t=await choose(cp,{title:'เซวียนเหิง (จบเทิร์น): เลือกพวกพ้องเผ่า "เรือหลวง" 1 ใบ ได้รับ GO ON และ STAND',items:cardItems(cands,cp,a=>a.rested?'นอนอยู่':'ตั้งอยู่'),min:0,max:1,okText:'GO ON + STAND',ai:it=>[(it.find(i=>i.value.rested)||it[0]).value]});
+      for(const a of t){a.goOn=true;a.rested=false;popAt(a,'GO ON + STAND','#8ff0a8');log(cp,`เซวียนเหิง: ${nm(a)} ได้รับ GO ON และ STAND`)}
+      render();if(t.length)await sleep(400);
+    }
+  }
+  const s=cp.leader.secret;
+  if(s&&s.up&&G.turn>(s.flipT||0))s.ends=(s.ends||0)+1; // our turns that ended since it turned face up
+  if(s&&s.up&&s.ends>=2){s.up=false;s.used=true;emit({f:'peachdown'});log(cp,'วิชาลับ: จบเทิร์นที่ 2 ของเรา → คว่ำการ์ด (หงายอีกไม่ได้)');popAt(cp.leader,'วิชาลับคว่ำ','#b8c8e0');render();await sleep(600)}
+  // +2000 of พีช lasts until the end of the opponent's turn
+  for(const pl of G.players)if(isEnemy(pl,cp))for(const u of units(pl))if(u.buffs)u.buffs=u.buffs.filter(b=>b.k!=='peach');
+}
+// วิชาลับ visuals — driven by the game state, so both computers (and a reload) show the same thing
+function peachFxSync(){
+  const on=!!(G&&G.players&&!G.over&&G.players.some(p=>peachUp(p)));
+  let fx=$('#peachfx');
+  if(on&&!fx){
+    fx=document.createElement('div');fx.id='peachfx';
+    fx.innerHTML=`<canvas></canvas><div class="pcirc" style="background-image:url(${A('fx_peachmagic.png')})"></div>`;
+    document.body.append(fx);requestAnimationFrame(()=>fx.classList.add('on'));
+    const cv=fx.querySelector('canvas'),cx=cv.getContext('2d');let flakes=[];
+    const size=()=>{cv.width=innerWidth;cv.height=innerHeight;flakes=Array.from({length:Math.round(innerWidth*innerHeight/9000)},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,r:.8+Math.random()*2.6,s:.25+Math.random()*.6,w:Math.random()*6.28}))};
+    size();addEventListener('resize',size);
+    const tick=()=>{if(!fx.isConnected){removeEventListener('resize',size);return}
+      cx.clearRect(0,0,cv.width,cv.height);
+      for(const f of flakes){f.y+=f.s;f.w+=.012;f.x+=Math.sin(f.w)*.35;if(f.y>cv.height+4){f.y=-4;f.x=Math.random()*cv.width}
+        cx.globalAlpha=.35+f.r/5;cx.fillStyle='#fff';cx.beginPath();cx.arc(f.x,f.y,f.r,0,6.283);cx.fill()}
+      requestAnimationFrame(tick)};tick();
+  }else if(!on&&fx&&!fx.dataset.gone){fx.dataset.gone=1;fx.classList.remove('on');setTimeout(()=>fx.remove(),1300)}
+}
+// the moment it turns face up: magic sound + the circle opens big in the middle, then settles faint behind the game
+function peachUpFx(){
+  if(AU.ctx&&AU.on.sfx)try{sample('peachmagic',{g:1})}catch(e){}
+  peachFxSync();const fx=$('#peachfx');
+  if(fx){fx.classList.remove('burst');void fx.offsetWidth;fx.classList.add('burst');setTimeout(()=>fx.classList.remove('burst'),2600)}
+  try{flash('#bfeaff')}catch(e){}
+  return sleep(1400);
 }
 function clearGuard(o){for(const c of o.guard){if(c.backHand){o.hand.push(strip(c));log(o,`${nm(c)} กลับขึ้นมือ (เหวยเฉินประมง)`)}else o.trash.push(strip(c))}o.guard=[];o.guardSum=0}
 function counterUsable(p,c,b){ // p = attacking player, b = the battle {o (defender), u, target, atk}
@@ -5242,12 +5762,16 @@ function counterUsable(p,c,b){ // p = attacking player, b = the battle {o (defen
   if(c.id==='x_stance')return !!o&&b.target===o.leader&&leaderNamed(o,'xuan');
   if(c.id==='x_wckid')return !!o&&!o.once.x_wckid&&o.hand.some(x=>x!==c&&D(x).type==='ally'&&isWC(x));
   if(c.id==='death')return p.allies.some(a=>!isProtected(p,a));
+  if(c.id==='n_nowin')return !!o&&b.atk<=12000;
+  if(c.id==='n_letter')return !!o&&hasTag(o.leader,NINE)&&o.allies.length<3&&o.trash.some(x=>D(x).type==='ally'&&canEnter(o,x)&&o.manaActive-evCost(o,c)>=(D(x).cost||0));
+  if(c.id==='n_cheat')return !!o&&o.allies.length>0;
+  if(c.id==='n_nightmare')return !!p.vehicle;
   return p.allies.length>0;
 }
-async function castCounter(o,c,p,u){
-  qInc(o,'ev');qInc(o,'cnt');
-  pay(o,D(c).cost);o.hand.splice(o.hand.indexOf(c),1);
-  log(o,`[COUNTER] ${nm(c)} (มานา ${D(c).cost})`);render();
+async function castCounter(o,c,p,u,b0t){ // b0t = the card being attacked
+  qInc(o,'ev');qInc(o,'cnt');o.evNow=c.id;
+  const cost=evCost(o,c);pay(o,cost);o.hand.splice(o.hand.indexOf(c),1);
+  log(o,`[COUNTER] ${nm(c)} (มานา ${cost})`);render();
   await spotlight(c,o,`${o.name} · COUNTER!`);
   let res='';
   if(c.id==='bind'){
@@ -5291,14 +5815,37 @@ async function castCounter(o,c,p,u){
     }
   }
   if(c.id==='x_meet'){o.once.x_meet=1;await drawAnim(o,2);log(o,'การพบกัน ณ วันแรกพบ: จั่ว 2 ใบ')}
+  if(c.id==='n_nowin'){res='cancel';log(o,'การต่อสู้ที่ไม่มีทางชนะ: ยกเลิกการโจมตี');emit({f:'sfx',n:'guard'});sfx('guard');await bannerX(o,'ยกเลิกการโจมตี!','ยกเลิกการโจมตี!','การต่อสู้ที่ไม่มีทางชนะ',1200)}
+  if(c.id==='n_letter'){
+    const cost=x=>D(x).cost||0;
+    const cands=[...new Map(o.trash.filter(x=>D(x).type==='ally'&&canEnter(o,x)&&o.manaActive>=cost(x)).map(x=>[x.id,x])).values()];
+    if(cands.length&&o.allies.length<3){
+      const t=await choose(o,{title:'จดหมายสำคัญ: เลือกพวกพ้องจากช่องดรอป 1 ใบ เรียกลงสนาม (จ่ายค่ามานา)',items:cardItems(cands,o,x=>'มานา '+cost(x)),min:0,max:1,okText:'เรียกลงสนาม',ai:it=>[it.sort((a,b)=>aiValue(o,b.value)-aiValue(o,a.value))[0].value]});
+      if(t.length){const x=t[0];o.trash.splice(o.trash.indexOf(x),1);pay(o,cost(x));await summon(o,x,'ช่องดรอป')}
+    }
+  }
+  if(c.id==='n_cheat'){
+    const t=await choose(o,{title:'ผู้หลอกลวงความตาย: เลือกพวกพ้องของเรา 1 ใบ — ถ้าจะถูกทำลาย จะยังคงอยู่ในสนาม',sub:'มีผลจนจบเทิร์นนี้ 1 ครั้ง',items:cardItems(o.allies,o,a=>String(defPow(o,a))),min:1,max:1,ai:it=>[(it.find(i=>i.value===b0t)||it[0]).value]});
+    for(const a of t){a.deathless=G.turn;popAt(a,'หลอกลวงความตาย','#c8a8ff');log(o,`ผู้หลอกลวงความตาย: ${nm(a)} จะไม่ถูกทำลายในเทิร์นนี้ (1 ครั้ง)`)}render();await sleep(400);
+  }
+  if(c.id==='n_nightmare'&&p.vehicle){
+    const v=p.vehicle;popAt(v,'ลงช่องดรอป','#ff9a8a');await sleep(400);
+    p.trash.push(strip(v));for(const x of v.extra||[])p.trash.push(x);p.vehicle=null;
+    log(o,`ฝันร้ายของเมือง: พาหนะ ${nm(v)} ของฝ่ายตรงข้ามลงช่องดรอป`);render();await sleep(500);
+  }
+  if(c.id==='n_guilty'&&p.allies.length){
+    const t=await choose(o,{title:'แกมีความผิด: เลือกพวกพ้องฝ่ายตรงข้ามไม่เกิน 1 ใบ พลังโจมตี -4000',items:cardItems(p.allies,p,a=>String(atkPow(p,a))),min:0,max:1,okText:'-4000',ai:it=>[(it.find(i=>i.value===u)||it[0]).value]});
+    for(const a of t){a.tmp.atk-=4000;popAt(a,'-4000','#ff8a8a');log(o,`แกมีความผิด: ${nm(a)} พลังโจมตี -4000`)}render();await sleep(500);
+  }
   if(c.id==='x_stance'){o.leader.tmp.pow+=3000;popAt(o.leader,'+3000','#8ff0a8');log(o,'ตั้งท่าพร้อมรบ: คาแรคเตอร์พลัง +3000 จนจบเทิร์น');render();await sleep(600)}
   if(c.id==='prepare'){
-    const t=await choose(o,{title:'เลือกพวกพ้องฝ่ายตรงข้าม 2 ใบ ให้พลังโจมตี -2000',items:cardItems(p.allies,p,a=>String(atkPow(p,a))),min:Math.min(1,p.allies.length),max:2,
-      ai:it=>{const s=it.some(i=>i.value===u)?[u]:[];for(const i of it){if(s.length>=2)break;if(!s.includes(i.value))s.push(i.value)}return s}});
+    const t=await choose(o,{title:'เลือกพวกพ้องฝ่ายตรงข้าม 1 ใบ ให้พลังโจมตี -2000',items:cardItems(p.allies,p,a=>String(atkPow(p,a))),min:Math.min(1,p.allies.length),max:1,
+      ai:it=>[(it.find(i=>i.value===u)||it[0]).value]});
     for(const a of t){a.tmp.atk-=2000;popAt(a,'-2000','#ff8a8a')}
     log(o,`พลังโจมตี -2000: ${t.map(nm).join(', ')}`);render();await sleep(600);
   }
-  o.trash.push(c);render();
+  o.trash.push(c);o.evNow=null;render();
+  await tsuBuff(o);
   return res;
 }
 async function damage(o){
@@ -5388,7 +5935,7 @@ async function yaoxingRevenge(o,deadName){
 async function startTurn(p){
   G.cur=p;G.foe=G.players.length===2?opp(p):nextEnemy(p);G.turn++;G.phase='start';UNDO=[];setView();G.acted=false;G.forceEnd=null;
   if(G.mode==='host'){const ts=G.tsec??TURN_SEC;G.tLeft=ts?ts*1000:null;if(!ts){TT.last=-1;emit({f:'timer',side:sideOf(p),left:null});timerShow(sideOf(p),null)}} // online: a fresh timer for this turn
-  for(const u of units(p)){p.manaRested+=u.mana;u.mana=0;u.rested=false;u.sick=false;u.noAttack=false;u.attacked=false}
+  for(const u of units(p)){p.manaRested+=u.mana;u.mana=0;u.rested=false;u.sick=false;u.noAttack=false;u.attacked=false;u.rush=false;u.goOn=false}
   p.manaActive+=p.manaRested;p.manaRested=0;p.once={};p.tianxingBlocked=false;p.overDone=false;
   log(null,`— เทิร์น ${G.turn}: ${p.name} —`);
   render();
@@ -5415,6 +5962,9 @@ async function endTurn(){
     await destroy(cp,a,null);
     if(cp.hand.length)await discardChoose(cp,a,'เหวยเฉินฟาร์มเมอร์: ทิ้งการ์ดบนมือ 1 ใบ');
   }
+  // ลูอาร์ต (ใหม่): end of turn → to the drop
+  for(const a of cp.allies.slice())if(a.id==='a9_luart'){removeAlly(cp,a);cp.trash.push(strip(a));log(cp,'จบเทิร์น: ลูอาร์ตลงช่องดรอป');render();await sleep(300)}
+  await newLeaderEnd(cp);
   // hand limit: at the end of your turn keep at most HAND_MAX (5) cards
   if(cp.hand.length>HAND_MAX){
     const n=cp.hand.length-HAND_MAX;
@@ -5466,7 +6016,7 @@ function aiCounterEv(o,p,u,target,gap,it){
   const L=o.life.length,lifeLine={2:2,3:3,4:4}[DIFF],powLine={2:6000,3:5000,4:4000}[DIFF];
   if(!(target===o.leader?L<=lifeLine:D(target).power>=powLine))return [];
   // hard+: when the attacker is the character, death still removes a threat for later
-  const ids=u===p.leader?(DIFF>=3?['death','prepare']:['death']):['death','bind','prepare'];
+  const ids=[...(u===p.leader?(DIFF>=3?['death','prepare']:['death']):['death','bind','prepare']),'n_nowin','n_guilty','n_cheat'];
   for(const id of ids){
     const f=it.find(i=>i.value.id===id);
     if(f&&(id!=='prepare'||gap<(DIFF>=3?3000:2000)))return [f.value];
@@ -5484,7 +6034,7 @@ async function aiTurn(p){
     const order=DIFF===1?['inn']:['inn','signal','spare','love'];
     for(const id of order){
       const c=p.hand.find(x=>x.id===id);
-      if(c&&eventPlayable(p,c)&&p.manaActive-D(c).cost>=reserve()){
+      if(c&&eventPlayable(p,c)&&p.manaActive-evCost(p,c)>=reserve()){
         if(DIFF===1&&rnd(.5))continue;
         if(id==='prepare'&&!o.allies.some(a=>a.rested))continue;
         if(id==='love'&&!loveTargets(p).some(x=>aiValue(p,x)>=5000))continue;
@@ -5493,13 +6043,13 @@ async function aiTurn(p){
     }
     if(acted)continue;
     if(p.allies.length<3){
-      const al=p.hand.filter(c=>D(c).type==='ally'&&p.manaActive>=(D(c).cost||0)&&!(c.id==='tianxing'&&p.tianxingBlocked)).sort((a,b)=>aiValue(p,b)-aiValue(p,a));
+      const al=p.hand.filter(c=>D(c).type==='ally'&&canEnter(p,c)&&p.manaActive>=(D(c).cost||0)&&!(c.id==='tianxing'&&p.tianxingBlocked)).sort((a,b)=>aiValue(p,b)-aiValue(p,a));
       const pick=al.find(c=>p.hand.length>3||D(c).counter===0)||al[0];
       if(pick){p.hand.splice(p.hand.indexOf(pick),1);pay(p,D(pick).cost||0);await summon(p,pick);acted=true;await sleep(600);continue}
     }else if(!p.overDone&&DIFF>=2){
       // field full: summon over the weakest ally if a clearly better one is in hand
       const weak=p.allies.slice().sort((a,b)=>aiValue(p,a)-aiValue(p,b))[0];
-      const best=p.hand.filter(c=>D(c).type==='ally'&&!(c.id==='tianxing'&&p.tianxingBlocked)).sort((a,b)=>aiValue(p,b)-aiValue(p,a))[0];
+      const best=p.hand.filter(c=>D(c).type==='ally'&&canEnter(p,c)&&p.manaActive>=(D(c).cost||0)&&!(c.id==='tianxing'&&p.tianxingBlocked)).sort((a,b)=>aiValue(p,b)-aiValue(p,a))[0];
       if(weak&&best&&aiValue(p,best)>=aiValue(p,weak)+1500){p.overDone=true;p.hand.splice(p.hand.indexOf(best),1);await summon(p,best,null,weak);acted=true;await sleep(600);continue}
     }
   }
@@ -5602,7 +6152,8 @@ function handActions(c,p=G.me){
   const d=D(c);
   if(!canAct(p))return [];
   if(d.type==='ally'){
-    const blocked=c.id==='tianxing'&&p.tianxingBlocked;
+    const blocked=(c.id==='tianxing'&&p.tianxingBlocked)||!canEnter(p,c);
+    if(!canEnter(p,c))return [[`ลงสนามไม่ได้ — ${needTxt(c)}`,()=>{},false,'']];
     const take=()=>p.hand.splice(p.hand.indexOf(c),1);
     return [
       ['ลงสนาม (ช่องว่าง)'+(d.cost?` · มานา ${d.cost}`:''),()=>{take();pay(p,d.cost||0);return summon(p,c)},p.allies.length<3&&!blocked&&p.manaActive>=(d.cost||0),blocked?'ลงซ้ำไม่ได้เทิร์นนี้':p.manaActive<(d.cost||0)?`มานาไม่พอ (ต้องใช้ ${d.cost})`:'สนามเต็ม — ใช้ "ลงทับ" แทน'],
@@ -5614,8 +6165,9 @@ function handActions(c,p=G.me){
     ];
   }
   if(d.type==='vehicle')return [[`ลงพาหนะ (มานา ${d.cost})`,()=>playVehicle(p,c),p.manaActive>=d.cost,`มานาไม่พอ (มี ${p.manaActive})`]];
+  if(d.type==='secret')return [['วิชาลับ — ใช้จากมือไม่ได้ (อยู่ใต้คาแรคเตอร์เท่านั้น)',()=>{},false,'']];
   if(d.type==='leader')return [['วางทับคาแรคเตอร์ (เมื่อพลังชีวิตเป็น 0)',()=>xuan2Transform(p,c),xuan2Ready(p),'ใช้ได้เมื่อพลังชีวิตเป็น 0 และคาแรคเตอร์ชื่อ "เซวียนเหิง"']];
-  return [[`ใช้ (มานา ${d.cost})`,()=>castEvent(p,c),eventPlayable(p,c),whyNot(p,c)]];
+  return [[`ใช้ (มานา ${evCost(p,c)})`,()=>castEvent(p,c),eventPlayable(p,c),whyNot(p,c)]];
 }
 function unitActions(u,p=G.me){
   const o=opp(p);
@@ -5630,6 +6182,8 @@ function unitActions(u,p=G.me){
     acts.push(['💧 ติดมานา (+1000)',async()=>{p.manaActive--;u.mana++;log(p,`ติดมานาให้ ${nm(u)}`);render();popAt(u,'+1000','#9cc8ff');await sleep(300)},p.manaActive>0,'ไม่มีมานาพร้อมใช้']);
   }
   if(u.id==='longyexin'&&u===p.leader)acts.push(['[ACT] ทำลายพวกพ้องของเรา 1 ตน → จั่ว 1 ใบ',()=>actLyx(p),!p.once.lyxAct&&p.allies.length>0,p.once.lyxAct?'ใช้ไปแล้วเทิร์นนี้':'ไม่มีพวกพ้องในสนาม']);
+  if(u.id==='lyx9'&&u===p.leader)acts.push(['[ACT] ทำลายพวกพ้อง "9 ประกาศิต" ของเรา 1 ใบ → จั่ว 2 ใบ',()=>actLyx9(p),!p.once.lyx9Act&&p.allies.some(a=>hasTag(a,NINE)),p.once.lyx9Act?'ใช้ไปแล้วเทิร์นนี้':'ไม่มีพวกพ้องเผ่า 9 ประกาศิตในสนาม']);
+  if(u.id==='peach'&&u===p.leader)acts.push([`[ACT] REST พวกพ้อง/มานาที่ตั้งอยู่รวม ${PEACH_N} ใบ → พลังต่อสู้ +${PEACH_V}`,()=>peachRest(p,false),peachReady(p),p.peachT===G.turn?'ใช้ไปแล้วเทิร์นนี้':`ตั้งอยู่ ${peachStanding(p)}/${PEACH_N} ใบ`]);
   if(u.id==='yaoxingmini')acts.push(['[ACT] ลงช่องดรอป → หยิบสามพี่น้องขึ้นมือ',()=>actMini(p,u),true]);
   if(u.id==='wc_teahouse'){
     // usable whenever 5 เหวยเฉิน are in the drop; the destroy part just has no target if the opponent has none / they're protected
@@ -5710,6 +6264,13 @@ function unitEl(p,u){
   if(u.under&&CARDS[u.under.id]){const k=document.createElement('div');k.className='underpeek';k.title=`การ์ดที่ถูกทับ: ${CARDS[u.under.id].name} — แตะเพื่อดู`;
     k.style.backgroundImage=`url(${A(D(u.under).img)})`;k.innerHTML='<span>ทับอยู่</span>';
     k.onclick=ev=>{ev.stopPropagation();sfx('click');openDetail(u.under)};k.onmouseenter=()=>showInfo(u.under);e.append(k)}
+  // RUSH / GO ON (given by an ability) shown on the card
+  if(u.rush||u.goOn){const k=document.createElement('div');k.className='kwbadge';k.innerHTML=(u.rush?`<img src="${A('kw_rush.png')}" alt="RUSH">`:'')+(u.goOn?'<span>GO ON</span>':'');e.append(k)}
+  // วิชาลับ under พีช: face down (purple back) → face up (glowing) → used (dark)
+  if(u.secret&&CARDS[u.secret.id]){const s=u.secret,k=document.createElement('div');k.className='secretpeek'+(s.up?' up':s.used?' used':'');
+    k.style.backgroundImage=`url(${A(s.up?CARDS[s.id].img:'back_ch.png')})`;k.title=s.up?'วิชาลับ (หงายอยู่) — แตะเพื่อดู':s.used?'วิชาลับ (คว่ำแล้ว ใช้ไม่ได้อีก)':'วิชาลับ (คว่ำอยู่ใต้คาแรคเตอร์) — แตะเพื่อดู';
+    k.innerHTML=`<span>${s.up?'วิชาลับ!':s.used?'ใช้แล้ว':'วิชาลับ'}</span>`;
+    k.onclick=ev=>{ev.stopPropagation();sfx('click');openDetail({uid:s.uid,id:s.id})};k.onmouseenter=()=>showInfo({uid:s.uid,id:s.id});e.append(k)}
   if(p===G.me&&myMain()&&canAttack(p,u))e.classList.add('can');
   if(u.noAttack)e.classList.add('dim');
   if(pinned&&pinned.uid===u.uid)e.classList.add('pinned');
@@ -5791,6 +6352,7 @@ function renderMat(mat,p,oppSide){
 function render(){
   if(!G||!G.me)return;
   try{questTick()}catch(e){}
+  try{peachFxSync();peachMusicSync()}catch(e){console.warn(e)}
   setView();
   if(G.mode==='host')sendSnap();
   const before=new Map();
