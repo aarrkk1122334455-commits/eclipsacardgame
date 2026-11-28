@@ -611,6 +611,38 @@ body.mobile .dbar{padding-right:110px}body.mobile .dbar button{padding:6px 8px;f
 #gachabtn.promo .gp-art{position:absolute;left:6px;top:50%;width:44px;aspect-ratio:480/671;transform:translateY(-50%) rotate(-6deg);border-radius:5px;background:center/cover no-repeat;box-shadow:0 0 10px #4aa8ff,0 2px 6px #000;transition:opacity .45s,transform .45s}
 #gachabtn.promo .gp-art.fade{opacity:0;transform:translateY(-50%) rotate(-6deg) scale(.85)}
 #gachabtn.promo .gp-new{position:absolute;top:-13px;right:-8px;background:linear-gradient(90deg,#ff2a3a,#ffd23a);color:#200;font-size:12px;font-weight:bold;border-radius:8px;padding:1px 8px;white-space:nowrap;box-shadow:0 0 12px #ff2a3a;animation:secretPulse .9s ease-in-out infinite alternate}
+/* 9 ประกาศิต pull: magic seal → shake → shatter */
+.mgfx{position:fixed;inset:0;z-index:240;pointer-events:none;display:flex;align-items:center;justify-content:center}
+.mgfx .mgdim{position:absolute;inset:0;background:radial-gradient(circle,#2a0e00cc,#000e 70%);animation:fadeIn .4s both}
+.mgfx .mgwrap{position:relative}
+.mgfx .mgseal,.mgfx .sh{position:absolute;inset:0;background:center/contain no-repeat}
+.mgfx .mgseal{filter:drop-shadow(0 0 18px #ff8a20) drop-shadow(0 0 40px #ff5a00);animation:mgIn 2.45s cubic-bezier(.3,0,.6,1) both}
+.mgfx .mgnaka{position:absolute;inset:-4%;background:center/contain no-repeat;opacity:.95;animation:mgIn 2.45s cubic-bezier(.3,0,.6,1) both}
+.mgfx .mgring2{position:absolute;inset:-14%;background:#ffb040;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;filter:drop-shadow(0 0 14px #ff8a20);opacity:.85;animation:mgIn 2.45s cubic-bezier(.3,0,.6,1) both}
+.mgfx.break .mgnaka,.mgfx.break .mgring2{transition:transform .6s ease-out,opacity .6s;transform:scale(1.8);opacity:0}
+.mgfx .mgcv{position:absolute;inset:0;width:100%;height:100%}
+.mgfx .mgimp{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:#fff}
+.mgfx .mgimp .ln{position:absolute;inset:-20%;background:repeating-conic-gradient(from 0deg,#000 0deg 1.2deg,transparent 1.2deg 7deg);-webkit-mask-image:radial-gradient(circle,transparent 22%,#000 60%);mask-image:radial-gradient(circle,transparent 22%,#000 60%)}
+.mgfx .mgimp .sil{position:relative;background:#000;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}
+.mgfx.imp .mgimp{display:flex}
+.mgfx.imp.inv .mgimp{filter:invert(1)}
+.mgfx .mgshards{position:absolute;inset:0;opacity:0}
+.mgfx.shake .mgwrap{animation:mgShake .07s linear infinite}
+.mgfx.shake .mgseal{filter:drop-shadow(0 0 26px #ffb040) drop-shadow(0 0 70px #ff6a00) brightness(1.35)}
+.mgfx.break .mgseal{opacity:0;transition:opacity .05s}
+.mgfx.break .mgshards{opacity:1}
+.mgfx.break .sh{filter:drop-shadow(0 0 12px #ff9a30);animation:mgShard .8s cubic-bezier(.15,.7,.3,1) both}
+.mgfx .mgring{position:absolute;left:50%;top:50%;width:20px;height:20px;margin:-10px;border-radius:50%;border:6px solid #ffd27a;box-shadow:0 0 30px #ff9a30,inset 0 0 20px #ff9a30;opacity:0}
+.mgfx.break .mgring{animation:mgRing .7s ease-out both}
+.mgfx .mgflash{position:absolute;inset:0;background:#fff3d0;opacity:0}
+.mgfx.break .mgflash{animation:mgFlash .5s ease-out both}
+.mgfx.out{opacity:0;transition:opacity .35s}
+@keyframes mgIn{from{transform:scale(.15) rotate(-140deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+@keyframes mgSpin{to{rotate:360deg}}
+@keyframes mgShake{0%{transform:translate(0,0)}25%{transform:translate(calc(var(--sh,4px)*-1),calc(var(--sh,4px)*.6))}50%{transform:translate(var(--sh,4px),calc(var(--sh,4px)*-.7))}75%{transform:translate(calc(var(--sh,4px)*-.6),calc(var(--sh,4px)*-.9))}100%{transform:translate(calc(var(--sh,4px)*.7),var(--sh,4px))}}
+@keyframes mgShard{from{transform:translate(0,0) rotate(0);opacity:1}to{transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(.7);opacity:0}}
+@keyframes mgRing{from{transform:scale(1);opacity:1}to{transform:scale(60);opacity:0}}
+@keyframes mgFlash{0%{opacity:.85}100%{opacity:0}}
 .gtagnew{position:absolute;top:10px;right:10px;z-index:3;background:linear-gradient(90deg,#ff2a3a,#ffd23a);color:#200;font-weight:bold;font-size:13px;border-radius:7px;padding:1px 8px;box-shadow:0 0 12px #ff2a3a;animation:secretPulse .9s ease-in-out infinite alternate}
 .rt.R{background:#2a8cff}.rt.P{background:linear-gradient(90deg,#8a2cff,#d24cff)}.rt.G{background:linear-gradient(90deg,#ffb000,#fff0a0,#ffb000);color:#3a2000}.rt.M{background:linear-gradient(90deg,#000,#8a0010,#ff2a3a,#8a0010,#000);background-size:200% 100%;animation:rbText 1.6s linear infinite;box-shadow:0 0 10px #ff1a2a}
 #pull .pc.r-R .f{box-shadow:0 0 0 3px #4ab3ff,0 0 30px #4ab3ff,0 0 60px #1e7bff}
@@ -1653,7 +1685,7 @@ body.mobile #deckb #dlist,body.mobile #deckb #dgrid{overflow-y:auto;min-height:0
   <div class="gnote">ใช้เหรียญ (เหรียญ) ที่ได้จากการเล่น · ชนะได้ <b>5000</b> · แพ้ได้ <b>2500</b> · ได้การ์ดซ้ำ คืน <b>100</b> เหรียญ</div>
 </div>
 
-<script>window.ASSET={"A_a9_akit.png": "img/A_a9_akit.webp", "A_a9_bod.png": "img/A_a9_bod.webp", "A_a9_fok.png": "img/A_a9_fok.webp", "A_a9_luart.png": "img/A_a9_luart.webp", "A_a9_lyx.png": "img/A_a9_lyx.webp", "A_a9_nikki.png": "img/A_a9_nikki.webp", "A_a9_peach.png": "img/A_a9_peach.webp", "A_a9_qf.png": "img/A_a9_qf.webp", "A_a9_qfcute.png": "img/A_a9_qfcute.webp", "A_a9_qffluff.png": "img/A_a9_qffluff.webp", "A_a9_smile.png": "img/A_a9_smile.webp", "A_a9_tsukinol.png": "img/A_a9_tsukinol.webp", "A_bingyue.png": "img/A_bingyue.webp", "A_g_farmer.png": "img/A_g_farmer.webp", "A_g_gate.png": "img/A_g_gate.webp", "A_g_shield.png": "img/A_g_shield.webp", "A_g_sword.png": "img/A_g_sword.webp", "A_g_vip.png": "img/A_g_vip.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_doctor.png": "img/A_wc_doctor.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_n_cheat.png": "img/E_n_cheat.webp", "E_n_guilty.png": "img/E_n_guilty.webp", "E_n_letter.png": "img/E_n_letter.webp", "E_n_nightmare.png": "img/E_n_nightmare.webp", "E_n_nowin.png": "img/E_n_nowin.webp", "E_n_story.png": "img/E_n_story.webp", "E_n_stranger.png": "img/E_n_stranger.webp", "E_n_warn.png": "img/E_n_warn.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_lyx9.png": "img/L_lyx9.webp", "L_peach.png": "img/L_peach.webp", "L_qinfei.png": "img/L_qinfei.webp", "L_tsukinol.png": "img/L_tsukinol.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "L_xuan9.png": "img/L_xuan9.webp", "S_peach.png": "img/S_peach.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "fx_peachmagic.png": "img/fx_peachmagic.webp", "haki.png": "img/haki.webp", "kw_rest.png": "img/kw_rest.webp", "kw_rush.png": "img/kw_rush.webp", "kw_stand.png": "img/kw_stand.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=34;</script>
+<script>window.ASSET={"A_a9_akit.png": "img/A_a9_akit.webp", "A_a9_bod.png": "img/A_a9_bod.webp", "A_a9_fok.png": "img/A_a9_fok.webp", "A_a9_luart.png": "img/A_a9_luart.webp", "A_a9_lyx.png": "img/A_a9_lyx.webp", "A_a9_nikki.png": "img/A_a9_nikki.webp", "A_a9_peach.png": "img/A_a9_peach.webp", "A_a9_qf.png": "img/A_a9_qf.webp", "A_a9_qfcute.png": "img/A_a9_qfcute.webp", "A_a9_qffluff.png": "img/A_a9_qffluff.webp", "A_a9_smile.png": "img/A_a9_smile.webp", "A_a9_tsukinol.png": "img/A_a9_tsukinol.webp", "A_bingyue.png": "img/A_bingyue.webp", "A_g_farmer.png": "img/A_g_farmer.webp", "A_g_gate.png": "img/A_g_gate.webp", "A_g_shield.png": "img/A_g_shield.webp", "A_g_sword.png": "img/A_g_sword.webp", "A_g_vip.png": "img/A_g_vip.webp", "A_grandpa.png": "img/A_grandpa.webp", "A_luart.png": "img/A_luart.webp", "A_tianxing.png": "img/A_tianxing.webp", "A_wc_diver.png": "img/A_wc_diver.webp", "A_wc_doctor.png": "img/A_wc_doctor.webp", "A_wc_farmer.png": "img/A_wc_farmer.webp", "A_wc_fish.png": "img/A_wc_fish.webp", "A_wc_flood.png": "img/A_wc_flood.webp", "A_wc_isit.png": "img/A_wc_isit.webp", "A_wc_sheath.png": "img/A_wc_sheath.webp", "A_wc_stay.png": "img/A_wc_stay.webp", "A_wc_where.png": "img/A_wc_where.webp", "A_weichen.png": "img/A_weichen.webp", "A_x_bingyue1.png": "img/A_x_bingyue1.webp", "A_x_bingyue2.png": "img/A_x_bingyue2.webp", "A_x_tianxing.png": "img/A_x_tianxing.webp", "A_x_yaoxing1.png": "img/A_x_yaoxing1.webp", "A_x_yaoxing5.png": "img/A_x_yaoxing5.webp", "A_yaoming.png": "img/A_yaoming.webp", "A_yaoxing.png": "img/A_yaoxing.webp", "A_yaoxingmini.png": "img/A_yaoxingmini.webp", "E_bind.png": "img/E_bind.webp", "E_death.png": "img/E_death.webp", "E_firstday.png": "img/E_firstday.webp", "E_goaway.png": "img/E_goaway.webp", "E_inn.png": "img/E_inn.webp", "E_inn_cat.png": "img/E_inn_cat.webp", "E_inn_fire.png": "img/E_inn_fire.webp", "E_inn_jin.png": "img/E_inn_jin.webp", "E_inn_sera.png": "img/E_inn_sera.webp", "E_love.png": "img/E_love.webp", "E_meeting.png": "img/E_meeting.webp", "E_n_cheat.png": "img/E_n_cheat.webp", "E_n_guilty.png": "img/E_n_guilty.webp", "E_n_letter.png": "img/E_n_letter.webp", "E_n_nightmare.png": "img/E_n_nightmare.webp", "E_n_nowin.png": "img/E_n_nowin.webp", "E_n_story.png": "img/E_n_story.webp", "E_n_stranger.png": "img/E_n_stranger.webp", "E_n_warn.png": "img/E_n_warn.webp", "E_pointless.png": "img/E_pointless.webp", "E_prepare.png": "img/E_prepare.webp", "E_queue.png": "img/E_queue.webp", "E_signal.png": "img/E_signal.webp", "E_spare.png": "img/E_spare.webp", "E_x_meet.png": "img/E_x_meet.webp", "E_x_moon.png": "img/E_x_moon.webp", "E_x_origin.png": "img/E_x_origin.webp", "E_x_sail.png": "img/E_x_sail.webp", "E_x_shield.png": "img/E_x_shield.webp", "E_x_stance.png": "img/E_x_stance.webp", "E_x_wckid.png": "img/E_x_wckid.webp", "E_x_wcwhere.png": "img/E_x_wcwhere.webp", "L_longyexin.png": "img/L_longyexin.webp", "L_lyx9.png": "img/L_lyx9.webp", "L_peach.png": "img/L_peach.webp", "L_qinfei.png": "img/L_qinfei.webp", "L_tsukinol.png": "img/L_tsukinol.webp", "L_weichen.png": "img/L_weichen.webp", "L_xuan.png": "img/L_xuan.webp", "L_xuan9.png": "img/L_xuan9.webp", "S_peach.png": "img/S_peach.webp", "V_ship.png": "img/V_ship.webp", "V_teahouse.png": "img/V_teahouse.webp", "X_xuan2.png": "img/X_xuan2.webp", "back.png": "img/back.webp", "back_ch.png": "img/back_ch.webp", "back_mana.png": "img/back_mana.webp", "bg_menu.png": "img/bg_menu.webp", "dg_beam.png": "img/dg_beam.webp", "dg_cloud_0.png": "img/dg_cloud_0.webp", "dg_cloud_1.png": "img/dg_cloud_1.webp", "dg_cloud_2.png": "img/dg_cloud_2.webp", "dg_cloud_swirl.png": "img/dg_cloud_swirl.webp", "dg_gate_inner.png": "img/dg_gate_inner.webp", "dg_gate_outer.png": "img/dg_gate_outer.webp", "dg_glow.png": "img/dg_glow.webp", "dg_shard0.png": "img/dg_shard0.webp", "dg_shard1.png": "img/dg_shard1.webp", "dg_shard10.png": "img/dg_shard10.webp", "dg_shard11.png": "img/dg_shard11.webp", "dg_shard12.png": "img/dg_shard12.webp", "dg_shard13.png": "img/dg_shard13.webp", "dg_shard14.png": "img/dg_shard14.webp", "dg_shard15.png": "img/dg_shard15.webp", "dg_shard16.png": "img/dg_shard16.webp", "dg_shard17.png": "img/dg_shard17.webp", "dg_shard2.png": "img/dg_shard2.webp", "dg_shard3.png": "img/dg_shard3.webp", "dg_shard4.png": "img/dg_shard4.webp", "dg_shard5.png": "img/dg_shard5.webp", "dg_shard6.png": "img/dg_shard6.webp", "dg_shard7.png": "img/dg_shard7.webp", "dg_shard8.png": "img/dg_shard8.webp", "dg_shard9.png": "img/dg_shard9.webp", "dg_shockwave.png": "img/dg_shockwave.webp", "dg_smoke.png": "img/dg_smoke.webp", "dg_streak.png": "img/dg_streak.webp", "dg_vortex_user.png": "img/dg_vortex_user.webp", "eye_flesh.png": "img/eye_flesh.webp", "eye_iris.png": "img/eye_iris.webp", "field.png": "img/field.webp", "fx_magic_e.png": "img/fx_magic_e.webp", "fx_mg_flare.png": "img/fx_mg_flare.webp", "fx_mg_ring.png": "img/fx_mg_ring.webp", "fx_mg_shard.png": "img/fx_mg_shard.webp", "fx_mg_streak.png": "img/fx_mg_streak.webp", "fx_naka.png": "img/fx_naka.webp", "fx_peachmagic.png": "img/fx_peachmagic.webp", "haki.png": "img/haki.webp", "kw_rest.png": "img/kw_rest.webp", "kw_rush.png": "img/kw_rush.webp", "kw_stand.png": "img/kw_stand.webp", "logo.png": "img/logo.webp", "mana.png": "img/mana.webp", "ship_art.png": "img/ship_art.webp"};window.GAME_VERSION=35;</script>
 <script>
 // ============ CARD DATA (transcribed from the card art) ============
 const SAN='สามพี่น้อง', SHIP='เรือหลวง', WCT='พี่น้องร่ำรา', NINE='9 ประกาศิต', MANA_MAX=10, HAND_MAX=5;
@@ -4010,6 +4042,7 @@ async function doPull(n,bx='wc'){
   }
   if(refund)addCoins(refund);
   await pullScene(packs,refund,bx);
+  try{AU.gateStop&&AU.gateStop()}catch(e){}
   PULLING=false;updWallets();
 }
 // big cutscene for purple (พาหนะ) and rainbow (คาแรคเตอร์) pulls
@@ -4262,6 +4295,72 @@ function runDragon(cv){
   raf=requestAnimationFrame(frame);
   return ()=>cancelAnimationFrame(raf);
 }
+// ---------- 9 ประกาศิต pull: the magic_e seal spins in, shakes harder and harder, then shatters — the card comes out of it ----------
+function magicCine(){
+  return new Promise(done=>{
+    const S=Math.min(innerWidth,innerHeight)*.72,img=`url(${A('fx_magic_e.png')})`;
+    const fx=document.createElement('div');fx.className='mgfx';
+    let shards='';const N=14;
+    for(let i=0;i<N;i++){const a0=i/N*360+(Math.random()*8-4),a1=(i+1)/N*360+(Math.random()*8-4),mid=(a0+a1)/2*Math.PI/180;
+      const pt=a=>{const r=a*Math.PI/180;return `${(50+75*Math.cos(r)).toFixed(1)}% ${(50+75*Math.sin(r)).toFixed(1)}%`};
+      const d=S*(.7+Math.random()*.6);
+      shards+=`<i class="sh" style="background-image:${img};clip-path:polygon(50% 50%,${pt(a0)},${pt(a1)});--x:${(Math.cos(mid)*d).toFixed(0)}px;--y:${(Math.sin(mid)*d).toFixed(0)}px;--r:${(Math.random()*240-120).toFixed(0)}deg;animation-delay:${(Math.random()*.06).toFixed(2)}s"></i>`}
+    // impact frame: speed lines + the seal as a flat silhouette (black on white, then white on black)
+    fx.innerHTML=`<div class="mgdim"></div><canvas class="mgcv"></canvas><div class="mgwrap" style="width:${S}px;height:${S}px"><div class="mgnaka" style="background-image:url(${A('fx_naka.png')})"></div><div class="mgring2" style="-webkit-mask-image:url(${A('fx_mg_ring.png')});mask-image:url(${A('fx_mg_ring.png')})"></div><div class="mgseal" style="background-image:${img}"></div><div class="mgshards">${shards}</div></div><div class="mgring"></div><div class="mgflash"></div>
+      <div class="mgimp"><div class="ln"></div><div class="sil" style="width:${S}px;height:${S}px;-webkit-mask-image:${img};mask-image:${img}"></div></div>`;
+    document.body.append(fx);
+    // ---- particles (the mod's seal_charge / zone_shatter textures, tinted, additive) ----
+    const cv=fx.querySelector('.mgcv'),cx=cv.getContext('2d');cv.width=innerWidth;cv.height=innerHeight;
+    const CX=cv.width/2,CY=cv.height/2,R=S/2;
+    const tint=(n,col)=>{const c=document.createElement('canvas'),im=new Image();im.src=A(n);c.width=c.height=1;
+      im.onload=()=>{c.width=im.width;c.height=im.height;const g=c.getContext('2d');g.drawImage(im,0,0);g.globalCompositeOperation='source-in';g.fillStyle=col;g.fillRect(0,0,c.width,c.height)};return c};
+    const TX={flare:tint('fx_mg_flare.png','#ffb040'),streak:tint('fx_mg_streak.png','#ffd27a'),ring:tint('fx_mg_ring.png','#ff9a30'),shard:tint('fx_mg_shard.png','#ffcf6a')};
+    const P=[];let charge=0,alive=true;const t0=performance.now();
+    const add=o=>P.push(Object.assign({x:CX,y:CY,vx:0,vy:0,a:0,va:0,s:1,vs:0,l:1,dl:.02,tex:'flare',rot:0},o));
+    const burst=(n,sp,tex='flare',sz=1)=>{for(let i=0;i<n;i++){const a=Math.random()*6.283,v=sp*(.4+Math.random());add({tex,vx:Math.cos(a)*v,vy:Math.sin(a)*v,rot:a+1.57,va:(Math.random()-.5)*.3,s:sz*(.4+Math.random()*.8),dl:.012+Math.random()*.02})}};
+    const ring=(sz,grow)=>add({tex:'ring',s:sz,vs:grow,dl:.03});
+    // rotation is driven here (not by CSS) so speeding up at each beat never makes it jump or pause
+    const SP=[[fx.querySelector('.mgseal'),60,165],[fx.querySelector('.mgnaka'),-110,-260],[fx.querySelector('.mgring2'),80,180]];
+    const ang=[0,0,0];let lastT=performance.now(),spin=0;
+    const frame=()=>{if(!alive)return;const now=performance.now(),dt=Math.min(.05,(now-lastT)/1000);lastT=now;
+      const k=fx.classList.contains('lock')?Math.min(1,spin+=dt*1.5):0;
+      SP.forEach(([el,a,b],i)=>{ang[i]+=(a+(b-a)*k)*dt;if(el)el.style.rotate=ang[i].toFixed(1)+'deg'});
+      cx.clearRect(0,0,cv.width,cv.height);cx.globalCompositeOperation='lighter';
+      // charge: streaks flying into the seal, more and faster as the sound builds
+      for(let k=0;k<charge;k++){const a=Math.random()*6.283,d=R*(1.4+Math.random()*1.2),v=-(6+charge*1.5);add({tex:'streak',x:CX+Math.cos(a)*d,y:CY+Math.sin(a)*d,vx:Math.cos(a)*v,vy:Math.sin(a)*v,rot:a+1.57,s:.5+Math.random()*.6,dl:.035})}
+      for(let i=P.length-1;i>=0;i--){const p=P[i];p.x+=p.vx;p.y+=p.vy;p.rot+=p.va;p.s+=p.vs;p.l-=p.dl;
+        if(p.tex==='streak'&&Math.hypot(p.x-CX,p.y-CY)<R*.25)p.l=0;
+        if(p.l<=0){P.splice(i,1);continue}
+        const T=TX[p.tex];if(T.width<2)continue;const w=T.width*p.s,h=T.height*p.s;
+        cx.save();cx.globalAlpha=Math.min(1,p.l*1.4);cx.translate(p.x,p.y);cx.rotate(p.rot);cx.drawImage(T,-w/2,-h/2,w,h);cx.restore()}
+      requestAnimationFrame(frame)};frame();
+    // ---- timeline, matched to longyexin_dimensiongate.ogg: build-up → hits 2.45 / 3.3 / 3.95 / 4.5 / 4.9 → peak 6.15 ----
+    try{audioInit()}catch(e){}
+    try{AU.gateStop&&AU.gateStop()}catch(e){} // a new seal: the previous gate sound stops
+    const snd=AU.on.sfx;let gate=null,gateEl=null;
+    // longyexin_dimensiongate.ogg — the decoded sample if it is ready, otherwise a plain <audio> so it is never silent
+    if(snd){try{gate=sample('lyxgate',{g:2.2})}catch(e){}
+      if(!gate)try{gateEl=new Audio(trackSrc('sfx_lyxgate.ogg'));gateEl.volume=Math.min(1,(AU.vol.sfx||.3)*2.2);gateEl.play().catch(()=>{})}catch(e){}}
+    const at=(t,f)=>setTimeout(f,t*1000);
+    const impact=(ms,inv)=>{fx.classList.add('imp');if(inv)fx.classList.add('inv');setTimeout(()=>fx.classList.remove('inv'),ms/2);setTimeout(()=>fx.classList.remove('imp','inv'),ms)};
+    const hit=(lv,n)=>{fx.style.setProperty('--sh',lv+'px');burst(n,6+lv,'flare',1.1);ring(.4,.09+lv*.004);try{shakeScreen()}catch(e){}};
+    at(.2,()=>{charge=1});at(1.2,()=>{charge=2});at(1.9,()=>{charge=3});
+    at(2.45,()=>{impact(140);fx.classList.add('lock','shake');hit(3,18);charge=3});
+    at(3.3,()=>hit(5,14));at(3.95,()=>{hit(7,16);charge=4});at(4.5,()=>hit(9,18));
+    at(4.9,()=>{impact(110,true);hit(12,22);charge=6});
+    at(5.5,()=>fx.style.setProperty('--sh','15px'));
+    at(6.15,()=>{charge=0;impact(220,true);fx.classList.remove('shake');fx.classList.add('break');
+      burst(60,16,'shard',1.4);burst(30,12,'flare',1.6);ring(.5,.22);ring(.3,.14);
+      try{flash('#ffb040');shakeScreen()}catch(e){}if(snd)try{sample('impact',{g:.9,rate:.85})}catch(e){}});
+    // the gate sound keeps ringing through the card reveal (all 28 s) — it only fades when the pull screen closes or a new seal starts
+    AU.gateStop=()=>{AU.gateStop=null;
+      if(gate&&gate.gn&&AU.ctx){const g=gate.gn.gain,t=AU.ctx.currentTime;g.setValueAtTime(g.value,t);g.linearRampToValueAtTime(0,t+.8);try{gate.s.stop(t+.9)}catch(e){}}
+      if(gateEl){const v0=gateEl.volume,iv=setInterval(()=>{gateEl.volume=Math.max(0,gateEl.volume-v0/16);if(gateEl.volume<=0){clearInterval(iv);gateEl.pause()}},50)}};
+    at(6.9,()=>fx.classList.add('out'));
+    at(7.3,()=>{alive=false;fx.remove();done()});
+  });
+}
+const isNineCine=r=>(r.k==='M'||r.k==='G')&&CARDS[r.id]&&(CARDS[r.id].tags||[]).includes(NINE);
 function rareCine(r){
   return new Promise(done=>{
     const s=$('#rarecine'),col=r.k==='S'?['#ff1a2a','#ffd23a','#ffffff','#8a0010']:r.k==='M'?['#ff1a2a','#8a0010','#ff6a5a','#000000']:r.k==='G'?['#ffe08a','#ffc400','#ffffff','#ff9a00']:r.k==='L'?['#ff3b3b','#ffd23a','#3fcf7a','#3db0ff','#b05aff']:['#c07aff','#e6c8ff','#a44cff','#ffffff'];
@@ -4394,7 +4493,7 @@ function summaryStage(s,all,refund,done){
 function pullScene(packs,refund,bx='wc'){
   return new Promise(async done=>{
     const s=$('#pull'),N=packs.length,all=packs.flat(),cined=new Set();
-    const cine=async r=>{if(cined.has(r)||!'VLSGM'.includes(r.k))return;cined.add(r);if(r.k==='M')await deathOverlay('');await rareCine(r)};
+    const cine=async r=>{if(cined.has(r)||!'VLSGM'.includes(r.k))return;cined.add(r);if(isNineCine(r))await magicCine();else if(r.k==='M')await deathOverlay('');await rareCine(r)};
     let skip=false;
     try{
       for(let pi=0;pi<N;pi++){
